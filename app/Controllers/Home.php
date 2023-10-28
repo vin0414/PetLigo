@@ -18,4 +18,9 @@ class Home extends BaseController
     {
         return view('book');
     }
+
+    public function services()
+    {
+        return view('services');
+    }
 }
