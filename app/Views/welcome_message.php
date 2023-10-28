@@ -531,7 +531,7 @@
           </div>
 
           <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-4.jpg);">
+            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(assets/images/gallery-4.jpg);">
             	<a href="images/gallery-4.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
 	    					<span class="fa fa-expand"></span>
 	    				</a>
@@ -544,7 +544,7 @@
             </div>
           </div>
           <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-5.jpg);">
+            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(assets/images/gallery-5.jpg);">
             	<a href="images/gallery-5.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
 	    					<span class="fa fa-expand"></span>
 	    				</a>
@@ -557,7 +557,7 @@
             </div>
           </div>
           <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(images/gallery-6.jpg);">
+            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(assets/images/gallery-6.jpg);">
             	<a href="images/gallery-6.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
 	    					<span class="fa fa-expand"></span>
 	    				</a>
@@ -583,7 +583,7 @@
         <div class="row d-flex">
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_1.jpg');">
+              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('assets/images/image_1.jpg');">
               </a>
               <div class="text p-4">
               	<div class="meta mb-2">
@@ -597,7 +597,7 @@
           </div>
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_2.jpg');">
+              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('assets/images/image_2.jpg');">
               </a>
               <div class="text p-4">
               	<div class="meta mb-2">
@@ -611,7 +611,7 @@
           </div>
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_3.jpg');">
+              <a href="blog-single.html" class="block-20 rounded" style="background-image: url('assets/images/image_3.jpg');">
               </a>
               <div class="text p-4">
               	<div class="meta mb-2">
@@ -627,7 +627,7 @@
       </div>
     </section>
 
-    <section class="ftco-appointment ftco-section ftco-no-pt ftco-no-pb img" style="background-image: url(images/bg_3.jpg);">
+    <section class="ftco-appointment ftco-section ftco-no-pt ftco-no-pb img" style="background-image: url(assets/images/bg_3.jpg);">
 			<div class="overlay"></div>
     	<div class="container">
     		<div class="row d-md-flex justify-content-end">
@@ -710,7 +710,7 @@
 					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 						<h2 class="footer-heading">Latest News</h2>
 						<div class="block-21 mb-4 d-flex">
-              <a class="img mr-4 rounded" style="background-image: url(images/image_1.jpg);"></a>
+              <a class="img mr-4 rounded" style="background-image: url(assets/images/image_1.jpg);"></a>
               <div class="text">
                 <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
                 <div class="meta">
@@ -721,7 +721,7 @@
               </div>
             </div>
             <div class="block-21 mb-4 d-flex">
-              <a class="img mr-4 rounded" style="background-image: url(images/image_2.jpg);"></a>
+              <a class="img mr-4 rounded" style="background-image: url(assets/images/image_2.jpg);"></a>
               <div class="text">
                 <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
                 <div class="meta">
