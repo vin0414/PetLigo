@@ -35,6 +35,8 @@ $routes->get('/book','Home::book');
 $routes->get('/services','Home::services');
 $routes->get('/products','Home::products');
 $routes->get('/register','Home::register');
+//authentication
+$routes->post('/check','Home::Authentication');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {

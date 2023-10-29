@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controllers;
-
+use App\Libraries\Hash;
 class Home extends BaseController
 {
 
@@ -18,9 +18,58 @@ class Home extends BaseController
         }
     }
 
-    public function dashboard()
+    public function Authentication()
     {
-        return view('admin/index');
+        $accountModel = new \App\Models\accountModel();
+        $username = $this->request->getPost('username');
+        $password = $this->request->getPost('password');
+
+        $validation = $this->validate([
+            'username'=>[
+                'rules'=>'is_not_unique[tblaccount.username]',
+                'errors'=>[
+                    'is_not_unique'=>'This account is not registered!'
+                ]
+            ],
+            'password'=>[
+                'rules'=>'min_length[8]|max_length[12]',
+                'errors'=>
+                [
+                    'min_length'=>'Password must have atleast 8 characters in length',
+                    'max_length'=>'Password must have atleast 12 characters in length',
+                ]
+            ]
+        ]);
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid Username or Password!');
+            return redirect()->to('/auth')->withInput();
+        }
+        else
+        {
+            $user_info = $accountModel->where('username', $username)->WHERE('Status',1)->first();
+            $check_password = Hash::check($password, $user_info['password']);
+            if(!$check_password || empty($check_password))
+            {
+                session()->setFlashdata('fail','Invalid Username or Password!');
+                return redirect()->to('/auth')->withInput();
+            }
+            else
+            {
+                session()->set('loggedUser', $user_info['accountID']);
+                session()->set('sess_fullname', $user_info['Fullname']);
+                return redirect()->to('admin/index');
+            }
+        }
+    }
+
+    public function logout()
+    {
+        if(session()->has('loggedUser'))
+        {
+            session()->remove('loggedUser');
+            return redirect()->to('/?access=out')->with('fail', 'You are logged out!');
+        }
     }
 
     //webpage 
