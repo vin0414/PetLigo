@@ -35,7 +35,16 @@ $routes->get('/book','Home::book');
 $routes->get('/services','Home::services');
 $routes->get('/products','Home::products');
 $routes->get('/register','Home::register');
-$routes->get('/auth','Home::Auth');
+
+$routes->group('',['filter'=>'AuthCheck'],function($routes)
+{
+
+});
+
+$routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)
+{
+    $routes->get('/auth','Home::Auth');
+});
 
 /*
  * --------------------------------------------------------------------

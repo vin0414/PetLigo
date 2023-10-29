@@ -18,6 +18,11 @@ class Home extends BaseController
         }
     }
 
+    public function dashboard()
+    {
+        return view('admin/index');
+    }
+
     //webpage 
     public function index()
     {
