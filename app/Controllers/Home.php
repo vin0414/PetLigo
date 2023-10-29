@@ -58,7 +58,7 @@ class Home extends BaseController
             {
                 session()->set('loggedUser', $user_info['accountID']);
                 session()->set('sess_fullname', $user_info['Fullname']);
-                return redirect()->to('admin/index');
+                return redirect()->to('admin/dashboard');
             }
         }
     }
@@ -70,6 +70,11 @@ class Home extends BaseController
             session()->remove('loggedUser');
             return redirect()->to('/?access=out')->with('fail', 'You are logged out!');
         }
+    }
+
+    public function Dashboard()
+    {
+        return view('admin/index');
     }
 
     //webpage 
