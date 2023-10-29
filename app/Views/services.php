@@ -37,11 +37,12 @@
 					</div>
 					<div class="col-md-6 d-flex justify-content-md-end">
 						<div class="social-media">
-			    		<p class="mb-0 d-flex">
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+              <p class="mb-0 d-flex">
+                <?php if(empty(session()->get('sess_id'))){ ?>
+                  <a href="<?=site_url('/sign-in')?>" class="d-flex align-items-center justify-content-center text-white"><span class="fa fa-sign-in "></span>&nbsp;Login</a>
+                <?php }else{ ?>
+                <a href="<?=site_url('/sign-in')?>" class="d-flex align-items-center justify-content-center"><?php echo session()->get('sess_fullname') ?></a>
+                <?php } ?>
 			    		</p>
 		        </div>
 					</div>
@@ -62,6 +63,7 @@
 	        	<li class="nav-item active"><a href="<?=site_url('services')?>" class="nav-link">Services</a></li>
 	          <li class="nav-item"><a href="<?=site_url('products')?>" class="nav-link">Products</a></li>
 	          <li class="nav-item"><a href="<?=site_url('blogs')?>" class="nav-link">Blogs</a></li>
+            <li class="nav-item"><a href="<?=site_url('register')?>" class="nav-link">Register</a></li>
 	        </ul>
 	      </div>
 	    </div>
