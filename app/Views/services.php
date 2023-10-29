@@ -63,7 +63,6 @@
 	        	<li class="nav-item active"><a href="<?=site_url('services')?>" class="nav-link">Services</a></li>
 	          <li class="nav-item"><a href="<?=site_url('products')?>" class="nav-link">Products</a></li>
 	          <li class="nav-item"><a href="<?=site_url('blogs')?>" class="nav-link">Blogs</a></li>
-            <li class="nav-item"><a href="<?=site_url('register')?>" class="nav-link">Register</a></li>
 	        </ul>
 	      </div>
 	    </div>

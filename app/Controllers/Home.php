@@ -24,6 +24,18 @@ class Home extends BaseController
         return view('services');
     }
 
+    public function register()
+    {
+        if(empty(session()->get('sess_id')))
+        {
+            return view('register');
+        }
+        else
+        {
+            return redirect()->back();
+        }
+    }
+
     public function products()
     {
         return view('products');
