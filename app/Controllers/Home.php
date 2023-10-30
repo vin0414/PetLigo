@@ -8,14 +8,7 @@ class Home extends BaseController
     //admin template
     public function Auth()
     {
-        if(empty(session()->get('sess_id')))
-        {
-            return view('auth');
-        }
-        else
-        {
-            return redirect()->back();
-        }
+        return view('auth');
     }
 
     public function Authentication()
