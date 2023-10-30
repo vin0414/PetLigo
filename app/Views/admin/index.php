@@ -173,7 +173,7 @@
 							data-toggle="dropdown"
 						>
 							<span class="user-icon">
-								<img src="/resources/vendors/images/photo1.jpg" alt="" />
+								<span class="icon-copy dw dw-user"></span>
 							</span>
 							<span class="user-name"><?php echo session()->get('sess_fullname') ?></span>
 						</a>

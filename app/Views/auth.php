@@ -70,6 +70,11 @@
 							<div class="login-title">
 								<h2 class="text-center text-primary">Login To PetLigo</h2>
 							</div>
+							<?php if(!empty(session()->getFlashdata('fail'))) : ?>
+								<div class="alert alert-danger" role="alert">
+									<?= session()->getFlashdata('fail'); ?>
+								</div>
+							<?php endif; ?>
 							<form method="POST" action="<?=base_url('check')?>">
 								<div class="input-group custom">
 									<input type="text" name="username"
