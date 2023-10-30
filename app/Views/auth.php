@@ -70,7 +70,7 @@
 							<div class="login-title">
 								<h2 class="text-center text-primary">Login To PetLigo</h2>
 							</div>
-							<form>
+							<form method="POST" action="<?=base_url('check')?>">
 								<div class="input-group custom">
 									<input type="text" name="username"
 										class="form-control form-control-lg"

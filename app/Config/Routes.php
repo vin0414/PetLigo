@@ -37,10 +37,11 @@ $routes->get('/products','Home::products');
 $routes->get('/register','Home::register');
 //authentication
 $routes->post('/check','Home::Authentication');
+$routes->get('/logout','Home::logout');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
-    $routes->get('dashboard','Home::Dashboard');
+    $routes->get('admin/dashboard','Home::Dashboard');
 });
 
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)

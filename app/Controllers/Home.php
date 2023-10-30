@@ -68,7 +68,7 @@ class Home extends BaseController
         if(session()->has('loggedUser'))
         {
             session()->remove('loggedUser');
-            return redirect()->to('/?access=out')->with('fail', 'You are logged out!');
+            return redirect()->to('/auth?access=out')->with('fail', 'You are logged out!');
         }
     }
 
