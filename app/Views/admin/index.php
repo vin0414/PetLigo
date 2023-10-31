@@ -385,37 +385,37 @@
 				<div class="sidebar-menu">
 					<ul id="accordion-menu">
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle active no-arrow">
+							<a href="<?=site_url('admin/dashboard')?>" class="dropdown-toggle active no-arrow">
 								<span class="micon bi bi-house"></span
 								><span class="mtext">Home</span>
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?=site_url('admin/reservations')?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-calendar-1"></span
 								><span class="mtext"> Reservations </span>
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?=site_url('admin/orders')?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-shopping-cart"></span
 								><span class="mtext">Orders</span>
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?=site_url('admin/products')?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-clipboard"></span
 								><span class="mtext">Products</span>
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?=site_url('admin/membership')?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-user-13"></span
 								><span class="mtext">Membership</span>
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle no-arrow">
+							<a href="<?=site_url('admin/reports')?>" class="dropdown-toggle no-arrow">
 								<span class="micon bi bi-pie-chart"></span
 								><span class="mtext">Reports</span>
 							</a>
@@ -432,7 +432,7 @@
 							<div class="sidebar-small-cap">Extra</div>
 						</li>
                         <li>
-							<a href="<?=site_url('profile')?>" class="dropdown-toggle no-arrow">
+							<a href="<?=site_url('admin/profile')?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-user2"></span
 								><span class="mtext">Profile</span>
 							</a>
