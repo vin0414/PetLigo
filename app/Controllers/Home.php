@@ -72,6 +72,11 @@ class Home extends BaseController
         return view('admin/maintenance',$data);
     }
 
+    public function newAccount()
+    {
+        return view('admin/new-account');
+    }
+
     public function Edit($id=null)
     {
         $accountModel = new \App\Models\accountModel();
