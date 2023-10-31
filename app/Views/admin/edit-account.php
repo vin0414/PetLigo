@@ -385,8 +385,25 @@
 		<div class="main-container">
 			<div class="pd-ltr-20">
 				<div class="card-box">
+                    <div class="card-header">Edit account
+                        <a href="<?=site_url('admin/maintenance')?>" style="float:right;"><i class="icon-copy dw dw-left-arrow1"></i> Back</a>
+                    </div>
                     <div class="card-body">
-                        
+                        <?php if($account): ?>
+                        <form method="post" class="row g-3" id="frmUpdate">
+                            <div class="col-12 form-group">
+                                <label>Fullname</label>
+                                <input type="text" class="form-control" name="fullname" value="<?=$account['Fullname'] ?>"/>
+                            </div>
+                            <div class="col-12 form-group">
+                                <div class="row g-3">
+                                    <div class="col-lg-6">
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                        <?php endif; ?>
                     </div>
                 </div>
 			</div>

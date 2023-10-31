@@ -74,7 +74,10 @@ class Home extends BaseController
 
     public function Edit($id=null)
     {
-        return view('admin/edit-account');
+        $accountModel = new \App\Models\accountModel();
+        $account = $accountModel->WHERE('accountID',$id)->first();
+        $data = ['account'=>$account,];
+        return view('admin/edit-account',$data);
     }
 
     //webpage 
