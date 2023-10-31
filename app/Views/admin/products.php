@@ -409,9 +409,9 @@
                             </thead>
                             <tbody>
                                 <?php foreach($products as $row): ?>
-                                    <?php $imgURL = "Images/".$row->Image; ?>
+                                    <?php $imgURL = "/Images/".$row->Image; ?>
                                     <tr>
-                                        <td><img src="<?php echo $imgURL ?>" width="70" height="70" alt=""/></td>
+                                        <td><img src="<?php echo $imgURL ?>" class="border-radius-100 shadow" width="50" height="50" alt=""/></td>
                                         <td><?php echo $row->productName ?></td>
                                         <td style="text-align:right;"><?php echo number_format($row->UnitPrice,2) ?></td>
                                         <td><?php echo number_format($row->Qty,0) ?></td>
