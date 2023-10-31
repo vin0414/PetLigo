@@ -4,7 +4,7 @@
 	<head>
 		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
-		<title>PetLigo - Edit Account</title>
+		<title>PetLigo - Registration</title>
 
 		<!-- Site favicon -->
 		<link
@@ -385,11 +385,47 @@
 		<div class="main-container">
 			<div class="pd-ltr-20">
 				<div class="card-box">
-                    <div class="card-header">Edit account
+                    <div class="card-header">Register
                         <a href="<?=site_url('admin/maintenance')?>" style="float:right;"><i class="icon-copy dw dw-left-arrow1"></i> Back</a>
                     </div>
                     <div class="card-body">
-                        
+                        <?php if(!empty(session()->getFlashdata('fail'))) : ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <?= session()->getFlashdata('fail'); ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php endif; ?>
+                        <form method="post" class="row g-3" action="<?=base_url('add-account')?>">
+                            <div class="col-12 form-group">
+                                <label>Fullname</label>
+                                <input type="text" class="form-control" name="fullname" required/>
+                            </div>
+                            <div class="col-12 form-group">
+                                <div class="row g-3">
+                                    <div class="col-lg-4">
+                                        <label>Username</label>
+                                        <input type="text" class="form-control" name="username" minlength="8" maxlength="12" required/>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Password</label>
+                                        <input type="password" class="form-control" name="password" value="PetLigo2023" minlength="12" maxlength="16" required/>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>System Role</label>  
+                                        <select class="form-control" name="role">
+                                            <option value="">Choose</option>
+                                            <option>Administrator</option>
+                                            <option>Standard User</option>
+                                        </select>  
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 form-group">
+                                <button type="submit" class="btn btn-primary" id="btnSave">Save Account</button>
+                            </div>
+                        </form>  
                     </div>
                 </div>
 			</div>

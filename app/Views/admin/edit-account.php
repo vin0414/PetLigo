@@ -389,8 +389,17 @@
                         <a href="<?=site_url('admin/maintenance')?>" style="float:right;"><i class="icon-copy dw dw-left-arrow1"></i> Back</a>
                     </div>
                     <div class="card-body">
+						<?php if(!empty(session()->getFlashdata('fail'))) : ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <?= session()->getFlashdata('fail'); ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        <?php endif; ?>
                         <?php if($account): ?>
                         <form method="post" class="row g-3" id="frmUpdate" action="<?=site_url('update')?>">
+							<input type="hidden" name="accountID" value="<?=$account['accountID'] ?>"/>
                             <div class="col-12 form-group">
                                 <label>Fullname</label>
                                 <input type="text" class="form-control" name="fullname" value="<?=$account['Fullname'] ?>"/>

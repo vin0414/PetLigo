@@ -38,6 +38,9 @@ $routes->get('/register','Home::register');
 //authentication
 $routes->post('/check','Home::Authentication');
 $routes->get('/logout','Home::logout');
+//saving admin data
+$routes->post('/add-account','Home::addAccount');
+$routes->post('/update','Home::updateAccount');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {

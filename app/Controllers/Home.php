@@ -77,12 +77,44 @@ class Home extends BaseController
         return view('admin/new-account');
     }
 
+    public function addAccount()
+    {
+        $accountModel = new \App\Models\accountModel();
+        //data
+        $fullname = $this->request->getPost('fullname');
+        $username = $this->request->getPost('username');
+        $password = $this->request->getPost('password');
+        $defaultPassword = Hash::make($password);
+        $role = $this->request->getPost('role');
+        $status = 1;$date = date('Y-m-d');
+        $validation = $this->validate([
+            'fullname'=>'required','username'=>'required','password'=>'required','role'=>'required'
+        ]);
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid! Please fill in the form to continue');
+            return redirect()->to('admin/new-account')->withInput();
+        }
+        else
+        {
+            $values = ['username'=>$username, 'password'=>$defaultPassword,'Fullname'=>$fullname,'Status'=>$status,'systemRole'=>$role,'DateCreated'=>$date];
+            $accountModel->save($values);
+            session()->setFlashdata('success','Great! Successfully registered');
+            return redirect()->to('admin/maintenance')->withInput();
+        }
+    }
+
     public function Edit($id=null)
     {
         $accountModel = new \App\Models\accountModel();
         $account = $accountModel->WHERE('accountID',$id)->first();
         $data = ['account'=>$account,];
         return view('admin/edit-account',$data);
+    }
+
+    public function updateAccount()
+    {
+        
     }
 
     //webpage 
