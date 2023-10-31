@@ -4,6 +4,11 @@ namespace App\Controllers;
 use App\Libraries\Hash;
 class Home extends BaseController
 {
+    private $db;
+    public function __construct()
+    {
+        $this->db = db_connect();
+    }
 
     //admin template
     public function Auth()
@@ -60,7 +65,11 @@ class Home extends BaseController
 
     public function Maintenance()
     {
-        return view('admin/maintenance');
+        $builder = $this->db->table('tblaccount');
+        $builder->select('*');
+        $account = $builder->get()->getResult();
+        $data = ['account'=>$account,];
+        return view('admin/maintenance',$data);
     }
 
     //webpage 
