@@ -417,7 +417,10 @@
                                         <td><?php echo number_format($row->Qty,0) ?></td>
                                         <td style="text-align:right;"><?php echo number_format($row->UnitPrice*$row->Qty,2) ?></td>
                                         <td><?php if($row->Qty>0){echo "<span class='badge bg-success text-white'>In Stock</span>";}else{echo "<span class='badge bg-danger text-white'>Out of Stock</span>";} ?></td>
-                                        <td></td>
+                                        <td>
+											<button type="button" class="btn btn-default btn-sm add-stock"><span class="icon-copy dw dw-add"></span> Add</button>
+											<a href="" class="btn btn-default btn-sm"><span class="icon-copy dw dw-edit-1"></span> Edit</a>
+										</td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
