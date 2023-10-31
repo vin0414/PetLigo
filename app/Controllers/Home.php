@@ -156,6 +156,11 @@ class Home extends BaseController
         return view('admin/new-product');
     }
 
+    public function editProduct($id=null)
+    {
+        return view('admin/edit-product');
+    }
+
     public function saveProduct()
     {
         $productModel = new \App\Models\productModel();
