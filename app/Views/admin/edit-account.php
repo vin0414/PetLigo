@@ -390,17 +390,37 @@
                     </div>
                     <div class="card-body">
                         <?php if($account): ?>
-                        <form method="post" class="row g-3" id="frmUpdate">
+                        <form method="post" class="row g-3" id="frmUpdate" action="<?=site_url('update')?>">
                             <div class="col-12 form-group">
                                 <label>Fullname</label>
                                 <input type="text" class="form-control" name="fullname" value="<?=$account['Fullname'] ?>"/>
                             </div>
                             <div class="col-12 form-group">
                                 <div class="row g-3">
-                                    <div class="col-lg-6">
-                                        
+                                    <div class="col-lg-4">
+                                        <label>Username</label>    
+                                        <input type="text" class="form-control" name="username" value="<?=$account['username'] ?>"/>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>System Role</label>  
+                                        <select class="form-control" name="role">
+                                            <option value="">Choose</option>
+                                            <option>Administrator</option>
+                                            <option>Standard User</option>
+                                        </select>  
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Status</label>  
+                                        <select class="form-control" name="status">
+                                            <option value="">Choose</option>
+                                            <option value="1">Active</option>
+                                            <option value="2">Inactive</option>
+                                        </select>  
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-12 form-group">
+                                <button type="submit" class="btn btn-primary" id="btnSave">Save Changes</button>
                             </div>
                         </form>
                         <?php endif; ?>
