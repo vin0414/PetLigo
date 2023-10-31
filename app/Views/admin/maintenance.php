@@ -409,7 +409,31 @@
                                             <th>Status</th>
                                             <th>Action</th>
                                         </thead>
-                                        <tbody></tbody>
+                                        <tbody>
+                                            <?php foreach($account as $row): ?>
+                                                <?php if($row->Status==1){ ?>
+                                                <tr>
+                                                    <td><?php echo $row->username ?></td>
+                                                    <td><?php echo $row->Fullname ?></td>
+                                                    <td><?php echo $row->systemRole ?></td>
+                                                    <td><span class="badge bg-success text-white">Active</span></td>
+                                                    <td>
+                                                        <a href="<?=site_url('admin/edit/')?><?php echo $row->accountID ?>"><span class="icon-copy dw dw-edit-1"></span> Edit</a>
+                                                    </td>
+                                                </tr>
+                                                <?php }else{ ?>
+                                                <tr>
+                                                    <td><?php echo $row->username ?></td>
+                                                    <td><?php echo $row->Fullname ?></td>
+                                                    <td><?php echo $row->systemRole ?></td>
+                                                    <td><span class="badge bg-danger text-white">Inactive</span></td>
+                                                    <td>
+                                                    <a href="<?=site_url('admin/edit/')?><?php echo $row->accountID ?>"><span class="icon-copy dw dw-edit-1"></span> Edit</a>
+                                                    </td>
+                                                </tr>
+                                                <?php } ?>
+                                            <?php endforeach; ?>
+                                        </tbody>
                                     </table>
                                 </div>
                                 <div class="tab-pane fade show" id="customers" role="tabpanel">
