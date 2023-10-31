@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class productImageModel extends Model
 {
-    protected $table      = 'tblproductImage';
+    protected $table      = 'tblproductimage';
     protected $primaryKey = 'imageID';
 
     protected $useAutoIncrement  = true;

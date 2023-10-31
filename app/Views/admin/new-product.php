@@ -4,7 +4,7 @@
 	<head>
 		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
-		<title>PetLigo - Products</title>
+		<title>PetLigo - Add Product</title>
 
 		<!-- Site favicon -->
 		<link
@@ -343,8 +343,8 @@
 						</li>
 						<li class="dropdown">
 							<a href="<?=site_url('admin/products')?>" class="dropdown-toggle active no-arrow">
-								<span class="micon dw dw-clipboard"></span
-								><span class="mtext">Products</span>
+								<span class="micon dw dw-add-file"></span
+								><span class="mtext">New Product</span>
 							</a>
 						</li>
 						<li class="dropdown">
@@ -384,44 +384,20 @@
 
 		<div class="main-container">
 			<div class="pd-ltr-20">
-				<?php if(!empty(session()->getFlashdata('success'))) : ?>
-					<div class="alert alert-success alert-dismissible fade show" role="alert">
-						<?= session()->getFlashdata('success'); ?>
+				<?php if(!empty(session()->getFlashdata('fail'))) : ?>
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<?= session()->getFlashdata('fail'); ?>
 						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
 				<?php endif; ?>
 				<div class="card-box">
-					<div class="card-header">All Products
-					<a href="<?=site_url('admin/new-product')?>" style="float:right;"><span class="icon-copy dw dw-add-file"></span>&nbsp;New Product</a>
+					<div class="card-header">New Product
+					    <a href="<?=site_url('admin/products')?>" style="float:right;"><span class="icon-copy dw dw-left-arrow1"></span>&nbsp;Back</a>
 					</div>
                     <div class="card-body">
-                        <table class="data-table table stripe hover nowrap">
-                            <thead>
-                                <th>Image</th>
-                                <th>Product Name</th>
-                                <th>Unit Price</th>
-                                <th>Qty</th>
-                                <th>Total Cost</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </thead>
-                            <tbody>
-                                <?php foreach($products as $row): ?>
-                                    <?php $imgURl = "/Images/".$row->Image; ?>
-                                    <tr>
-                                        <td><img src="<?php echo $imgURl ?>" width="70" height="70" alt=""/></td>
-                                        <td><?php echo $row->productName ?></td>
-                                        <td style="text-align:right;"><?php echo number_format($row->UnitPrice,2) ?></td>
-                                        <td><?php echo number_format($row->Qty,0) ?></td>
-                                        <td style="text-align:right;"><?php echo number_format($row->UnitPrice*$row->Qty,2) ?></td>
-                                        <td><?php if($row->Qty>0){echo "<span class='badge bg-success text-white'>In Stock</span>";}else{echo "<span class='badge bg-danger text-white'>Out of Stock</span>";} ?></td>
-                                        <td></td>
-                                    </tr>
-                                <?php endforeach; ?>
-                            </tbody>
-                        </table>
+                        
                     </div>
                 </div>
 			</div>
