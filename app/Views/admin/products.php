@@ -394,28 +394,23 @@
 				<?php endif; ?>
 				<div class="card-box">
 					<div class="card-header">All Products
-					<a href="<?=site_url('admin/new-product')?>" style="float:right;"><span class="icon-copy dw dw-add-user"></span>&nbsp;New Product</a>
+					<a href="<?=site_url('admin/new-product')?>" style="float:right;"><span class="icon-copy dw dw-add-file"></span>&nbsp;New Product</a>
 					</div>
                     <div class="card-body">
-                        <div class="tab">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active text-blue" data-toggle="tab" href="#home" role="tab" aria-selected="true">User Management</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-blue" data-toggle="tab" href="#customers" role="tab" aria-selected="false">Customers</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel">
-                                    <br/>
-                                    
-                                </div>
-                                <div class="tab-pane fade show" id="customers" role="tabpanel">
+                        <table class="data-table table stripe hover nowrap">
+                            <thead>
+                                <th>Image</th>
+                                <th>Product Name</th>
+                                <th>Unit Price</th>
+                                <th>Qty</th>
+                                <th>Total Cost</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
 
-                                </div>
-                            </div>
-                        </div>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
 			</div>
