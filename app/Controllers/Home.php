@@ -10,7 +10,7 @@ class Home extends BaseController
         $this->db = db_connect();
     }
 
-    //admin template
+    //admin authentication
     public function Auth()
     {
         return view('auth');
@@ -57,6 +57,8 @@ class Home extends BaseController
             return redirect()->to('/auth?access=out')->with('fail', 'You are logged out!');
         }
     }
+    
+    //admin template
 
     public function Dashboard()
     {
@@ -136,6 +138,11 @@ class Home extends BaseController
             session()->setFlashdata('success','Great! Successfully updated');
             return redirect()->to('admin/maintenance')->withInput();
         }
+    }
+
+    public function allProducts()
+    {
+        return view('admin/products');
     }
 
     //webpage 

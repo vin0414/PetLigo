@@ -48,6 +48,7 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes)
     $routes->get('admin/maintenance','Home::Maintenance');
     $routes->get('admin/new-account','Home::newAccount');
     $routes->get('admin/edit/(:any)','Home::Edit/$1');
+    $routes->get('admin/products','Home::allProducts');
 });
 
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)
