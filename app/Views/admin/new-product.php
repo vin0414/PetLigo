@@ -397,7 +397,24 @@
 					    <a href="<?=site_url('admin/products')?>" style="float:right;"><span class="icon-copy dw dw-left-arrow1"></span>&nbsp;Back</a>
 					</div>
                     <div class="card-body">
-                        
+                        <form method="POSt" class="row g-3" id="frmProduct">
+                            <div class="col-12 form-group">
+                                <label>Product Name</label>
+                                <input type="text" class="form-control" name="productName" required/>
+                            </div>
+                            <div class="col-12 form-group">
+                                <div class="row g-3">
+                                    <div class="col-lg-4">
+                                        <label>Quantity</label>
+                                        <input type="number" class="form-control" name="qty" required/>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Unit Price</label>
+                                        <input type="text" class="form-control" name="unitPrice" required/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>   
                     </div>
                 </div>
 			</div>
