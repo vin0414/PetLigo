@@ -180,7 +180,7 @@
 						<div
 							class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
 						>
-							<a class="dropdown-item" href="profile.html"
+							<a class="dropdown-item" href="<?=site_url('profile')?>"
 								><i class="dw dw-user1"></i> Profile</a
 							>
 							<a class="dropdown-item" href="<?=site_url('/logout')?>"
@@ -503,7 +503,7 @@
 							<div class="sidebar-small-cap">Extra</div>
 						</li>
                         <li>
-							<a href="chat.html" class="dropdown-toggle no-arrow">
+							<a href="<?=site_url('profile')?>" class="dropdown-toggle no-arrow">
 								<span class="micon dw dw-user2"></span
 								><span class="mtext">Profile</span>
 							</a>
