@@ -72,6 +72,11 @@ class Home extends BaseController
         return view('admin/maintenance',$data);
     }
 
+    public function Edit($id=null)
+    {
+        return view('admin/edit-account');
+    }
+
     //webpage 
     public function index()
     {
