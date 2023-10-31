@@ -58,6 +58,11 @@ class Home extends BaseController
         return view('admin/index');
     }
 
+    public function Maintenance()
+    {
+        return view('admin/maintenance');
+    }
+
     //webpage 
     public function index()
     {

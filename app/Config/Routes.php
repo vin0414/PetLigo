@@ -42,6 +42,7 @@ $routes->get('/logout','Home::logout');
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
     $routes->get('admin/dashboard','Home::Dashboard');
+    $routes->get('admin/maintenance','Home::Maintenance');
 });
 
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)

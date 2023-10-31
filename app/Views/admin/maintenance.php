@@ -4,7 +4,7 @@
 	<head>
 		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
-		<title>PetLigo - Admin</title>
+		<title>PetLigo - Maintenance</title>
 
 		<!-- Site favicon -->
 		<link
@@ -385,7 +385,7 @@
 				<div class="sidebar-menu">
 					<ul id="accordion-menu">
 						<li class="dropdown">
-							<a href="javascript:;" class="dropdown-toggle active no-arrow">
+							<a href="<?=site_url('admin/dashboard')?>" class="dropdown-toggle no-arrow">
 								<span class="micon bi bi-house"></span
 								><span class="mtext">Home</span>
 							</a>
@@ -421,7 +421,7 @@
 							</a>
 						</li>						
 						<li class="dropdown">
-							<a href="<?=site_url('admin/maintenance')?>" class="dropdown-toggle no-arrow">
+							<a href="<?=site_url('admin/maintenance')?>" class="dropdown-toggle active no-arrow">
 								<span class="micon dw dw-settings"></span
 								><span class="mtext">Maintenance</span>
 							</a>
