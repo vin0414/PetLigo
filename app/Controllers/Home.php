@@ -114,7 +114,28 @@ class Home extends BaseController
 
     public function updateAccount()
     {
-        
+        $accountModel = new \App\Models\accountModel();
+        //data
+        $accountID = $this->request->getPost('accountID');
+        $fullname = $this->request->getPost('fullname');
+        $username = $this->request->getPost('username');
+        $role = $this->request->getPost('role');
+        $status = $this->request->getPost('status');
+        $validation = $this->validate([
+            'fullname'=>'required','username'=>'required','role'=>'required'
+        ]);
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid! Please fill in the form to continue');
+            return redirect()->to('admin/edit/'.$accountID)->withInput();
+        }
+        else
+        {
+            $values = ['username'=>$username,'Fullname'=>$fullname,'Status'=>$status,'systemRole'=>$role];
+            $accountModel->update($accountID,$values);
+            session()->setFlashdata('success','Great! Successfully updated');
+            return redirect()->to('admin/maintenance')->withInput();
+        }
     }
 
     //webpage 
