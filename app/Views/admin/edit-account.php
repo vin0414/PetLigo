@@ -4,7 +4,7 @@
 	<head>
 		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
-		<title>PetLigo - Maintenance</title>
+		<title>PetLigo - Edit Account</title>
 
 		<!-- Site favicon -->
 		<link

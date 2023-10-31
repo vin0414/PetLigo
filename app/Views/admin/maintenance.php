@@ -385,6 +385,9 @@
 		<div class="main-container">
 			<div class="pd-ltr-20">
 				<div class="card-box">
+					<div class="card-header">Maintenance
+					<a href="<?=site_url('admin/new-account')?>" style="float:right;"><span class="icon-copy dw dw-add-user"></span>&nbsp;New Account</a>
+					</div>
                     <div class="card-body">
                         <div class="tab">
                             <ul class="nav nav-tabs" role="tablist">
