@@ -367,7 +367,7 @@
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="<?=site_url('admin/products')?>" class="dropdown-toggle active no-arrow">
+							<a href="<?=site_url('admin/new-product')?>" class="dropdown-toggle active no-arrow">
 								<span class="micon dw dw-add-file"></span
 								><span class="mtext">New Product</span>
 							</a>
@@ -422,7 +422,7 @@
 					    <a href="<?=site_url('admin/products')?>" style="float:right;"><span class="icon-copy dw dw-left-arrow1"></span>&nbsp;Back</a>
 					</div>
                     <div class="card-body">
-                        <form method="POSt" class="row g-3" id="frmProduct" action="<?=base_url('save-product')?>">
+                        <form method="POSt" class="row g-3" id="frmProduct" action="<?=base_url('save-product')?>" enctype="multipart/form-data">
                             <div class="col-12 form-group">
                                 <label>Product Name</label>
                                 <input type="text" class="form-control" name="productName" required/>
@@ -479,7 +479,7 @@
                             <div class="col-12 form-group">
 								<p>
 									<label for="upload_imgs" class="btn btn-outline-primary">Select Your Images +</label>
-									<input class="show-for-sr" type="file" id="upload_imgs" name="upload_imgs[]" accept="image/jpeg, image/png, image/jpg" multiple/>
+									<input class="show-for-sr" type="file" id="upload_imgs" name="files[]" accept="image/jpeg, image/png, image/jpg" multiple/>
 								</p>
 								<div class="quote-imgs-thumbs quote-imgs-thumbs--hidden" id="img_preview" aria-live="polite"></div>
 							</div>

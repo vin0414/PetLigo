@@ -158,7 +158,58 @@ class Home extends BaseController
 
     public function saveProduct()
     {
-        
+        $productModel = new \App\Models\productModel();
+        $imageModel = new \App\Models\productImageModel();
+        //data
+        $productName = $this->request->getPost('productName');
+        $qty = $this->request->getPost('qty');
+        $unitPrice = $this->request->getPost('unitPrice');
+        $itemUnit = $this->request->getPost('itemUnit');
+        //validate
+        $validation = $this->validate([
+            'productName'=>'required','qty'=>'required','unitPrice'=>'required','itemUnit'=>'required'
+        ]);
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid! Please fill in the form to continue');
+            return redirect()->to('admin/new-product')->withInput();
+        }
+        else
+        {
+            if ($this->request->getFileMultiple('files')) 
+            {
+                //save the data
+                $values= [
+                    'productName'=>$productName, 'ItemUnit'=>$itemUnit,'Qty'=>$qty,'UnitPrice'=>$unitPrice,'DateCreated'=>date('Y-m-d'),
+                ];
+                $productModel->save($values);
+                //save the images
+                $productID=0;
+                $builder = $this->db->table('tblproduct');
+                $builder->select('productID');
+                $builder->WHERE('productName',$productName)->WHERE('Qty',$qty)->WHERE('ItemUnit',$itemUnit);
+                $data = $builder->get();
+                if($row = $data->getRow())
+                {
+                    $productID = $row->productID;
+                }
+
+                foreach($this->request->getFileMultiple('files') as $file)
+                {
+                    $file->move('Images/',$file->getClientName());
+                    $values = ['productID'=>$productID,'Image'=>$file->getClientName()];
+                    $imageModel->save($values);
+                }
+
+                session()->setFlashdata('success','Great! Successfully added');
+                return redirect()->to('admin/products')->withInput();
+            }
+            else
+            {
+                session()->setFlashdata('fail','Error! Something went wrong');
+                return redirect()->to('admin/new-product')->withInput();
+            }
+        }
     }
 
     //webpage 
