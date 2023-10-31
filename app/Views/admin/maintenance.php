@@ -98,68 +98,7 @@
 						</a>
 						<div class="dropdown-menu dropdown-menu-right">
 							<div class="notification-list mx-h-350 customscroll">
-								<ul>
-									<li>
-										<a href="#">
-											<img src="vendors/images/img.jpg" alt="" />
-											<h3>John Doe</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo1.jpg" alt="" />
-											<h3>Lea R. Frith</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo2.jpg" alt="" />
-											<h3>Erik L. Richards</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo3.jpg" alt="" />
-											<h3>John Doe</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo4.jpg" alt="" />
-											<h3>Renee I. Hansen</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/img.jpg" alt="" />
-											<h3>Vicki M. Coleman</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-								</ul>
+								
 							</div>
 						</div>
 					</div>
@@ -461,7 +400,17 @@
                             </ul>
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="home" role="tabpanel">
-
+                                    <br/>
+                                    <table class="data-table table stripe hover nowrap">
+                                        <thead>
+                                            <th>Username</th>
+                                            <th>Fullname</th>
+                                            <th>Role</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </thead>
+                                        <tbody></tbody>
+                                    </table>
                                 </div>
                                 <div class="tab-pane fade show" id="customers" role="tabpanel">
 
@@ -480,11 +429,10 @@
 		<script src="/resources/vendors/scripts/script.min.js"></script>
 		<script src="/resources/vendors/scripts/process.js"></script>
 		<script src="/resources/vendors/scripts/layout-settings.js"></script>
-		<script src="/resources/src/plugins/apexcharts/apexcharts.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-		<script src="/resources/vendors/scripts/dashboard.js"></script>
+        <script src="/resources/vendors/scripts/datatable-setting.js"></script>
 	</body>
 </html>
