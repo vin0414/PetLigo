@@ -156,6 +156,11 @@ class Home extends BaseController
         return view('admin/new-product');
     }
 
+    public function saveProduct()
+    {
+        
+    }
+
     //webpage 
     public function index()
     {

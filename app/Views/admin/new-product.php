@@ -54,6 +54,31 @@
 			href="/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css"
 		/>
 		<link rel="stylesheet" type="text/css" href="/resources/vendors/styles/style.css" />
+        <style>
+            .quote-imgs-thumbs {
+				background: #eee;
+				border: 1px solid #ccc;
+				border-radius: 0.25rem;
+				margin: 1.5rem 0;
+				padding: 0.75rem;
+				}
+				.quote-imgs-thumbs--hidden {
+				display: none;
+				}
+				.img-preview-thumb {
+				background: #fff;
+				border: 1px solid #777;
+				border-radius: 0.25rem;
+				box-shadow: 0.125rem 0.125rem 0.0625rem rgba(0, 0, 0, 0.12);
+				margin-right: 1rem;
+				max-width: 140px;
+				padding: 0.25rem;
+				}
+			.show-for-sr
+			{
+				display:none;
+			}
+        </style>
 	</head>
 	<body>
 		<div class="pre-loader">
@@ -397,7 +422,7 @@
 					    <a href="<?=site_url('admin/products')?>" style="float:right;"><span class="icon-copy dw dw-left-arrow1"></span>&nbsp;Back</a>
 					</div>
                     <div class="card-body">
-                        <form method="POSt" class="row g-3" id="frmProduct">
+                        <form method="POSt" class="row g-3" id="frmProduct" action="<?=base_url('save-product')?>">
                             <div class="col-12 form-group">
                                 <label>Product Name</label>
                                 <input type="text" class="form-control" name="productName" required/>
@@ -412,7 +437,54 @@
                                         <label>Unit Price</label>
                                         <input type="text" class="form-control" name="unitPrice" required/>
                                     </div>
+                                    <div class="col-lg-4">
+                                        <label>Unit Item (<a href="https://web.wpi.edu/Images/CMS/Finops/STARS_Units_of_Measure.pdf">see details</a>)</label>
+                                        <select class="form-control custom-select2" name="itemUnit" style="width:100%;" required>
+                                            <option value="">Choose</option>
+											<option>AVG</option><option>BAG</option><option>BLK</option>
+											<option>BOT</option><option>BOX</option><option>BK</option>
+											<option>BND</option><option>CAN</option><option>CRD</option>
+											<option>CTN</option><option>CG</option><option>CSE</option>
+											<option>CEN</option<option>COI</option><option>CON</option>
+											<option>CFT</option><option>CYD</option><option>CUR</option>
+											<option>CYL</option><option>DAY</option><option>DZ</option>
+											<option>DRM</option><option>EA</option><option>FT</option>
+											<option>GAL</option><option>GA</option><option>GRN</option>
+											<option>GRM</option><option>GMC</option><option>GRS</option>
+											<option>HR</option><option>CW</option><option>INC</option>
+											<option>INS</option><option>JAR</option><option>JOB</option>
+											<option>KG</option><option>KW</option><option>KIT</option>
+											<option>LNG</option><option>LFT</option><option>LTR</option>
+											<option>LOT</option><option>MET</option><option>MTN</option>
+											<option>MC</option><option>UL</option><option>MU</option>
+											<option>MGR</option><option>MLT</option><option>MOL</option>
+											<option>MON</option><option>TN</option><option>N/A</option>
+											<option>ORD</option><option>OZ</option><option>PK</option>
+											<option>PKT</option><option>PAD</option><option>PAL</option>
+											<option>PR</option><option>PLT</option><option>C</option>
+											<option>M</option><option>PC</option><option>PT</option>
+											<option>PP</option><option>LB</option><option>QT</option>
+											<option>RCK</option><option>RM</option><option>RE</option>
+											<option>ROD</option><option>RL</option><option>SAC</option>
+											<option>SVC</option><option>ST</option><option>SHT</option>
+											<option>SLV</option><option>SFT</option><option>SYD</option>
+											<option>STK</option><option>TST</option><option>THR</option>
+											<option>TON</option><option>TRP</option><option>TUB</option>
+											<option>TB</option><option>UNT</option><option>VIL</option>
+											<option>WK</option><option>YD</option><option>YR</option>
+                                        </select>
+                                    </div>
                                 </div>
+                            </div>
+                            <div class="col-12 form-group">
+								<p>
+									<label for="upload_imgs" class="btn btn-outline-primary">Select Your Images +</label>
+									<input class="show-for-sr" type="file" id="upload_imgs" name="upload_imgs[]" accept="image/jpeg, image/png, image/jpg" multiple/>
+								</p>
+								<div class="quote-imgs-thumbs quote-imgs-thumbs--hidden" id="img_preview" aria-live="polite"></div>
+							</div>
+                            <div class="col-12 form-group">
+                                <button type="submit" class="btn btn-primary" id="btnSubmit">Save Product</button>
                             </div>
                         </form>   
                     </div>
@@ -429,5 +501,40 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
+        <script>
+			var imgUpload = document.getElementById('upload_imgs')
+				, imgPreview = document.getElementById('img_preview')
+				, imgUploadForm = document.getElementById('img-upload-form')
+				, totalFiles
+				, previewTitle
+				, previewTitleText
+				, img;
+
+				imgUpload.addEventListener('change', previewImgs, false);
+				imgUploadForm.addEventListener('submit', function (e) {
+				e.preventDefault();
+				alert('Images Uploaded! (not really, but it would if this was on your website)');
+				}, false);
+
+				function previewImgs(event) {
+				totalFiles = imgUpload.files.length;
+				
+				if(!!totalFiles) {
+					imgPreview.classList.remove('quote-imgs-thumbs--hidden');
+					previewTitle = document.createElement('p');
+					previewTitle.style.fontWeight = 'bold';
+					previewTitleText = document.createTextNode(totalFiles + ' Total Images Selected');
+					previewTitle.appendChild(previewTitleText);
+					imgPreview.appendChild(previewTitle);
+				}
+				
+				for(var i = 0; i < totalFiles; i++) {
+					img = document.createElement('img');
+					img.src = URL.createObjectURL(event.target.files[i]);
+					img.classList.add('img-preview-thumb');
+					imgPreview.appendChild(img);
+				}
+				}
+		</script>
 	</body>
 </html>
