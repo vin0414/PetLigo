@@ -77,14 +77,28 @@ class Home extends BaseController
             $builder = $this->db->table('tblaccount');
             $builder->select('*');
             $account = $builder->get()->getResult();
-            $data = ['account'=>$account,];
+            //fee
+            $builder = $this->db->table('tblfee a');
+            $builder->select('a.*,b.*');
+            $builder->join('tbldiscount b','b.feeID=a.feeID','LEFT');
+            $builder->groupBy('b.discountID');
+            $discount = $builder->get()->getResult();
+
+            $data = ['account'=>$account,'discount'=>$discount,];
             return view('admin/maintenance',$data);
         }
     }
 
     public function newAccount()
     {
-        return view('admin/new-account');
+        if(session()->get('sess_role')!="Administrator")
+        {
+            return redirect()->back();
+        }
+        else
+        {
+            return view('admin/new-account');
+        }
     }
 
     public function addAccount()
@@ -311,6 +325,28 @@ class Home extends BaseController
         $title = $this->request->getPost('title');
         $desc = $this->request->getPost('description');
         $charge = $this->request->getPost('charge');
+        $validation = $this->validate([
+            'title'=>'required','description'=>'required','charge'=>'required'
+        ]);
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid! Please fill in the form to continue');
+            return redirect()->to('admin/fee')->withInput();
+        }
+        else
+        {
+            $values = [
+                'Title'=>$title, 'Description'=>$desc,'Charge'=>$charge,
+            ];
+            $membershipFeeModel->save($values);
+            session()->setFlashdata('success','Great! Successfully added');
+            return redirect()->to('admin/maintenance')->withInput();
+        }
+    }
+
+    public function editFee($id=null)
+    {
+        
     }
 
     //webpage 

@@ -481,7 +481,22 @@
 											<th>To</th>
 											<th>Action</th>
 										</thead>
-										<tbody></tbody>
+										<tbody>
+											<?php foreach($discount as $row): ?>
+												<tr>
+													<td><?php echo $row->Title ?></td>
+													<td><?php echo substr($row->Description,0,50) ?>...</td>
+													<td><?php echo number_format($row->Charge,2) ?></td>
+													<td><?php echo number_format(($row->Discount)/100,0) ?>%</td>
+													<td><?php echo $row->FromDate ?></td>
+													<td><?php echo $row->FromDate ?></td>
+													<td>
+														<button type="button" class="btn btn-default btn-sm add-discount"><span class="icon-copy dw dw-add"></span></button>
+														<a href="<?=site_url('admin/edit-fee/')?><?php echo $row->feeID ?>"><span class="icon-copy dw dw-edit-1"></span></a>
+													</td>
+												</tr>
+											<?php endforeach; ?>
+										</tbody>
 									</table>
                                 </div>
                                 <div class="tab-pane fade show" id="profile" role="tabpanel">
