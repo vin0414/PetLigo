@@ -382,6 +382,35 @@ class Home extends BaseController
         }
     }
 
+    public function saveDiscount()
+    {
+        $discountModel = new \App\Models\discountModel();
+        //data
+        $feeID = $this->request->getPost('feeID');
+        $desc = $this->request->getPost('description');
+        $discount = $this->request->getPost('discount');
+        $fdate = $this->request->getPost('fromdate');
+        $tdate = $this->request->getPost('todate');
+        $validation = $this->validate([
+            'description'=>'required',
+            'discount'=>'required',
+            'fromdate'=>'required',
+            'todate'=>'required'
+        ]);
+        if(!$validation)
+        {
+            echo "Invalid! Please fill in the form";
+        }
+        else
+        {
+            $values = [
+                'feeID'=>$feeID,'Description'=>$desc, 'Discount'=>$discount/100,'FromDate'=>$fdate,'ToDate'=>$tdate,
+            ];
+            $discountModel->save($values);
+            echo "success";
+        }
+    }
+
     public function editDiscount($id=null)
     {
         return view('admin/edit-discount');

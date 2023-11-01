@@ -488,8 +488,8 @@
 													<td><?php echo substr($row->Description,0,50) ?>...</td>
 													<td><?php echo number_format($row->Charge,2) ?></td>
 													<td>
-														<button type="button" class="btn btn-default btn-sm add-discount" value="<?php echo $row->feeID ?>"><span class="icon-copy dw dw-add"></span></button>
-														<a href="<?=site_url('admin/edit-fee/')?><?php echo $row->feeID ?>"><span class="icon-copy dw dw-edit-1"></span></a>
+														<button type="button" class="btn btn-default btn-sm add-discount" value="<?php echo $row->feeID ?>"><span class="icon-copy dw dw-add"></span> Add</button>
+														<a href="<?=site_url('admin/edit-fee/')?><?php echo $row->feeID ?>"><span class="icon-copy dw dw-edit-1"></span> Edit</a>
 													</td>
 												</tr>
 											<?php endforeach; ?>
@@ -501,6 +501,7 @@
 									<table class="data-table table stripe hover nowrap">
 										<thead>
 											<th>Title</th>
+											<th>Description</th>
 											<th>Discount</th>
 											<th>From Date</th>
 											<th>To Date</th>
@@ -510,11 +511,12 @@
 											<?php foreach($discount as $row): ?>
 												<tr>
 													<td><?php echo $row->Title ?></td>
+													<td><?php echo $row->Description ?></td>
 													<td><?php echo ($row->Discount)*100 ?>%</td>
 													<td><?php echo $row->FromDate ?></td>
 													<td><?php echo $row->ToDate ?></td>
 													<td>
-													<a href="<?=site_url('admin/edit-discount/')?><?php echo $row->discountID ?>"><span class="icon-copy dw dw-edit-1"></span></a>
+													<a href="<?=site_url('admin/edit-discount/')?><?php echo $row->discountID ?>"><span class="icon-copy dw dw-edit-1"></span> Edit</a>
 													</td>
 												</tr>	
 											<?php endforeach; ?>
@@ -531,7 +533,7 @@
 			</div>
 		</div>
 		<div
-			class="modal fade" id="Medium-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			class="modal fade" id="discountModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -541,6 +543,40 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
 					<div class="modal-body">
+						<div id="errorMessage" style="display:none;">
+							<div class="alert alert-danger alert-dismissable fade show" role="alert">
+								<label id="error"></label>
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						</div>
+						<form method="post" class="row g-3" id="frmDiscount">
+							<input type="hidden" name="feeID" id="feeID"/>
+							<div class="col-12 form-group">
+								<label>Description</label>
+								<textarea class="form-control" name="description"></textarea>
+							</div>
+							<div class="col-12 form-group">
+								<div class="row g-3">
+									<div class="col-lg-4">
+										<label>Discount</label>
+										<input type="text" class="form-control" name="discount"/>
+									</div>
+									<div class="col-lg-4">
+										<label>From</label>
+										<input type="date" class="form-control" name="fromdate"/>
+									</div>
+									<div class="col-lg-4">
+										<label>To</label>
+										<input type="date" class="form-control" name="todate"/>
+									</div>
+								</div>
+							</div>
+							<div class="col-12 form-group">
+								<button type="submit" class="btn btn-primary" id="btnSave">Save Entry</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -559,7 +595,29 @@
 			$(document).on('click','.add-discount',function(e){
 				e.preventDefault();
 				var val = $(this).val();
-				alert(val);
+				$('#discountModal').modal('show');
+				$('#feeID').attr("value",val);
+			});
+			$('#btnSave').on('click',function(e)
+			{
+				e.preventDefault();
+				var data = $('#frmDiscount').serialize();
+				$.ajax({
+					url:"<?=site_url('save-discount')?>",method:"POST",
+					data:data,success:function(response)
+					{
+						if(response==="success")
+						{
+							$('#discountModal').modal('hide');
+							location.reload();
+						}
+						else
+						{
+							document.getElementById('errorMessage').style="display:block";
+							$('#error').html(response);
+						}
+					}
+				});
 			});
 		</script>
 	</body>

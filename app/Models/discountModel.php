@@ -14,7 +14,7 @@ class discountModel extends Model
     protected $returnType = 'array';
     protected $userSoftDelete = false;
     protected $protectFields = true;
-    protected $allowedFields = ['feeID', 'Discount','FromDate','ToDate'];
+    protected $allowedFields = ['feeID','Description', 'Discount','FromDate','ToDate'];
 
     protected $validationRules = [];
     protected $validationMessages = [];
