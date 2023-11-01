@@ -422,8 +422,15 @@
 					    <a href="<?=site_url('admin/maintenance')?>" style="float:right;"><span class="icon-copy dw dw-left-arrow1"></span>&nbsp;Back</a>
 					</div>
                     <div class="card-body">
-                        <form method="POSt" class="row g-3" id="frmProduct" action="<?=base_url('add-services')?>" enctype="multipart/form-data">
-                            
+                        <form method="POST" class="row g-3" id="frmProduct" action="<?=base_url('add-services')?>" enctype="multipart/form-data">
+                            <div class="col-12 form-group">
+                                <label>Category</label>
+                                <select class="form-control" name="category">
+                                    <option value="">Choose</option>
+                                    <option>Regular</option>
+                                    <option>Ala carte</option>
+                                </select>
+                            </div>  
                         </form>   
                     </div>
                 </div>
