@@ -394,7 +394,15 @@
 				<?php endif; ?>
 				<div class="card-box">
 					<div class="card-header">Maintenance
-					<a href="<?=site_url('admin/new-account')?>" style="float:right;"><span class="icon-copy dw dw-add-user"></span>&nbsp;New Account</a>
+						<div class="dropdown" style="float:right;">
+							<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" data-color="#1b3133" href="#" role="button" data-toggle="dropdown"><span class="icon-copy dw dw-add"></span> New</a>
+							<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+								<a class="dropdown-item" href="<?=site_url('admin/new-account')?>"><i class="dw dw-add-user"></i> Account</a>
+								<a class="dropdown-item" href="<?=site_url('admin/new-services')?>"><i class="dw dw-add"></i> Services</a>
+								<a class="dropdown-item" href="<?=site_url('admin/fee')?>"><i class="dw dw-add"></i> Membership Fee</a>
+								<a class="dropdown-item" href="<?=site_url('admin/discount')?>"><i class="dw dw-add"></i> Discount</a>
+							</div>
+						</div>
 					</div>
                     <div class="card-body">
                         <div class="tab">
@@ -406,7 +414,7 @@
                                     <a class="nav-link text-blue" data-toggle="tab" href="#services" role="tab" aria-selected="false">Services</a>
                                 </li>
 								<li class="nav-item">
-                                    <a class="nav-link text-blue" data-toggle="tab" href="#membership" role="tab" aria-selected="false">Membership Fee</a>
+                                    <a class="nav-link text-blue" data-toggle="tab" href="#membership" role="tab" aria-selected="false">Membership</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-blue" data-toggle="tab" href="#profile" role="tab" aria-selected="false">Back-Up & Restore</a>
@@ -451,10 +459,31 @@
                                     </table>
                                 </div>
                                 <div class="tab-pane fade show" id="services" role="tabpanel">
-
+									<br/>
+									<table class="data-table table stripe hover nowrap">
+										<thead>
+											<th>Category</th>
+											<th>Description</th>
+											<th>Charges</th>
+											<th>Action</th>
+										</thead>
+										<tbody></tbody>
+									</table>
                                 </div>
 								<div class="tab-pane fade show" id="membership" role="tabpanel">
-
+									<br/>
+									<table class="data-table table stripe hover nowrap">
+										<thead>
+											<th>Title</th>
+											<th>Description</th>
+											<th>Charge</th>
+											<th>Discount</th>
+											<th>From</th>
+											<th>To</th>
+											<th>Action</th>
+										</thead>
+										<tbody></tbody>
+									</table>
                                 </div>
                                 <div class="tab-pane fade show" id="profile" role="tabpanel">
 
