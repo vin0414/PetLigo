@@ -44,6 +44,7 @@ class Home extends BaseController
             {
                 session()->set('loggedUser', $user_info['accountID']);
                 session()->set('sess_fullname', $user_info['Fullname']);
+                session()->set('sess_role',$user_info['systemRole']);
                 return redirect()->to('admin/dashboard');
             }
         }
@@ -67,11 +68,18 @@ class Home extends BaseController
 
     public function Maintenance()
     {
-        $builder = $this->db->table('tblaccount');
-        $builder->select('*');
-        $account = $builder->get()->getResult();
-        $data = ['account'=>$account,];
-        return view('admin/maintenance',$data);
+        if(session()->get('sess_role')!="Administrator")
+        {
+            return redirect()->back();
+        }
+        else
+        {
+            $builder = $this->db->table('tblaccount');
+            $builder->select('*');
+            $account = $builder->get()->getResult();
+            $data = ['account'=>$account,];
+            return view('admin/maintenance',$data);
+        }
     }
 
     public function newAccount()
@@ -108,10 +116,17 @@ class Home extends BaseController
 
     public function Edit($id=null)
     {
-        $accountModel = new \App\Models\accountModel();
-        $account = $accountModel->WHERE('accountID',$id)->first();
-        $data = ['account'=>$account,];
-        return view('admin/edit-account',$data);
+        if(session()->get('sess_role')!="Administrator")
+        {
+            return redirect()->back();
+        }
+        else
+        {
+            $accountModel = new \App\Models\accountModel();
+            $account = $accountModel->WHERE('accountID',$id)->first();
+            $data = ['account'=>$account,];
+            return view('admin/edit-account',$data);
+        }
     }
 
     public function updateAccount()
@@ -275,6 +290,27 @@ class Home extends BaseController
                 return redirect()->to('admin/new-product')->withInput();
             }
         }
+    }
+
+    public function addFee()
+    {
+        if(session()->get('sess_role')!="Administrator")
+        {
+            return redirect()->back();
+        }
+        else
+        {
+            return view('admin/new-membership-fee');
+        }
+    }
+
+    public function saveFee()
+    {
+        $membershipFeeModel = new \App\Models\membershipFeeModel();
+        //data
+        $title = $this->request->getPost('title');
+        $desc = $this->request->getPost('description');
+        $charge = $this->request->getPost('charge');
     }
 
     //webpage 

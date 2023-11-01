@@ -43,6 +43,7 @@ $routes->post('/add-account','Home::addAccount');
 $routes->post('/update','Home::updateAccount');
 $routes->post('/save-product','Home::saveProduct');
 $routes->post('/update-product','Home::updateProduct');
+$routes->post('/save-membership','Home::saveFee');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
@@ -53,6 +54,7 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes)
     $routes->get('admin/products','Home::allProducts');
     $routes->get('admin/new-product','Home::newProduct');
     $routes->get('admin/edit-product/(:any)','Home::editProduct/$1');
+    $routes->get('admin/fee','Home::addFee');
 });
 
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)

@@ -4,7 +4,7 @@
 	<head>
 		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
-		<title>PetLigo - Maintenance</title>
+		<title>PetLigo - Membership</title>
 
 		<!-- Site favicon -->
 		<link
@@ -360,9 +360,9 @@
 							</a>
 						</li>						
 						<li class="dropdown">
-							<a href="<?=site_url('admin/maintenance')?>" class="dropdown-toggle active no-arrow">
-								<span class="micon dw dw-settings"></span
-								><span class="mtext">Maintenance</span>
+							<a href="<?=site_url('admin/fee')?>" class="dropdown-toggle active no-arrow">
+								<span class="micon dw dw-add"></span
+								><span class="mtext">Membership Fee</span>
 							</a>
 						</li>
 							<div class="dropdown-divider"></div>
@@ -384,111 +384,36 @@
 
 		<div class="main-container">
 			<div class="pd-ltr-20">
-				<?php if(!empty(session()->getFlashdata('success'))) : ?>
-					<div class="alert alert-success alert-dismissible fade show" role="alert">
-						<?= session()->getFlashdata('success'); ?>
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-				<?php endif; ?>
 				<div class="card-box">
-					<div class="card-header">Maintenance
-						<div class="dropdown" style="float:right;">
-							<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" data-color="#1b3133" href="#" role="button" data-toggle="dropdown"><span class="icon-copy dw dw-add"></span> New</a>
-							<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-								<a class="dropdown-item" href="<?=site_url('admin/new-account')?>"><i class="dw dw-add-user"></i> Account</a>
-								<a class="dropdown-item" href="<?=site_url('admin/new-services')?>"><i class="dw dw-add"></i> Services</a>
-								<a class="dropdown-item" href="<?=site_url('admin/fee')?>"><i class="dw dw-add"></i> Membership Fee</a>
-							</div>
-						</div>
-					</div>
+                    <div class="card-header">Membership Fee
+                        <a href="<?=site_url('admin/maintenance')?>" style="float:right;"><i class="icon-copy dw dw-left-arrow1"></i> Back</a>
+                    </div>
                     <div class="card-body">
-                        <div class="tab">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li class="nav-item">
-                                    <a class="nav-link active text-blue" data-toggle="tab" href="#home" role="tab" aria-selected="true">User Management</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-blue" data-toggle="tab" href="#services" role="tab" aria-selected="false">Services</a>
-                                </li>
-								<li class="nav-item">
-                                    <a class="nav-link text-blue" data-toggle="tab" href="#membership" role="tab" aria-selected="false">Membership</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-blue" data-toggle="tab" href="#profile" role="tab" aria-selected="false">Back-Up & Restore</a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div class="tab-pane fade show active" id="home" role="tabpanel">
-                                    <br/>
-                                    <table class="data-table table stripe hover nowrap">
-                                        <thead>
-                                            <th>Username</th>
-                                            <th>Fullname</th>
-                                            <th>Role</th>
-                                            <th>Status</th>
-                                            <th>Action</th>
-                                        </thead>
-                                        <tbody>
-                                            <?php foreach($account as $row): ?>
-                                                <?php if($row->Status==1){ ?>
-                                                <tr>
-                                                    <td><?php echo $row->username ?></td>
-                                                    <td><?php echo $row->Fullname ?></td>
-                                                    <td><?php echo $row->systemRole ?></td>
-                                                    <td><span class="badge bg-success text-white">Active</span></td>
-                                                    <td>
-                                                        <a href="<?=site_url('admin/edit/')?><?php echo $row->accountID ?>"><span class="icon-copy dw dw-edit-1"></span> Edit</a>
-                                                    </td>
-                                                </tr>
-                                                <?php }else{ ?>
-                                                <tr>
-                                                    <td><?php echo $row->username ?></td>
-                                                    <td><?php echo $row->Fullname ?></td>
-                                                    <td><?php echo $row->systemRole ?></td>
-                                                    <td><span class="badge bg-danger text-white">Inactive</span></td>
-                                                    <td>
-                                                    <a href="<?=site_url('admin/edit/')?><?php echo $row->accountID ?>"><span class="icon-copy dw dw-edit-1"></span> Edit</a>
-                                                    </td>
-                                                </tr>
-                                                <?php } ?>
-                                            <?php endforeach; ?>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <div class="tab-pane fade show" id="services" role="tabpanel">
-									<br/>
-									<table class="data-table table stripe hover nowrap">
-										<thead>
-											<th>Category</th>
-											<th>Description</th>
-											<th>Charges</th>
-											<th>Action</th>
-										</thead>
-										<tbody></tbody>
-									</table>
-                                </div>
-								<div class="tab-pane fade show" id="membership" role="tabpanel">
-									<br/>
-									<table class="data-table table stripe hover nowrap">
-										<thead>
-											<th>Title</th>
-											<th>Description</th>
-											<th>Charge</th>
-											<th>Discount</th>
-											<th>From</th>
-											<th>To</th>
-											<th>Action</th>
-										</thead>
-										<tbody></tbody>
-									</table>
-                                </div>
-                                <div class="tab-pane fade show" id="profile" role="tabpanel">
-
-                                </div>
+                        <?php if(!empty(session()->getFlashdata('fail'))) : ?>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <?= session()->getFlashdata('fail'); ?>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
-                        </div>
+                        <?php endif; ?>
+                        <form method="post" class="row g-3" action="<?=base_url('save-membership')?>">
+                            <div class="col-12 form-group">
+                                <label>Title</label>
+                                <input type="text" class="form-control" name="title" required/>
+                            </div>
+                            <div class="col-12 form-group">
+                                <label>Description</label>
+                                <textarea class="form-control" name="description" required></textarea>
+                            </div>
+                            <div class="col-12 form-group">
+                                <label>Charge</label>
+                                <input type="text" class="form-control" name="charge" required/>
+                            </div>
+                            <div class="col-12 form-group">
+                                <button type="submit" class="btn btn-primary" id="btnAdd">Save Entry</button>
+                            </div>
+                        </form>  
                     </div>
                 </div>
 			</div>
