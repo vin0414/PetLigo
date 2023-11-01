@@ -482,7 +482,7 @@
 											<th>Action</th>
 										</thead>
 										<tbody>
-											<?php foreach($discount as $row): ?>
+											<?php foreach($fee as $row): ?>
 												<tr>
 													<td><?php echo $row->Title ?></td>
 													<td><?php echo substr($row->Description,0,50) ?>...</td>
@@ -497,7 +497,29 @@
 									</table>
                                 </div>
 								<div class="tab-pane fade show" id="discount" role="tabpanel">
-
+									<br/>
+									<table class="data-table table stripe hover nowrap">
+										<thead>
+											<th>Title</th>
+											<th>Discount</th>
+											<th>From Date</th>
+											<th>To Date</th>
+											<th>Action</th>
+										</thead>
+										<tbody>
+											<?php foreach($discount as $row): ?>
+												<tr>
+													<td><?php echo $row->Title ?></td>
+													<td><?php echo ($row->Discount)*100 ?>%</td>
+													<td><?php echo $row->FromDate ?></td>
+													<td><?php echo $row->ToDate ?></td>
+													<td>
+													<a href="<?=site_url('admin/edit-discount/')?><?php echo $row->discountID ?>"><span class="icon-copy dw dw-edit-1"></span></a>
+													</td>
+												</tr>	
+											<?php endforeach; ?>
+										</tbody>
+									</table>
                                 </div>
                                 <div class="tab-pane fade show" id="profile" role="tabpanel">
 

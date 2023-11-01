@@ -57,6 +57,7 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes)
     $routes->get('admin/edit-product/(:any)','Home::editProduct/$1');
     $routes->get('admin/fee','Home::addFee');
     $routes->get('admin/edit-fee/(:any)','Home::editFee/$1');
+    $routes->get('admin/edit-discount/(:any)','Home::editDiscount/$1');
 });
 
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)

@@ -80,9 +80,14 @@ class Home extends BaseController
             //fee
             $builder = $this->db->table('tblfee a');
             $builder->select('a.Title,a.Description,a.Charge,a.feeID');
+            $fee = $builder->get()->getResult();
+            //discount
+            $builder = $this->db->table('tbldiscount a');
+            $builder->select('a.*,b.Title');
+            $builder->join('tblfee b','b.feeID=a.feeID','LEFT');
             $discount = $builder->get()->getResult();
 
-            $data = ['account'=>$account,'discount'=>$discount,];
+            $data = ['account'=>$account,'fee'=>$fee,'discount'=>$discount];
             return view('admin/maintenance',$data);
         }
     }
@@ -375,6 +380,11 @@ class Home extends BaseController
             session()->setFlashdata('success','Great! Successfully updated');
             return redirect()->to('admin/maintenance')->withInput();
         }
+    }
+
+    public function editDiscount($id=null)
+    {
+        return view('admin/edit-discount');
     }
 
     //webpage 
