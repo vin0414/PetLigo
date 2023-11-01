@@ -158,6 +158,7 @@ class Home extends BaseController
 
     public function editProduct($id=null)
     {
+        $productModel = new \App\Models\productModel();
         return view('admin/edit-product');
     }
 
