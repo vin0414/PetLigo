@@ -418,7 +418,7 @@
                                         <td style="text-align:right;"><?php echo number_format($row->UnitPrice*$row->Qty,2) ?></td>
                                         <td><?php if($row->Qty>0){echo "<span class='badge bg-success text-white'>In Stock</span>";}else{echo "<span class='badge bg-danger text-white'>Out of Stock</span>";} ?></td>
                                         <td>
-											<button type="button" class="btn btn-default btn-sm add-stock"><span class="icon-copy dw dw-add"></span> Add</button>
+											<button type="button" class="btn btn-default btn-sm add-stock" value="<?php echo $row->productID ?>"><span class="icon-copy dw dw-add"></span> Add</button>
 											<a href="<?=site_url('admin/edit-product/')?><?php echo $row->productID ?>" class="btn btn-default btn-sm"><span class="icon-copy dw dw-edit-1"></span> Edit</a>
 										</td>
                                     </tr>
@@ -427,6 +427,20 @@
                         </table>
                     </div>
                 </div>
+			</div>
+		</div>
+		<div class="modal fade" id="stocksModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myLargeModalLabel">
+							Add Stocks
+						</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- js -->

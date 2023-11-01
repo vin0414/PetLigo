@@ -488,7 +488,7 @@
 													<td><?php echo substr($row->Description,0,50) ?>...</td>
 													<td><?php echo number_format($row->Charge,2) ?></td>
 													<td>
-														<button type="button" class="btn btn-default btn-sm add-discount"><span class="icon-copy dw dw-add"></span></button>
+														<button type="button" class="btn btn-default btn-sm add-discount" value="<?php echo $row->feeID ?>"><span class="icon-copy dw dw-add"></span></button>
 														<a href="<?=site_url('admin/edit-fee/')?><?php echo $row->feeID ?>"><span class="icon-copy dw dw-edit-1"></span></a>
 													</td>
 												</tr>
@@ -530,6 +530,21 @@
                 </div>
 			</div>
 		</div>
+		<div
+			class="modal fade" id="Medium-modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myLargeModalLabel">
+							Add Discount
+						</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- js -->
 		<script src="/resources/vendors/scripts/core.js"></script>
 		<script src="/resources/vendors/scripts/script.min.js"></script>
@@ -540,5 +555,12 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
+		<script>
+			$(document).on('click','.add-discount',function(e){
+				e.preventDefault();
+				var val = $(this).val();
+				alert(val);
+			});
+		</script>
 	</body>
 </html>
