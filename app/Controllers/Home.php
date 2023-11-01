@@ -474,6 +474,17 @@ class Home extends BaseController
                 'productID'=>$id,'Description'=>$desc, 'ItemUnit'=>$itemUnit,'Qty'=>$qty,'UnitPrice'=>$unitPrice,'Supplier'=>$supplier,'DateCreated'=>date('Y-m-d')
             ];
             $stocksModel->save($values);
+            $builder = $this->db->table('tblproduct');
+            $builder->select('Qty');
+            $builder->WHERE('productID',$id);
+            $data = $builder->get();
+            if($row = $data->getRow())
+            {
+                $newQty = $row->Qty + $qty;
+                $values = ['Qty'=>$newQty,];
+                $productModel->update($id,$values);
+            }
+            echo "success";
         }
     }
 
