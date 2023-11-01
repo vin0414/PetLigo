@@ -403,7 +403,10 @@
                                     <a class="nav-link active text-blue" data-toggle="tab" href="#home" role="tab" aria-selected="true">User Management</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-blue" data-toggle="tab" href="#customers" role="tab" aria-selected="false">Customers</a>
+                                    <a class="nav-link text-blue" data-toggle="tab" href="#services" role="tab" aria-selected="false">Services</a>
+                                </li>
+								<li class="nav-item">
+                                    <a class="nav-link text-blue" data-toggle="tab" href="#membership" role="tab" aria-selected="false">Membership Fee</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link text-blue" data-toggle="tab" href="#profile" role="tab" aria-selected="false">Back-Up & Restore</a>
@@ -447,7 +450,10 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                <div class="tab-pane fade show" id="customers" role="tabpanel">
+                                <div class="tab-pane fade show" id="services" role="tabpanel">
+
+                                </div>
+								<div class="tab-pane fade show" id="membership" role="tabpanel">
 
                                 </div>
                                 <div class="tab-pane fade show" id="profile" role="tabpanel">
