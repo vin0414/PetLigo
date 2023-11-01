@@ -37,7 +37,7 @@ class Home extends BaseController
             $check_password = Hash::check($password, $user_info['password']);
             if(!$check_password || empty($check_password))
             {
-                session()->setFlashdata('fail','Invalid Username or Password!');
+                session()->setFlashdata('fail','Account is disabled. Please contact the Administrator');
                 return redirect()->to('/auth')->withInput();
             }
             else
@@ -485,6 +485,18 @@ class Home extends BaseController
                 $productModel->update($id,$values);
             }
             echo "success";
+        }
+    }
+
+    public function newServices()
+    {
+        if(session()->get('sess_role')!="Administrator")
+        {
+            return redirect()->back();
+        }
+        else
+        {
+            return view('admin/new-services');
         }
     }
 
