@@ -413,7 +413,41 @@ class Home extends BaseController
 
     public function editDiscount($id=null)
     {
-        return view('admin/edit-discount');
+        $discountModel = new \App\Models\discountModel();
+        $discount = $discountModel->WHERE('discountID',$id)->first();
+        $data = ['discount'=>$discount,];
+        return view('admin/edit-discount',$data);
+    }
+
+    public function updateDiscount()
+    {
+        $discountModel = new \App\Models\discountModel();
+        //data
+        $id = $this->request->getPost('discountID');
+        $desc = $this->request->getPost('description');
+        $discount = $this->request->getPost('discount');
+        $fdate = $this->request->getPost('fromdate');
+        $tdate = $this->request->getPost('todate');
+        $validation = $this->validate([
+            'description'=>'required',
+            'discount'=>'required',
+            'fromdate'=>'required',
+            'todate'=>'required'
+        ]);
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid! Please fill in the form to continue');
+            return redirect()->to('admin/edit-discount/'.$id)->withInput();
+        }
+        else
+        {
+            $values = [
+                'Description'=>$desc, 'Discount'=>$discount,'FromDate'=>$fdate,'ToDate'=>$tdate,
+            ];
+            $discountModel->update($id,$values);
+            session()->setFlashdata('success','Great! Successfully updated');
+            return redirect()->to('admin/maintenance')->withInput();
+        }
     }
 
     //webpage 
