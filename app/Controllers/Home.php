@@ -79,9 +79,7 @@ class Home extends BaseController
             $account = $builder->get()->getResult();
             //fee
             $builder = $this->db->table('tblfee a');
-            $builder->select('a.*,b.*');
-            $builder->join('tbldiscount b','b.feeID=a.feeID','LEFT');
-            $builder->groupBy('b.discountID');
+            $builder->select('a.Title,a.Description,a.Charge,a.feeID');
             $discount = $builder->get()->getResult();
 
             $data = ['account'=>$account,'discount'=>$discount,];
@@ -346,7 +344,37 @@ class Home extends BaseController
 
     public function editFee($id=null)
     {
-        
+        $membershipFeeModel = new \App\Models\membershipFeeModel();
+        $fee  = $membershipFeeModel->WHERE('feeID',$id)->first();
+        $data = ['fee'=>$fee];
+        return view('admin/edit-fee',$data);
+    }
+
+    public function updateFee()
+    {
+        $membershipFeeModel = new \App\Models\membershipFeeModel();
+        //data
+        $feeID = $this->request->getPost('feeID');
+        $title = $this->request->getPost('title');
+        $desc = $this->request->getPost('description');
+        $charge = $this->request->getPost('charge');
+        $validation = $this->validate([
+            'title'=>'required','description'=>'required','charge'=>'required'
+        ]);
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid! Please fill in the form to continue');
+            return redirect()->to('admin/edit-fee/'.$feeID)->withInput();
+        }
+        else
+        {
+            $values = [
+                'Title'=>$title, 'Description'=>$desc,'Charge'=>$charge,
+            ];
+            $membershipFeeModel->update($feeID,$values);
+            session()->setFlashdata('success','Great! Successfully updated');
+            return redirect()->to('admin/maintenance')->withInput();
+        }
     }
 
     //webpage 
