@@ -33,19 +33,25 @@ class Home extends BaseController
         }
         else
         {
-            $user_info = $accountModel->where('username', $username)->WHERE('Status',1)->first();
-            $check_password = Hash::check($password, $user_info['password']);
-            if(!$check_password || empty($check_password))
+            $builder = $this->db->table('tblaccount');
+            $builder->select('*');
+            $builder->WHERE('username',$username)->WHERE('Status',1);
+            $data = $builder->get();
+            if($row = $data->getRow())
             {
-                session()->setFlashdata('fail','Account is disabled. Please contact the Administrator');
-                return redirect()->to('/auth')->withInput();
-            }
-            else
-            {
-                session()->set('loggedUser', $user_info['accountID']);
-                session()->set('sess_fullname', $user_info['Fullname']);
-                session()->set('sess_role',$user_info['systemRole']);
-                return redirect()->to('admin/dashboard');
+                $check_password = Hash::check($password, $row->password);
+                if(empty($check_password) || !$check_password)
+                {
+                    session()->setFlashdata('fail','Account is disabled. Please contact the Administrator');
+                    return redirect()->to('/auth')->withInput();
+                }
+                else
+                {
+                    session()->set('loggedUser', $row->accountID);
+                    session()->set('sess_fullname', $row->Fullname);
+                    session()->set('sess_role',$row->systemRole);
+                    return redirect()->to('admin/dashboard');
+                }
             }
         }
     }
