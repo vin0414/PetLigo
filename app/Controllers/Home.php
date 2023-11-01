@@ -42,7 +42,7 @@ class Home extends BaseController
                 $check_password = Hash::check($password, $row->password);
                 if(empty($check_password) || !$check_password)
                 {
-                    session()->setFlashdata('fail','Account is disabled. Please contact the Administrator');
+                    session()->setFlashdata('fail','Invalid username or password');
                     return redirect()->to('/auth')->withInput();
                 }
                 else
@@ -52,6 +52,11 @@ class Home extends BaseController
                     session()->set('sess_role',$row->systemRole);
                     return redirect()->to('admin/dashboard');
                 }
+            }
+            else
+            {
+                session()->setFlashdata('fail','Account is disabled. Please contact the Administrator');
+                return redirect()->to('/auth')->withInput();
             }
         }
     }
