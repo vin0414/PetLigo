@@ -439,6 +439,14 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
 					<div class="modal-body">
+						<div id="errorMessage" style="display:none;">
+							<div class="alert alert-danger alert-dismissable fade show" role="alert">
+								<label id="error"></label>
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						</div>
 						<form method="post" class="row g-3" id="frmStocks">
 							<input type="hidden" name="productID" id="productID"/>
 							<div class="col-12 form-group">
@@ -523,6 +531,27 @@
 				var val = $(this).val();
 				$('#stocksModal').modal('show');
 				$('#productID').attr("value",val);
+			});
+			$('#btnAdd').on('click',function(e)
+			{
+				e.preventDefault();
+				var data = $('#frmStocks').serialize();
+				$.ajax({
+					url:"<?=site_url('add-stocks')?>",method:"POST",
+					data:data,success:function(response)
+					{
+						if(response==="success")
+						{
+							$('#stocksModal').modal('hide');
+							location.reload();
+						}
+						else
+						{
+							document.getElementById('errorMessage').style="display:block";
+							$('#error').html(response);
+						}
+					}
+				});
 			});
 		</script>
 	</body>

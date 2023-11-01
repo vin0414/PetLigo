@@ -450,6 +450,33 @@ class Home extends BaseController
         }
     }
 
+    public function addStocks()
+    {
+        $stocksModel = new \App\Models\stocksModel();
+        $productModel = new \App\Models\productModel();
+        //data
+        $id = $this->request->getPost('productID');
+        $desc = $this->request->getPost('description');
+        $qty = $this->request->getPost('qty');
+        $unitPrice = $this->request->getPost('unitPrice');
+        $itemUnit = $this->request->getPost('itemUnit');
+        $supplier = $this->request->getPost('supplier');
+        $validation = $this->validate([
+            'qty'=>'required','unitPrice'=>'required','itemUnit'=>'required'
+        ]);
+        if(!$validation)
+        {
+            echo "Invalid! Please fill in the form to continue";
+        }
+        else
+        {
+            $values = [
+                'productID'=>$id,'Description'=>$desc, 'ItemUnit'=>$itemUnit,'Qty'=>$qty,'UnitPrice'=>$unitPrice,'Supplier'=>$supplier,'DateCreated'=>date('Y-m-d')
+            ];
+            $stocksModel->save($values);
+        }
+    }
+
     //webpage 
     public function index()
     {
