@@ -42,6 +42,7 @@ $routes->get('/logout','Home::logout');
 $routes->post('/add-account','Home::addAccount');
 $routes->post('/update','Home::updateAccount');
 $routes->post('/save-product','Home::saveProduct');
+$routes->post('/update-product','Home::updateProduct');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {

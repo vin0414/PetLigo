@@ -159,7 +159,66 @@ class Home extends BaseController
     public function editProduct($id=null)
     {
         $productModel = new \App\Models\productModel();
-        return view('admin/edit-product');
+        $product = $productModel->WHERE('productID',$id)->first();
+        $data = ['product'=>$product];
+        return view('admin/edit-product',$data);
+    }
+
+    public function updateProduct()
+    {
+        $productModel = new \App\Models\productModel();
+        $imageModel = new \App\Models\productImageModel();
+        //data
+        $productID = $this->request->getPost('productID');
+        $productName = $this->request->getPost('productName');
+        $qty = $this->request->getPost('qty');
+        $unitPrice = $this->request->getPost('unitPrice');
+        $itemUnit = $this->request->getPost('itemUnit');
+        //validate
+        $validation = $this->validate([
+            'productName'=>'required','qty'=>'required','unitPrice'=>'required','itemUnit'=>'required'
+        ]);
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid! Please fill in the form to continue');
+            return redirect()->to('admin/edit-product/'.$productID)->withInput();
+        }
+        else
+        {
+            if ($this->request->getFileMultiple('files')) 
+            {
+                //save the data
+                $values= [
+                    'productName'=>$productName, 'ItemUnit'=>$itemUnit,'Qty'=>$qty,'UnitPrice'=>$unitPrice,
+                ];
+                $productModel->update($productID,$values);
+                //save the images
+                $imageID=0;
+                $builder = $this->db->table('tblproductimage');
+                $builder->select('imageID');
+                $builder->WHERE('productID',$productID);
+                $data = $builder->get();
+                if($row = $data->getRow())
+                {
+                    $imageID = $row->imageID;
+                }
+
+                foreach($this->request->getFileMultiple('files') as $file)
+                {
+                    $file->move('Images/',$file->getClientName());
+                    $values = ['Image'=>$file->getClientName()];
+                    $imageModel->update($imageID,$values);
+                }
+
+                session()->setFlashdata('success','Great! Successfully updated');
+                return redirect()->to('admin/products')->withInput();
+            }
+            else
+            {
+                session()->setFlashdata('fail','Error! Something went wrong');
+                return redirect()->to('admin/edit-product/'.$productID)->withInput();
+            }
+        }
     }
 
     public function saveProduct()

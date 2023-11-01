@@ -54,6 +54,31 @@
 			href="/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css"
 		/>
 		<link rel="stylesheet" type="text/css" href="/resources/vendors/styles/style.css" />
+        <style>
+            .quote-imgs-thumbs {
+				background: #eee;
+				border: 1px solid #ccc;
+				border-radius: 0.25rem;
+				margin: 1.5rem 0;
+				padding: 0.75rem;
+				}
+				.quote-imgs-thumbs--hidden {
+				display: none;
+				}
+				.img-preview-thumb {
+				background: #fff;
+				border: 1px solid #777;
+				border-radius: 0.25rem;
+				box-shadow: 0.125rem 0.125rem 0.0625rem rgba(0, 0, 0, 0.12);
+				margin-right: 1rem;
+				max-width: 140px;
+				padding: 0.25rem;
+				}
+			.show-for-sr
+			{
+				display:none;
+			}
+        </style>
 	</head>
 	<body>
 		<div class="pre-loader">
@@ -397,20 +422,21 @@
 					    <a href="<?=site_url('admin/products')?>" style="float:right;"><span class="icon-copy dw dw-left-arrow1"></span>&nbsp;Back</a>
 					</div>
                     <div class="card-body">
-                        <form method="POSt" class="row g-3" id="frmProduct" action="<?=base_url('save-product')?>" enctype="multipart/form-data">
+                        <form method="POSt" class="row g-3" id="frmProduct" action="<?=base_url('update-product')?>" enctype="multipart/form-data">
+                            <input type="hidden" name="productID" value="<?=$product['productID']?>"/>
                             <div class="col-12 form-group">
                                 <label>Product Name</label>
-                                <input type="text" class="form-control" name="productName" required/>
+                                <input type="text" class="form-control" name="productName" value="<?=$product['productName']?>" required/>
                             </div>
                             <div class="col-12 form-group">
                                 <div class="row g-3">
                                     <div class="col-lg-4">
                                         <label>Quantity</label>
-                                        <input type="number" class="form-control" name="qty" required/>
+                                        <input type="number" class="form-control" name="qty" value="<?=$product['Qty']?>" required/>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Unit Price</label>
-                                        <input type="text" class="form-control" name="unitPrice" required/>
+                                        <input type="text" class="form-control" name="unitPrice" value="<?=$product['UnitPrice']?>" required/>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Unit Item (<a href="https://web.wpi.edu/Images/CMS/Finops/STARS_Units_of_Measure.pdf">see details</a>)</label>
@@ -452,6 +478,13 @@
                                 </div>
                             </div>
                             <div class="col-12 form-group">
+								<p>
+									<label for="upload_imgs" class="btn btn-outline-primary">Select Your Images +</label>
+									<input class="show-for-sr" type="file" id="upload_imgs" name="files[]" accept="image/jpeg, image/png, image/jpg" multiple/>
+								</p>
+								<div class="quote-imgs-thumbs quote-imgs-thumbs--hidden" id="img_preview" aria-live="polite"></div>
+							</div>
+                            <div class="col-12 form-group">
                                 <button type="submit" class="btn btn-primary" id="btnSubmit">Save Changes</button>
                             </div>
                         </form>   
@@ -468,5 +501,40 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+        <script>
+			var imgUpload = document.getElementById('upload_imgs')
+				, imgPreview = document.getElementById('img_preview')
+				, imgUploadForm = document.getElementById('img-upload-form')
+				, totalFiles
+				, previewTitle
+				, previewTitleText
+				, img;
+
+				imgUpload.addEventListener('change', previewImgs, false);
+				imgUploadForm.addEventListener('submit', function (e) {
+				e.preventDefault();
+				alert('Images Uploaded! (not really, but it would if this was on your website)');
+				}, false);
+
+				function previewImgs(event) {
+				totalFiles = imgUpload.files.length;
+				
+				if(!!totalFiles) {
+					imgPreview.classList.remove('quote-imgs-thumbs--hidden');
+					previewTitle = document.createElement('p');
+					previewTitle.style.fontWeight = 'bold';
+					previewTitleText = document.createTextNode(totalFiles + ' Total Images Selected');
+					previewTitle.appendChild(previewTitleText);
+					imgPreview.appendChild(previewTitle);
+				}
+				
+				for(var i = 0; i < totalFiles; i++) {
+					img = document.createElement('img');
+					img.src = URL.createObjectURL(event.target.files[i]);
+					img.classList.add('img-preview-thumb');
+					imgPreview.appendChild(img);
+				}
+				}
+		</script>
 	</body>
 </html>
