@@ -550,6 +550,34 @@ class Home extends BaseController
         return view('admin/edit-services',$data);
     }
 
+    public function updateServices()
+    {
+        $servicesModel = new \App\Models\servicesModel();
+        //data
+        $id = $this->request->getPost('servicesID');
+        $category = $this->request->getPost('category');
+        $serviceType = $this->request->getPost('serviceType');
+        $charge = $this->request->getPost('charge');
+        $desc = $this->request->getPost('description');
+        $validation = $this->validate([
+            'category'=>'required','serviceType'=>'required','charge'=>'required','description'=>'required'
+        ]);
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid! Please fill in the form to continue');
+            return redirect()->to('admin/edit-services/'.$id)->withInput();
+        }
+        else
+        {
+            $values = [
+                'Category'=>$category,'serviceType'=>$serviceType, 'Charge'=>$charge,'Description'=>$desc,
+            ];
+            $servicesModel->update($id,$values);
+            session()->setFlashdata('success','Great! Successfully updated');
+            return redirect()->to('admin/maintenance')->withInput();
+        }
+    }
+
     //webpage 
     public function index()
     {

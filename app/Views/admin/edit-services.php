@@ -406,16 +406,16 @@
 										<label>Category</label>
 										<select class="form-control" name="category" required>
 											<option value="">Choose</option>
-											<option>Regular</option>
-											<option>Ala Carte</option>
+                                            <option <?php if($services['Category']=="Regular") echo 'selected="selected"'; ?>>Regular</option>
+                                            <option <?php if($services['Category']=="Ala Carte") echo 'selected="selected"'; ?>>Ala Carte</option>
 										</select>
 									</div>
 									<div class="col-lg-4">
 										<label>Types</label>
 										<select class="form-control" name="serviceType" required>
 											<option value="">Choose</option>
-											<option>Dogs</option>
-											<option>Cats</option>
+											<option <?php if($services['serviceType']=="Dogs") echo 'selected="selected"'; ?>>Dogs</option>
+                                            <option <?php if($services['serviceType']=="Cats") echo 'selected="selected"'; ?>>Cats</option>
 										</select>
 									</div>
 									<div class="col-lg-4">
