@@ -452,7 +452,7 @@
                                                     <td><?php echo $row->systemRole ?></td>
                                                     <td><span class="badge bg-danger text-white">Inactive</span></td>
                                                     <td>
-                                                    <a href="<?=site_url('admin/edit/')?><?php echo $row->accountID ?>"><span class="icon-copy dw dw-edit-1"></span> Edit</a>
+                                                    	<a href="<?=site_url('admin/edit/')?><?php echo $row->accountID ?>"><span class="icon-copy dw dw-edit-1"></span> Edit</a>
                                                     </td>
                                                 </tr>
                                                 <?php } ?>
@@ -471,7 +471,17 @@
 											<th>Action</th>
 										</thead>
 										<tbody>
-											
+											<?php foreach($services as $row): ?>
+												<tr>
+													<td><?php echo $row->Category ?></td>
+													<td><?php echo $row->serviceType ?></td>
+													<td><?php echo $row->Description ?></td>
+													<td><?php echo number_format($row->Charge,2) ?></td>
+													<td>
+													<a href="<?=site_url('admin/edit-services/')?><?php echo $row->servicesID ?>"><span class="icon-copy dw dw-edit-1"></span> Edit</a>
+													</td>
+												</tr>
+											<?php endforeach;?>
 										</tbody>
 									</table>
                                 </div>
