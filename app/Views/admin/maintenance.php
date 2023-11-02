@@ -119,7 +119,7 @@
 						<div
 							class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
 						>
-							<a class="dropdown-item" href="<?=site_url('profile')?>"
+							<a class="dropdown-item" href="<?=site_url('admin/profile')?>"
 								><i class="dw dw-user1"></i> Profile</a
 							>
 							<a class="dropdown-item" href="<?=site_url('/logout')?>"
@@ -394,6 +394,9 @@
 				<?php endif; ?>
 				<div class="card-box">
 					<div class="card-header">Maintenance
+						<div class="dropdown" style="float:right;margin-left:10px;">
+							<a href="<?=site_url('back-up')?>" class="btn font-24 p-0 line-height-1 no-arrow dropdown-toggle"><span class="icon-copy dw dw-download"></span> Back-Up</a>
+						</div>
 						<div class="dropdown" style="float:right;">
 							<a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle" data-color="#1b3133" href="#" role="button" data-toggle="dropdown"><span class="icon-copy dw dw-add"></span> New</a>
 							<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
@@ -417,9 +420,6 @@
                                 </li>
 								<li class="nav-item">
                                     <a class="nav-link text-blue" data-toggle="tab" href="#discount" role="tab" aria-selected="false">Discounts</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link text-blue" data-toggle="tab" href="#profile" role="tab" aria-selected="false">Back-Up & Restore</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -535,9 +535,6 @@
 											<?php endforeach; ?>
 										</tbody>
 									</table>
-                                </div>
-                                <div class="tab-pane fade show" id="profile" role="tabpanel">
-
                                 </div>
                             </div>
                         </div>

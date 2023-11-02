@@ -144,7 +144,7 @@
 						<div
 							class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
 						>
-							<a class="dropdown-item" href="<?=site_url('profile')?>"
+							<a class="dropdown-item" href="<?=site_url('admin/profile')?>"
 								><i class="dw dw-user1"></i> Profile</a
 							>
 							<a class="dropdown-item" href="<?=site_url('/logout')?>"
