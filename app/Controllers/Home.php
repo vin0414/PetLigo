@@ -542,6 +542,12 @@ class Home extends BaseController
         }
     }
 
+    public function editServices($id=null)
+    {
+        $servicesModel = new \App\Models\servicesModel();
+        return view('edit-services');
+    }
+
     //webpage 
     public function index()
     {
