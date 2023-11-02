@@ -55,6 +55,10 @@ $routes->get('/back-up','DownloadController::backup');
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
     $routes->get('admin/dashboard','Home::Dashboard');
+    $routes->get('admin/reservations','Home::Reservations');
+    $routes->get('admin/orders','Home::Orders');
+    $routes->get('admin/membership','Home::Members');
+    $routes->get('admin/reports','Home::Reports');
     $routes->get('admin/maintenance','Home::Maintenance');
     $routes->get('admin/new-account','Home::newAccount');
     $routes->get('admin/edit/(:any)','Home::Edit/$1');
@@ -66,6 +70,7 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes)
     $routes->get('admin/edit-discount/(:any)','Home::editDiscount/$1');
     $routes->get('admin/new-services','Home::newServices');
     $routes->get('admin/edit-services/(:any)','Home::editServices/$1');
+    $routes->get('admin/profile','Home::Profile');
 });
 
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)

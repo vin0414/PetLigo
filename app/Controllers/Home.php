@@ -578,6 +578,31 @@ class Home extends BaseController
         }
     }
 
+    public function Reservations()
+    {
+        return view('admin/reservations');
+    }
+
+    public function Orders()
+    {
+        return view('admin/orders');
+    }
+
+    public function Members()
+    {
+        return view('admin/membership');
+    }
+
+    public function Reports()
+    {
+        return view('admin/reports');
+    }
+
+    public function Profile()
+    {
+        return view('admin/profile');
+    }
+
     //webpage 
     public function index()
     {
