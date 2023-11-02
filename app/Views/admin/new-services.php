@@ -424,13 +424,36 @@
                     <div class="card-body">
                         <form method="POST" class="row g-3" id="frmProduct" action="<?=base_url('add-services')?>" enctype="multipart/form-data">
                             <div class="col-12 form-group">
-                                <label>Category</label>
-                                <select class="form-control" name="category">
-                                    <option value="">Choose</option>
-                                    <option>Regular</option>
-                                    <option>Ala carte</option>
-                                </select>
+                                <div class="row g-3">
+									<div class="col-lg-4">
+										<label>Category</label>
+										<select class="form-control" name="category" required>
+											<option value="">Choose</option>
+											<option>Regular</option>
+											<option>Ala Carte</option>
+										</select>
+									</div>
+									<div class="col-lg-4">
+										<label>Types</label>
+										<select class="form-control" name="serviceType" required>
+											<option value="">Choose</option>
+											<option>Dogs</option>
+											<option>Cats</option>
+										</select>
+									</div>
+									<div class="col-lg-4">
+										<label>Charge</label>
+										<input type="text" class="form-control" name="charge" required/>
+									</div>
+								</div>
                             </div>  
+							<div class="col-12 form-group">
+								<label>Details</label>
+								<textarea class="form-control" name="description" required></textarea>
+							</div>
+							<div class="col-12 form-group">
+								<button type="submit" class="btn btn-primary" id="btnSave">Save Entry</button>
+							</div>
                         </form>   
                     </div>
                 </div>

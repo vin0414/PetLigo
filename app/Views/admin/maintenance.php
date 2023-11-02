@@ -465,6 +465,7 @@
 									<table class="data-table table stripe hover nowrap">
 										<thead>
 											<th>Category</th>
+											<th>Types</th>
 											<th>Description</th>
 											<th>Charges</th>
 											<th>Action</th>
