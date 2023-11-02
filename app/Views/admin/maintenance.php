@@ -470,7 +470,9 @@
 											<th>Charges</th>
 											<th>Action</th>
 										</thead>
-										<tbody></tbody>
+										<tbody>
+											
+										</tbody>
 									</table>
                                 </div>
 								<div class="tab-pane fade show" id="membership" role="tabpanel">

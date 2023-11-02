@@ -48,6 +48,7 @@ $routes->post('/update-fee','Home::updateFee');
 $routes->post('/save-discount','Home::saveDiscount');
 $routes->post('/update-discount','Home::updateDiscount');
 $routes->post('/add-stocks','Home::addStocks');
+$routes->post('/add-services','Home::addServices');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
