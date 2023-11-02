@@ -545,7 +545,9 @@ class Home extends BaseController
     public function editServices($id=null)
     {
         $servicesModel = new \App\Models\servicesModel();
-        return view('admin/edit-services');
+        $services = $servicesModel->WHERE('servicesID',$id)->first();
+        $data = ['services'=>$services,];
+        return view('admin/edit-services',$data);
     }
 
     //webpage 

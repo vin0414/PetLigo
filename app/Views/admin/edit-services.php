@@ -397,7 +397,9 @@
 					    <a href="<?=site_url('admin/maintenance')?>" style="float:right;"><span class="icon-copy dw dw-left-arrow1"></span>&nbsp;Back</a>
 					</div>
                     <div class="card-body">
-                        <form method="POST" class="row g-3" id="frmProduct" action="<?=base_url('add-services')?>" enctype="multipart/form-data">
+                        <?php if($services): ?>
+                        <form method="POST" class="row g-3" id="frmProduct" action="<?=base_url('update-services')?>" enctype="multipart/form-data">
+                            <input type="hidden" name="servicesID" value="<?=$services['servicesID']?>"/>
                             <div class="col-12 form-group">
                                 <div class="row g-3">
 									<div class="col-lg-4">
@@ -418,18 +420,19 @@
 									</div>
 									<div class="col-lg-4">
 										<label>Charge</label>
-										<input type="text" class="form-control" name="charge" required/>
+										<input type="text" class="form-control" name="charge" value="<?=$services['Charge']?>" required/>
 									</div>
 								</div>
                             </div>  
 							<div class="col-12 form-group">
 								<label>Details</label>
-								<textarea class="form-control" name="description" required></textarea>
+								<textarea class="form-control" name="description" required><?=$services['Description']?></textarea>
 							</div>
 							<div class="col-12 form-group">
 								<button type="submit" class="btn btn-primary" id="btnSave">Save Changes</button>
 							</div>
                         </form>   
+                        <?php endif; ?>
                     </div>
                 </div>
 			</div>
