@@ -97,8 +97,12 @@ class Home extends BaseController
             $builder->select('a.*,b.Title');
             $builder->join('tblfee b','b.feeID=a.feeID','LEFT');
             $discount = $builder->get()->getResult();
+            //services
+            $builder = $this->db->table('tblservices');
+            $builder->select('*');
+            $services = $builder->get()->getResult();
 
-            $data = ['account'=>$account,'fee'=>$fee,'discount'=>$discount];
+            $data = ['account'=>$account,'fee'=>$fee,'discount'=>$discount,'services'=>$services,];
             return view('admin/maintenance',$data);
         }
     }
