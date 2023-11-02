@@ -545,7 +545,7 @@ class Home extends BaseController
     public function editServices($id=null)
     {
         $servicesModel = new \App\Models\servicesModel();
-        return view('edit-services');
+        return view('admin/edit-services');
     }
 
     //webpage 
