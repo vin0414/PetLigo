@@ -74,8 +74,8 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-end">
           <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Products <i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-0 bread">Products</h1>
+          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Cart<i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-0 bread">View Cart</h1>
           </div>
         </div>
       </div>
@@ -83,30 +83,36 @@
 
     <section class="ftco-section bg-light">
 			<div class="container">
-                <table class="table table-responsive table-bordered">
+                <table class="table table-striped">
                     <thead>
+                        <th>&nbsp;</th>
                         <th>Product</th>
                         <th>Image</th>
                         <th>Price</th>
                         <th>Quantity</th>
                         <th>Sub-Total</th>
-                        <th>Action</th>
                     </thead>
                     <tbody>
-                        <?php if($items): ?>
-                            <?php foreach($items as $item): ?>
-                                <?php $imgURL = "/Images/".$item['photo']; ?>
-                                <tr>
-                                    <td><?=$item['name']?></td>
-                                    <td><img src="<?php echo $imgURL ?>" width="50"/></td>
-                                    <td>PhP <?=number_format($item['price'],2)?></td>
-                                    <td><?=$item['quantity']?></td>
-                                    <td>PhP <?=number_format($item['quantity']*$item['price'],2)?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
+                        <?php foreach($items as $item): ?>
+                            <?php $imgURL = "/Images/".$item['photo']; ?>
+                            <tr>
+                                <td>
+                                    <a href="<?=site_url('cart/remove/'.$item['id'])?>"><span class="fa fa-trash"></span></a>
+                                </td>
+                                <td><?=$item['name']?></td>
+                                <td><img src="<?php echo $imgURL ?>" width="50"/></td>
+                                <td>PhP <?=number_format($item['price'],2)?></td>
+                                <td><?=$item['quantity']?></td>
+                                <td>PhP <?=number_format($item['quantity']*$item['price'],2)?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                        <tr>
+                            <td colspan="5">Total</td><td>PhP <?=number_format($total,2)?></td>
+                        </tr>
                     </tbody>
               </table>
+              <br/>
+              <a href="<?=site_url('/products')?>" class="btn btn-link btn-sm">Continue Shopping</a>
 			</div>
 		</section>
     <footer class="footer">

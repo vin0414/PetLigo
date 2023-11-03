@@ -73,7 +73,7 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-end">
           <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Products <i class="ion-ios-arrow-forward"></i></span></p>
+          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Products <i class="ion-ios-arrow-forward"></i></span></p>
             <h1 class="mb-0 bread">Products</h1>
           </div>
         </div>
@@ -94,7 +94,7 @@
                       <h3 class="heading"><?=$row['productName']?></h3>
                       <p><?=$row['Description']?></p>
                       <p>PhP <?=number_format($row['UnitPrice'],2)?></p>
-                      <a href="<?=site_url('cart/buy/'.$row['productID'])?>" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-shopping-cart"></span></a>
+                      <a href="<?=base_url('cart/buy/'.$row['productID'])?>" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-shopping-cart"></span></a>
                     </div>
                   </div>      
                 </div>
