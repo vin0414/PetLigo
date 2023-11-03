@@ -80,25 +80,26 @@
       </div>
     </section>
 
-    <section class="ftco-section">
+    <section class="ftco-section bg-light">
 			<div class="container">
-        <table class="table table-responsive table-bordered">
-            <thead>
-              <th>Product</th>
-              <th>Description</th>
-              <th>Photo</th>
-              <th>Price</th>
-              <th>&nbsp;</th>
-            </thead>
-            <tbody>
+          <div class="row mb-5 pb-5">
               <?php foreach($products as $row): ?>
-                <tr>
-                  <td><?=$row['productName']?></td>
-                  <td><?=$row['Description']?></td>
-                </tr>
+                <?php $imgURL = "Images/".$row['Image']; ?>
+                <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
+                  <div class="d-block services text-center">
+                    <div class="icon d-flex align-items-center justify-content-center">
+                      <img src="<?php echo $imgURL ?>" width="50"/>
+                    </div>
+                    <div class="media-body p-4">
+                      <h3 class="heading"><?=$row['productName']?></h3>
+                      <p><?=$row['Description']?></p>
+                      <p>PhP <?=number_format($row['UnitPrice'],2)?></p>
+                      <a href="<?=site_url('cart/buy/'.$row['productID'])?>" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-shopping-cart"></span></a>
+                    </div>
+                  </div>      
+                </div>
               <?php endforeach; ?>
-            </tbody>
-        </table>
+          </div>
 			</div>
 		</section>
     <footer class="footer">
