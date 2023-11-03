@@ -216,9 +216,12 @@ class Home extends BaseController
         //data
         $productID = $this->request->getPost('productID');
         $productName = $this->request->getPost('productName');
+        $desc = $this->request->getPost('description');
         $qty = $this->request->getPost('qty');
         $unitPrice = $this->request->getPost('unitPrice');
         $itemUnit = $this->request->getPost('itemUnit');
+        $file = $this->request->getFile('files');
+        $originalName = $file->getClientName();
         //validate
         $validation = $this->validate([
             'productName'=>'required','qty'=>'required','unitPrice'=>'required','itemUnit'=>'required'
@@ -230,11 +233,12 @@ class Home extends BaseController
         }
         else
         {
-            if ($this->request->getFileMultiple('files')) 
+            if($file->isValid() && ! $file->hasMoved())
             {
+                $file->move('Images/',$originalName);
                 //save the data
                 $values= [
-                    'productName'=>$productName, 'ItemUnit'=>$itemUnit,'Qty'=>$qty,'UnitPrice'=>$unitPrice,
+                    'productName'=>$productName, 'Description'=>$desc,'ItemUnit'=>$itemUnit,'Qty'=>$qty,'UnitPrice'=>$unitPrice,
                 ];
                 $productModel->update($productID,$values);
 
@@ -254,9 +258,12 @@ class Home extends BaseController
         $productModel = new \App\Models\productModel();
         //data
         $productName = $this->request->getPost('productName');
+        $desc = $this->request->getPost('description');
         $qty = $this->request->getPost('qty');
         $unitPrice = $this->request->getPost('unitPrice');
         $itemUnit = $this->request->getPost('itemUnit');
+        $file = $this->request->getFile('files');
+        $originalName = $file->getClientName();
         //validate
         $validation = $this->validate([
             'productName'=>'required','qty'=>'required','unitPrice'=>'required','itemUnit'=>'required'
@@ -268,11 +275,12 @@ class Home extends BaseController
         }
         else
         {
-            if ($this->request->getFileMultiple('files')) 
+            if($file->isValid() && ! $file->hasMoved())
             {
+                $file->move('Images/',$originalName);
                 //save the data
                 $values= [
-                    'productName'=>$productName, 'ItemUnit'=>$itemUnit,'Qty'=>$qty,'UnitPrice'=>$unitPrice,'DateCreated'=>date('Y-m-d'),
+                    'productName'=>$productName,'Description'=>$desc,'Image'=>$originalName, 'ItemUnit'=>$itemUnit,'Qty'=>$qty,'UnitPrice'=>$unitPrice,'DateCreated'=>date('Y-m-d'),
                 ];
                 $productModel->save($values);
                 //save the images
@@ -602,7 +610,8 @@ class Home extends BaseController
 
     public function products()
     {
-        
-        return view('products');
+        $products = new \App\Models\productModel();
+        $data['products'] = $products->findAll();
+        return view('products',$data);
     }
 }

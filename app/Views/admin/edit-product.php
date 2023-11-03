@@ -428,6 +428,10 @@
                                 <label>Product Name</label>
                                 <input type="text" class="form-control" name="productName" value="<?=$product['productName']?>" required/>
                             </div>
+							<div class="col-12 form-group">
+								<label>Description</label>
+								<textarea class="form-control" name="description" required><?=$product['Description']?></textarea>
+							</div>
                             <div class="col-12 form-group">
                                 <div class="row g-3">
                                     <div class="col-lg-4">
@@ -480,7 +484,7 @@
                             <div class="col-12 form-group">
 								<p>
 									<label for="upload_imgs" class="btn btn-outline-primary">Select Your Images +</label>
-									<input class="show-for-sr" type="file" id="upload_imgs" name="files[]" accept="image/jpeg, image/png, image/jpg" multiple/>
+									<input class="show-for-sr" type="file" id="upload_imgs" name="files" accept="image/jpeg, image/png, image/jpg"/>
 								</p>
 								<div class="quote-imgs-thumbs quote-imgs-thumbs--hidden" id="img_preview" aria-live="polite"></div>
 							</div>

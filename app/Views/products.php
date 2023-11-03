@@ -82,7 +82,23 @@
 
     <section class="ftco-section">
 			<div class="container">
-        
+        <table class="table table-responsive table-bordered">
+            <thead>
+              <th>Product</th>
+              <th>Description</th>
+              <th>Photo</th>
+              <th>Price</th>
+              <th>&nbsp;</th>
+            </thead>
+            <tbody>
+              <?php foreach($products as $row): ?>
+                <tr>
+                  <td><?=$row['productName']?></td>
+                  <td><?=$row['Description']?></td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+        </table>
 			</div>
 		</section>
     <footer class="footer">
