@@ -638,6 +638,12 @@ class Home extends BaseController
 
     public function products()
     {
-        return view('products');
+        $builder = $this->db->table('tblproduct a');
+        $builder->select('a.*,b.Image');
+        $builder->join('tblproductimage b','b.productID=a.productID','LEFT');
+        $builder->groupBy('a.productID');
+        $products = $builder->get()->getResult();
+        $data = ['products'=>$products];
+        return view('products',$data);
     }
 }

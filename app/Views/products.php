@@ -39,7 +39,7 @@
 						<div class="social-media">
               <p class="mb-0 d-flex">
                 <?php if(empty(session()->get('sess_id'))){ ?>
-                  <a href="<?=site_url('/sign-in')?>" class="d-flex align-items-center justify-content-center text-white"><span class="fa fa-sign-in "></span>&nbsp;Login</a>
+                  <a href="<?=site_url('/view-cart')?>" class="d-flex align-items-center justify-content-center text-white"><span class="fa fa-shopping-cart"></span>&nbsp;0</a>
                 <?php }else{ ?>
                 <a href="<?=site_url('/sign-in')?>" class="d-flex align-items-center justify-content-center"><?php echo session()->get('sess_fullname') ?></a>
                 <?php } ?>
@@ -82,150 +82,27 @@
 
     <section class="ftco-section">
 			<div class="container">
-				<div class="row">
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(assets/images/gallery-1.jpg);">
-            	<a href="images/gallery-1.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Cat</span>
-	              	<h2><a href="work-single.html">Persian Cat</a></h2>
-	              </div>
+          <div class="row g-3">
+          <?php foreach($products as $row): ?>
+            <?php $imgURL = "Images/".$row->Image ?>
+            <div class="col-lg-3">
+              <div class="card">
+                <img src="<?php echo $imgURL ?>" class="img-responsive"/>
+                <div class="card-body">
+                  <p><?php echo $row->productName ?></p>
+                  <a href="" class="btn btn-primary"><span class="fa fa-shopping-cart"></span>&nbsp;Add to Cart</a>
+                </div>
               </div>
             </div>
+          <?php endforeach; ?>
           </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(assets/images/gallery-2.jpg);">
-            	<a href="images/gallery-2.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Dog</span>
-	              	<h2><a href="work-single.html">Pomeranian</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(assets/images/gallery-3.jpg);">
-            	<a href="images/gallery-3.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Cat</span>
-	              	<h2><a href="work-single.html">Sphynx Cat</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(assets/images/gallery-4.jpg);">
-            	<a href="images/gallery-4.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Cat</span>
-	              	<h2><a href="work-single.html">British Shorthair</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(assets/images/gallery-5.jpg);">
-            	<a href="images/gallery-5.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Dog</span>
-	              	<h2><a href="work-single.html">Beagle</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(assets/images/gallery-6.jpg);">
-            	<a href="images/gallery-6.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Dog</span>
-	              	<h2><a href="work-single.html">Pug</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(assets/images/gallery-7.jpg);">
-            	<a href="images/gallery-7.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Cat</span>
-	              	<h2><a href="work-single.html">British Shorthair</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(assets/images/gallery-8.jpg);">
-            	<a href="images/gallery-8.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Dog</span>
-	              	<h2><a href="work-single.html">Beagle</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4 ftco-animate">
-            <div class="work mb-4 img d-flex align-items-end" style="background-image: url(assets/images/gallery-9.jpg);">
-            	<a href="images/gallery-9.jpg" class="icon image-popup d-flex justify-content-center align-items-center">
-	    					<span class="fa fa-expand"></span>
-	    				</a>
-            	<div class="desc w-100 px-4">
-	              <div class="text w-100 mb-3">
-	              	<span>Dog</span>
-	              	<h2><a href="work-single.html">Pug</a></h2>
-	              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-5">
-          <div class="col text-center">
-            <div class="block-27">
-              <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
 			</div>
 		</section>
-
     <footer class="footer">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-						<h2 class="footer-heading">Petsitting</h2>
+						<h2 class="footer-heading">PetLigo</h2>
 						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
 						<ul class="ftco-footer-social p-0">
               <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
