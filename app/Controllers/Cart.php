@@ -7,7 +7,7 @@ class Cart extends BaseController
     public function viewCart()
     {
         $data['items'] = array_values(session('cart'));
-        return view('view-cart',$data);
+        return view('cart/index',$data);
     }
 
     public function buy($id)
@@ -31,6 +31,6 @@ class Cart extends BaseController
             $cart = array($item);
             $session->set('cart',$cart);
         }
-        return $this->response->redirect(site_url('view-cart'));
+        return $this->response->redirect(site_url('cart/index'));
     }
 }

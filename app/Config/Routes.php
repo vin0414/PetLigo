@@ -34,6 +34,7 @@ $routes->get('/membership','Home::membership');
 $routes->get('/book','Home::book');
 $routes->get('/services','Home::services');
 $routes->get('/products','Home::products');
+$routes->get('/cart/buy/(:any)','Cart::viewCart');
 $routes->get('/register','Home::register');
 //authentication
 $routes->post('/check','Home::Authentication');

@@ -2,27 +2,27 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PetLigo - Products</title>
+    <title>PetLigo - View Cart</title>
     <meta charset="utf-8">
-    <link href="assets/images/petligo.png" rel="icon">
+    <link href="/assets/images/petligo.png" rel="icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
  
-    <link rel="stylesheet" href="assets/css/animate.css">
+    <link rel="stylesheet" href="/assets/css/animate.css">
     
-    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
 
 
-    <link rel="stylesheet" href="assets/css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="assets/css/jquery.timepicker.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="/assets/css/jquery.timepicker.css">
 
-    <link rel="stylesheet" href="assets/css/flaticon.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/flaticon.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
   </head>
   <body>
 
@@ -51,7 +51,7 @@
 		</div>
 		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	    	<a class="navbar-brand" href="/"><img src="assets/images/petligo.png" width="100"/></a>
+	    	<a class="navbar-brand" href="/"><img src="/assets/images/petligo.png" width="100"/></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="fa fa-bars"></span> Menu
 	      </button>
@@ -61,14 +61,15 @@
 	        	<li class="nav-item"><a href="<?=site_url('membership')?>" class="nav-link">Membership</a></li>
 	        	<li class="nav-item"><a href="<?=site_url('book')?>" class="nav-link">Book Now</a></li>
 	        	<li class="nav-item"><a href="<?=site_url('services')?>" class="nav-link">Services</a></li>
-	          <li class="nav-item active"><a href="<?=site_url('products')?>" class="nav-link">Products</a></li>
-	          <li class="nav-item"><a href="<?=site_url('blogs')?>" class="nav-link">Blogs</a></li>
+                <li class="nav-item"><a href="<?=site_url('products')?>" class="nav-link">Products</a></li>
+	            <li class="nav-item active"><a href="<?=site_url('view-cart')?>" class="nav-link">Cart</a></li>
+	            <li class="nav-item"><a href="<?=site_url('blogs')?>" class="nav-link">Blogs</a></li>
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('assets/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('/assets/images/bg_2.jpg');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-end">
@@ -82,24 +83,30 @@
 
     <section class="ftco-section bg-light">
 			<div class="container">
-          <div class="row mb-5 pb-5">
-              <?php foreach($products as $row): ?>
-                <?php $imgURL = "Images/".$row['Image']; ?>
-                <div class="col-lg-4 d-flex align-self-stretch px-4 ftco-animate">
-                  <div class="d-block services text-center">
-                    <div class="icon d-flex align-items-center justify-content-center">
-                      <img src="<?php echo $imgURL ?>" width="50"/>
-                    </div>
-                    <div class="media-body p-4">
-                      <h3 class="heading"><?=$row['productName']?></h3>
-                      <p><?=$row['Description']?></p>
-                      <p>PhP <?=number_format($row['UnitPrice'],2)?></p>
-                      <a href="<?=site_url('cart/buy/'.$row['productID'])?>" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-shopping-cart"></span></a>
-                    </div>
-                  </div>      
-                </div>
-              <?php endforeach; ?>
-          </div>
+                <table class="table table-responsive table-bordered">
+                    <thead>
+                        <th>Product</th>
+                        <th>Image</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Sub-Total</th>
+                        <th>Action</th>
+                    </thead>
+                    <tbody>
+                        <?php if($items): ?>
+                            <?php foreach($items as $item): ?>
+                                <?php $imgURL = "/Images/".$item['photo']; ?>
+                                <tr>
+                                    <td><?=$item['name']?></td>
+                                    <td><img src="<?php echo $imgURL ?>" width="50"/></td>
+                                    <td>PhP <?=number_format($item['price'],2)?></td>
+                                    <td><?=$item['quantity']?></td>
+                                    <td>PhP <?=number_format($item['quantity']*$item['price'],2)?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php endif; ?>
+                    </tbody>
+              </table>
 			</div>
 		</section>
     <footer class="footer">
@@ -179,22 +186,22 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="assets/js/jquery.min.js"></script>
-  <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="assets/js/popper.min.js"></script>
-  <script src="assets/js/bootstrap.min.js"></script>
-  <script src="assets/js/jquery.easing.1.3.js"></script>
-  <script src="assets/js/jquery.waypoints.min.js"></script>
-  <script src="assets/js/jquery.stellar.min.js"></script>
-  <script src="assets/js/jquery.animateNumber.min.js"></script>
-  <script src="assets/js/bootstrap-datepicker.js"></script>
-  <script src="assets/js/jquery.timepicker.min.js"></script>
-  <script src="assets/js/owl.carousel.min.js"></script>
-  <script src="assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="assets/js/scrollax.min.js"></script>
+  <script src="/assets/js/jquery.min.js"></script>
+  <script src="/assets/js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="/assets/js/popper.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/jquery.easing.1.3.js"></script>
+  <script src="/assets/js/jquery.waypoints.min.js"></script>
+  <script src="/assets/js/jquery.stellar.min.js"></script>
+  <script src="/assets/js/jquery.animateNumber.min.js"></script>
+  <script src="/assets/js/bootstrap-datepicker.js"></script>
+  <script src="/assets/js/jquery.timepicker.min.js"></script>
+  <script src="/assets/js/owl.carousel.min.js"></script>
+  <script src="/assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="/assets/js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="assets/js/google-map.js"></script>
-  <script src="assets/js/main.js"></script>
+  <script src="/assets/js/google-map.js"></script>
+  <script src="/assets/js/main.js"></script>
 
 
     
