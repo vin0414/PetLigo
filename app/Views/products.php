@@ -82,20 +82,7 @@
 
     <section class="ftco-section">
 			<div class="container">
-          <div class="row g-3">
-          <?php foreach($products as $row): ?>
-            <?php $imgURL = "Images/".$row->Image ?>
-            <div class="col-lg-3">
-              <div class="card">
-                <img src="<?php echo $imgURL ?>" class="img-responsive"/>
-                <div class="card-body">
-                  <p><?php echo $row->productName ?></p>
-                  <a href="" class="btn btn-primary"><span class="fa fa-shopping-cart"></span>&nbsp;Add to Cart</a>
-                </div>
-              </div>
-            </div>
-          <?php endforeach; ?>
-          </div>
+        
 			</div>
 		</section>
     <footer class="footer">

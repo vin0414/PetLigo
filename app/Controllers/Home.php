@@ -189,10 +189,9 @@ class Home extends BaseController
 
     public function allProducts()
     {
-        $builder = $this->db->table('tblproduct a');
-        $builder->select('a.*,b.Image');
-        $builder->join('tblproductimage b','b.productID=a.productID','LEFT');
-        $builder->groupBy('a.productID');
+        $builder = $this->db->table('tblproduct');
+        $builder->select('*');
+        $builder->groupBy('productID');
         $product = $builder->get()->getResult();
         $data = ['products'=>$product];
         return view('admin/products',$data);
@@ -214,7 +213,6 @@ class Home extends BaseController
     public function updateProduct()
     {
         $productModel = new \App\Models\productModel();
-        $imageModel = new \App\Models\productImageModel();
         //data
         $productID = $this->request->getPost('productID');
         $productName = $this->request->getPost('productName');
@@ -239,23 +237,6 @@ class Home extends BaseController
                     'productName'=>$productName, 'ItemUnit'=>$itemUnit,'Qty'=>$qty,'UnitPrice'=>$unitPrice,
                 ];
                 $productModel->update($productID,$values);
-                //save the images
-                $imageID=0;
-                $builder = $this->db->table('tblproductimage');
-                $builder->select('imageID');
-                $builder->WHERE('productID',$productID);
-                $data = $builder->get();
-                if($row = $data->getRow())
-                {
-                    $imageID = $row->imageID;
-                }
-
-                foreach($this->request->getFileMultiple('files') as $file)
-                {
-                    $file->move('Images/',$file->getClientName());
-                    $values = ['Image'=>$file->getClientName()];
-                    $imageModel->update($imageID,$values);
-                }
 
                 session()->setFlashdata('success','Great! Successfully updated');
                 return redirect()->to('admin/products')->withInput();
@@ -271,7 +252,6 @@ class Home extends BaseController
     public function saveProduct()
     {
         $productModel = new \App\Models\productModel();
-        $imageModel = new \App\Models\productImageModel();
         //data
         $productName = $this->request->getPost('productName');
         $qty = $this->request->getPost('qty');
@@ -296,22 +276,6 @@ class Home extends BaseController
                 ];
                 $productModel->save($values);
                 //save the images
-                $productID=0;
-                $builder = $this->db->table('tblproduct');
-                $builder->select('productID');
-                $builder->WHERE('productName',$productName)->WHERE('Qty',$qty)->WHERE('ItemUnit',$itemUnit);
-                $data = $builder->get();
-                if($row = $data->getRow())
-                {
-                    $productID = $row->productID;
-                }
-
-                foreach($this->request->getFileMultiple('files') as $file)
-                {
-                    $file->move('Images/',$file->getClientName());
-                    $values = ['productID'=>$productID,'Image'=>$file->getClientName()];
-                    $imageModel->save($values);
-                }
 
                 session()->setFlashdata('success','Great! Successfully added');
                 return redirect()->to('admin/products')->withInput();
@@ -638,12 +602,7 @@ class Home extends BaseController
 
     public function products()
     {
-        $builder = $this->db->table('tblproduct a');
-        $builder->select('a.*,b.Image');
-        $builder->join('tblproductimage b','b.productID=a.productID','LEFT');
-        $builder->groupBy('a.productID');
-        $products = $builder->get()->getResult();
-        $data = ['products'=>$products];
-        return view('products',$data);
+        
+        return view('products');
     }
 }
