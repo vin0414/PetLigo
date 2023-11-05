@@ -598,14 +598,12 @@ class Home extends BaseController
 
     public function register()
     {
-        if(empty(session()->get('sess_id')))
-        {
-            return view('register');
-        }
-        else
-        {
-            return redirect()->back();
-        }
+        return view('register');
+    }
+
+    public function Login()
+    {
+        return view('sign-in');
     }
 
     public function products()

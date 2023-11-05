@@ -38,6 +38,7 @@ $routes->get('/cart/buy/(:any)','Cart::buy/$1');
 $routes->get('/cart/remove/(:any)','Cart::remove/$1');
 $routes->get('/cart/view','Cart::viewCart');
 $routes->get('/register','Home::register');
+$routes->get('/sign-in','Home::Login');
 //authentication
 $routes->post('/check','Home::Authentication');
 $routes->get('/logout','Home::logout');
