@@ -631,9 +631,44 @@ class Home extends BaseController
             }
             else
             {
-                
+                $token_code = random_int(100000, 999999);
+                $hash_password = Hash::make($password);
+                $values = [
+                    'Email'=>$email, 'Password'=>$hash_password ,'Fullname'=>$fullname,'Status'=>0,'Token'=>$token_code,'DateCreated'=>date('Y-m-d')
+                ];
+                $customerModel->save($values);
+                $email = \Config\Services::email();
+                $email->setTo($email,$fullname);
+                $email->setFrom("petligo2023@gmail.com","PetLigo");
+                $imgURL = "assets/images/petligo.png";
+                $email->attach($imgURL);
+                $cid = $email->setAttachmentCID($imgURL);
+                $template = "<center>
+                <img src='cid:". $cid ."' width='100'/>
+                <table style='padding:20px;background-color:#ffffff;' border='0'><tbody>
+                <tr><td><center><h1>Account Verification</h1></center></td></tr>
+                <tr><td><center>Hi, ".$fullname."</center></td></tr>
+                <tr><td><p><center>Please enter the code below to verify your account.</center></p></td><tr>
+                <tr><td><center><b><h2>".$token_code."</h2></b></center></td></tr>
+                <tr><td><p><center>If you did not sign-up in PetLigo Website,<br/> please ignore this message or contact us @ petligo2023@gmail.com</center></p></td></tr>
+                <tr><td>PetLigo IT Support</td></tr></tbody></table></center>";
+                $subject = "Email Verification";
+                $email->setSubject($subject);
+                $email->setMessage($template);
+                $email->send();
+                session()->set('customer_email', $email);
+                return redirect()->to('/verify/email');
             }
         }
+    }
+
+    public function verify()
+    {
+        $customerModel = new \App\Models\customerModel();
+        $loggedUserID = session()->get('customer_email');
+        $userInfo = $customerModel->find($loggedUserID);
+        $data = ['userInfo'=>$userInfo];
+        return view('verify',$data);
     }
 
     public function Login()
