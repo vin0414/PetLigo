@@ -69,6 +69,15 @@ class Home extends BaseController
             return redirect()->to('/auth?access=out')->with('fail', 'You are logged out!');
         }
     }
+
+    public function signOut()
+    {
+        if(session()->has('customer_email'))
+        {
+            session()->remove('customer_email');
+            return redirect()->to('/sign-in?access=out')->with('fail', 'You are logged out!');
+        }
+    }
     
     //admin template
 
@@ -605,7 +614,7 @@ class Home extends BaseController
     {
         $customerModel = new \App\Models\customerModel();
         //data
-        $email = $this->request->getPost('email');
+        $emailadd = $this->request->getPost('email');
         $fullname = $this->request->getPost('fullname');
         $password = $this->request->getPost('password');
         $retype = $this->request->getPost('retype_password');
@@ -634,11 +643,11 @@ class Home extends BaseController
                 $token_code = random_int(100000, 999999);
                 $hash_password = Hash::make($password);
                 $values = [
-                    'Email'=>$email, 'Password'=>$hash_password ,'Fullname'=>$fullname,'Status'=>0,'Token'=>$token_code,'DateCreated'=>date('Y-m-d')
+                    'Email'=>$emailadd, 'Password'=>$hash_password ,'Fullname'=>$fullname,'Status'=>0,'Token'=>$token_code,'DateCreated'=>date('Y-m-d')
                 ];
                 $customerModel->save($values);
                 $email = \Config\Services::email();
-                $email->setTo($email,$fullname);
+                $email->setTo($emailadd,$fullname);
                 $email->setFrom("petligo2023@gmail.com","PetLigo");
                 $imgURL = "assets/images/petligo.png";
                 $email->attach($imgURL);
@@ -656,7 +665,7 @@ class Home extends BaseController
                 $email->setSubject($subject);
                 $email->setMessage($template);
                 $email->send();
-                session()->set('customer_email', $email);
+                session()->set('customer_email', $emailadd);
                 return redirect()->to('/verify/email');
             }
         }
@@ -665,9 +674,9 @@ class Home extends BaseController
     public function verify()
     {
         $customerModel = new \App\Models\customerModel();
-        $loggedUserID = session()->get('customer_email');
-        $userInfo = $customerModel->find($loggedUserID);
-        $data = ['userInfo'=>$userInfo];
+        $email = session()->get('customer_email');
+        $customer = $customerModel->WHERE('Email',$email)->first();
+        $data = ['customer'=>$customer,];
         return view('verify',$data);
     }
 
