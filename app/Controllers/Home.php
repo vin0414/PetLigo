@@ -601,6 +601,41 @@ class Home extends BaseController
         return view('register');
     }
 
+    public function createAccount()
+    {
+        $customerModel = new \App\Models\customerModel();
+        //data
+        $email = $this->request->getPost('email');
+        $fullname = $this->request->getPost('fullname');
+        $password = $this->request->getPost('password');
+        $retype = $this->request->getPost('retype_password');
+
+        $validation = $this->validate([
+            'email'=>'required|valid_email|is_unique[tblcustomer.Email]',
+            'fullname'=>'required',
+            'password'=>'required',
+            'retype_password'=>'required',
+        ]);
+
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid! Please fill in the form');
+            return redirect()->to('/register')->withInput();
+        }
+        else
+        {
+            if($password!=$retype)
+            {
+                session()->setFlashdata('fail','Invalid! Password mismatched');
+                return redirect()->to('/register')->withInput();
+            }
+            else
+            {
+                
+            }
+        }
+    }
+
     public function Login()
     {
         return view('sign-in');
