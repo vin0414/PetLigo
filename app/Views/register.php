@@ -50,7 +50,7 @@
                             <center>
                                 <img src="assets/images/petligo.png" width="100"/>
                             </center>
-                            <form method="post" class="row g-3" id="frmRegister" action="">
+                            <form method="post" class="row g-3" id="frmRegister" action="<?=base_url('create-account')?>">
                                 <div class="col-12 form-group">
                                     <label>Email Address</label>
                                     <input type="email" class="form-control" name="email" required/>

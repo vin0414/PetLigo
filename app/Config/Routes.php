@@ -42,6 +42,7 @@ $routes->get('/sign-in','Home::Login');
 //authentication
 $routes->post('/check','Home::Authentication');
 $routes->get('/logout','Home::logout');
+$routes->post('/create-account','Home::createAccount');
 //saving admin data
 $routes->post('/add-account','Home::addAccount');
 $routes->post('/update','Home::updateAccount');

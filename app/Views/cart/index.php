@@ -39,7 +39,7 @@
 						<div class="social-media">
               <p class="mb-0 d-flex">
                 <?php if(empty(session()->get('sess_id'))){ ?>
-                  <a href="<?=site_url('/view-cart')?>" class="d-flex align-items-center justify-content-center text-white"><span class="fa fa-sign-in"></span>&nbsp;Login</a>
+                  <a href="<?=site_url('/sign-in')?>" class="d-flex align-items-center justify-content-center text-white"><span class="fa fa-sign-in"></span>&nbsp;Login</a>
                 <?php }else{ ?>
                 <a href="<?=site_url('/sign-in')?>" class="d-flex align-items-center justify-content-center"><?php echo session()->get('sess_fullname') ?></a>
                 <?php } ?>
@@ -83,6 +83,7 @@
 
     <section class="ftco-section bg-light">
 			<div class="container">
+        <form method="post" class="row g-3" action="<?=base_url('checkout')?>">
                 <table class="table table-striped">
                     <thead>
                         <th>&nbsp;</th>
@@ -113,6 +114,8 @@
               </table>
               <br/>
               <a href="<?=site_url('/products')?>" class="btn btn-link btn-sm">Continue Shopping</a>
+              <button type="submit" class="btn btn-primary btn-sm"><span class="fa fa-arrow-right"></span>Checkout</button>
+        </form>   
 			</div>
 		</section>
     <footer class="footer">
