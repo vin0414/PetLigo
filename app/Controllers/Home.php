@@ -690,7 +690,7 @@ class Home extends BaseController
         $productModel = new \App\Models\productModel();
         $productModel->findAll();
         $data = [
-            'products'=>$productModel->paginate(10),
+            'products'=>$productModel->paginate(8),
             'pager'=>$productModel->pager
         ];
         return view('products',$data);

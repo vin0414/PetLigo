@@ -23,6 +23,11 @@
 
     <link rel="stylesheet" href="assets/css/flaticon.css">
     <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+      .radio{
+        width:20px;height: 20px;
+      }
+    </style>
   </head>
   <body>
 
@@ -82,29 +87,38 @@
 
     <section class="ftco-section bg-light">
 			<div class="container">
-          <div class="row mb-5 pb-5">
-              <div class="col-lg-8">
-                <table class="table table-striped">
-                  <tbody>
-                    <?php foreach($products as $row): ?>
-                      <?php $imgURL = "Images/".$row['Image']; ?>
-                      <tr>
-                        <td><img src="<?php echo $imgURL ?>" width="50"/></td>
-                        <td><?=$row['productName']?></td>
-                        <td>PhP <?=number_format($row['UnitPrice'],2)?></td>
-                        <td>
-                        <a href="<?=base_url('cart/buy/'.$row['productID'])?>" class="btn-custom">Buy Now</a>
-                        </td>
-                      </tr>
-                    <?php endforeach; ?>
-                    <tbody>
-                  </table>
-                  <ul class="pagination">
-                    <li class="btn"><?= $pager->simpleLinks() ?></li>
-                  </ul>
+          <div class="row">
+              <div class="col-12 form-group">
+                <input type="search" class="form-control" id="search" placeholder="Search"/>
               </div>
-              <div class="col-lg-4">
-
+              <div class="col-12 form-group">
+                <div class="row g-3">
+                  <div class="col-lg-3">
+                    <input type="radio" class="btn radio" name="category" value="All" checked/><label>ALL</label>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" class="btn radio" name="category" value="Dogs"/><label>Dogs</label>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" class="btn radio" name="category" value="Cats"/><label>Cats</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 form-group">
+                <div class="row">
+                  <?php foreach($products as $row): ?>
+                    <?php $imgURL = "Images/".$row['Image']; ?>
+                    <div class="col-lg-3 ftco-animate">
+                      <div class="block-7">
+                        <div class="img" style="background-image: url(<?php echo $imgURL ?>);"></div>
+                        <div class="text-center p-4">
+                          <span class="excerpt d-block"><?=$row['productName']?></span>
+                          <span class="price">PhP <?=number_format($row['UnitPrice'],2)?></span>
+                          <a href="<?=base_url('cart/buy/'.$row['productID'])?>" class="btn btn-primary d-block px-2 py-3">Add To Cart</a>
+                        </div>
+                      </div>
+                    </div>
+                  <?php endforeach; ?>
+                </div>
+                  <ul class="pagination">
+                    <li><?= $pager->simpleLinks() ?></li>
+                  </ul>
               </div>
           </div>
 			</div>

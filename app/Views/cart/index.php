@@ -86,13 +86,12 @@
         <form method="post" class="row g-3" action="<?=base_url('checkout')?>">
             <div class="col-lg-8">
                 <div class="card">
-                  <div class="card-header">Order(s)</div>
+                  <div class="card-header"><span class="fa fa-shopping-cart"></span>&nbsp;Shopping Cart</div>
                   <div class="card-body">
                     <table class="table table-striped">
                         <thead>
                             <th>&nbsp;</th>
                             <th>Product</th>
-                            <th>Image</th>
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Sub-Total</th>
@@ -104,8 +103,7 @@
                                     <td>
                                         <a href="<?=site_url('cart/remove/'.$item['id'])?>"><span class="fa fa-trash"></span></a>
                                     </td>
-                                    <td><?=$item['name']?></td>
-                                    <td><img src="<?php echo $imgURL ?>" width="50"/></td>
+                                    <td><img src="<?php echo $imgURL ?>" width="50"/>&nbsp;<?=$item['name']?></td>
                                     <td>PhP <?=number_format($item['price'],2)?></td>
                                     <td><?=$item['quantity']?></td>
                                     <td>PhP <?=number_format($item['quantity']*$item['price'],2)?></td>
@@ -118,7 +116,7 @@
             </div>
             <div class="col-lg-4">
               <div class="card">
-                <div class="card-header">Total</div>
+                <div class="card-header">Payment Information</div>
                 <div class="card-body">
                     <h5>PhP <?=number_format($total,2)?></h5>
                     <br/>
