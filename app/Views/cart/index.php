@@ -84,37 +84,50 @@
     <section class="ftco-section bg-light">
 			<div class="container">
         <form method="post" class="row g-3" action="<?=base_url('checkout')?>">
-                <table class="table table-striped">
-                    <thead>
-                        <th>&nbsp;</th>
-                        <th>Product</th>
-                        <th>Image</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Sub-Total</th>
-                    </thead>
-                    <tbody>
-                        <?php foreach($items as $item): ?>
-                            <?php $imgURL = "/Images/".$item['photo']; ?>
-                            <tr>
-                                <td>
-                                    <a href="<?=site_url('cart/remove/'.$item['id'])?>"><span class="fa fa-trash"></span></a>
-                                </td>
-                                <td><?=$item['name']?></td>
-                                <td><img src="<?php echo $imgURL ?>" width="50"/></td>
-                                <td>PhP <?=number_format($item['price'],2)?></td>
-                                <td><?=$item['quantity']?></td>
-                                <td>PhP <?=number_format($item['quantity']*$item['price'],2)?></td>
-                            </tr>
-                        <?php endforeach; ?>
-                        <tr>
-                            <td colspan="5">Total</td><td>PhP <?=number_format($total,2)?></td>
-                        </tr>
-                    </tbody>
-              </table>
+            <div class="col-lg-8">
+                <div class="card">
+                  <div class="card-header">Order(s)</div>
+                  <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <th>&nbsp;</th>
+                            <th>Product</th>
+                            <th>Image</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Sub-Total</th>
+                        </thead>
+                        <tbody>
+                            <?php foreach($items as $item): ?>
+                                <?php $imgURL = "/Images/".$item['photo']; ?>
+                                <tr>
+                                    <td>
+                                        <a href="<?=site_url('cart/remove/'.$item['id'])?>"><span class="fa fa-trash"></span></a>
+                                    </td>
+                                    <td><?=$item['name']?></td>
+                                    <td><img src="<?php echo $imgURL ?>" width="50"/></td>
+                                    <td>PhP <?=number_format($item['price'],2)?></td>
+                                    <td><?=$item['quantity']?></td>
+                                    <td>PhP <?=number_format($item['quantity']*$item['price'],2)?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-header">Total</div>
+                <div class="card-body">
+                    <h5>PhP <?=number_format($total,2)?></h5>
+                    <br/>
+                    <button type="submit" class="btn btn-primary btn-sm" id="btnCheckout" disabled><span class="fa fa-arrow-right"></span>Checkout</button>
+                </div>
+              </div>
+            </div>
               <br/>
               <a href="<?=site_url('/products')?>" class="btn btn-link btn-sm">Continue Shopping</a>
-              <button type="submit" class="btn btn-primary btn-sm"><span class="fa fa-arrow-right"></span>Checkout</button>
         </form>   
 			</div>
 		</section>
@@ -211,8 +224,18 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="/assets/js/google-map.js"></script>
   <script src="/assets/js/main.js"></script>
-
-
-    
+  <script>
+    $(document).ready(function()
+    {
+        var data = "<?=$total?>";
+        if(data==="0")
+        {
+          $('#btnCheckout').attr("disabled",true);
+        }
+        else{
+          $('#btnCheckout').attr("disabled",false);
+        }
+    });
+  </script>
   </body>
 </html>
