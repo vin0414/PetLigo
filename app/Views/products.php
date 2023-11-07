@@ -81,27 +81,24 @@
     </section>
 
     <section class="ftco-section bg-light">
-			<div class="container-fluid">
+			<div class="container">
           <div class="row mb-5 pb-5">
               <div class="col-lg-8">
-                  <div class="row mb-5 pb-5">
-                  <?php foreach($products as $row): ?>
-                    <?php $imgURL = "Images/".$row['Image']; ?>
-                    <div class="col-lg-4 d-flex align-self-stretch px-4 ftco-animate">
-                      <div class="d-block services text-center">
-                        <div class="icon d-flex align-items-center justify-content-center">
-                          <img src="<?php echo $imgURL ?>" width="50"/>
-                        </div>
-                        <div class="media-body p-4">
-                          <h3 class="heading"><?=$row['productName']?></h3>
-                          <p><?=$row['Description']?></p>
-                          <p>PhP <?=number_format($row['UnitPrice'],2)?></p>
-                          <a href="<?=base_url('cart/buy/'.$row['productID'])?>" class="btn-custom d-flex align-items-center justify-content-center"><span class="fa fa-shopping-cart"></span></a>
-                        </div>
-                      </div>      
-                    </div>
-                  <?php endforeach; ?>
-                  </div>
+                <table class="table table-striped">
+                  <tbody>
+                    <?php foreach($products as $row): ?>
+                      <?php $imgURL = "Images/".$row['Image']; ?>
+                      <tr>
+                        <td><img src="<?php echo $imgURL ?>" width="50"/></td>
+                        <td><?=$row['productName']?></td>
+                        <td>PhP <?=number_format($row['UnitPrice'],2)?></td>
+                        <td>
+                        <a href="<?=base_url('cart/buy/'.$row['productID'])?>" class="btn-custom">Buy Now</a>
+                        </td>
+                      </tr>
+                    <?php endforeach; ?>
+                    <tbody>
+                  </table>
                   <ul class="pagination">
                     <li class="btn"><?= $pager->simpleLinks() ?></li>
                   </ul>
