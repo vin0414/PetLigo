@@ -687,8 +687,12 @@ class Home extends BaseController
 
     public function products()
     {
-        $products = new \App\Models\productModel();
-        $data['products'] = $products->findAll();
+        $productModel = new \App\Models\productModel();
+        $productModel->findAll();
+        $data = [
+            'products'=>$productModel->paginate(10),
+            'pager'=>$productModel->pager
+        ];
         return view('products',$data);
     }
 }
