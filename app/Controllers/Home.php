@@ -691,7 +691,9 @@ class Home extends BaseController
         $productModel->findAll();
         $data = [
             'products'=>$productModel->paginate(8),
-            'pager'=>$productModel->pager
+            'page'=>isset($_GET['page']) ? $_GET['page'] : 1,
+            'total'=>$productModel->countAll(),
+            'pager'=>$productModel->pager,
         ];
         return view('products',$data);
     }

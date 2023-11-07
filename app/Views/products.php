@@ -94,9 +94,12 @@
               <div class="col-12 form-group">
                 <div class="row g-3">
                   <div class="col-lg-3">
-                    <input type="radio" class="btn radio" name="category" value="All" checked/><label>ALL</label>&nbsp;&nbsp;&nbsp;
-                    <input type="radio" class="btn radio" name="category" value="Dogs"/><label>Dogs</label>&nbsp;&nbsp;&nbsp;
-                    <input type="radio" class="btn radio" name="category" value="Cats"/><label>Cats</label>
+                    <input type="radio" class="btn radio" name="category" value="All" checked/> <label>ALL</label>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" class="btn radio" name="category" value="Dogs"/> <label>Dogs</label>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" class="btn radio" name="category" value="Cats"/> <label>Cats</label>
+                  </div>
+                  <div class="col-lg-9">
+                  Total : <?=$total?> Item(s)
                   </div>
                 </div>
               </div>
@@ -116,9 +119,7 @@
                     </div>
                   <?php endforeach; ?>
                 </div>
-                  <ul class="pagination">
-                    <li><?= $pager->simpleLinks() ?></li>
-                  </ul>
+                <?= $pager->Links() ?>
               </div>
           </div>
 			</div>
