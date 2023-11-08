@@ -686,6 +686,21 @@ class Home extends BaseController
         $customerID = $this->request->getPost('customerID');
         $email = $this->request->getPost('email');
         $token = $this->request->getPost('otp');
+        //check if exists and match
+        $builder = $this->db->table('tblcustomer');
+        $builder->select('*');
+        $builder->WHERE('customerID',$customerID)->WHERE('Email',$email)->WHERE('Token',$token);
+        $data  = $builder->get();
+        if($row = $data->getRow())
+        {
+            session()->setFlashdata('success','Great! Your account is verified. Please log-in');
+            return redirect()->to('/verify/email')->withInput();
+        }
+        else
+        {
+            session()->setFlashdata('fail','You seem to have entered an invalid OTP');
+            return redirect()->to('/verify/email')->withInput();
+        }
     }
 
     public function Login()

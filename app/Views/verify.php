@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="col-12 form-group">
                                     <label>Enter OTP</label>
-                                    <input type="password" class="form-control" name="otp" required/>
+                                    <input type="text" class="form-control" style="text-align:center;" name="otp" maxlength="6" minlength="6" required/>
                                 </div>
                                 <div class="col-12 form-group">
                                     <button type="submit" class="btn btn-primary form-control" id="btnVerify">Verify Email</button>
