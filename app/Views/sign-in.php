@@ -57,7 +57,7 @@
                                 <?= session()->getFlashdata('fail'); ?>
                               </div>
                             <?php endif; ?>
-                            <form method="post" class="row g-3" id="frmLogin" action="">
+                            <form method="post" class="row g-3" id="frmLogin" action="<?=base_url('check-account')?>">
                                 <div class="col-12 form-group">
                                     <label>Email Address</label>
                                     <input type="email" class="form-control" name="email" required/>

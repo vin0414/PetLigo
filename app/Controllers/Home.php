@@ -61,6 +61,51 @@ class Home extends BaseController
         }
     }
 
+    public function checkAccount()
+    {
+        $customerModel = new \App\Models\customerModel();
+        $username = $this->request->getPost('email');
+        $password = $this->request->getPost('password');
+
+        $validation = $this->validate([
+            'email'=>'required|valid_email',
+            'password'=>'min_length[8]|max_length[12]'
+        ]);
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid Username or Password!');
+            return redirect()->to('/sign-in')->withInput();
+        }
+        else
+        {
+            $builder = $this->db->table('tblcustomer');
+            $builder->select('*');
+            $builder->WHERE('Email',$username)->WHERE('Status',1);
+            $data = $builder->get();
+            if($row = $data->getRow())
+            {
+                $check_password = Hash::check($password, $row->password);
+                if(empty($check_password) || !$check_password)
+                {
+                    session()->setFlashdata('fail','Invalid username or password');
+                    return redirect()->to('/sign-in')->withInput();
+                }
+                else
+                {
+                    session()->set('loggedUser', $row->accountID);
+                    session()->set('sess_fullname', $row->Fullname);
+                    session()->set('sess_role',$row->systemRole);
+                    return redirect()->to('customer/dashboard');
+                }
+            }
+            else
+            {
+                session()->setFlashdata('fail','Account is disabled. Please contact the Administrator');
+                return redirect()->to('/sign-in')->withInput();
+            }
+        }
+    }
+
     public function logout()
     {
         if(session()->has('loggedUser'))
@@ -693,6 +738,8 @@ class Home extends BaseController
         $data  = $builder->get();
         if($row = $data->getRow())
         {
+            $values = ['Status'=>1,];
+            $customerModel->update($customerID,$values);
             session()->setFlashdata('success','Great! Your account is verified. Please log-in');
             return redirect()->to('/verify/email')->withInput();
         }
@@ -706,6 +753,11 @@ class Home extends BaseController
     public function Login()
     {
         return view('sign-in');
+    }
+
+    public function forgotPassword()
+    {
+        return view('forgot-password');
     }
 
     public function products()

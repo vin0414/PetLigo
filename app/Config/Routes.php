@@ -39,8 +39,10 @@ $routes->get('/cart/remove/(:any)','Cart::remove/$1');
 $routes->get('/cart/view','Cart::viewCart');
 $routes->get('/register','Home::register');
 $routes->get('/sign-in','Home::Login');
+$routes->get('/forgot-password','Home::forgotPassword');
 //authentication
 $routes->post('/check','Home::Authentication');
+$routes->post('/check-account','Home::checkAccount');
 $routes->get('/logout','Home::logout');
 $routes->post('/create-account','Home::createAccount');
 $routes->get('/verify/email', 'Home::verify');
