@@ -41,7 +41,7 @@
                 <?php if(empty(session()->get('sess_id'))){ ?>
                   <a href="<?=site_url('/sign-in')?>" class="d-flex align-items-center justify-content-center text-white"><span class="fa fa-sign-in"></span>&nbsp;Login</a>
                 <?php }else{ ?>
-                <a href="<?=site_url('/sign-in')?>" class="d-flex align-items-center justify-content-center"><?php echo session()->get('sess_fullname') ?></a>
+                <a href="javascript:void(0);" class="d-flex align-items-center justify-content-center"><?php echo session()->get('sess_fullname') ?></a>
                 <?php } ?>
 			    		</p>
 		        </div>

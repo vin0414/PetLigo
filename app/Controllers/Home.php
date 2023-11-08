@@ -92,9 +92,9 @@ class Home extends BaseController
                 }
                 else
                 {
-                    session()->set('loggedUser', $row->accountID);
+                    session()->set('sess_id', $row->customerID);
                     session()->set('sess_fullname', $row->Fullname);
-                    session()->set('sess_role',$row->systemRole);
+                    session()->set('sess_Email',$row->Email);
                     return redirect()->to('customer/dashboard');
                 }
             }
