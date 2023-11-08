@@ -38,7 +38,6 @@ $routes->get('/cart/buy/(:any)','Cart::buy/$1');
 $routes->get('/cart/remove/(:any)','Cart::remove/$1');
 $routes->get('/cart/view','Cart::viewCart');
 $routes->get('/register','Home::register');
-$routes->get('/sign-in','Home::Login');
 $routes->get('/forgot-password','Home::forgotPassword');
 //authentication
 $routes->post('/check','Home::Authentication');
@@ -83,9 +82,19 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes)
     $routes->get('admin/profile','Home::Profile');
 });
 
+$routes->group('',['filter'=>'customerAuthCheck'],function($routes)
+{
+    
+});
+
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)
 {
     $routes->get('/auth','Home::Auth');
+});
+
+$routes->group('',['filter'=>'customerAlreadyLoggedIn'],function($routes)
+{
+    $routes->get('/sign-in','Home::Login');
 });
 
 /*

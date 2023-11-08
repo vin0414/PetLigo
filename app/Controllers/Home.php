@@ -100,7 +100,7 @@ class Home extends BaseController
             }
             else
             {
-                session()->setFlashdata('fail','Account is disabled. Please contact the Administrator');
+                session()->setFlashdata('fail','Account is disabled. Please contact the PetLigo IT Support');
                 return redirect()->to('/sign-in')->withInput();
             }
         }
