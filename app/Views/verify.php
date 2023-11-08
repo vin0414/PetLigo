@@ -54,8 +54,14 @@
                                 <?= session()->getFlashdata('fail'); ?>
                               </div>
                             <?php endif; ?>
-                            <form method="post" class="row g-3" id="frmRegister" action="<?=base_url('verify')?>">
+                            <?php if(!empty(session()->getFlashdata('success'))) : ?>
+                              <div class="alert alert-success" role="alert">
+                                <?= session()->getFlashdata('success'); ?>
+                              </div>
+                            <?php endif; ?>
+                            <form method="post" class="row g-3" id="frmRegister" action="<?=base_url('verify-email')?>">
                                 <input type="hidden" name="customerID" value="<?=$customer['customerID']?>"/>
+                                <input type="hidden" name="email" value="<?php echo session()->get('customer_email')  ?>"/>
                                 <div class="col-12 form-group text-center">
                                     <label>Account Information</label>
                                     <h5><?=$customer['Fullname']?></h5>
@@ -63,10 +69,10 @@
                                 </div>
                                 <div class="col-12 form-group">
                                     <label>Enter OTP</label>
-                                    <input type="password" class="form-control" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+                                    <input type="password" class="form-control" name="otp" required/>
                                 </div>
                                 <div class="col-12 form-group">
-                                    <button type="submit" class="btn btn-primary form-control" id="btnLogin">Update Account</button>
+                                    <button type="submit" class="btn btn-primary form-control" id="btnVerify">Verify Email</button>
                                 </div>
                                 <div class="col-12">
                                     <label>Not <?php echo session()->get('customer_email') ?>?<a href="/sign-out">Sign-out</a></label>

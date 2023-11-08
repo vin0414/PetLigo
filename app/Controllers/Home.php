@@ -628,7 +628,7 @@ class Home extends BaseController
 
         if(!$validation)
         {
-            session()->setFlashdata('fail','Invalid! Please fill in the form');
+            session()->setFlashdata('fail','Invalid! Email already exists');
             return redirect()->to('/register')->withInput();
         }
         else
@@ -678,6 +678,14 @@ class Home extends BaseController
         $customer = $customerModel->WHERE('Email',$email)->first();
         $data = ['customer'=>$customer,];
         return view('verify',$data);
+    }
+
+    public function verifyEmail()
+    {
+        $customerModel = new \App\Models\customerModel();
+        $customerID = $this->request->getPost('customerID');
+        $email = $this->request->getPost('email');
+        $token = $this->request->getPost('otp');
     }
 
     public function Login()
