@@ -93,13 +93,16 @@
               </div>
               <div class="col-12 form-group">
                 <div class="row g-3">
-                  <div class="col-lg-3">
+                  <div class="col-lg-4">
                     <input type="radio" class="btn radio" name="category" value="All" checked/> <label>ALL</label>&nbsp;&nbsp;&nbsp;
                     <input type="radio" class="btn radio" name="category" value="Dogs"/> <label>Dogs</label>&nbsp;&nbsp;&nbsp;
                     <input type="radio" class="btn radio" name="category" value="Cats"/> <label>Cats</label>
                   </div>
-                  <div class="col-lg-9">
+                  <div class="col-lg-4">
                   Total : <?=$total?> Item(s)
+                  </div>
+                  <div class="col-lg-4">
+                    <a href="cart/view" class="btn-link" style="float:right;"><span class="fa fa-shopping-cart"></span>&nbsp;View Cart</a>
                   </div>
                 </div>
               </div>

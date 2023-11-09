@@ -84,7 +84,7 @@ class Home extends BaseController
             $data = $builder->get();
             if($row = $data->getRow())
             {
-                $check_password = Hash::check($password, $row->password);
+                $check_password = Hash::check($password, $row->Password);
                 if(empty($check_password) || !$check_password)
                 {
                     session()->setFlashdata('fail','Invalid username or password');
@@ -94,7 +94,7 @@ class Home extends BaseController
                 {
                     session()->set('sess_id', $row->customerID);
                     session()->set('sess_fullname', $row->Fullname);
-                    session()->set('sess_Email',$row->Email);
+                    session()->set('customer_email',$row->Email);
                     return redirect()->to('customer/dashboard');
                 }
             }
@@ -120,6 +120,7 @@ class Home extends BaseController
         if(session()->has('customer_email'))
         {
             session()->remove('customer_email');
+            session()->remove('sess_id');
             return redirect()->to('/sign-in?access=out')->with('fail', 'You are logged out!');
         }
     }
