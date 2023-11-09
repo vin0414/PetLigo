@@ -45,9 +45,7 @@
               <p class="mb-0 d-flex">
                 <?php if(empty(session()->get('sess_id'))){ ?>
                   <a href="<?=site_url('/sign-in')?>" class="d-flex align-items-center justify-content-center text-white"><span class="fa fa-sign-in"></span>&nbsp;Login</a>
-                <?php }else{ ?>
-                <a href="javascript:void(0);" class="d-flex align-items-center justify-content-center"><?php echo session()->get('sess_fullname') ?></a>
-                <?php } ?>
+                <?php }?>
 			    		</p>
 		        </div>
 					</div>
@@ -98,10 +96,7 @@
                     <input type="radio" class="btn radio" name="category" value="Dogs"/> <label>Dogs</label>&nbsp;&nbsp;&nbsp;
                     <input type="radio" class="btn radio" name="category" value="Cats"/> <label>Cats</label>
                   </div>
-                  <div class="col-lg-4">
-                  Total : <?=$total?> Item(s)
-                  </div>
-                  <div class="col-lg-4">
+                  <div class="col-lg-8">
                     <a href="cart/view" class="btn-link" style="float:right;"><span class="fa fa-shopping-cart"></span>&nbsp;View Cart</a>
                   </div>
                 </div>
