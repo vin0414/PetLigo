@@ -85,6 +85,8 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes)
 $routes->group('',['filter'=>'customerAuthCheck'],function($routes)
 {
     $routes->get('customer/dashboard','Customer::Dashboard');
+    $routes->get('customer/reservations','Customer::Reservations');
+    $routes->get('customer/orders','Customer::Orders');
 });
 
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)
