@@ -14,4 +14,19 @@ class Customer extends BaseController
     {
         return view('customer/index');
     }
+
+    public function Reservations()
+    {
+        return view('customer/reservations');
+    }
+
+    public function Orders()
+    {
+        return view('customer/orders');
+    }
+
+    public function profile()
+    {
+        return view('customer/profile');
+    }
 }
