@@ -156,8 +156,12 @@ class Home extends BaseController
             $builder = $this->db->table('tblservices');
             $builder->select('*');
             $services = $builder->get()->getResult();
+            //categories
+            $builder = $this->db->table('tblcategory');
+            $builder->select('*');
+            $category = $builder->get()->getResult();
 
-            $data = ['account'=>$account,'fee'=>$fee,'discount'=>$discount,'services'=>$services,];
+            $data = ['account'=>$account,'fee'=>$fee,'discount'=>$discount,'services'=>$services,'category'=>$category,];
             return view('admin/maintenance',$data);
         }
     }

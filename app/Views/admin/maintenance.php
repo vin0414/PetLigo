@@ -403,7 +403,7 @@
 								<a class="dropdown-item" href="<?=site_url('admin/new-account')?>"><i class="dw dw-add-user"></i> Account</a>
 								<a class="dropdown-item" href="<?=site_url('admin/new-services')?>"><i class="dw dw-add"></i> Services</a>
 								<a class="dropdown-item" href="<?=site_url('admin/fee')?>"><i class="dw dw-add"></i> Membership Fee</a>
-								<a class="dropdown-item" href="javascript:void(0);" id="btnCategory"><i class="dw dw-add"></i> Category</a>
+								<a class="dropdown-item btnCategory" href="javascript:void(0);" id="btnCategory"><i class="dw dw-add"></i> Category</a>
 							</div>
 						</div>
 					</div>
@@ -548,7 +548,12 @@
 											<th>Category Name</th>
 										</thead>
 										<tbody>
-											
+											<?php foreach($category as $row): ?>
+												<tr>
+													<td><?php echo $row->categoryID ?></td>
+													<td><?php echo $row->categoryName ?></td>
+												</tr>
+											<?php endforeach; ?>
 										</tbody>
 									</table>
 								</div>
@@ -558,8 +563,7 @@
                 </div>
 			</div>
 		</div>
-		<div
-			class="modal fade" id="discountModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+		<div class="modal fade" id="discountModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
 					<div class="modal-header">
@@ -607,6 +611,38 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="modal fade" id="categoryModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myLargeModalLabel">
+							New Category
+						</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+						<div id="errorMessages" style="display:none;">
+							<div class="alert alert-danger alert-dismissable fade show" role="alert">
+								<label id="errors"></label>
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						</div>
+						<form method="post" class="row g-3" id="frmCategory">
+							<div class="col-12 form-group">
+								<label>Category Name</label>
+								<input type="text" class="form-control" name="category" required/>
+							</div>
+							<div class="col-12 form-group">
+								<button type="submit" class="btn btn-primary" id="btnAdd">Save Entry</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- js -->
 		<script src="/resources/vendors/scripts/core.js"></script>
 		<script src="/resources/vendors/scripts/script.min.js"></script>
@@ -618,6 +654,12 @@
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
 		<script>
+			$(document).on('click','.btnCategory',function(e)
+			{
+				e.preventDefault();
+				$('#categoryModal').modal('show');
+			});
+
 			$(document).on('click','.add-discount',function(e){
 				e.preventDefault();
 				var val = $(this).val();
