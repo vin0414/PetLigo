@@ -403,6 +403,7 @@
 								<a class="dropdown-item" href="<?=site_url('admin/new-account')?>"><i class="dw dw-add-user"></i> Account</a>
 								<a class="dropdown-item" href="<?=site_url('admin/new-services')?>"><i class="dw dw-add"></i> Services</a>
 								<a class="dropdown-item" href="<?=site_url('admin/fee')?>"><i class="dw dw-add"></i> Membership Fee</a>
+								<a class="dropdown-item" href="javascript:void(0);" id="btnCategory"><i class="dw dw-add"></i> Category</a>
 							</div>
 						</div>
 					</div>
@@ -420,6 +421,9 @@
                                 </li>
 								<li class="nav-item">
                                     <a class="nav-link text-blue" data-toggle="tab" href="#discount" role="tab" aria-selected="false">Discounts</a>
+                                </li>
+								<li class="nav-item">
+                                    <a class="nav-link text-blue" data-toggle="tab" href="#category" role="tab" aria-selected="false">Categories</a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -536,6 +540,18 @@
 										</tbody>
 									</table>
                                 </div>
+								<div class="tab-pane fade show" id="category" role="tabpanel">
+									<br/>
+									<table class="data-table table stripe hover nowrap">
+										<thead>
+											<th>Category ID</th>
+											<th>Category Name</th>
+										</thead>
+										<tbody>
+											
+										</tbody>
+									</table>
+								</div>
                             </div>
                         </div>
                     </div>
