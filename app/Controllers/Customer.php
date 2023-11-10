@@ -25,6 +25,11 @@ class Customer extends BaseController
         return view('customer/orders');
     }
 
+    public function Pets()
+    {
+        return view('customer/pets');    
+    }
+
     public function profile()
     {
         return view('customer/profile');
