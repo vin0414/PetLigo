@@ -501,7 +501,7 @@ class Home extends BaseController
         $categoryModel = new \App\Models\categoryModel();
         //data
         $cat_name = $this->request->getPost('category_name');
-        $values = ['categoryName'=>$cat_name,];
+        $values = ['CategoryName'=>$cat_name,];
         $categoryModel->save($values);
         echo "success";
     }

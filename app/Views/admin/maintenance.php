@@ -551,7 +551,7 @@
 											<?php foreach($category as $row): ?>
 												<tr>
 													<td><?php echo $row->categoryID ?></td>
-													<td><?php echo $row->categoryName ?></td>
+													<td><?php echo $row->CategoryName ?></td>
 												</tr>
 											<?php endforeach; ?>
 										</tbody>
