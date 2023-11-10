@@ -258,7 +258,11 @@ class Home extends BaseController
 
     public function newProduct()
     {
-        return view('admin/new-product');
+        $builder = $this->db->table('tblcategory');
+        $builder->select('*');
+        $category = $builder->get()->getResult();
+        $data = ['category'=>$category];
+        return view('admin/new-product',$data);
     }
 
     public function editProduct($id=null)
@@ -316,6 +320,8 @@ class Home extends BaseController
     {
         $productModel = new \App\Models\productModel();
         //data
+        $product_type = $this->request->getPost('product_type');
+        $category = $this->request->getPost('category');
         $productName = $this->request->getPost('productName');
         $desc = $this->request->getPost('description');
         $qty = $this->request->getPost('qty');
@@ -325,7 +331,8 @@ class Home extends BaseController
         $originalName = $file->getClientName();
         //validate
         $validation = $this->validate([
-            'productName'=>'required','qty'=>'required','unitPrice'=>'required','itemUnit'=>'required'
+            'productName'=>'required','qty'=>'required','unitPrice'=>'required','itemUnit'=>'required',
+            'product_type'=>'required','category'=>'required',
         ]);
         if(!$validation)
         {
@@ -339,7 +346,8 @@ class Home extends BaseController
                 $file->move('Images/',$originalName);
                 //save the data
                 $values= [
-                    'productName'=>$productName,'Description'=>$desc,'Image'=>$originalName, 'ItemUnit'=>$itemUnit,'Qty'=>$qty,'UnitPrice'=>$unitPrice,'DateCreated'=>date('Y-m-d'),
+                    'productName'=>$productName,'Description'=>$desc,'Image'=>$originalName, 'ItemUnit'=>$itemUnit,
+                    'Qty'=>$qty,'UnitPrice'=>$unitPrice,'DateCreated'=>date('Y-m-d'),'Product_Type'=>$product_type,'categoryID'=>$category,
                 ];
                 $productModel->save($values);
                 //save the images

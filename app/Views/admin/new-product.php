@@ -423,6 +423,28 @@
 					</div>
                     <div class="card-body">
                         <form method="POSt" class="row g-3" id="frmProduct" action="<?=base_url('save-product')?>" enctype="multipart/form-data">
+							<div class="col-12 form-group">
+								<div class="row g-3">
+									<div class="col-lg-6">
+										<label>Product Type</label>
+										<select class="form-control" name="product_type" required>
+											<option value="">Choose</option>
+											<option>Dogs</option>
+											<option>Cats</option>
+											<option>Small Pets</option>
+										</select>
+									</div>
+									<div class="col-lg-6">
+										<label>Category</label>
+										<select class="form-control" name="category" required>
+											<option value="">Choose</option>
+											<?php foreach($category as $row): ?>
+												<option value="<?php echo $row->categoryID ?>"><?php echo $row->CategoryName ?></option>
+											<?php endforeach; ?>
+										</select>
+									</div>
+								</div>
+							</div>
                             <div class="col-12 form-group">
                                 <label>Product Name</label>
                                 <input type="text" class="form-control" name="productName" required/>
