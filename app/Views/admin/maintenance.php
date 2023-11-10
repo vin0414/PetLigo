@@ -633,7 +633,7 @@
 						<form method="post" class="row g-3" id="frmCategory">
 							<div class="col-12 form-group">
 								<label>Category Name</label>
-								<input type="text" class="form-control" name="category" required/>
+								<input type="text" class="form-control" name="category_name" required/>
 							</div>
 							<div class="col-12 form-group">
 								<button type="submit" class="btn btn-primary" id="btnAdd">Save Entry</button>
@@ -666,6 +666,29 @@
 				$('#discountModal').modal('show');
 				$('#feeID').attr("value",val);
 			});
+
+			$('#btnAdd').on('click',function(e)
+			{
+				e.preventDefault();
+				var data = $('#frmCategory').serialize();
+				$.ajax({
+					url:"<?=site_url('save-category')?>",method:"POST",
+					data:data,success:function(response)
+					{
+						if(response==="success")
+						{
+							$('#categoryModal').modal('hide');
+							location.reload();
+						}
+						else
+						{
+							document.getElementById('errorMessages').style="display:block";
+							$('#errors').html(response);
+						}
+					}
+				});
+			});
+
 			$('#btnSave').on('click',function(e)
 			{
 				e.preventDefault();

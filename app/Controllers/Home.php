@@ -496,6 +496,16 @@ class Home extends BaseController
         }
     }
 
+    public function saveCategory()
+    {
+        $categoryModel = new \App\Models\categoryModel();
+        //data
+        $cat_name = $this->request->getPost('category_name');
+        $values = ['categoryName'=>$cat_name,];
+        $categoryModel->save($values);
+        echo "success";
+    }
+
     public function addStocks()
     {
         $stocksModel = new \App\Models\stocksModel();

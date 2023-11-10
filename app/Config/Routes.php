@@ -60,6 +60,7 @@ $routes->post('/add-stocks','Home::addStocks');
 $routes->post('/add-services','Home::addServices');
 $routes->post('/update-services','Home::updateServices');
 $routes->get('/back-up','DownloadController::backup');
+$routes->post('/save-category','Home::saveCategory');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
