@@ -408,6 +408,12 @@
 								><span class="mtext">Orders</span>
 							</a>
 						</li>
+						<li class="dropdown">
+							<a href="<?=site_url('customer/pets')?>" class="dropdown-toggle no-arrow">
+								<span class="micon dw dw-dog"></span
+								><span class="mtext">My Pets</span>
+							</a>
+						</li>
 							<div class="dropdown-divider"></div>
 						</li>
 						<li>
