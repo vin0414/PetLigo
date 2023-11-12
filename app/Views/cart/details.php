@@ -79,7 +79,7 @@
             <?php foreach($product as $row): ?>
                 <?php $imgURL = "/Images/".$row->Image; ?>
             <div class="row g-3">
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <img src="<?php echo $imgURL ?>" width="100%"/>
                 </div>
                 <div class="col-lg-5">
@@ -106,27 +106,43 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-3">
                     <h6><b>Related Products</b></h6>
+                    <table class="table table-bordered">
+                        <tbody>
                     <?php
-                    $related_products = new \App\Models\productModel();
-                    $item_product = $related_products->WHERE('categoryID',$row->categoryID)->findAll();
-                    if(empty($item_product['productName']))
-                    {
-                        ?>
-                        <ul>
-                            <li>No Product(s) Available</li>
-                        </ul>
-                        <?php
-                    }
-                    else{
-                        ?>
-                        <ul>
-                            <li><?php echo $item_product['productName'] ?></li>
-                        </ul>
-                        <?php
-                    }
+                        $db;
+                        $this->db = db_connect();
+                        $builder = $this->db->table('tblproduct');
+                        $builder->select('*');
+                        $builder->WHERE('categoryID',$row->categoryID);
+                        $builder->WHERE('productID !=',$row->productID);
+                        $data = $builder->get();
+                        foreach($data->getResult() as $rows)
+                        {
+                            if(empty($rows->productName))
+                            {
+                            ?>
+                            <tr>
+                                <td>No Item(s) Found</td>
+                            </tr>
+                            <?php
+                            }
+                            else
+                            {
+                            ?>
+                            <tr>
+                                <td>
+                                    <h6><?php echo $rows->productName ?></h6>
+                                    <a href="<?=site_url('cart/details/')?><?php echo $rows->productID ?>">View</a>
+                                </td>
+                            </tr>
+                            <?php
+                            }
+                        }
                     ?>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <?php endforeach; ?>
