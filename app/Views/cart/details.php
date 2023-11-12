@@ -108,6 +108,25 @@
                 </div>
                 <div class="col-lg-2">
                     <h6><b>Related Products</b></h6>
+                    <?php
+                    $related_products = new \App\Models\productModel();
+                    $item_product = $related_products->WHERE('categoryID',$row->categoryID)->findAll();
+                    if(empty($item_product['productName']))
+                    {
+                        ?>
+                        <ul>
+                            <li>No Product(s) Available</li>
+                        </ul>
+                        <?php
+                    }
+                    else{
+                        ?>
+                        <ul>
+                            <li><?php echo $item_product['productName'] ?></li>
+                        </ul>
+                        <?php
+                    }
+                    ?>
                 </div>
             </div>
             <?php endforeach; ?>
