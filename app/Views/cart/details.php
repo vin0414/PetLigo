@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PetLigo - View Cart</title>
+    <title>Product Overview</title>
     <meta charset="utf-8">
     <link href="/assets/images/petligo.png" rel="icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -55,13 +55,8 @@
 	      </button>
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	        	<li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-	        	<li class="nav-item"><a href="<?=site_url('membership')?>" class="nav-link">Membership</a></li>
-	        	<li class="nav-item"><a href="<?=site_url('book')?>" class="nav-link">Book Now</a></li>
-	        	<li class="nav-item"><a href="<?=site_url('services')?>" class="nav-link">Services</a></li>
-                <li class="nav-item"><a href="<?=site_url('products')?>" class="nav-link">Products</a></li>
-	            <li class="nav-item active"><a href="<?=site_url('view-cart')?>" class="nav-link">Cart</a></li>
-	            <li class="nav-item"><a href="<?=site_url('blogs')?>" class="nav-link">Blogs</a></li>
+                <li class="nav-item"><a href="<?=site_url('products')?>" class="nav-link">Continue Shopping</a></li>
+	            <li class="nav-item active"><a href="<?=site_url('view-cart')?>" class="nav-link"><?php foreach($product as $row): ?><?php echo $row->productName ?><?php endforeach; ?></a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -72,67 +67,29 @@
       <div class="container">
         <div class="row no-gutters slider-text align-items-end">
           <div class="col-md-9 ftco-animate pb-5">
-          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Cart<i class="ion-ios-arrow-forward"></i></span></p>
-            <h1 class="mb-0 bread">View Cart</h1>
+          	<p class="breadcrumbs mb-2"><span class="mr-2"><a href="/">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Product Details<i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-0 bread">Product Details</h1>
           </div>
         </div>
       </div>
     </section>
 
     <section class="ftco-section bg-light">
-			<div class="container">
-        <form method="post" class="row g-3" action="<?=base_url('checkout')?>">
-            <div class="col-lg-8">
-                <div class="card">
-                  <div class="card-header"><span class="fa fa-shopping-cart"></span>&nbsp;Shopping Cart</div>
-                  <div class="card-body">
-                    <table class="table table-striped">
-                        <thead>
-                            <th>&nbsp;</th>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>Quantity</th>
-                            <th>Sub-Total</th>
-                        </thead>
-                        <tbody>
-                            <?php if(empty($items)){ ?>
-                              <tr>
-                                <td colspan="5">No Item(s) Found</td>
-                              </tr>
-                            <?php } else { ?>
-                            <?php foreach($items as $item): ?>
-                                <?php $imgURL = "/Images/".$item['photo']; ?>
-                                <tr>
-                                    <td>
-                                        <a href="<?=site_url('cart/remove/'.$item['id'])?>"><span class="fa fa-trash"></span></a>
-                                    </td>
-                                    <td><img src="<?php echo $imgURL ?>" width="50"/>&nbsp;<?=$item['name']?></td>
-                                    <td>PhP <?=number_format($item['price'],2)?></td>
-                                    <td><?=$item['quantity']?></td>
-                                    <td>PhP <?=number_format($item['quantity']*$item['price'],2)?></td>
-                                </tr>
-                            <?php endforeach; ?>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                  </div>
+		<div class="container">  
+            <?php foreach($product as $row): ?>
+                <?php $imgURL = "/Images/".$row->Image; ?>
+            <div class="row g-3">
+                <div class="col-lg-6">
+                    <img src="<?php echo $imgURL ?>" width="500"/>
+                </div>
+                <div class="col-lg-6">
+                    <h3><?php echo $row->productName ?></h3>
+                    <h5><?php echo $row->Description ?></h5>
                 </div>
             </div>
-            <div class="col-lg-4">
-              <div class="card">
-                <div class="card-header">Payment Information</div>
-                <div class="card-body">
-                    <h5>PhP <?=number_format($total,2)?></h5>
-                    <br/>
-                    <button type="submit" class="btn btn-primary btn-sm" id="btnCheckout" disabled><span class="fa fa-arrow-right"></span>Checkout</button>
-                </div>
-              </div>
-            </div>
-              <br/>
-              <a href="<?=site_url('/products')?>" class="btn btn-link btn-sm">Continue Shopping</a>
-        </form>   
-			</div>
-		</section>
+            <?php endforeach; ?>
+		</div>
+	</section>
     <footer class="footer">
 			<div class="container">
 				<div class="row">
@@ -226,18 +183,5 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="/assets/js/google-map.js"></script>
   <script src="/assets/js/main.js"></script>
-  <script>
-    $(document).ready(function()
-    {
-        var data = "<?=$total?>";
-        if(data==="0")
-        {
-          $('#btnCheckout').attr("disabled",true);
-        }
-        else{
-          $('#btnCheckout').attr("disabled",false);
-        }
-    });
-  </script>
   </body>
 </html>

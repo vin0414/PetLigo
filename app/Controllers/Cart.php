@@ -4,11 +4,28 @@ namespace App\Controllers;
 
 class Cart extends BaseController
 {
+    private $db;
+    public function __construct()
+    {
+        $this->db = db_connect();
+    }
+
     public function viewCart()
     {
         $data['items'] = array_values(session('cart'));
         $data['total'] = $this->total();
         return view('cart/index',$data);
+    }
+
+    public function details($id)
+    {
+        $builder = $this->db->table('tblproduct a');
+        $builder->select('a.*,b.CategoryName');
+        $builder->join('tblcategory b','b.categoryID=a.categoryID','LEFT');
+        $builder->WHERE('a.productID',$id);
+        $products = $builder->get()->getResult();
+        $data = ['product'=>$products,];
+        return view('cart/details',$data);
     }
 
     public function remove($id)
