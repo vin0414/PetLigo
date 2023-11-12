@@ -81,7 +81,7 @@
 
     <section class="ftco-section bg-light">
 			<div class="container">
-        <form method="post" class="row g-3" action="<?=base_url('checkout')?>">
+        <form method="post" class="row g-3" action="<?=base_url('cart/checkout')?>">
             <div class="col-lg-8">
                 <div class="card">
                   <div class="card-header"><span class="fa fa-shopping-cart"></span>&nbsp;Shopping Cart</div>
@@ -120,11 +120,33 @@
             </div>
             <div class="col-lg-4">
               <div class="card">
-                <div class="card-header">Payment Information</div>
+                <div class="card-header">Order Summary</div>
                 <div class="card-body">
-                    <h5>PhP <?=number_format($total,2)?></h5>
-                    <br/>
-                    <button type="submit" class="btn btn-primary btn-sm" id="btnCheckout" disabled><span class="fa fa-arrow-right"></span>Checkout</button>
+                    <div class="row g-3">
+                      <div class="col-12 form-group">
+                          <table class="table table-bordered">
+                            <tbody>
+                              <tr>
+                                <td>Sub-Total</td><td style="text-align:right;">PhP <?=number_format($total,2)?></td>
+                              </tr>
+                              <tr>
+                                <td>Discount</td>
+                                <td style="text-align:right;">0%</td>
+                              </tr>
+                              <tr>
+                                <td colspan="2">&nbsp;</td>
+                              </tr>
+                              <tr>
+                                <td>Total</td>
+                                <td style="text-align:right;">PhP <?=number_format($total,2)?></td>
+                              </tr>
+                            </tbody>
+                          </table>
+                      </div>
+                      <div class="col-12 form-group">
+                      <button type="submit" class="btn btn-primary text-success form-control" id="btnCheckout" disabled><span class="fa fa-arrow-right"></span>Proceed to Checkout</button>
+                      </div>
+                    </div>
                 </div>
               </div>
             </div>

@@ -96,13 +96,13 @@
                     <?php }else{ ?>
                         <span class="badge bg-success text-white">In Stock</span>
                     <?php } ?>
-                    <form method="post" class="row g-3">
+                    <form method="get" class="row g-3" action="<?=base_url('cart/buy/'.$row->productID)?>">
                         <div class="col-12 form-group">
                             <h6><b>Quantity</b></h6>
                             <input type="number" value="1" id="qty" name="qty" class="form-control"/>
                         </div>
                         <div class="col-12 form-group">
-                            <a href="<?=base_url('cart/buy/'.$row->productID)?>" class="btn btn-primary d-block px-2 py-3">Add To Cart</a>
+                            <button type="submit" class="btn btn-primary d-block px-2 py-3">Add To Cart</button>
                         </div>
                     </form>
                 </div>
@@ -124,7 +124,7 @@
                             {
                             ?>
                             <tr>
-                                <td>No Item(s) Found</td>
+                                <td><h6>No Item(s) Found</h6></td>
                             </tr>
                             <?php
                             }

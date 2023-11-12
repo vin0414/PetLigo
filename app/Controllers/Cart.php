@@ -47,7 +47,7 @@ class Cart extends BaseController
             'name'=>$product['productName'],
             'photo'=>$product['Image'],
             'price'=>$product['UnitPrice'],
-            'quantity'=>1
+            'quantity'=>$this->request->getGet('qty')
         );
         $session = session();
         if($session->has('cart'))
