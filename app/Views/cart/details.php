@@ -79,10 +79,10 @@
             <?php foreach($product as $row): ?>
                 <?php $imgURL = "/Images/".$row->Image; ?>
             <div class="row g-3">
-                <div class="col-lg-6">
-                    <img src="<?php echo $imgURL ?>" width="500"/>
+                <div class="col-lg-5">
+                    <img src="<?php echo $imgURL ?>" width="100%"/>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-5">
                     <h6><b>Product</b></h6>
                     <h3><?php echo $row->productName ?></h3>
                     <h6><b>Price</b></h6>
@@ -96,6 +96,18 @@
                     <?php }else{ ?>
                         <span class="badge bg-success text-white">In Stock</span>
                     <?php } ?>
+                    <form method="post" class="row g-3">
+                        <div class="col-12 form-group">
+                            <h6><b>Quantity</b></h6>
+                            <input type="number" value="1" id="qty" name="qty" class="form-control"/>
+                        </div>
+                        <div class="col-12 form-group">
+                            <a href="<?=base_url('cart/buy/'.$row->productID)?>" class="btn btn-primary d-block px-2 py-3">Add To Cart</a>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-2">
+                    <h6><b>Related Products</b></h6>
                 </div>
             </div>
             <?php endforeach; ?>
