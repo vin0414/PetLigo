@@ -56,7 +56,7 @@
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
                 <li class="nav-item"><a href="<?=site_url('products')?>" class="nav-link">Continue Shopping</a></li>
-	            <li class="nav-item active"><a href="<?=site_url('view-cart')?>" class="nav-link"><?php foreach($product as $row): ?><?php echo $row->productName ?><?php endforeach; ?></a></li>
+	            <li class="nav-item active"><a href="javascript:void(0);" class="nav-link">Product Overview</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -83,8 +83,19 @@
                     <img src="<?php echo $imgURL ?>" width="500"/>
                 </div>
                 <div class="col-lg-6">
+                    <h6><b>Product</b></h6>
                     <h3><?php echo $row->productName ?></h3>
-                    <h5><?php echo $row->Description ?></h5>
+                    <h6><b>Price</b></h6>
+                    <h4 class="text-success">PhP <?php echo number_format($row->UnitPrice,2) ?></h4>
+                    <h6><b>Product Details</b></h6>
+                    <h6><?php echo $row->Description ?></h6>
+                    <h6><b>Category</b></h6>
+                    <h6><?php echo $row->CategoryName ?></h6>
+                    <?php if($row->Qty<1){ ?>
+                        <span class="badge bg-danger text-white">Out of Stock</span>
+                    <?php }else{ ?>
+                        <span class="badge bg-success text-white">In Stock</span>
+                    <?php } ?>
                 </div>
             </div>
             <?php endforeach; ?>
