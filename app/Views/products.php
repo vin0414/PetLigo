@@ -111,7 +111,9 @@
                         <div class="text-center p-4">
                           <span class="excerpt d-block"><?=$row['productName']?></span>
                           <span class="price">PhP <?=number_format($row['UnitPrice'],2)?></span>
-                          <a href="<?=base_url('cart/buy/'.$row['productID'])?>" class="btn btn-primary d-block px-2 py-3">Add To Cart</a>
+                          <span><?=$row['Description']?></span>
+                          <a href="<?=site_url('cart/details/')?><?php echo $row['productID'] ?>">View Details</a>
+                          <!-- <a href="<?=base_url('cart/buy/'.$row['productID'])?>" class="btn btn-primary d-block px-2 py-3">Add To Cart</a> -->
                         </div>
                       </div>
                     </div>
