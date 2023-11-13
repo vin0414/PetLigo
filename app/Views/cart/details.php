@@ -96,15 +96,17 @@
                     <?php }else{ ?>
                         <span class="badge bg-success text-white">In Stock</span>
                     <?php } ?>
+                    <?php if($row->Qty>0){ ?>
                     <form method="get" class="row g-3" action="<?=base_url('cart/buy/'.$row->productID)?>">
                         <div class="col-12 form-group">
                             <h6><b>Quantity</b></h6>
                             <input type="number" value="1" id="qty" name="qty" class="form-control"/>
                         </div>
                         <div class="col-12 form-group">
-                            <button type="submit" class="btn btn-primary d-block px-2 py-3">Add To Cart</button>
+                            <button type="submit" class="btn btn-primary form-control d-block px-2 py-3">Add To Cart</button>
                         </div>
                     </form>
+                    <?php } ?>
                 </div>
                 <div class="col-lg-3">
                     <h6><b>Related Products</b></h6>

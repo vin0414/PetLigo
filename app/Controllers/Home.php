@@ -785,14 +785,34 @@ class Home extends BaseController
 
     public function products()
     {
-        $productModel = new \App\Models\productModel();
-        $productModel->findAll();
-        $data = [
-            'products'=>$productModel->paginate(8),
-            'page'=>isset($_GET['page']) ? $_GET['page'] : 1,
-            'total'=>$productModel->countAll(),
-            'pager'=>$productModel->pager,
-        ];
-        return view('products',$data);
+        return view('products');
+    } 
+
+    public function loadProducts()
+    {
+        $builder = $this->db->table('tblproduct a');
+        $builder->select('a.*,b.CategoryName');
+        $builder->join('tblcategory b','b.categoryID=a.categoryID','LEFT');
+        $builder->groupBy('a.productID');
+        $data = $builder->get();
+        foreach($data->getResult() as $row)
+        {
+            ?>
+            <?php $imgURL = "/Images/".$row->Image; ?>
+                <div class="col-lg-3 ftco-animate">
+                    <div class="block-7">
+                        <div class="img" style="background-image: url(<?php echo $imgURL ?>);"></div>
+                        <div class="text-center p-4">
+                            <span class="excerpt d-block"><?php echo $row->productName ?></span>
+                            <span class="price">PhP <?php echo number_format($row->UnitPrice,2)?></span>
+                            <span class="d-block">
+                                <?php echo $row->CategoryName ?>
+                            </span>
+                            <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            <?php
+        }
     }
 }

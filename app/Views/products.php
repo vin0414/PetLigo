@@ -102,30 +102,9 @@
                 </div>
               </div>
               <div class="col-12 form-group">
-                <div class="row">
-                  <?php foreach($products as $row): ?>
-                    <?php $imgURL = "Images/".$row['Image']; ?>
-                    <div class="col-lg-3 ftco-animate">
-                      <div class="block-7">
-                        <div class="img" style="background-image: url(<?php echo $imgURL ?>);"></div>
-                        <div class="text-center p-4">
-                          <span class="excerpt d-block"><?=$row['productName']?></span>
-                          <span class="price">PhP <?=number_format($row['UnitPrice'],2)?></span>
-                          <span class="d-block">
-                            <?php
-                            $categoryModel = new \App\Models\categoryModel();
-                            $category = $categoryModel->WHERE('categoryID',$row['categoryID'])->first(); 
-                            echo $category['CategoryName'];
-                            ?>
-                          </span>
-                          <a href="<?=site_url('cart/details/')?><?php echo $row['productID'] ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
-                          <!-- <a href="<?=base_url('cart/buy/'.$row['productID'])?>" class="btn btn-primary d-block px-2 py-3">Add To Cart</a> -->
-                        </div>
-                      </div>
-                    </div>
-                  <?php endforeach; ?>
+                <div class="row" id="loadResults">
                 </div>
-                <?= $pager->Links() ?>
+                <div id="loadMoreBlock"></div>
               </div>
           </div>
 			</div>
@@ -223,8 +202,21 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="assets/js/google-map.js"></script>
   <script src="assets/js/main.js"></script>
-
-
-    
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+      $(document).ready(function(){
+        loadProducts();
+      });
+      function loadProducts()
+      {
+        $.ajax({
+          url:"<?=site_url('/load-products')?>",method:"GET",
+          success:function(response)
+          {
+            $('#loadResults').append(response);
+          }
+        });
+      }
+  </script>
   </body>
 </html>
