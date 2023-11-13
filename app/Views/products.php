@@ -85,6 +85,7 @@
 
     <section class="ftco-section bg-light">
 			<div class="container">
+        <h3>Featured Products</h3>
           <div class="row">
               <div class="col-12 form-group">
                   <div class="row g-3">
@@ -92,7 +93,7 @@
                       <select class="form-control" id="product_category">
                         <option value="">Filter</option>
                         <?php foreach($category as $row): ?>
-                          <option value="<?php echo $row->categoryID ?>"><?php echo $row->CategoryName ?></option>
+                          <option value="<?php echo $row['categoryID'] ?>"><?php echo $row['CategoryName'] ?></option>
                         <?php endforeach; ?>
                       </select>
                     </div>
