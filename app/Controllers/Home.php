@@ -785,7 +785,10 @@ class Home extends BaseController
 
     public function products()
     {
-        return view('products');
+        $categoryModel = new \App\Models\categoryModel();
+        $category = $categoryModel->findAll();
+        $data = ['category'=>$category];
+        return view('products',$data);
     } 
 
     public function loadProducts()
@@ -799,7 +802,7 @@ class Home extends BaseController
         {
             ?>
             <?php $imgURL = "/Images/".$row->Image; ?>
-                <div class="col-lg-3 ftco-animate">
+                <div class="col-lg-3">
                     <div class="block-7">
                         <div class="img" style="background-image: url(<?php echo $imgURL ?>);"></div>
                         <div class="text-center p-4">

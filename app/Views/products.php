@@ -87,14 +87,27 @@
 			<div class="container">
           <div class="row">
               <div class="col-12 form-group">
-                <input type="search" class="form-control" id="search" placeholder="Search"/>
+                  <div class="row g-3">
+                    <div class="col-lg-3">
+                      <select class="form-control" id="product_category">
+                        <option value="">Filter</option>
+                        <?php foreach($category as $row): ?>
+                          <option value="<?php echo $row->categoryID ?>"><?php echo $row->CategoryName ?></option>
+                        <?php endforeach; ?>
+                      </select>
+                    </div>
+                    <div class="col-lg-9">
+                    <input type="search" class="form-control" id="search" placeholder="Search"/>
+                    </div>
+                  </div>
               </div>
               <div class="col-12 form-group">
                 <div class="row g-3">
                   <div class="col-lg-4">
                     <input type="radio" class="btn radio" name="category" value="All" checked/> <label>ALL</label>&nbsp;&nbsp;&nbsp;
                     <input type="radio" class="btn radio" name="category" value="Dogs"/> <label>Dogs</label>&nbsp;&nbsp;&nbsp;
-                    <input type="radio" class="btn radio" name="category" value="Cats"/> <label>Cats</label>
+                    <input type="radio" class="btn radio" name="category" value="Cats"/> <label>Cats</label>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" class="btn radio" name="category" value="Small Pets"/> <label>Small Pets</label>
                   </div>
                   <div class="col-lg-8">
                     <a href="cart/view" class="btn-link" style="float:right;"><span class="fa fa-shopping-cart"></span>&nbsp;View Cart</a>
@@ -102,9 +115,8 @@
                 </div>
               </div>
               <div class="col-12 form-group">
-                <div class="row" id="loadResults">
+                <div class="row g-3" id="loadResults">
                 </div>
-                <div id="loadMoreBlock"></div>
               </div>
           </div>
 			</div>
@@ -199,8 +211,6 @@
   <script src="assets/js/owl.carousel.min.js"></script>
   <script src="assets/js/jquery.magnific-popup.min.js"></script>
   <script src="assets/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="assets/js/google-map.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
@@ -213,7 +223,7 @@
           url:"<?=site_url('/load-products')?>",method:"GET",
           success:function(response)
           {
-            $('#loadResults').append(response);
+            $('#loadResults').html(response);
           }
         });
       }
