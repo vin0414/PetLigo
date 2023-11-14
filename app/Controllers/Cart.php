@@ -12,7 +12,7 @@ class Cart extends BaseController
 
     public function viewCart()
     {
-        $data['items'] = array_values(session('cart'));
+        $data['items'] = is_array(session('cart'))?array_values(session('cart')):array();
         $data['total'] = $this->total();
         return view('cart/index',$data);
     }
