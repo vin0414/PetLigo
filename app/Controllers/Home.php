@@ -819,6 +819,36 @@ class Home extends BaseController
         }
     }
 
+    public function searchProducts()
+    {
+        $val = "%".$this->request->getGet('value')."%";
+        $builder = $this->db->table('tblproduct a');
+        $builder->select('a.*,b.CategoryName');
+        $builder->join('tblcategory b','b.categoryID=a.categoryID','LEFT');
+        $builder->LIKE('a.productName',$val);
+        $builder->groupBy('a.productID');
+        $data = $builder->get();
+        foreach($data->getResult() as $row)
+        {
+            ?>
+            <?php $imgURL = "/Images/".$row->Image; ?>
+                <div class="col-lg-3">
+                    <div class="block-7">
+                        <div class="img" style="background-image: url(<?php echo $imgURL ?>);"></div>
+                        <div class="text-center p-4">
+                            <span class="excerpt d-block"><?php echo $row->productName ?></span>
+                            <span class="price">PhP <?php echo number_format($row->UnitPrice,2)?></span>
+                            <span class="d-block">
+                                <?php echo $row->CategoryName ?>
+                            </span>
+                            <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            <?php
+        }
+    }
+
     public function filterProducts()
     {
         $val = $this->request->getGet('value');

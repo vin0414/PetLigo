@@ -218,6 +218,23 @@
       $(document).ready(function(){
         loadProducts();
       });
+      $('#search').keyup(function(){
+        var val = $(this).val();
+        $.ajax({
+          url:"<?=site_url('/search-products')?>",method:"GET",
+          data:{value:val},
+          success:function(response)
+          {
+            if(response==="")
+            {
+              $('#loadResults').html("<div class='col-12'><center>No Product(s) Available</center></div>");
+            }
+            else{
+              $('#loadResults').html(response);
+            }
+          }
+        });
+      });
       function loadProducts()
       {
         $.ajax({

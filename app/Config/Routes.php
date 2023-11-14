@@ -35,6 +35,7 @@ $routes->get('/book','Home::book');
 $routes->get('/services','Home::services');
 $routes->get('/products','Home::products');
 $routes->get('/load-products','Home::loadProducts');
+$routes->get('/search-products','Home::searchProducts');
 $routes->get('/filter-products','Home::filterProducts');
 $routes->get('/filter-category-products','Home::filterCategoryProducts');
 $routes->get('/cart/buy/(:any)','Cart::buy/$1');
