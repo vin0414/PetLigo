@@ -91,7 +91,7 @@
                   <div class="row g-3">
                     <div class="col-lg-3">
                       <select class="form-control" id="product_category">
-                        <option value="">Filter</option>
+                        <option value="0">All Category</option>
                         <?php foreach($category as $row): ?>
                           <option value="<?php echo $row['categoryID'] ?>"><?php echo $row['CategoryName'] ?></option>
                         <?php endforeach; ?>
@@ -105,10 +105,10 @@
               <div class="col-12 form-group">
                 <div class="row g-3">
                   <div class="col-lg-4">
-                    <input type="radio" class="btn radio" name="category" value="All" checked/> <label>ALL</label>&nbsp;&nbsp;&nbsp;
-                    <input type="radio" class="btn radio" name="category" value="Dogs"/> <label>Dogs</label>&nbsp;&nbsp;&nbsp;
-                    <input type="radio" class="btn radio" name="category" value="Cats"/> <label>Cats</label>&nbsp;&nbsp;&nbsp;
-                    <input type="radio" class="btn radio" name="category" value="Small Pets"/> <label>Small Pets</label>
+                    <input type="radio" class="btn radio" name="category" id="category" value="All" checked/> <label>ALL</label>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" class="btn radio" name="category" id="category" value="Dogs"/> <label>Dogs</label>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" class="btn radio" name="category" id="category" value="Cats"/> <label>Cats</label>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" class="btn radio" name="category" id="category" value="Small Pets"/> <label>Small Pets</label>
                   </div>
                   <div class="col-lg-8">
                     <a href="cart/view" class="btn-link" style="float:right;"><span class="fa fa-shopping-cart"></span>&nbsp;View Cart</a>
@@ -228,6 +228,44 @@
           }
         });
       }
+      $('#product_category').change(function(e)
+      {
+        e.preventDefault();
+        var val = $(this).val();
+        $.ajax({
+          url:"<?=site_url('/filter-products')?>",method:"GET",
+          data:{value:val},
+          success:function(response)
+          {
+            if(response==="")
+            {
+              $('#loadResults').html("<div class='col-12'><center>No Product(s) Available</center></div>");
+            }
+            else{
+              $('#loadResults').html(response);
+            }
+          }
+        });
+      });
+      $(function() {
+        $('input:radio[name="category"]').change(function() {
+            var val = $(this).val();
+            $.ajax({
+              url:"<?=site_url('/filter-category-products')?>",method:"GET",
+              data:{value:val},
+              success:function(response)
+              {
+                if(response==="")
+                {
+                  $('#loadResults').html("<div class='col-12'><center>No Product(s) Available</center></div>");
+                }
+                else{
+                  $('#loadResults').html(response);
+                }
+              }
+            });
+        });
+    });
   </script>
   </body>
 </html>

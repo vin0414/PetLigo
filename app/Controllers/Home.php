@@ -818,4 +818,180 @@ class Home extends BaseController
             <?php
         }
     }
+
+    public function filterProducts()
+    {
+        $val = $this->request->getGet('value');
+        if($val=="0")
+        {
+            $builder = $this->db->table('tblproduct a');
+            $builder->select('a.*,b.CategoryName');
+            $builder->join('tblcategory b','b.categoryID=a.categoryID','LEFT');
+            $builder->groupBy('a.productID');
+            $data = $builder->get();
+            foreach($data->getResult() as $row)
+            {
+                ?>
+                <?php $imgURL = "/Images/".$row->Image; ?>
+                    <div class="col-lg-3">
+                        <div class="block-7">
+                            <div class="img" style="background-image: url(<?php echo $imgURL ?>);"></div>
+                            <div class="text-center p-4">
+                                <span class="excerpt d-block"><?php echo $row->productName ?></span>
+                                <span class="price">PhP <?php echo number_format($row->UnitPrice,2)?></span>
+                                <span class="d-block">
+                                    <?php echo $row->CategoryName ?>
+                                </span>
+                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            }
+        }
+        else
+        {
+            $builder = $this->db->table('tblproduct a');
+            $builder->select('a.*,b.CategoryName');
+            $builder->join('tblcategory b','b.categoryID=a.categoryID','LEFT');
+            $builder->WHERE('a.categoryID',$val);
+            $builder->groupBy('a.productID');
+            $data = $builder->get();
+            foreach($data->getResult() as $row)
+            {
+                ?>
+                <?php $imgURL = "/Images/".$row->Image; ?>
+                    <div class="col-lg-3">
+                        <div class="block-7">
+                            <div class="img" style="background-image: url(<?php echo $imgURL ?>);"></div>
+                            <div class="text-center p-4">
+                                <span class="excerpt d-block"><?php echo $row->productName ?></span>
+                                <span class="price">PhP <?php echo number_format($row->UnitPrice,2)?></span>
+                                <span class="d-block">
+                                    <?php echo $row->CategoryName ?>
+                                </span>
+                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            }
+        }
+    }
+
+    public function filterCategoryProducts()
+    {
+        $val = $this->request->getGet('value');
+        if($val=="All")
+        {
+            $builder = $this->db->table('tblproduct a');
+            $builder->select('a.*,b.CategoryName');
+            $builder->join('tblcategory b','b.categoryID=a.categoryID','LEFT');
+            $builder->groupBy('a.productID');
+            $data = $builder->get();
+            foreach($data->getResult() as $row)
+            {
+                ?>
+                <?php $imgURL = "/Images/".$row->Image; ?>
+                    <div class="col-lg-3">
+                        <div class="block-7">
+                            <div class="img" style="background-image: url(<?php echo $imgURL ?>);"></div>
+                            <div class="text-center p-4">
+                                <span class="excerpt d-block"><?php echo $row->productName ?></span>
+                                <span class="price">PhP <?php echo number_format($row->UnitPrice,2)?></span>
+                                <span class="d-block">
+                                    <?php echo $row->CategoryName ?>
+                                </span>
+                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            }
+        }
+        else if($val=="Dogs")
+        {
+            $builder = $this->db->table('tblproduct a');
+            $builder->select('a.*,b.CategoryName');
+            $builder->join('tblcategory b','b.categoryID=a.categoryID','LEFT');
+            $builder->WHERE('a.Product_Type',$val);
+            $builder->groupBy('a.productID');
+            $data = $builder->get();
+            foreach($data->getResult() as $row)
+            {
+                ?>
+                <?php $imgURL = "/Images/".$row->Image; ?>
+                    <div class="col-lg-3">
+                        <div class="block-7">
+                            <div class="img" style="background-image: url(<?php echo $imgURL ?>);"></div>
+                            <div class="text-center p-4">
+                                <span class="excerpt d-block"><?php echo $row->productName ?></span>
+                                <span class="price">PhP <?php echo number_format($row->UnitPrice,2)?></span>
+                                <span class="d-block">
+                                    <?php echo $row->CategoryName ?>
+                                </span>
+                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            }
+        }
+        else if($val=="Cats")
+        {
+            $builder = $this->db->table('tblproduct a');
+            $builder->select('a.*,b.CategoryName');
+            $builder->join('tblcategory b','b.categoryID=a.categoryID','LEFT');
+            $builder->WHERE('a.Product_Type',$val);
+            $builder->groupBy('a.productID');
+            $data = $builder->get();
+            foreach($data->getResult() as $row)
+            {
+                ?>
+                <?php $imgURL = "/Images/".$row->Image; ?>
+                    <div class="col-lg-3">
+                        <div class="block-7">
+                            <div class="img" style="background-image: url(<?php echo $imgURL ?>);"></div>
+                            <div class="text-center p-4">
+                                <span class="excerpt d-block"><?php echo $row->productName ?></span>
+                                <span class="price">PhP <?php echo number_format($row->UnitPrice,2)?></span>
+                                <span class="d-block">
+                                    <?php echo $row->CategoryName ?>
+                                </span>
+                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            }
+        }
+        else if($val=="Small Pets")
+        {
+            $builder = $this->db->table('tblproduct a');
+            $builder->select('a.*,b.CategoryName');
+            $builder->join('tblcategory b','b.categoryID=a.categoryID','LEFT');
+            $builder->WHERE('a.Product_Type',$val);
+            $builder->groupBy('a.productID');
+            $data = $builder->get();
+            foreach($data->getResult() as $row)
+            {
+                ?>
+                <?php $imgURL = "/Images/".$row->Image; ?>
+                    <div class="col-lg-3">
+                        <div class="block-7">
+                            <div class="img" style="background-image: url(<?php echo $imgURL ?>);"></div>
+                            <div class="text-center p-4">
+                                <span class="excerpt d-block"><?php echo $row->productName ?></span>
+                                <span class="price">PhP <?php echo number_format($row->UnitPrice,2)?></span>
+                                <span class="d-block">
+                                    <?php echo $row->CategoryName ?>
+                                </span>
+                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                <?php
+            }
+        }
+    }
 }
