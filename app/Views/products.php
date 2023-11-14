@@ -241,7 +241,13 @@
           url:"<?=site_url('/load-products')?>",method:"GET",
           success:function(response)
           {
-            $('#loadResults').html(response);
+            if(response==="")
+            {
+              $('#loadResults').html("<div class='col-12'><center>No Product(s) Available</center></div>");
+            }
+            else{
+              $('#loadResults').html(response);
+            }
           }
         });
       }
