@@ -88,7 +88,7 @@ class Cart extends BaseController
     private function total()
     {
         $s = 0;
-        $items = array_values(session('cart'));
+        $items = is_array(session('cart'))?array_values(session('cart')):array();
         foreach($items as $item)
         {
             $s += $item['price']*$item['quantity'];

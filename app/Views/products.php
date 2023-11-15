@@ -45,7 +45,9 @@
               <p class="mb-0 d-flex">
                 <?php if(empty(session()->get('sess_id'))){ ?>
                   <a href="<?=site_url('/sign-in')?>" class="d-flex align-items-center justify-content-center text-white"><span class="fa fa-sign-in"></span>&nbsp;Login</a>
-                <?php }?>
+                <?php } else{?>
+                  <a href="<?=site_url('/customer/dashboard')?>" class="d-flex align-items-center justify-content-center text-white"><span class="fa fa-dashboard"></span>&nbsp;Dashboard</a>
+                <?php } ?>
 			    		</p>
 		        </div>
 					</div>
