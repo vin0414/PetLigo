@@ -54,6 +54,31 @@
 			href="/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css"
 		/>
 		<link rel="stylesheet" type="text/css" href="/resources/vendors/styles/style.css" />
+		<style>
+            .quote-imgs-thumbs {
+				background: #eee;
+				border: 1px solid #ccc;
+				border-radius: 0.25rem;
+				margin: 1.5rem 0;
+				padding: 0.75rem;
+				}
+				.quote-imgs-thumbs--hidden {
+				display: none;
+				}
+				.img-preview-thumb {
+				background: #fff;
+				border: 1px solid #777;
+				border-radius: 0.25rem;
+				box-shadow: 0.125rem 0.125rem 0.0625rem rgba(0, 0, 0, 0.12);
+				margin-right: 1rem;
+				max-width: 140px;
+				padding: 0.25rem;
+				}
+			.show-for-sr
+			{
+				display:none;
+			}
+        </style>
 	</head>
 	<body>
 		<div class="pre-loader">
@@ -433,6 +458,22 @@
 
 		<div class="main-container">
 			<div class="pd-ltr-20">
+				<?php if(!empty(session()->getFlashdata('fail'))) : ?>
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<?= session()->getFlashdata('fail'); ?>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				<?php endif; ?>
+				<?php if(!empty(session()->getFlashdata('success'))) : ?>
+					<div class="alert alert-success alert-dismissible fade show" role="alert">
+						<?= session()->getFlashdata('success'); ?>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				<?php endif; ?>
 				<div class="card-box">
 					<div class="card-header">My Pets
 					<a href="javascript:void(0);" id="addPet" style="float:right;"><span class="icon-copy dw dw-add"></span>&nbsp;Add Pet</a>
@@ -447,7 +488,18 @@
 								<th>Action</th>
 							</thead>
 							<tbody>
-
+								<?php foreach($pets as $row): ?>
+									<?php $imgURL = "/pets/".$row->Photo; ?>
+									<tr>
+										<td><img src="<?php echo $imgURL ?>" class="border-radius-100 shadow" width="50" height="50" alt=""/></td>
+										<td><?php echo $row->Name ?></td>
+										<td><?php echo $row->Breed ?></td>
+										<td><?php echo $row->Age ?></td>
+										<td>
+											<a href="<?=site_url('customer/edit-pet/')?><?php echo $row->petsID ?>"><span class="dw dw-edit-1"></span> Edit</a>
+										</td>
+									</tr>
+								<?php endforeach; ?>
 							</tbody>
 						</table>
 					</div>
@@ -464,7 +516,7 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
 					<div class="modal-body">
-						<form method="post" class="row g-3" id="frmPet">
+						<form method="post" class="row g-3" action="<?=base_url('save-pet')?>" enctype="multipart/form-data" id="frmPet">
 							<div class="col-12 form-group">
 								<label>Name</label>
 								<input type="text" class="form-control" name="petname" required/>
@@ -476,6 +528,16 @@
 							<div class="col-12 form-group">
 								<label>Age</label>
 								<input type="number" class="form-control" name="age" required/>
+							</div>
+							<div class="col-12 form-group">
+								<p>
+									<label for="upload_imgs" class="btn btn-outline-primary">Select Your Images +</label>
+									<input class="show-for-sr" type="file" id="upload_imgs" name="files" accept="image/jpeg, image/png, image/jpg"/>
+								</p>
+								<div class="quote-imgs-thumbs quote-imgs-thumbs--hidden" id="img_preview" aria-live="polite"></div>
+							</div>
+							<div class="col-12 form-group">
+								<button type="submit" class="btn btn-primary" id="btnSubmit">Save</button>
 							</div>
 						</form>
 					</div>
@@ -498,6 +560,41 @@
 				e.preventDefault();
 				$('#petModal').modal('show');
 			});
+		</script>
+		<script>
+			var imgUpload = document.getElementById('upload_imgs')
+				, imgPreview = document.getElementById('img_preview')
+				, imgUploadForm = document.getElementById('img-upload-form')
+				, totalFiles
+				, previewTitle
+				, previewTitleText
+				, img;
+
+				imgUpload.addEventListener('change', previewImgs, false);
+				imgUploadForm.addEventListener('submit', function (e) {
+				e.preventDefault();
+				alert('Images Uploaded! (not really, but it would if this was on your website)');
+				}, false);
+
+				function previewImgs(event) {
+				totalFiles = imgUpload.files.length;
+				
+				if(!!totalFiles) {
+					imgPreview.classList.remove('quote-imgs-thumbs--hidden');
+					previewTitle = document.createElement('p');
+					previewTitle.style.fontWeight = 'bold';
+					previewTitleText = document.createTextNode(totalFiles + ' Total Images Selected');
+					previewTitle.appendChild(previewTitleText);
+					imgPreview.appendChild(previewTitle);
+				}
+				
+				for(var i = 0; i < totalFiles; i++) {
+					img = document.createElement('img');
+					img.src = URL.createObjectURL(event.target.files[i]);
+					img.classList.add('img-preview-thumb');
+					imgPreview.appendChild(img);
+				}
+				}
 		</script>
 	</body>
 </html>
