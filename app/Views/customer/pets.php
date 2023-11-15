@@ -433,7 +433,53 @@
 
 		<div class="main-container">
 			<div class="pd-ltr-20">
+				<div class="card-box">
+					<div class="card-header">My Pets
+					<a href="javascript:void(0);" id="addPet" style="float:right;"><span class="icon-copy dw dw-add"></span>&nbsp;Add Pet</a>
+					</div>
+					<div class="card-body">
+						<table class="data-table table stripe hover nowrap">
+							<thead>
+								<th>Photo</th>
+								<th>Name</th>
+								<th>Breed</th>
+								<th>Age</th>
+								<th>Action</th>
+							</thead>
+							<tbody>
 
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="petModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myLargeModalLabel">
+							Add Pet
+						</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+						<form method="post" class="row g-3" id="frmPet">
+							<div class="col-12 form-group">
+								<label>Name</label>
+								<input type="text" class="form-control" name="petname" required/>
+							</div>
+							<div class="col-12 form-group">
+								<label>Breed</label>
+								<input type="text" class="form-control" name="breed" required/>
+							</div>
+							<div class="col-12 form-group">
+								<label>Age</label>
+								<input type="number" class="form-control" name="age" required/>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- js -->
@@ -441,11 +487,17 @@
 		<script src="/resources/vendors/scripts/script.min.js"></script>
 		<script src="/resources/vendors/scripts/process.js"></script>
 		<script src="/resources/vendors/scripts/layout-settings.js"></script>
-		<script src="/resources/src/plugins/apexcharts/apexcharts.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-		<script src="/resources/vendors/scripts/dashboard.js"></script>
+        <script src="/resources/vendors/scripts/datatable-setting.js"></script>
+		<script>
+			$('#addPet').on('click',function(e)
+			{
+				e.preventDefault();
+				$('#petModal').modal('show');
+			});
+		</script>
 	</body>
 </html>
