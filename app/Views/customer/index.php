@@ -452,6 +452,28 @@
 						</div>
 					</div>
 				</div>
+				<div class="row g-3">
+					<div class="col-lg-8 form-group">
+						<div class="card-box">
+							<div class="card-header">
+								<span class="dw dw-calendar-1"></span>&nbsp;Recent Reservation(s)
+							</div>
+							<div class="card-body">
+
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-4 form-group">
+						<div class="card-box">
+							<div class="card-header">
+							<i class="icon-copy dw dw-shopping-cart"></i>&nbsp;Recent Order(s)
+							</div>
+							<div class="card-body">
+								
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- js -->
