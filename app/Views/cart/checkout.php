@@ -89,8 +89,57 @@
                     <div class="col-12 form-group">
                         <form method="post" class="row g-3" id="frmShip" action="">
                             <div class="col-12 form-group">
-                                <label>Email Address</label>
-                                <input type="text" class="form-control" name="email" required/>
+                                <div class="row g-3">
+                                    <div class="col-lg-8">
+                                        <label>Email Address</label>
+                                        <input type="email" class="form-control" name="email" required/>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Tel/Cell No</label>
+                                        <input type="phone" class="form-control" name="phone" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 form-group">
+                                <div class="row g-3">
+                                    <div class="col-lg-6">
+                                        <label>Firstname</label>
+                                        <input type="text" class="form-control" name="firstname" required/>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Surname</label>
+                                        <input type="text" class="form-control" name="surname" required/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 form-group">
+                                <label>Building/Apartment/Suite</label>
+                                <input type="text" class="form-control" name="apartment"/>
+                            </div>
+                            <div class="col-12 form-group">
+                                <label>Subdivision/Brgy</label>
+                                <input type="text" class="form-control" name="street"/>
+                            </div>
+                            <div class="col-12 form-group">
+                                <div class="row g-3">
+                                    <div class="col-lg-6">
+                                        <label>City</label>
+                                        <input type="text" class="form-control" name="city"/>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Province</label>
+                                        <input type="text" class="form-control" name="province"/>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <label>Zip Code</label>
+                                        <input type="text" class="form-control" name="zipcode"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 form-group">
+                            </div>
+                            <div class="col-12 form-group">
+                                <button type="submit" class="btn btn-primary">Continue to Shipping</button>
                             </div>
                         </form>
                     </div>
