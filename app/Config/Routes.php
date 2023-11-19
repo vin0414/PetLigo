@@ -69,6 +69,7 @@ $routes->post('/save-category','Home::saveCategory');
 //customer
 $routes->post('/save-pet','Customer::savePet');
 $routes->post('cart/checkout','Cart::checkOut');
+$routes->post('cart/save-order','Cart::saveOrder');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {

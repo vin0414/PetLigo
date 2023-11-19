@@ -124,4 +124,22 @@ class Cart extends BaseController
             return $this->response->redirect(site_url('cart/shipping'));
         }
     }
+
+    public function saveOrder()
+    {
+        $customerOrder = new \App\Models\customerOrderModel();
+        //datas
+        $user = session()->get('sess_id');
+        $emailadd = $this->request->getPost('email');
+        $phone = $this->request->getPost('phone');
+        $fname = $this->request->getPost('firstname');
+        $sname = $this->request->getPost('surname');
+        //address
+        $apartment = $this->request->getPost('apartment');
+        $street = $this->request->getPost('street');
+        $city = $this->request->getPost('city');
+        $province = $this->request->getPost('province');
+        $zip  = $this->request->getPost('zipcode');
+        $address = $apartment." ".$street.", ".$city.", ".$province." ".$zip;
+    }
 }

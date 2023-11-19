@@ -116,16 +116,16 @@
                         <label><b>Customer Details</b></label>
                     </div>
                     <div class="col-12 form-group">
-                        <form method="post" class="row g-3" id="frmShip" action="">
+                        <form method="post" class="row g-3" id="frmShip" action="<?=base_url('cart/save-order')?>">
                             <div class="col-12 form-group">
                                 <div class="row g-3">
                                     <div class="col-lg-8">
                                         <label>Email Address</label>
-                                        <input type="email" class="form-control" name="email" required/>
+                                        <input type="email" class="form-control" name="email" pattern=".+@example\.com" required/>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Tel/Cell No</label>
-                                        <input type="phone" class="form-control" name="phone" required/>
+                                        <input type="phone" class="form-control" maxlength="11" minlength="11" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required/>
                                     </div>
                                 </div>
                             </div>
@@ -146,22 +146,22 @@
                                 <input type="text" class="form-control" name="apartment"/>
                             </div>
                             <div class="col-12 form-group">
-                                <label>Subdivision/Brgy</label>
-                                <input type="text" class="form-control" name="street"/>
+                                <label>Subdivision/Village/Brgy</label>
+                                <input type="text" class="form-control" name="street" required/>
                             </div>
                             <div class="col-12 form-group">
                                 <div class="row g-3">
                                     <div class="col-lg-6">
                                         <label>City</label>
-                                        <input type="text" class="form-control" name="city"/>
+                                        <input type="text" class="form-control" name="city" required/>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Province</label>
-                                        <input type="text" class="form-control" name="province"/>
+                                        <input type="text" class="form-control" name="province" required/>
                                     </div>
                                     <div class="col-lg-2">
                                         <label>Zip Code</label>
-                                        <input type="text" class="form-control" name="zipcode"/>
+                                        <input type="text" class="form-control" maxlength="4" minlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="zipcode" required/>
                                     </div>
                                 </div>
                             </div>
