@@ -128,6 +128,7 @@ class Cart extends BaseController
     public function saveOrder()
     {
         $customerOrder = new \App\Models\customerOrderModel();
+        $orderModel = new \App\Models\orderModel();
         //datas
         $user = session()->get('sess_id');
         $emailadd = $this->request->getPost('email');
@@ -141,5 +142,22 @@ class Cart extends BaseController
         $province = $this->request->getPost('province');
         $zip  = $this->request->getPost('zipcode');
         $address = $apartment." ".$street.", ".$city.", ".$province." ".$zip;
+        //save
+        $values = [
+            'customerID'=>$user,'Firstname'=>$fname, 'Surname'=>$sname,'Address'=>$address,
+            'Email'=>$emailadd,'contactNumber'=>$phone,'DateCreated'=>date('Y-m-d')
+        ];
+        $customerOrder->save($values);
+        //update the item ordered
+        $builder = $this->db->table('tblorders');
+        $builder->select('orderID');
+        $builder->WHERE('customerID',$user);
+        $data = $builder->get();
+        foreach($data->getResult() as $row)
+        {
+            $values = ['Status'=>1,];
+            $orderModel->update($row->orderID,$values);
+        }
+        return $this->response->redirect(site_url('customer/success'));
     }
 }
