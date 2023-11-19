@@ -83,4 +83,9 @@ class Customer extends BaseController
             }
         }
     }
+
+    public function shipping()
+    {
+        return view('cart/checkout');
+    }
 }

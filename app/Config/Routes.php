@@ -98,6 +98,7 @@ $routes->group('',['filter'=>'customerAuthCheck'],function($routes)
     $routes->get('customer/orders','Customer::Orders');
     $routes->get('customer/pets','Customer::Pets');
     $routes->get('customer/profile','Customer::Profile');
+    $routes->get('cart/shipping','Customer::shipping');
 });
 
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)

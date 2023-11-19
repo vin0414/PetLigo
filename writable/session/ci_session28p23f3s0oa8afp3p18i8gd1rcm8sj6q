@@ -1,1 +1,1 @@
-__ci_last_regenerate|i:1700358288;_ci_previous_url|s:40:"http://localhost:8080/customer/dashboard";sess_id|s:1:"1";sess_fullname|s:15:"Warvin B Mogate";customer_email|s:19:"vinmogate@gmail.com";
+__ci_last_regenerate|i:1700358590;_ci_previous_url|s:31:"http://localhost:8080/cart/view";sess_id|s:1:"1";sess_fullname|s:15:"Warvin B Mogate";customer_email|s:19:"vinmogate@gmail.com";cart|a:1:{i:0;a:5:{s:2:"id";s:1:"1";s:4:"name";s:12:"Test Product";s:5:"photo";s:24:"FB_IMG_1698386302408.jpg";s:5:"price";s:4:"2000";s:8:"quantity";s:1:"2";}}
