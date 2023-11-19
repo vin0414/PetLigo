@@ -392,7 +392,46 @@
 						</button>
 					</div>
 				<?php endif; ?>
-				
+				<div class="card-box">
+					<div class="card-header">Customer Order(s)</div>
+                    <div class="card-body">
+                        <table class="data-table table stripe hover nowrap">
+							<thead>
+								<th>Date</th>
+								<th>Customer's Name</th>
+								<th>Contact No</th>
+								<th>Email</th>
+								<th>Status</th>
+								<th>Action</th>
+							</thead>
+							<tbody>
+								<?php foreach($order as $row): ?>
+									<tr>
+										<td><?php echo $row->DateCreated ?></td>
+										<td><?php echo $row->Surname ?>, <?php echo $row->Firstname ?></td>
+										<td><?php echo $row->contactNumber ?></td>
+										<td><?php echo $row->Email ?></td>
+										<td>
+											<?php if($row->Status==0){ ?>
+												<span class="badge bg-warning text-white">Pending</span>
+											<?php }else if($row->Status==1){ ?>
+												<span class="badge bg-info text-white">For Delivery</span>
+											<?php }else if($row->Status==2){ ?>
+												<span class="badge bg-danger text-white">Cancelled</span>
+											<?php }else if($row->Status==3){ ?>
+												<span class="badge bg-success text-white">Delivered</span>
+											<?php } ?>
+										</td>
+										<td>
+											<button type="button" class="btn btn-outline-primary btn-sm" value="<?php echo $row->OrderNo ?>" id="btnUpdate"><span class="dw dw-edit-1"></span></button>
+											<button type="button" class="btn btn-outline-primary btn-sm" value="<?php echo $row->OrderNo ?>" id="btnView"><span class="dw dw-book-1"></span></button>
+										</td>
+									</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- js -->

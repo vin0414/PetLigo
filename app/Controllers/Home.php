@@ -634,7 +634,12 @@ class Home extends BaseController
 
     public function Orders()
     {
-        return view('admin/orders');
+        $builder = $this->db->table('tblcustomer_order');
+        $builder->select('*');
+        $builder->groupBy('OrderNo');
+        $order = $builder->get()->getResult();
+        $data = ['order'=>$order,];
+        return view('admin/orders',$data);
     }
 
     public function Members()
