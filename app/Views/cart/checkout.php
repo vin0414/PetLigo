@@ -78,7 +78,15 @@
     </section>
 
     <section class="ftco-section bg-light">
-			<div class="container"> 
+			<div class="container">
+                <div class="row g-3">
+                    <div class="col-12">
+                        <p><b>Attention Valued Customers,</b></p>
+                        <p>We would like to inform you that our shipping services are currently available only for selected cities. As of now,
+                            we can facilitate shipments exclusively to the following locations: Kawit, Cavite City, Rosario and Noveleta.
+                        </p>
+                    </div>
+                </div>
 			</div>
 		</section>
     <footer class="footer">
