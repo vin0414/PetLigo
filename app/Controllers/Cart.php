@@ -95,4 +95,18 @@ class Cart extends BaseController
         }
         return $s;
     }
+
+    public function checkOut()
+    {
+        $user = session()->get('sess_id');
+        if(empty($user))
+        {
+            session()->destroy(session('cart'));
+            return $this->response->redirect(site_url('/products'));
+        }
+        else
+        {
+
+        }
+    }
 }
