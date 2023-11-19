@@ -98,6 +98,7 @@ class Cart extends BaseController
 
     public function checkOut()
     {
+        $orderModel = new \App\Models\orderModel();
         $user = session()->get('sess_id');
         if(empty($user))
         {
@@ -106,7 +107,16 @@ class Cart extends BaseController
         }
         else
         {
-
+            $items = array_values(session('cart'));
+            $count = count($items['id']);
+            for($i=0;$i<$count;$i++)
+            {
+                $values = [
+                    'customerID'=>$user,'productName'=>$items['name'], 'Qty'=>$items['quantity'],'price'=>$items['price'],'Status'=>0,
+                ];
+                $orderModel->save($values);
+            }
+            return $this->response->redirect(site_url('cart/checkout'));
         }
     }
 }
