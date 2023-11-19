@@ -86,6 +86,12 @@ class Customer extends BaseController
 
     public function shipping()
     {
-        return view('cart/checkout');
+        $user = session()->get('sess_id');
+        $builder = $this->db->table('tblorders');
+        $builder->select('*');
+        $builder->WHERE('customerID',$user);
+        $items = $builder->get()->getResult();
+        $data = ['items'=>$items];
+        return view('cart/checkout',$data);
     }
 }

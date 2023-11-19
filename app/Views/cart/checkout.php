@@ -87,6 +87,20 @@
                         </p>
                     </div>
                     <div class="col-12 form-group">
+                        <table class="table table-striped">
+                            <thead>
+                                <th>Order Item(s)</th>
+                                <th>Quantity</th>
+                                <th>Unit Price</th>
+                                <th>&nbsp;</th>
+                            </thead>
+                            <tbody>
+                                <?php foreach($items as $row): ?>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-12 form-group">
                         <form method="post" class="row g-3" id="frmShip" action="">
                             <div class="col-12 form-group">
                                 <div class="row g-3">
@@ -137,9 +151,7 @@
                                 </div>
                             </div>
                             <div class="col-12 form-group">
-                            </div>
-                            <div class="col-12 form-group">
-                                <button type="submit" class="btn btn-primary">Continue to Shipping</button>
+                                <button type="submit" class="btn btn-primary">Place Order</button>
                             </div>
                         </form>
                     </div>
