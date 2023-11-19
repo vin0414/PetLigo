@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PetLigo - View Cart</title>
+    <title>PetLigo - Shipping</title>
     <meta charset="utf-8">
     <link href="/assets/images/petligo.png" rel="icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -80,11 +80,19 @@
     <section class="ftco-section bg-light">
 			<div class="container">
                 <div class="row g-3">
-                    <div class="col-12">
+                    <div class="col-12 form-group">
                         <p><b>Attention Valued Customers,</b></p>
                         <p>We would like to inform you that our shipping services are currently available only for selected cities. As of now,
                             we can facilitate shipments exclusively to the following locations: Kawit, Cavite City, Rosario and Noveleta.
                         </p>
+                    </div>
+                    <div class="col-12 form-group">
+                        <form method="post" class="row g-3" id="frmShip" action="">
+                            <div class="col-12 form-group">
+                                <label>Email Address</label>
+                                <input type="text" class="form-control" name="email" required/>
+                            </div>
+                        </form>
                     </div>
                 </div>
 			</div>
