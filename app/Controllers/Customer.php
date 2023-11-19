@@ -89,9 +89,15 @@ class Customer extends BaseController
         $user = session()->get('sess_id');
         $builder = $this->db->table('tblorders');
         $builder->select('*');
-        $builder->WHERE('customerID',$user);
+        $builder->WHERE('customerID',$user)->WHERE('Status',0);
         $items = $builder->get()->getResult();
-        $data = ['items'=>$items];
+        //total
+        $builder = $this->db->table('tblorders');
+        $builder->select('SUM(Qty*price)total');
+        $builder->WHERE('customerID',$user)->WHERE('Status',0);
+        $total = $builder->get()->getResult();
+
+        $data = ['items'=>$items,'total'=>$total];
         return view('cart/checkout',$data);
     }
 }

@@ -87,18 +87,33 @@
                         </p>
                     </div>
                     <div class="col-12 form-group">
+                        <label><b>Order Item(s)</b></label>
                         <table class="table table-striped">
                             <thead>
-                                <th>Order Item(s)</th>
+                                <th>Item(s)</th>
                                 <th>Quantity</th>
                                 <th>Unit Price</th>
-                                <th>&nbsp;</th>
+                                <th>Sub-Total</th>
                             </thead>
                             <tbody>
                                 <?php foreach($items as $row): ?>
+                                    <tr>
+                                        <td><?php echo $row->productName ?></td>
+                                        <td><?php echo $row->Qty ?></td>
+                                        <td style="text-align: right;"><?php echo number_format($row->price,2) ?></td>
+                                        <td style="text-align: right;"><?php echo number_format($row->price*$row->Qty,2) ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
+                                <?php foreach($total as $row): ?>
+                                    <tr style="font-weight:bold;">
+                                        <td colspan='3'>Total</td><td style="text-align: right;"><?php echo number_format($row->total,2) ?></td>
+                                    </tr>
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="col-12 form-group">
+                        <label><b>Customer Details</b></label>
                     </div>
                     <div class="col-12 form-group">
                         <form method="post" class="row g-3" id="frmShip" action="">
