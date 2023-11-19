@@ -219,6 +219,11 @@
   <script>
       $(document).ready(function(){
         loadProducts();
+        var data = "<?php echo $_GET['error'] ?>";
+        if(data!="")
+        {
+          alert("Please login to continue");
+        }
       });
       $('#search').keyup(function(){
         var val = $(this).val();

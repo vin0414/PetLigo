@@ -102,7 +102,7 @@ class Cart extends BaseController
         if(empty($user))
         {
             session()->destroy(session('cart'));
-            return $this->response->redirect(site_url('/products'));
+            return $this->response->redirect(site_url('/products?error=user_authentication'));
         }
         else
         {
