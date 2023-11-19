@@ -100,4 +100,9 @@ class Customer extends BaseController
         $data = ['items'=>$items,'total'=>$total];
         return view('cart/checkout',$data);
     }
+
+    public function Success()
+    {
+        return view('customer/success');
+    }
 }
