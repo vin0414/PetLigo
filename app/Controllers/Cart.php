@@ -60,7 +60,8 @@ class Cart extends BaseController
             }
             else
             {
-                $cart[$index]['quantity']++; 
+                session()->setFlashdata('fail','Invalid! Item(s) already added in your cart');
+                return redirect()->to('/products')->withInput();
             }
             $session->set('cart',$cart);
         }
@@ -102,8 +103,10 @@ class Cart extends BaseController
         $user = session()->get('sess_id');
         if(empty($user))
         {
-            session()->destroy(session('cart'));
-            return $this->response->redirect(site_url('/products?error=user_authentication'));
+            $session = session();
+            $session->remove('cart');
+            session()->setFlashdata('fail','Invalid! Please login to continue');
+            return redirect()->to('/products')->withInput();
         }
         else
         {
@@ -111,10 +114,13 @@ class Cart extends BaseController
             foreach($items as $item)
             {
                 $values = [
-                    'customerID'=>$user,'productName'=>$item['name'], 'Qty'=>$item['quantity'],'price'=>$item['price'],'Status'=>0,
+                    'customerID'=>$user,'productName'=>$item['name'], 'Qty'=>$item['quantity'],
+                    'price'=>$item['price'],'Status'=>0,'OrderNo'=>0
                 ];
                 $orderModel->save($values);
             }
+            $session = session();
+            $session->remove('cart');
             return $this->response->redirect(site_url('cart/shipping'));
         }
     }

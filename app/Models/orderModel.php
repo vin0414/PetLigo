@@ -14,7 +14,7 @@ class orderModel extends Model
     protected $returnType = 'array';
     protected $userSoftDelete = false;
     protected $protectFields = true;
-    protected $allowedFields = ['customerID','productName', 'Qty','price','Status'];
+    protected $allowedFields = ['customerID','productName', 'Qty','price','Status','OrderNo'];
 
     protected $validationRules = [];
     protected $validationMessages = [];
