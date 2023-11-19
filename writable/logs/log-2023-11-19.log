@@ -590,3 +590,40 @@ WARNING - 2023-11-19 04:45:55 --> [DEPRECATED] number_format(): Passing null to 
 INFO - 2023-11-19 04:45:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-11-19 04:45:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-11-19 04:47:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-19 04:55:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-19 04:57:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-19 04:57:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-19 04:58:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-19 04:59:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-19 05:01:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-11-19 05:01:33 --> Undefined variable $orders
+in APPPATH\Views\customer\orders.php on line 452.
+ 1 APPPATH\Views\customer\orders.php(452): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $orders', 'APPPATH\\Views\\customer\\orders.php', 452)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\customer\\orders.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('customer/orders', [], true)
+ 5 APPPATH\Controllers\Customer.php(33): view('customer/orders', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Customer->Orders()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-11-19 05:02:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-11-19 05:02:06 --> Undefined property: stdClass::$Image
+in APPPATH\Views\customer\orders.php on line 453.
+ 1 APPPATH\Views\customer\orders.php(453): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$Image', 'APPPATH\\Views\\customer\\orders.php', 453)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\customer\\orders.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('customer/orders', [], true)
+ 5 APPPATH\Controllers\Customer.php(33): view('customer/orders', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Customer->Orders()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-11-19 05:03:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-19 05:04:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-19 05:06:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-19 05:10:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-19 05:10:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-19 05:11:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

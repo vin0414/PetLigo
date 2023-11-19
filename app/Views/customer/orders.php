@@ -433,7 +433,47 @@
 
 		<div class="main-container">
 			<div class="pd-ltr-20">
-
+				<div class="card-box">
+					<div class="card-header">
+						Orders
+					</div>
+					<div class="card-body">
+						<br/>
+						<table class="data-table table stripe hover nowrap">
+							<thead>
+								<th>Photo</th>
+								<th>Item</th>
+								<th>Qty</th>
+								<th>Price</th>
+								<th>Total</th>
+								<th>Status</th>
+							</thead>
+							<tbody>
+								<?php foreach($order as $row): ?>
+									<?php $imgURL = "/Images/".$row->Image; ?>
+									<tr>
+										<td><img src="<?php echo $imgURL ?>" class="border-radius-100 shadow" width="50" height="50" alt=""/></td>
+										<td><?php echo $row->productName ?></td>
+										<td><?php echo $row->Qty ?></td>
+										<td><?php echo number_format($row->price,2) ?></td>
+										<td><?php echo number_format($row->price*$row->Qty,2) ?></td>
+										<td>
+											<?php if($row->Status==0){ ?>
+												<span class="badge bg-warning text-white">Pending</span>
+											<?php }else if($row->Status==1){ ?>
+												<span class="badge bg-info text-white">For Delivery</span>
+											<?php }else if($row->Status==2){ ?>
+												<span class="badge bg-danger text-white">Cancelled</span>
+											<?php }else if($row->Status==3){ ?>
+												<span class="badge bg-success text-white">Delivered</span>
+											<?php } ?>
+										</td>
+									</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- js -->
@@ -441,11 +481,10 @@
 		<script src="/resources/vendors/scripts/script.min.js"></script>
 		<script src="/resources/vendors/scripts/process.js"></script>
 		<script src="/resources/vendors/scripts/layout-settings.js"></script>
-		<script src="/resources/src/plugins/apexcharts/apexcharts.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-		<script src="/resources/vendors/scripts/dashboard.js"></script>
+        <script src="/resources/vendors/scripts/datatable-setting.js"></script>
 	</body>
 </html>

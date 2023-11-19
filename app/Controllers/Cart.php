@@ -145,17 +145,18 @@ class Cart extends BaseController
         //save
         $values = [
             'customerID'=>$user,'Firstname'=>$fname, 'Surname'=>$sname,'Address'=>$address,
-            'Email'=>$emailadd,'contactNumber'=>$phone,'DateCreated'=>date('Y-m-d')
+            'Email'=>$emailadd,'contactNumber'=>$phone,'Status'=>0,'DateCreated'=>date('Y-m-d')
         ];
         $customerOrder->save($values);
         //update the item ordered
-        $builder = $this->db->table('tblorders');
-        $builder->select('orderID');
-        $builder->WHERE('customerID',$user);
+        $builder = $this->db->table('tblorders a');
+        $builder->select('a.orderID,b.OrderNo');
+        $builder->join('tblorders b','b.customerID=a.customerID','LEFT');
+        $builder->WHERE('a.customerID',$user)->WHERE('a.Status',0);
         $data = $builder->get();
         foreach($data->getResult() as $row)
         {
-            $values = ['Status'=>1,];
+            $values = ['Status'=>1,'OrderNo'=>$row->OrderNo];
             $orderModel->update($row->orderID,$values);
         }
         return $this->response->redirect(site_url('customer/success'));
