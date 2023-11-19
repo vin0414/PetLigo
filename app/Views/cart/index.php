@@ -132,10 +132,6 @@
                                 <td>Sub-Total</td><td style="text-align:right;">PhP <?=number_format($total,2)?></td>
                               </tr>
                               <tr>
-                                <td>Discount</td>
-                                <td style="text-align:right;">0%</td>
-                              </tr>
-                              <tr>
                                 <td colspan="2">&nbsp;</td>
                               </tr>
                               <tr>
