@@ -121,7 +121,7 @@
                                 <div class="row g-3">
                                     <div class="col-lg-8">
                                         <label>Email Address</label>
-                                        <input type="email" class="form-control" name="email" pattern=".+@example\.com" required/>
+                                        <input type="email" class="form-control" name="email" required/>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Tel/Cell No</label>
