@@ -432,7 +432,7 @@
 										<thead>
 											<th>Date</th>
 											<th>Time</th>
-											<th>Username</th>
+											<th>Complete Name</th>
 											<th>Activity</th>
 										</thead>
 										<tbody>
