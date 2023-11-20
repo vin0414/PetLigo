@@ -654,7 +654,13 @@ class Home extends BaseController
 
     public function Profile()
     {
-        return view('admin/profile');
+        $user = session()->get('loggedUser');
+        $builder = $this->db->table('tblaccount');
+        $builder->select('*');
+        $builder->WHERE('accountID',$user);
+        $account = $builder->get()->getResult();
+        $data = ['account'=>$account];
+        return view('admin/profile',$data);
     }
 
     //webpage 

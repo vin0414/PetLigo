@@ -396,13 +396,14 @@
 					<div class="col-lg-8 form-group">
 						<div class="card-box">
 							<div class="card-header">Account Details</div>
+							<div class="card-body">
+							</div>
 						</div>
 					</div>
 					<div class="col-lg-4 form-group">
 						<div class="card-box">
 							<div class="card-header">Change Password</div>
 							<div class="card-body">
-								<br/>
 								<form method="POST" class="row g-3" id="frmChange">
 									<div class="col-12 form-group">
 										<label>New Password</label>
