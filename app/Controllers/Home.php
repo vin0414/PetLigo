@@ -18,7 +18,7 @@ class Home extends BaseController
 
     public function Authentication()
     {
-        $accountModel = new \App\Models\accountModel();
+        $logsModel = new \App\Models\logsModel();
         $username = $this->request->getPost('username');
         $password = $this->request->getPost('password');
 
@@ -50,6 +50,11 @@ class Home extends BaseController
                     session()->set('loggedUser', $row->accountID);
                     session()->set('sess_fullname', $row->Fullname);
                     session()->set('sess_role',$row->systemRole);
+                    //save the logs
+                    $values = [
+                        'Date'=>date('Y-m-d'),'Time'=>date('h:i:s a'),'accountID'=>$row->accountID,'Activity'=>'Logged In'
+                    ];
+                    $logsModel->save($values);
                     return redirect()->to('admin/dashboard');
                 }
             }
@@ -659,7 +664,14 @@ class Home extends BaseController
         $builder->select('*');
         $builder->WHERE('accountID',$user);
         $account = $builder->get()->getResult();
-        $data = ['account'=>$account];
+        //logs
+        $builder = $this->db->table('tbllogs a');
+        $builder->select('a.*,b.Fullname');
+        $builder->join('tblaccount b','b.accountID=a.accountID','LEFT');
+        $builder->orderby('a.logID','DESC')->limit(10);
+        $logs = $builder->get()->getResult();
+
+        $data = ['account'=>$account,'logs'=>$logs];
         return view('admin/profile',$data);
     }
 
