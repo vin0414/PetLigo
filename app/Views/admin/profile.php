@@ -397,8 +397,48 @@
 						<div class="card-box">
 							<div class="card-header">Account Details</div>
 							<div class="card-body">
+								<?php foreach($account as $row): ?>
+								<div class="row g-3">
+									<div class="col-12 form-group">
+										<label>Complete Name</label>
+										<input type="text" class="form-control" value="<?php echo $row->Fullname ?>"/>
+									</div>
+									<div class="col-12 form-group">
+										<div class="row g-3">
+											<div class="col-lg-6">
+												<label>Username</label>
+												<input type="text" class="form-control" value="<?php echo $row->username ?>"/>
+											</div>
+											<div class="col-lg-6">
+												<label>System Role</label>
+												<input type="text" class="form-control" value="<?php echo $row->systemRole ?>"/>
+											</div>
+										</div>
+									</div>
+									<div class="col-12 form-group">
+										<label>Date Created</label>
+										<input type="text" class="form-control" value="<?php echo $row->DateCreated ?>"/>
+									</div>
+								</div>
+								<?php endforeach; ?>
 							</div>
 						</div>
+						<?php if(session()->get('sess_role')=="Administrator"){ ?>
+							<br/>
+							<div class="card-box">
+								<div class="card-header">System Logs</div>
+								<div class="card-body">
+									<table class="table stripe hover nowrap">
+										<thead>
+											<th>Date</th>
+											<th>Time</th>
+											<th>Username</th>
+											<th>Activity</th>
+										</thead>
+									</table>
+								</div>
+							</div>
+						<?php } ?>
 					</div>
 					<div class="col-lg-4 form-group">
 						<div class="card-box">
