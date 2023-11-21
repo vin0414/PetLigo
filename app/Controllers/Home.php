@@ -68,7 +68,6 @@ class Home extends BaseController
 
     public function checkAccount()
     {
-        $customerModel = new \App\Models\customerModel();
         $username = $this->request->getPost('email');
         $password = $this->request->getPost('password');
 
@@ -681,6 +680,33 @@ class Home extends BaseController
         $user = session()->get('loggedUser');
         $new_pass = $this->request->getPost('new_password');
         $retype = $this->request->getPost('retype_password');
+
+        $validation = $this->validate([
+            'new_password'=>'required',
+            'retype_password'=>'required'
+        ]);
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid! Please fill in the form to continue');
+            return redirect()->to('admin/profile')->withInput();
+        }
+        else
+        {
+            if($new_pass!=$retype)
+            {
+                session()->setFlashdata('fail','Error! Password mismatched. Try again');
+                return redirect()->to('admin/profile')->withInput();
+            }
+            else
+            {
+                $defaultPassword = Hash::make($new_pass);
+                $values = ['password'=>$defaultPassword,];
+                $accountModel->update($user,$values);
+
+                session()->setFlashdata('success','Great! Password has successfully updated');
+                return redirect()->to('admin/profile')->withInput();
+            }
+        }
     }
 
     //webpage 
