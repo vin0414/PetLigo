@@ -392,6 +392,14 @@
 						</button>
 					</div>
 				<?php endif; ?>
+				<?php if(!empty(session()->getFlashdata('fail'))) : ?>
+					<div class="alert alert-danger alert-dismissible fade show" role="alert">
+						<?= session()->getFlashdata('fail'); ?>
+						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+				<?php endif; ?>
 				<div class="row g-3">
 					<div class="col-lg-8 form-group">
 						<div class="card-box">
@@ -454,7 +462,7 @@
 						<div class="card-box">
 							<div class="card-header">Change Password</div>
 							<div class="card-body">
-								<form method="POST" class="row g-3" id="frmChange">
+								<form method="POST" class="row g-3" id="frmChange" action="<?=base_url('update-password')?>">
 									<div class="col-12 form-group">
 										<label>New Password</label>
 										<input type="password" class="form-control" id="new_password" name="new_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>

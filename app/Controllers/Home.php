@@ -675,6 +675,14 @@ class Home extends BaseController
         return view('admin/profile',$data);
     }
 
+    public function updatePassword()
+    {
+        $accountModel = new \App\Models\accountModel();
+        $user = session()->get('loggedUser');
+        $new_pass = $this->request->getPost('new_password');
+        $retype = $this->request->getPost('retype_password');
+    }
+
     //webpage 
     public function index()
     {

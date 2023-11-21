@@ -66,6 +66,7 @@ $routes->post('/add-services','Home::addServices');
 $routes->post('/update-services','Home::updateServices');
 $routes->get('/back-up','DownloadController::backup');
 $routes->post('/save-category','Home::saveCategory');
+$routes->post('/update-password','Home::updatePassword');
 //customer
 $routes->post('/save-pet','Customer::savePet');
 $routes->post('cart/checkout','Cart::checkOut');
