@@ -47,7 +47,13 @@ class Customer extends BaseController
 
     public function profile()
     {
-        return view('customer/profile');
+        $user = session()->get('sess_id');
+        $builder = $this->db->table('tblcustomer_info');
+        $builder->select('*');
+        $builder->WHERE('customerID',$user);
+        $info = $builder->get()->getResult();
+        $data = ['info'=>$info];
+        return view('customer/profile',$data);
     }
 
     //functions 
