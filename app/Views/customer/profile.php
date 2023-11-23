@@ -592,7 +592,11 @@
                         }
                         else
                         {
-                            alert(data);
+                            Swal.fire({
+                              icon: 'error',
+                              title: 'Error!',
+                              text: data
+                            });
                         }
                         $('#frmProfile').css("opacity","");
                         $("#Save").removeAttr("disabled");
