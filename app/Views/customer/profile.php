@@ -501,6 +501,11 @@
 							</div>
 						</div>
 					</div>
+					<div class="col-lg-3 form-group">
+						<div class="card-box">
+							<div class="card-header">Upload Photo</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
