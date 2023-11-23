@@ -41,3 +41,58 @@ INFO - 2023-11-23 07:49:46 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2023-11-23 07:49:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-11-23 07:49:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-11-23 07:50:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-23 07:52:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-23 07:55:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-23 07:55:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-23 08:03:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-23 08:04:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-11-23 08:04:13 --> mysqli_sql_exception: Table 'dbpetligo.tblinformation' doesn't exist in C:\xampp\htdocs\PetLigo\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\PetLigo\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `infoID`...', 0)
+#1 C:\xampp\htdocs\PetLigo\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `infoID`...')
+#2 C:\xampp\htdocs\PetLigo\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `infoID`...')
+#3 C:\xampp\htdocs\PetLigo\system\Database\BaseBuilder.php(1602): CodeIgniter\Database\BaseConnection->query('SELECT `infoID`...', Array, false)
+#4 C:\xampp\htdocs\PetLigo\app\Controllers\Customer.php(75): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\PetLigo\system\CodeIgniter.php(934): App\Controllers\Customer->upload()
+#6 C:\xampp\htdocs\PetLigo\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+#7 C:\xampp\htdocs\PetLigo\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\PetLigo\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\PetLigo\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-11-23 08:04:13 --> Table 'dbpetligo.tblinformation' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1602): CodeIgniter\Database\BaseConnection->query('SELECT `infoID`
+FROM `tblinformation`
+WHERE `customerID` = :customerID:', [...], false)
+ 2 APPPATH\Controllers\Customer.php(75): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Customer->upload()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-11-23 08:05:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-11-23 08:05:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-11-23 08:05:47 --> mysqli_sql_exception: Table 'dbpetligo.tblinformation' doesn't exist in C:\xampp\htdocs\PetLigo\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 C:\xampp\htdocs\PetLigo\system\Database\MySQLi\Connection.php(295): mysqli->query('SELECT `infoID`...', 0)
+#1 C:\xampp\htdocs\PetLigo\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `infoID`...')
+#2 C:\xampp\htdocs\PetLigo\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `infoID`...')
+#3 C:\xampp\htdocs\PetLigo\system\Database\BaseBuilder.php(1602): CodeIgniter\Database\BaseConnection->query('SELECT `infoID`...', Array, false)
+#4 C:\xampp\htdocs\PetLigo\app\Controllers\Customer.php(75): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\PetLigo\system\CodeIgniter.php(934): App\Controllers\Customer->upload()
+#6 C:\xampp\htdocs\PetLigo\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+#7 C:\xampp\htdocs\PetLigo\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\PetLigo\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\PetLigo\system\Commands\Server\rewrite.php(47): require_once('C:\\xampp\\htdocs...')
+#10 {main}
+CRITICAL - 2023-11-23 08:05:47 --> Table 'dbpetligo.tblinformation' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 645.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1602): CodeIgniter\Database\BaseConnection->query('SELECT `infoID`
+FROM `tblinformation`
+WHERE `customerID` = :customerID:', [...], false)
+ 2 APPPATH\Controllers\Customer.php(75): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Customer->upload()
+ 4 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+ 5 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

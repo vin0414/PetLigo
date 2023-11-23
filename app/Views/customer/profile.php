@@ -508,14 +508,14 @@
 								<form method="post" class="row g-3" id="frmProfile" enctype="multipart/form-data">
 									<div class="col-12 form-group">
 										<center>
-										<img src="" id="profileImg" style="border:1px solid #C0C0C0;" width="245"/>
+										<img src="/profile/profile.png" id="profileImg" style="border:1px solid #C0C0C0;" width="245"/>
 										</center>
 									</div>
 									<div class="col-12 form-group">
 										<input type="file" class="form-control" name="file" accept="image/png, image/gif, image/jpeg" onChange="displayImage(this)"/>
 									</div>
 									<div class="col-12 form-group">
-										<input type="submit" class="form-control btn btn-primary" id="Save" value="Upload"/>
+										<input type="submit" class="form-control btn btn-primary text-white" id="Save" value="Upload"/>
 									</div>
 								</form>
 							</div>
@@ -535,6 +535,7 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
 		<script src="/resources/vendors/scripts/dashboard.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<script>
 			function myFunction() {
             var x = document.getElementById("new_password");
@@ -559,6 +560,45 @@
             reader.readAsDataURL(e.files[0]);
           }
         }
+		$('#frmProfile').on('submit',function(evt)
+          {
+              evt.preventDefault();
+              $.ajax({
+                    url:"<?=site_url('upload')?>",method:"POST",
+                    data:new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    beforeSend: function(){
+                        $('#Save').attr("disabled","disabled");
+                        $('#frmProfile').css("opacity",".5");
+                    },
+                    success:function(data)
+                    {
+                        if(data==="Success")
+                        {
+                            $('#frmProfile')[0].reset();
+                            Swal.fire({
+                              icon: 'success',
+                              title: 'Great!',
+                              text: 'Successfully updated!',
+                              confirmButtonText: 'Continue',
+                            }).then((result) => {
+                              /* Read more about isConfirmed, isDenied below */
+                              if (result.isConfirmed) {
+                                    window.location.href="<?= site_url('customer/profile');?>";
+                              } 
+                            });
+                        }
+                        else
+                        {
+                            alert(data);
+                        }
+                        $('#frmProfile').css("opacity","");
+                        $("#Save").removeAttr("disabled");
+                    }
+                });
+          });
 		</script>
 	</body>
 </html>

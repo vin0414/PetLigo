@@ -56,6 +56,43 @@ class Customer extends BaseController
         return view('customer/profile',$data);
     }
 
+    public function upload()
+    {
+        $user = session()->get('sess_id');
+        $file = $this->request->getFile('file');
+        $originalName = $file->getClientName();
+        if(empty($originalName))
+        {
+            echo "Invalid! Please fill in the form";
+        }
+        else
+        {
+            if($file->isValid() && ! $file->hasMoved())
+            {
+                $builder = $this->db->table('tblcustomer_info');
+                $builder->select('infoID');
+                $builder->WHERE('customerID',$user);
+                $data = $builder->get();
+                if($row = $data->getRow())
+                {
+                    $infoModel = new \App\Models\informationModel();
+                    $file->move('profile/',$originalName);
+                    $values = ['Image'=>$originalName];
+                    $infoModel->update($row->infoID,$values);
+                    echo "Success";
+                }
+                else
+                {
+                    echo "Sorry! Please update your account";
+                }
+            }
+            else
+            {
+                echo "File already uploaded";
+            }
+        }
+    }
+
     //functions 
     public function savePet()
     {
