@@ -504,6 +504,21 @@
 					<div class="col-lg-3 form-group">
 						<div class="card-box">
 							<div class="card-header">Upload Photo</div>
+							<div class="card-body">
+								<form method="post" class="row g-3" id="frmProfile" enctype="multipart/form-data">
+									<div class="col-12 form-group">
+										<center>
+										<img src="" id="profileImg" style="border:1px solid #C0C0C0;" width="245"/>
+										</center>
+									</div>
+									<div class="col-12 form-group">
+										<input type="file" class="form-control" name="file" accept="image/png, image/gif, image/jpeg" onChange="displayImage(this)"/>
+									</div>
+									<div class="col-12 form-group">
+										<input type="submit" class="form-control btn btn-primary" id="Save" value="Upload"/>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -534,6 +549,15 @@
             } else {
                 xx.type = "password";
             }
+        }
+		function displayImage(e) {
+          if (e.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e){
+              document.querySelector('#profileImg').setAttribute('src', e.target.result);
+            }
+            reader.readAsDataURL(e.files[0]);
+          }
         }
 		</script>
 	</body>
