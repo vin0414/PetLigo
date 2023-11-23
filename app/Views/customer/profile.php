@@ -454,10 +454,25 @@
 						<div class="card-box">
 							<div class="card-header">Personal Information</div>
 							<div class="card-body">
-								<form method="POST" class="row g-3" id="frmCustomer" action="">
+								<form method="POST" class="row g-3" id="frmCustomer" action="<?=base_url('save_info')?>">
 									<div class="col-12 form-group">
 										<label>Complete Name</label>
 										<input type="text" class="form-control" value="<?php echo session()->get('sess_fullname') ?>"/>
+									</div>
+									<div class="col-12 form-group">
+										<label>Complete Address</label>
+										<textarea class="form-control" name="address" required></textarea>
+									</div>
+									<div class="col-12 form-group">
+										<label>Email Address</label>
+										<input type="email" class="form-control" name="email" required/>
+									</div>
+									<div class="col-12 form-group">
+										<label>Contact No</label>
+										<input type="phone" class="form-control" maxlength="11" minlength="11" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"required/>
+									</div>
+									<div class="col-12 form-group">
+										<button type="submit" class="btn btn-primary">Save Changes</button>
 									</div>
 								</form>
 							</div>
