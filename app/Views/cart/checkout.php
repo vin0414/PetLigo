@@ -90,6 +90,7 @@
                         <label><b>Order Item(s)</b></label>
                         <table class="table table-striped">
                             <thead>
+                                <th></th>
                                 <th>Item(s)</th>
                                 <th>Quantity</th>
                                 <th>Unit Price</th>
@@ -98,6 +99,7 @@
                             <tbody>
                                 <?php foreach($items as $row): ?>
                                     <tr>
+                                        <td><button type="button" class="btn btn-default btn-sm delete" value="<?php echo $row->orderID ?>"><span class="fa fa-trash"></span></button></td>
                                         <td><?php echo $row->productName ?></td>
                                         <td><?php echo $row->Qty ?></td>
                                         <td style="text-align: right;"><?php echo number_format($row->price,2) ?></td>
@@ -106,7 +108,7 @@
                                 <?php endforeach; ?>
                                 <?php foreach($total as $row): ?>
                                     <tr style="font-weight:bold;">
-                                        <td colspan='3'>Total</td><td style="text-align: right;"><?php echo number_format($row->total,2) ?></td>
+                                        <td></td><td colspan='3'>Total</td><td style="text-align: right;"><?php echo number_format($row->total,2) ?></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
