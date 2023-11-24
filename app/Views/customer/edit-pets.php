@@ -466,7 +466,30 @@
                             <a href="<?=site_url('customer/pets')?>" style="float:right;"><i class="icon-copy dw dw-left-arrow1"></i>&nbsp;Back</a>
                             </div>
                             <div class="card-body">
-                                
+                                <form method="post" class="row g-3" action="<?=base_url('update-pet-info')?>" enctype="multipart/form-data" id="frmPet">
+                                    <div class="col-12 form-group">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control" name="petname" required/>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label>Breed</label>
+                                        <input type="text" class="form-control" name="breed" required/>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label>Age</label>
+                                        <input type="number" class="form-control" name="age" required/>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <p>
+                                            <label for="upload_imgs" class="btn btn-outline-primary">Select Your Images +</label>
+                                            <input class="show-for-sr" type="file" id="upload_imgs" name="files" accept="image/jpeg, image/png, image/jpg"/>
+                                        </p>
+                                        <div class="quote-imgs-thumbs quote-imgs-thumbs--hidden" id="img_preview" aria-live="polite"></div>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <button type="submit" class="btn btn-primary" id="btnSubmit">Save Changes</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -484,5 +507,40 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
+        <script>
+			var imgUpload = document.getElementById('upload_imgs')
+				, imgPreview = document.getElementById('img_preview')
+				, imgUploadForm = document.getElementById('img-upload-form')
+				, totalFiles
+				, previewTitle
+				, previewTitleText
+				, img;
+
+				imgUpload.addEventListener('change', previewImgs, false);
+				imgUploadForm.addEventListener('submit', function (e) {
+				e.preventDefault();
+				alert('Images Uploaded! (not really, but it would if this was on your website)');
+				}, false);
+
+				function previewImgs(event) {
+				totalFiles = imgUpload.files.length;
+				
+				if(!!totalFiles) {
+					imgPreview.classList.remove('quote-imgs-thumbs--hidden');
+					previewTitle = document.createElement('p');
+					previewTitle.style.fontWeight = 'bold';
+					previewTitleText = document.createTextNode(totalFiles + ' Total Images Selected');
+					previewTitle.appendChild(previewTitleText);
+					imgPreview.appendChild(previewTitle);
+				}
+				
+				for(var i = 0; i < totalFiles; i++) {
+					img = document.createElement('img');
+					img.src = URL.createObjectURL(event.target.files[i]);
+					img.classList.add('img-preview-thumb');
+					imgPreview.appendChild(img);
+				}
+				}
+		</script>
 	</body>
 </html>
