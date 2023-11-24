@@ -168,6 +168,6 @@ class Cart extends BaseController
             $values = ['Status'=>1,'TransactionNo'=>$code];
             $orderModel->update($row->orderID,$values);
         }
-        return $this->response->redirect(site_url('customer/success'));
+        return $this->response->redirect(site_url('customer/success?code='.$code));
     }
 }

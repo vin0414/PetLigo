@@ -64,9 +64,9 @@
 				<div class="row align-items-center">
 					<div class="col-3"></div>
 					<div class="col-md-6 col-lg-6">
-						<div class="login-box bg-white box-shadow border-radius-10">
-							<div class="login-title">
-								<h2 class="text-center text-primary"><img src="/assets/images/petligo.png" alt="" width="100"/></h2>
+						<div class="card-box">
+							<div class="card-body">
+								<div class="card-title">Complete Purchase</div>
 							</div>
 						</div>
 					</div>
