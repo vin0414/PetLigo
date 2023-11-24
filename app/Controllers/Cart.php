@@ -145,7 +145,7 @@ class Cart extends BaseController
         //generate code
         $code="";
         $builder = $this->db->table('tblcustomer_order');
-        $builder->select('COUNT(OrderNo)total');
+        $builder->select('COUNT(OrderNo)+1 as total');
         $count = $builder->get();
         if($row = $count->getRow())
         {
