@@ -45,6 +45,11 @@ class Customer extends BaseController
         return view('customer/pets',$data);    
     }
 
+    public function editPets($id=null)
+    {
+        return view('customer/edit-pets');
+    }
+
     public function profile()
     {
         $user = session()->get('sess_id');
@@ -156,5 +161,39 @@ class Customer extends BaseController
     public function Success()
     {
         return view('customer/success');
+    }
+
+    public function updatePassword()
+    {
+        $customerModel = new \App\Models\customerModel();
+        $user = session()->get('sess_id');
+        $new_password = $this->request->getPost('new_password');
+        $retype_password = $this->request->getPost('retype_password');
+        
+        $validation = $this->validate([
+            'new_password'=>'required',
+            'retype_password'=>'required',
+        ]);
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid! Please fill in the form to continue');
+            return redirect()->to('customer/profile')->withInput();
+        }
+        else
+        {
+            if($new_password!=$retype_password)
+            {
+                session()->setFlashdata('fail','Invalid! Password mismatched');
+                return redirect()->to('customer/profile')->withInput();
+            }
+            else
+            {
+                $defaultPassword = Hash::make($new_password);
+                $values = ['Password'=>$defaultPassword,];
+                $customerModel->update($user,$values);
+                session()->setFlashdata('success','Great! Successfully save changes');
+                return redirect()->to('customer/profile')->withInput();
+            }
+        }
     }
 }
