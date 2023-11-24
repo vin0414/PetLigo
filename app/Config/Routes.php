@@ -73,6 +73,7 @@ $routes->post('cart/checkout','Cart::checkOut');
 $routes->post('cart/save-order','Cart::saveOrder');
 $routes->post('upload','Customer::upload');
 $routes->post('customer-password','Customer::updatePassword');
+$routes->post('save-info','Customer::saveInfo');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {

@@ -163,6 +163,16 @@ class Customer extends BaseController
         return view('customer/success');
     }
 
+    public function saveInfo()
+    {
+        $informationModel = new \App\Models\informationModel();
+        //save data
+        $user = session()->get('sess_id');
+        $address = $this->request->getPost('address');
+        $email = $this->request->getPost('email');
+        $phone = $this->request->getPost('phone');
+    }
+
     public function updatePassword()
     {
         $customerModel = new \App\Models\customerModel();
