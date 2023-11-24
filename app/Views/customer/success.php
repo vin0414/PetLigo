@@ -96,12 +96,17 @@
 								<h5>Payment Method</h5>
 								<hr/>
 								<form method="post" class="row g-3" id="frmPayment">
+									<input type="hidden" name="code" value="<?php echo $code; ?>"/>
 									<div class="col-12">
 										<input type="radio" name="paymentMethod" style="width:20px;height:15px;" id="GCash" value="Gcash"/>&nbsp;<label>Gcash</label>
 										<small>The system will send you the generated Gcash QR Code to your email</small>
 									</div>
 									<div class="col-12">
 										<input type="radio" name="paymentMethod" style="width:20px;height:15px;" id="COD" value="COD"/>&nbsp;<label>Cash On Delivery</label>
+									</div>
+									<div class="col-12">
+										<br/>
+										<button type="submit" class="btn btn-primary" id="btnConfirm">Confirm</button>
 									</div>
 								</form>
 							</div>
