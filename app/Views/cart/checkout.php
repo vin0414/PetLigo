@@ -161,7 +161,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Province</label>
-                                        <input type="text" class="form-control" name="province" required/>
+                                        <input type="text" class="form-control" name="province" value="Cavite" required/>
                                     </div>
                                     <div class="col-lg-2">
                                         <label>Zip Code</label>

@@ -106,7 +106,7 @@
 									</div>
 									<div class="col-12">
 										<br/>
-										<button type="submit" class="btn btn-primary" id="btnConfirm">Confirm</button>
+										<button type="submit" class="btn btn-primary" id="btnConfirm">Complete Purchase</button>
 									</div>
 								</form>
 							</div>
