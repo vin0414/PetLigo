@@ -90,7 +90,7 @@
                         <label><b>Order Item(s)</b></label>
                         <table class="table table-striped">
                             <thead>
-                                <th></th>
+                                <th><span class="fa fa-list"></span></th>
                                 <th>Item(s)</th>
                                 <th>Quantity</th>
                                 <th>Unit Price</th>
@@ -99,7 +99,9 @@
                             <tbody>
                                 <?php foreach($items as $row): ?>
                                     <tr>
-                                        <td><button type="button" class="btn btn-default btn-sm delete" value="<?php echo $row->orderID ?>"><span class="fa fa-trash"></span></button></td>
+                                        <td><button type="button" class="btn btn-default btn-sm delete" value="<?php echo $row->orderID ?>">
+                                          <span class="fa fa-trash"></span>&nbsp;Remove</button>
+                                        </td>
                                         <td><?php echo $row->productName ?></td>
                                         <td><?php echo $row->Qty ?></td>
                                         <td style="text-align: right;"><?php echo number_format($row->price,2) ?></td>
@@ -268,5 +270,30 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="/assets/js/google-map.js"></script>
   <script src="/assets/js/main.js"></script>
+  <script>
+    $(document).on('click','.delete',function(e)
+    {
+      e.preventDefault();
+      var confirmation = confirm("Do you want to remove this item?");
+      if(confirmation)
+      {
+        var val = $(this).val();
+        $.ajax({
+          url:"<?=site_url('remove-item')?>",method:"POST",
+          data:{value:val},
+          success:function(response)
+          {
+            if(response==="success")
+            {
+              location.reload();
+            }
+            else{
+              alert(response);
+            }
+          }
+        });
+      }
+    });
+  </script>
   </body>
 </html>
