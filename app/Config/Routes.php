@@ -103,6 +103,7 @@ $routes->group('',['filter'=>'customerAuthCheck'],function($routes)
     $routes->get('customer/reservations','Customer::Reservations');
     $routes->get('customer/orders','Customer::Orders');
     $routes->get('customer/pets','Customer::Pets');
+    $routes->get('customer/edit-pet/(:any)','Customer::editPet/$1');
     $routes->get('customer/profile','Customer::Profile');
     $routes->get('cart/shipping','Customer::shipping');
     $routes->get('customer/success','Customer::Success');

@@ -496,7 +496,7 @@
 										<td><?php echo $row->Breed ?></td>
 										<td><?php echo $row->Age ?></td>
 										<td>
-											<a href="<?=site_url('customer/edit-pet/')?><?php echo $row->petsID ?>"><span class="dw dw-edit-1"></span> Edit</a>
+											<a href="<?=site_url('customer/edit-pet/')?><?php echo $row->petsID ?>"><span class="dw dw-edit-1"></span> Edit Info</a>
 										</td>
 									</tr>
 								<?php endforeach; ?>

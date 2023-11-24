@@ -45,9 +45,14 @@ class Customer extends BaseController
         return view('customer/pets',$data);    
     }
 
-    public function editPets($id=null)
+    public function editPet($id=null)
     {
-        return view('customer/edit-pets');
+        $builder = $this->db->table('tblpets');
+        $builder->select('*');
+        $builder->WHERE('petsID',$id);
+        $pets = $builder->get()->getResult();
+        $data = ['pets'=>$pets];
+        return view('customer/edit-pets',$data);
     }
 
     public function profile()
