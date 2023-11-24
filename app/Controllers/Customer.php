@@ -282,4 +282,13 @@ class Customer extends BaseController
         }
         echo json_encode($info);
     }
+
+    public function removeItem()
+    {
+        $val = $this->request->getPost('value');
+        $builder = $this->db->table('tblorders');
+        $builder->where('orderID', $val);
+        $builder->delete();
+        echo "success";
+    }
 }
