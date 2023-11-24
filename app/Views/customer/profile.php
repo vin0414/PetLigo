@@ -454,7 +454,7 @@
 						<div class="card-box">
 							<div class="card-header">Personal Information</div>
 							<div class="card-body">
-								<form method="POST" class="row g-3" id="frmCustomer" action="<?=base_url('save_info')?>">
+								<form method="POST" class="row g-3" id="frmCustomer">
 									<div class="col-12 form-group">
 										<label>Complete Name</label>
 										<input type="text" class="form-control" value="<?php echo session()->get('sess_fullname') ?>"/>
@@ -472,7 +472,7 @@
 										<input type="phone" class="form-control" maxlength="11" minlength="11" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"required/>
 									</div>
 									<div class="col-12 form-group">
-										<button type="submit" class="btn btn-primary">Save Changes</button>
+										<button type="submit" class="btn btn-primary" id="btnSave">Save Changes</button>
 									</div>
 								</form>
 							</div>
@@ -603,6 +603,34 @@
                     }
                 });
           });
+
+		  $('#btnSave').on('click',function(e)
+		  {
+			e.preventDefault();
+			var data = $('#frmCustomer').serialize();
+			$.ajax({
+				url:"<?=site_url('save-info')?>",method:"POST",
+				data:data,success:function(response)
+				{
+					if(response==="success")
+					{
+						Swal.fire({
+                              icon: 'success',
+                              title: 'Great!',
+                              text: 'Successfully saved'
+                            });
+					}
+					else
+					{
+						Swal.fire({
+                              icon: 'error',
+                              title: 'Error!',
+                              text: response
+                            });
+					}
+				}
+			});
+		  });
 		</script>
 	</body>
 </html>

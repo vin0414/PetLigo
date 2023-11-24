@@ -171,6 +171,26 @@ class Customer extends BaseController
         $address = $this->request->getPost('address');
         $email = $this->request->getPost('email');
         $phone = $this->request->getPost('phone');
+        $image = "N/A";
+
+        $validation = $this->validate([
+            'address'=>'required',
+            'email'=>'required|valid_email',
+            'phone'=>'required',
+        ]);
+
+        if(!$validation)
+        {
+            echo "Invalid! Please fill in the form";
+        }
+        else
+        {
+            $values = [
+                'customerID'=>$user, 'Address'=>$address,'ContactNo'=>$phone,'EmailAddress'=>$email,'Image'=>$image
+            ];
+            $informationModel->save($values);
+            echo "success";
+        }
     }
 
     public function updatePassword()
