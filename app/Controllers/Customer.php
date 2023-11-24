@@ -220,4 +220,19 @@ class Customer extends BaseController
             }
         }
     }
+
+    public function fetchInfo()
+    {
+        $user = session()->get('sess_id');
+        $builder = $this->db->table('tblcustomer_info a');
+        $builder->select('*');
+        $builder->WHERE('customerID',$user);
+        $data = $builder->get();
+        $info="";
+        foreach($data->getResult() as $row)
+        {
+            $info = array("Address"=>$row->Address,"Contact"=>$row->ContactNo,"Email"=>$row->EmailAddress);
+        }
+        echo json_encode($info);
+    }
 }

@@ -99,66 +99,7 @@
 						<div class="dropdown-menu dropdown-menu-right">
 							<div class="notification-list mx-h-350 customscroll">
 								<ul>
-									<li>
-										<a href="#">
-											<img src="vendors/images/img.jpg" alt="" />
-											<h3>John Doe</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo1.jpg" alt="" />
-											<h3>Lea R. Frith</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo2.jpg" alt="" />
-											<h3>Erik L. Richards</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo3.jpg" alt="" />
-											<h3>John Doe</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo4.jpg" alt="" />
-											<h3>Renee I. Hansen</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/img.jpg" alt="" />
-											<h3>Vicki M. Coleman</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
+									
 								</ul>
 							</div>
 						</div>
@@ -188,11 +129,6 @@
 							>
 						</div>
 					</div>
-				</div>
-				<div class="github-link">
-					<a href="https://github.com/dropways/deskapp" target="_blank"
-						><img src="vendors/images/github.svg" alt=""
-					/></a>
 				</div>
 			</div>
 		</div>
@@ -461,15 +397,15 @@
 									</div>
 									<div class="col-12 form-group">
 										<label>Complete Address</label>
-										<textarea class="form-control" name="address" required></textarea>
+										<textarea class="form-control" id="address" name="address" required></textarea>
 									</div>
 									<div class="col-12 form-group">
 										<label>Email Address</label>
-										<input type="email" class="form-control" name="email" required/>
+										<input type="email" class="form-control" name="email" id="email" required/>
 									</div>
 									<div class="col-12 form-group">
 										<label>Contact No</label>
-										<input type="phone" class="form-control" maxlength="11" minlength="11" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"required/>
+										<input type="phone" class="form-control" maxlength="11" minlength="11" id="phone" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"required/>
 									</div>
 									<div class="col-12 form-group">
 										<button type="submit" class="btn btn-primary" id="btnSave">Save Changes</button>
@@ -534,9 +470,25 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-		<script src="/resources/vendors/scripts/dashboard.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<script>
+			$(document).ready(function()
+			{
+				fetch();
+			});
+			function fetch()
+			{
+				$.ajax({
+					url:"<?=site_url('fetch-information')?>",type:"GET",
+					dataType:"json",
+					success:function(data)
+					{
+						$('#address').val(data["Address"]);
+						$('#phone').val(data["Contact"]);
+						$('#email').val(data["Email"]);
+					}
+				});
+			}
 			function myFunction() {
             var x = document.getElementById("new_password");
             if (x.type === "password") {

@@ -74,6 +74,7 @@ $routes->post('cart/save-order','Cart::saveOrder');
 $routes->post('upload','Customer::upload');
 $routes->post('customer-password','Customer::updatePassword');
 $routes->post('save-info','Customer::saveInfo');
+$routes->get('fetch-information','Customer::fetchInfo');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
