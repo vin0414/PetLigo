@@ -14,7 +14,7 @@ class customerOrderModel extends Model
     protected $returnType = 'array';
     protected $userSoftDelete = false;
     protected $protectFields = true;
-    protected $allowedFields = ['customerID','Firstname', 'Surname','Address','Email','contactNumber','Status','DateCreated'];
+    protected $allowedFields = ['customerID','Firstname', 'Surname','Address','Email','contactNumber','Status','charge','Total','DateCreated','TransactionNo','DateReceived'];
 
     protected $validationRules = [];
     protected $validationMessages = [];

@@ -142,21 +142,30 @@ class Cart extends BaseController
         $province = $this->request->getPost('province');
         $zip  = $this->request->getPost('zipcode');
         $address = $apartment." ".$street.", ".$city.", ".$province." ".$zip;
+        //generate code
+        $code="";
+        $builder = $this->db->table('tblcustomer_order');
+        $builder->select('COUNT(OrderNo)total');
+        $count = $builder->get();
+        if($row = $count->getRow())
+        {
+            $code = str_pad($row->total, 7, '0', STR_PAD_LEFT);
+        }
         //save
         $values = [
             'customerID'=>$user,'Firstname'=>$fname, 'Surname'=>$sname,'Address'=>$address,
-            'Email'=>$emailadd,'contactNumber'=>$phone,'Status'=>0,'DateCreated'=>date('Y-m-d')
+            'Email'=>$emailadd,'contactNumber'=>$phone,'Status'=>0,'charge'=>0.00,'Total'=>0.00,
+            'DateCreated'=>date('Y-m-d'),'TransactionNo'=>$code,'DateReceived'=>'0000-00-00'
         ];
         $customerOrder->save($values);
         //update the item ordered
-        $builder = $this->db->table('tblorders a');
-        $builder->select('a.orderID,b.OrderNo');
-        $builder->join('tblorders b','b.customerID=a.customerID','LEFT');
-        $builder->WHERE('a.customerID',$user)->WHERE('a.Status',0);
+        $builder = $this->db->table('tblorders');
+        $builder->select('orderID');
+        $builder->WHERE('customerID',$user)->WHERE('Status',0);
         $data = $builder->get();
         foreach($data->getResult() as $row)
         {
-            $values = ['Status'=>1,'OrderNo'=>$row->OrderNo];
+            $values = ['Status'=>1,'TransactionNo'=>$code];
             $orderModel->update($row->orderID,$values);
         }
         return $this->response->redirect(site_url('customer/success'));
