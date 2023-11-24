@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 use App\Libraries\Hash;
+use CodeIgniter\Database\SQLite3\Table;
+
 class Customer extends BaseController
 {
     private $db;
@@ -201,7 +203,19 @@ class Customer extends BaseController
 
     public function Success()
     {
-        return view('customer/success');
+        $code = $this->request->getGet('code');
+        $builder = $this->db->table('tblorders');
+        $builder->select('*');
+        $builder->WHERE('TransactionNo',$code);
+        $list = $builder->get()->getResult();
+        //total
+        $builder = $this->db->table('tblorders');
+        $builder->select('SUM(Qty*price)total');
+        $builder->WHERE('TransactionNo',$code)->GROUPBY('TransactionNo');
+        $total = $builder->get()->getResult();
+
+        $data = ['list'=>$list,'total'=>$total,'code'=>$code];
+        return view('customer/success',$data);
     }
 
     public function saveInfo()

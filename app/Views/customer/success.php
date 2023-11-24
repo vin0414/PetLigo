@@ -4,7 +4,7 @@
 	<head>
 		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
-		<title>Successful</title>
+		<title>Complete Purchase</title>
 
 		<!-- Site favicon -->
 		<link
@@ -66,7 +66,44 @@
 					<div class="col-md-6 col-lg-6">
 						<div class="card-box">
 							<div class="card-body">
-								<div class="card-title">Complete Purchase</div>
+								<h3>Complete Purchase</h3>
+								<p>&nbsp;Reference No :<?php echo $code; ?></p>
+								<table class="table hover table-borderless nowrap">
+									<thead>
+										<th>Purchase Summary</th>
+										<th style="text-align:right;">Quantity</th>
+										<th style="text-align:right;">Sub-Total</th>
+									</thead>
+									<tbody>
+										<?php foreach($list as $row): ?>
+											<tr>
+												<td><?php echo $row->productName ?></td>
+												<td style="text-align:right;"><?php echo $row->Qty ?></td>
+												<td style="text-align:right;">PhP <?php echo number_format($row->Qty*$row->price,2) ?></td>
+											</tr>
+										<?php endforeach; ?>
+										<tr><td colspan='3'></td></tr>
+										<?php foreach($total as $row): ?>
+											<tr>
+												<td>&nbsp;</td>
+												<td style="text-align:right;font-size:18px;font-weight:bold;">TOTAL</td>
+												<td style="text-align:right;font-size:18px;font-weight:bold;">PhP <?php echo number_format($row->total,2) ?></td>
+											</tr>
+										<?php endforeach; ?>
+									</tbody>
+								</table>
+								<br/>
+								<h5>Payment Method</h5>
+								<hr/>
+								<form method="post" class="row g-3" id="frmPayment">
+									<div class="col-12">
+										<input type="radio" name="paymentMethod" style="width:20px;height:15px;" id="GCash" value="Gcash"/>&nbsp;<label>Gcash</label>
+										<small>The system will send you the generated Gcash QR Code to your email</small>
+									</div>
+									<div class="col-12">
+										<input type="radio" name="paymentMethod" style="width:20px;height:15px;" id="COD" value="COD"/>&nbsp;<label>Cash On Delivery</label>
+									</div>
+								</form>
 							</div>
 						</div>
 					</div>
