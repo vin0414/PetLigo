@@ -55,6 +55,48 @@ class Customer extends BaseController
         return view('customer/edit-pets',$data);
     }
 
+    public function updatePet()
+    {
+        $petModel = new \App\Models\petModel();
+        //data
+        $file = $this->request->getFile('files');
+        $originalName = $file->getClientName();
+        $pet = $this->request->getPost('petname');
+        $breed = $this->request->getPost('breed');
+        $age = $this->request->getPost('age');
+        $id = $this->request->getPost('petID');
+
+        $validation = $this->validate([
+            'petname'=>'required',
+            'breed'=>'required',
+            'age'=>'required',
+        ]);
+
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid! Please fill in the form to continue');
+            return redirect()->to('customer/pets')->withInput();
+        }
+        else
+        {
+            if($file->isValid() && ! $file->hasMoved())
+            {
+                $file->move('pets/',$originalName);
+                $values = [
+                    'Name'=>$pet,'Breed'=>$breed,'Age'=>$age,'Photo'=>$originalName,
+                ];
+                $petModel->update($id,$values);
+                session()->setFlashdata('success','Great! Successfully updated');
+                return redirect()->to('customer/pets')->withInput();
+            }
+            else
+            {
+                session()->setFlashdata('fail','Error! Something went wrong');
+                return redirect()->to('customer/pets')->withInput();
+            }
+        }
+    }
+
     public function profile()
     {
         return view('customer/profile');

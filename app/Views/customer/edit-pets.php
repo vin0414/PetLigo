@@ -466,18 +466,20 @@
                             <a href="<?=site_url('customer/pets')?>" style="float:right;"><i class="icon-copy dw dw-left-arrow1"></i>&nbsp;Back</a>
                             </div>
                             <div class="card-body">
+                                <?php foreach($pets as $row): ?>
                                 <form method="post" class="row g-3" action="<?=base_url('update-pet-info')?>" enctype="multipart/form-data" id="frmPet">
+                                    <input type="hidden" name="petID" value="<?php echo $row->petsID ?>"/>
                                     <div class="col-12 form-group">
                                         <label>Name</label>
-                                        <input type="text" class="form-control" name="petname" required/>
+                                        <input type="text" class="form-control" name="petname" value="<?php echo $row->Name ?>" required/>
                                     </div>
                                     <div class="col-12 form-group">
                                         <label>Breed</label>
-                                        <input type="text" class="form-control" name="breed" required/>
+                                        <input type="text" class="form-control" name="breed" value="<?php echo $row->Breed ?>" required/>
                                     </div>
                                     <div class="col-12 form-group">
                                         <label>Age</label>
-                                        <input type="number" class="form-control" name="age" required/>
+                                        <input type="number" class="form-control" name="age" value="<?php echo $row->Age ?>" required/>
                                     </div>
                                     <div class="col-12 form-group">
                                         <p>
@@ -490,6 +492,7 @@
                                         <button type="submit" class="btn btn-primary" id="btnSubmit">Save Changes</button>
                                     </div>
                                 </form>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>

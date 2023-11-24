@@ -69,6 +69,7 @@ $routes->post('/save-category','Home::saveCategory');
 $routes->post('/update-password','Home::updatePassword');
 //customer
 $routes->post('/save-pet','Customer::savePet');
+$routes->post('update-pet-info','Customer::updatePet');
 $routes->post('cart/checkout','Cart::checkOut');
 $routes->post('cart/save-order','Cart::saveOrder');
 $routes->post('upload','Customer::upload');
