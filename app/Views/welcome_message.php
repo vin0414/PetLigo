@@ -502,28 +502,19 @@
 					</div>
 					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 						<h2 class="footer-heading">Latest News</h2>
+            <?php foreach($blog as $row): ?>
+            <?php $imgURL = "/Blogs/".$row->Image; ?>
 						<div class="block-21 mb-4 d-flex">
-              <a class="img mr-4 rounded" style="background-image: url(assets/images/image_1.jpg);"></a>
+              <a class="img mr-4 rounded" style="background-image: url(<?php echo $imgURL ?>);"></a>
               <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
+                <h3 class="heading"><a href="#"><?php echo $row->blogTitle ?></a></h3>
                 <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span> April 7, 2020</a></div>
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                  <div><a href="#"><span class="icon-calendar"></span><?php echo $row->Date ?></a></div>
+                  <div><a href="#"><span class="icon-person"></span><?php echo $row->Fullname ?></a></div>
                 </div>
               </div>
             </div>
-            <div class="block-21 mb-4 d-flex">
-              <a class="img mr-4 rounded" style="background-image: url(assets/images/image_2.jpg);"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about</a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span> April 7, 2020</a></div>
-                  <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                  <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                </div>
-              </div>
-            </div>
+            <?php endforeach; ?>
 					</div>
 					<div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
 						<h2 class="footer-heading">Quick Links</h2>

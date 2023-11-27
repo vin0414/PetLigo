@@ -785,17 +785,35 @@ class Home extends BaseController
 
     public function membership()
     {
-        return view('membership');
+        $builder = $this->db->table('tblblog a');
+        $builder->select('a.*,b.Fullname');
+        $builder->join('tblaccount b','b.accountID=a.accountID','LEFT');
+        $builder->orderBy('a.blogID','DESC')->limit(3);
+        $blog = $builder->get()->getResult();
+        $data = ['blog'=>$blog];
+        return view('membership',$data);
     }
 
     public function book()
     {
-        return view('book');
+        $builder = $this->db->table('tblblog a');
+        $builder->select('a.*,b.Fullname');
+        $builder->join('tblaccount b','b.accountID=a.accountID','LEFT');
+        $builder->orderBy('a.blogID','DESC')->limit(3);
+        $blog = $builder->get()->getResult();
+        $data = ['blog'=>$blog];
+        return view('book',$data);
     }
 
     public function services()
     {
-        return view('services');
+        $builder = $this->db->table('tblblog a');
+        $builder->select('a.*,b.Fullname');
+        $builder->join('tblaccount b','b.accountID=a.accountID','LEFT');
+        $builder->orderBy('a.blogID','DESC')->limit(3);
+        $blog = $builder->get()->getResult();
+        $data = ['blog'=>$blog];
+        return view('services',$data);
     }
 
     public function register()
@@ -917,7 +935,12 @@ class Home extends BaseController
     {
         $categoryModel = new \App\Models\categoryModel();
         $category = $categoryModel->findAll();
-        $data = ['category'=>$category];
+        $builder = $this->db->table('tblblog a');
+        $builder->select('a.*,b.Fullname');
+        $builder->join('tblaccount b','b.accountID=a.accountID','LEFT');
+        $builder->orderBy('a.blogID','DESC')->limit(3);
+        $blog = $builder->get()->getResult();
+        $data = ['category'=>$category,'blog'=>$blog];
         return view('products',$data);
     } 
 
