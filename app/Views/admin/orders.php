@@ -459,7 +459,7 @@
 													<button class="dropdown-item view" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-eye"></i> View Orders</button>
 												<?php }else { ?>
 													<button class="dropdown-item view" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-eye"></i> View Orders</button>
-													<button class="dropdown-item" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-edit2"></i> Tag as Paid</button>
+													<button class="dropdown-item" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-check"></i> Tag as Paid</button>
 													<button class="dropdown-item" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-edit2"></i> Update Status</button>
 												<?php } ?>
 												</div>
