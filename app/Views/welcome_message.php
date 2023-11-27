@@ -409,14 +409,14 @@
           <?php $imgURL = "/Blogs/".$row->Image; ?>
           <div class="col-md-4 d-flex ftco-animate">
             <div class="blog-entry align-self-stretch">
-              <a href="?=site_url('blogs/')?><?php echo $row->blogTitle ?>" class="block-20 rounded" style="background-image: url(<?php echo $imgURL ?>);">
+              <a href="?=site_url('post/')?><?php echo $row->blogTitle ?>" class="block-20 rounded" style="background-image: url(<?php echo $imgURL ?>);">
               </a>
               <div class="text p-4">
               	<div class="meta mb-2">
                   <div><a href="#"><?php echo $row->Date ?></a></div>
                   <div><a href="#"><?php echo $row->Fullname ?></a></div>
                 </div>
-                <h3 class="heading"><a href="<?=site_url('blogs/')?><?php echo $row->blogTitle ?>"><?php echo $row->blogTitle ?></a></h3>
+                <h3 class="heading"><a href="<?=site_url('post/')?><?php echo $row->blogTitle ?>"><?php echo $row->blogTitle ?></a></h3>
               </div>
             </div>
           </div>
