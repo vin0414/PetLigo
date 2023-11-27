@@ -726,7 +726,7 @@ class Home extends BaseController
         {
             ?>
             <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                <h5 class="mb-1 h5 color-white"><?php echo $row->blogTitle ?></h5>
+                <h5 class="mb-1 h5"><?php echo $row->blogTitle ?></h5>
                 <div class="pb-1">
                     <small class="weight-600"><?php echo $row->Date ?></small>
                 </div>
@@ -735,6 +735,35 @@ class Home extends BaseController
                 </p>
             </a>
             <?php
+        }
+    }
+
+    public function createBlog()
+    {
+        $blogModel = new \App\Models\blogModel();
+        $user = session()->get('loggedUser');
+        $date = date('Y-m-d');
+        $title = $this->request->getPost('title');
+        $content = $this->request->getPost('content');
+        $file = $this->request->getFile('files');
+        $originalName = $file->getClientName();
+
+        $validation = $this->validate([
+            'title'=>'required',
+            'content'=>'required',
+        ]);
+
+        if(!$validation)
+        {
+            echo "Invalid! Please fill in the form";
+        }
+        else
+        {
+            $values = [
+                'blogTitle'=>$title, 'Content'=>$content,'Image'=>$originalName,'Date'=>$date,'accountID'=>$user
+            ];
+            $blogModel->save($values);
+            echo "success";
         }
     }
 

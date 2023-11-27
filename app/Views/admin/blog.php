@@ -415,7 +415,7 @@
 		<div class="main-container">
 			<div class="pd-ltr-20">
                 <div class="row g-3">
-                    <div class="col-lg-9 form-group">
+                    <div class="col-lg-8 form-group">
                         <div class="card-box">
                             <div class="card-body">
                                 <h4 class="mb-20 h4">Create a blog</h4>
@@ -424,7 +424,7 @@
                                         <input type="text" class="form-control" name="title" placeholder="Your Title" required/>
                                     </div>
                                     <div class="col-12 form-group">
-                                        <textarea class="textarea_editor form-control border-radius-0" placeholder="Enter text ..." required></textarea>
+                                        <textarea class="textarea_editor form-control border-radius-0" name="content" placeholder="Enter text ..." required></textarea>
                                     </div>
                                     <div class="col-12 form-group">
                                         <p>
@@ -440,7 +440,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-3 form-group">
+                    <div class="col-lg-4 form-group">
                         <div class="card-box">
                             <div class="card-body">
                                 <h4 class="mb-20 h4">Recent Blogs</h4>
@@ -518,6 +518,36 @@
                     }
                 });
             }
+
+            $('#frmBlog').on('submit',function(evt)
+            {
+                evt.preventDefault();
+                $.ajax({
+                    url:"<?=site_url('create-blog')?>",method:"POST",
+                    data:new FormData(this),
+                    contentType: false,
+                    cache: false,
+                    processData:false,
+                    beforeSend: function(){
+                        $('#btnSave').attr("disabled","disabled");
+                        $('#frmBlog').css("opacity",".5");
+                    },
+                    success:function(data)
+                    {
+                        if(data==="success")
+                        {
+                            $('#frmBlog')[0].reset();
+                            location.reload();
+                        }
+                        else
+                        {
+                            alert(data);
+                        }
+                        $('#frmBlog').css("opacity","");
+                        $("#btnSave").removeAttr("disabled");
+                    }
+                });
+            });
         </script>
 	</body>
 </html>
