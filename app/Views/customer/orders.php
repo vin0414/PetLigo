@@ -526,7 +526,10 @@
 					}).then((result) => {
 					if (result.isConfirmed) 
 					{
-						
+						var val = $(this).val();
+						$.ajax({
+							
+						});
 					}
 				});
 			});

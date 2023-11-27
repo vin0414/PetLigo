@@ -95,6 +95,12 @@ class Customer extends BaseController
         return redirect()->to('customer/orders')->withInput();
     }
 
+    public function cancelOrder()
+    {
+        $customerOrderModel = new \App\Models\customerOrderModel();
+        $paymentModel = new \App\Models\paymentModel();
+    }
+
     public function Pets()
     {
         $user = session()->get('sess_id');

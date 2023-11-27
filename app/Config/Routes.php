@@ -78,6 +78,8 @@ $routes->post('save-info','Customer::saveInfo');
 $routes->get('fetch-information','Customer::fetchInfo');
 $routes->post('remove-item','Customer::removeItem');
 $routes->post('confirm','Customer::Confirm');
+$routes->post('cancel-order','Customer::cancelOrder');
+
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
     $routes->get('admin/dashboard','Home::Dashboard');
