@@ -33,6 +33,11 @@ class Customer extends BaseController
         return view('customer/orders',$data);
     }
 
+    public function Confirm()
+    {
+        
+    }
+
     public function Pets()
     {
         $user = session()->get('sess_id');

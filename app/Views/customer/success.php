@@ -95,7 +95,7 @@
 								<br/>
 								<h5>Payment Method</h5>
 								<hr/>
-								<form method="post" class="row g-3" id="frmPayment">
+								<form method="post" class="row g-3" id="frmPayment" action="<?=base_url('confirm')?>">
 									<input type="hidden" name="code" value="<?php echo $code; ?>"/>
 									<div class="col-12">
 										<input type="radio" name="paymentMethod" style="width:20px;height:15px;" id="GCash" value="Gcash" required/>&nbsp;<label>Gcash</label>
