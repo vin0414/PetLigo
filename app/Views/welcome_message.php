@@ -215,115 +215,6 @@
         </div>
     	</div>
     </section>
-
-    <section class="ftco-section bg-light ftco-faqs">
-    	<div class="container">
-    		<div class="row">
-    			<div class="col-lg-6 order-md-last">
-    				<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0" style="background-image:url(images/about.jpg);">
-    					<a href="https://vimeo.com/45830194" class="icon-video popup-vimeo d-flex justify-content-center align-items-center">
-    						<span class="fa fa-play"></span>
-    					</a>
-    				</div>
-    				<div class="d-flex mt-3">
-    					<div class="img img-2 mr-md-2" style="background-image:url(assets/images/about-2.jpg);"></div>
-    					<div class="img img-2 ml-md-2" style="background-image:url(assets/images/about-3.jpg);"></div>
-    				</div>
-    			</div>
-
-    			<div class="col-lg-6">
-    				<div class="heading-section mb-5 mt-5 mt-lg-0">
-	            <h2 class="mb-3">Frequently Asks Questions</h2>
-	            <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
-    				</div>
-    				<div id="accordion" class="myaccordion w-100" aria-multiselectable="true">
-						  <div class="card">
-						    <div class="card-header p-0" id="headingOne">
-						      <h2 class="mb-0">
-						        <button href="#collapseOne" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
-						        	<p class="mb-0">How to train your pet dog?</p>
-						          <i class="fa" aria-hidden="true"></i>
-						        </button>
-						      </h2>
-						    </div>
-						    <div class="collapse show" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
-						      <div class="card-body py-3 px-0">
-						      	<ol>
-						      		<li>Far far away, behind the word mountains</li>
-						      		<li>Consonantia, there live the blind texts</li>
-						      		<li>When she reached the first hills of the Italic Mountains</li>
-						      		<li>Bookmarksgrove, the headline of Alphabet Village</li>
-						      		<li>Separated they live in Bookmarksgrove right</li>
-						      	</ol>
-						      </div>
-						    </div>
-						  </div>
-
-						  <div class="card">
-						    <div class="card-header p-0" id="headingTwo" role="tab">
-						      <h2 class="mb-0">
-						        <button href="#collapseTwo" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
-						        	<p class="mb-0">How to manage your pets?</p>
-						          <i class="fa" aria-hidden="true"></i>
-						        </button>
-						      </h2>
-						    </div>
-						    <div class="collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
-						      <div class="card-body py-3 px-0">
-						      	<ol>
-						      		<li>Far far away, behind the word mountains</li>
-						      		<li>Consonantia, there live the blind texts</li>
-						      		<li>When she reached the first hills of the Italic Mountains</li>
-						      		<li>Bookmarksgrove, the headline of Alphabet Village</li>
-						      		<li>Separated they live in Bookmarksgrove right</li>
-						      	</ol>
-						      </div>
-						    </div>
-						  </div>
-
-						  <div class="card">
-						    <div class="card-header p-0" id="headingThree" role="tab">
-						      <h2 class="mb-0">
-						        <button href="#collapseThree" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
-						        	<p class="mb-0">What is the best grooming for your pets?</p>
-						          <i class="fa" aria-hidden="true"></i>
-						        </button>
-						      </h2>
-						    </div>
-						    <div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingTwo">
-						      <div class="card-body py-3 px-0">
-						      	<ol>
-						      		<li>Far far away, behind the word mountains</li>
-						      		<li>Consonantia, there live the blind texts</li>
-						      		<li>When she reached the first hills of the Italic Mountains</li>
-						      		<li>Bookmarksgrove, the headline of Alphabet Village</li>
-						      		<li>Separated they live in Bookmarksgrove right</li>
-						      	</ol>
-						      </div>
-						    </div>
-						  </div>
-
-						  <div class="card">
-						    <div class="card-header p-0" id="headingFour" role="tab">
-						      <h2 class="mb-0">
-						        <button href="#collapseFour" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseFour">
-						        	<p class="mb-0">What are those requirements for sitting pets?</p>
-						          <i class="fa" aria-hidden="true"></i>
-						        </button>
-						      </h2>
-						    </div>
-						    <div class="collapse" id="collapseFour" role="tabpanel" aria-labelledby="headingTwo">
-						      <div class="card-body py-3 px-0">
-						      	<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-						      </div>
-						    </div>
-						  </div>
-						</div>
-	        </div>
-        </div>
-    	</div>
-    </section>
-
     <section class="ftco-section testimony-section" style="background-image: url('assets/images/bg_2.jpg');">
     	<div class="overlay"></div>
       <div class="container">
@@ -414,75 +305,8 @@
           </div>
         </div>
       </div>
-    </section>
-
-    <section class="ftco-section bg-light">
-    	<div class="container">
-    		<div class="row justify-content-center pb-5 mb-3">
-          <div class="col-md-7 heading-section text-center ftco-animate">
-            <h2>Affordable Packages</h2>
-          </div>
-        </div>
-    		<div class="row">
-    			<div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	<div class="img" style="background-image: url(assets/images/pricing-1.jpg);"></div>
-	            <div class="text-center p-4">
-	            	<span class="excerpt d-block">Personal</span>
-	            	<span class="price"><sup>$</sup> <span class="number">49</span> <sub>/mos</sub></span>
-	            
-		            <ul class="pricing-text mb-5">
-		              <li><span class="fa fa-check mr-2"></span>5 Dog Walk</li>
-		              <li><span class="fa fa-check mr-2"></span>3 Vet Visit</li>
-		              <li><span class="fa fa-check mr-2"></span>3 Pet Spa</li>
-		              <li><span class="fa fa-check mr-2"></span>Free Supports</li>
-		            </ul>
-
-	            	<a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	<div class="img" style="background-image: url(assets/images/pricing-2.jpg);"></div>
-	            <div class="text-center p-4">
-	            	<span class="excerpt d-block">Business</span>
-		            <span class="price"><sup>$</sup> <span class="number">79</span> <sub>/mos</sub></span>
-		            
-		            <ul class="pricing-text mb-5">
-		              <li><span class="fa fa-check mr-2"></span>5 Dog Walk</li>
-		              <li><span class="fa fa-check mr-2"></span>3 Vet Visit</li>
-		              <li><span class="fa fa-check mr-2"></span>3 Pet Spa</li>
-		              <li><span class="fa fa-check mr-2"></span>Free Supports</li>
-		            </ul>
-
-		            <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
-	            </div>
-	          </div>
-	        </div>
-	        <div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	<div class="img" style="background-image: url(assets/images/pricing-3.jpg);"></div>
-	            <div class="text-center p-4">
-	            	<span class="excerpt d-block">Ultimate</span>
-		            <span class="price"><sup>$</sup> <span class="number">109</span> <sub>/mos</sub></span>
-		            
-		            <ul class="pricing-text mb-5">
-		              <li><span class="fa fa-check mr-2"></span>5 Dog Walk</li>
-		              <li><span class="fa fa-check mr-2"></span>3 Vet Visit</li>
-		              <li><span class="fa fa-check mr-2"></span>3 Pet Spa</li>
-		              <li><span class="fa fa-check mr-2"></span>Free Supports</li>
-		            </ul>
-
-		            <a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a>
-	            </div>
-	          </div>
-	        </div>
-	      </div>
-    	</div>
-    </section>
-		
-		<section class="ftco-section">
+    </section>	
+	<section class="ftco-section">
 			<div class="container">
 				<div class="row justify-content-center pb-5 mb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
@@ -699,12 +523,12 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
-						<h2 class="footer-heading">Petsitting</h2>
-						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+						<h2 class="footer-heading">PetLigo</h2>
+						<p>Pet Grooming Services</p>
 						<ul class="ftco-footer-social p-0">
               <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
-              <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
+              <li class="ftco-animate"><a href="https://www.facebook.com/PetLigoCaviteCity/" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
+              <li class="ftco-animate"><a href="https://www.instagram.com/explore/locations/111949591369146/petligo---grooming-services/" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
             </ul>
 					</div>
 					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
@@ -735,21 +559,20 @@
 					<div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
 						<h2 class="footer-heading">Quick Links</h2>
 						<ul class="list-unstyled">
-              <li><a href="#" class="py-2 d-block">Home</a></li>
-              <li><a href="#" class="py-2 d-block">About</a></li>
-              <li><a href="#" class="py-2 d-block">Services</a></li>
-              <li><a href="#" class="py-2 d-block">Works</a></li>
-              <li><a href="#" class="py-2 d-block">Blog</a></li>
-              <li><a href="#" class="py-2 d-block">Contact</a></li>
+              <li><a href="/" class="py-2 d-block">Home</a></li>
+              <li><a href="/membership" class="py-2 d-block">Membership</a></li>
+              <li><a href="/services" class="py-2 d-block">Services</a></li>
+              <li><a href="/products" class="py-2 d-block">Products</a></li>
+              <li><a href="/blogs" class="py-2 d-block">Blogs</a></li>
             </ul>
 					</div>
 					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 						<h2 class="footer-heading">Have a Questions?</h2>
 						<div class="block-23 mb-3">
               <ul>
-                <li><span class="icon fa fa-map"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
+                <li><span class="icon fa fa-map"></span><span class="text">452 Padre Pio, Santa Cruz, Cavite City, 4100 Cavite</span></li>
                 <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-                <li><a href="#"><span class="icon fa fa-paper-plane"></span><span class="text">info@yourdomain.com</span></a></li>
+                <li><a href="mailto:petligo2023@gmail.com"><span class="icon fa fa-paper-plane"></span><span class="text">petligo2023@gmail.com</span></a></li>
               </ul>
             </div>
 					</div>

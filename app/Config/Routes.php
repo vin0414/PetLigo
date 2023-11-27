@@ -34,6 +34,7 @@ $routes->get('/membership','Home::membership');
 $routes->get('/book','Home::book');
 $routes->get('/services','Home::services');
 $routes->get('/products','Home::products');
+$routes->get('/blogs','Home::blogs');
 $routes->get('/load-products','Home::loadProducts');
 $routes->get('/search-products','Home::searchProducts');
 $routes->get('/filter-products','Home::filterProducts');

@@ -737,6 +737,11 @@ class Home extends BaseController
         return view('register');
     }
 
+    public function blogs()
+    {
+        return view('blogs');
+    }
+
     public function createAccount()
     {
         $customerModel = new \App\Models\customerModel();
