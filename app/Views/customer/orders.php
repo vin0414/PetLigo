@@ -435,42 +435,13 @@
 			<div class="pd-ltr-20">
 				<div class="card-box">
 					<div class="card-header">
-						Orders
+					<span class="micon dw dw-shopping-cart"></span
+								>&nbsp;Orders
 					</div>
 					<div class="card-body">
 						<br/>
 						<table class="data-table table stripe hover nowrap">
-							<thead>
-								<th>Photo</th>
-								<th>Item</th>
-								<th>Qty</th>
-								<th>Price</th>
-								<th>Total</th>
-								<th>Status</th>
-							</thead>
-							<tbody>
-								<?php foreach($order as $row): ?>
-									<?php $imgURL = "/Images/".$row->Image; ?>
-									<tr>
-										<td><img src="<?php echo $imgURL ?>" class="border-radius-100 shadow" width="50" height="50" alt=""/></td>
-										<td><?php echo $row->productName ?></td>
-										<td><?php echo $row->Qty ?></td>
-										<td><?php echo number_format($row->price,2) ?></td>
-										<td><?php echo number_format($row->price*$row->Qty,2) ?></td>
-										<td>
-											<?php if($row->Status==0){ ?>
-												<span class="badge bg-warning text-white">Pending</span>
-											<?php }else if($row->Status==1){ ?>
-												<span class="badge bg-info text-white">For Delivery</span>
-											<?php }else if($row->Status==2){ ?>
-												<span class="badge bg-danger text-white">Cancelled</span>
-											<?php }else if($row->Status==3){ ?>
-												<span class="badge bg-success text-white">Delivered</span>
-											<?php } ?>
-										</td>
-									</tr>
-								<?php endforeach; ?>
-							</tbody>
+							
 						</table>
 					</div>
 				</div>

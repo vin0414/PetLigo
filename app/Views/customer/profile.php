@@ -386,7 +386,7 @@
 					</div>
 				<?php endif; ?>
 				<div class="row g-3">
-					<div class="col-lg-5">
+					<div class="col-lg-8">
 						<div class="card-box">
 							<div class="card-header">Personal Information</div>
 							<div class="card-body">
@@ -436,15 +436,14 @@
 								</form>
 							</div>
 						</div>
-					</div>
-					<div class="col-lg-3 form-group">
+						<br/>
 						<div class="card-box">
 							<div class="card-header">Upload Photo</div>
 							<div class="card-body">
 								<form method="post" class="row g-3" id="frmProfile" enctype="multipart/form-data">
 									<div class="col-12 form-group">
 										<center>
-										<img src="/profile/profile.png" id="profileImg" style="border:1px solid #C0C0C0;" width="245"/>
+										<img src="/profile/profile.png" id="profileImg" style="border:1px solid #C0C0C0;" width="100%"/>
 										</center>
 									</div>
 									<div class="col-12 form-group">
