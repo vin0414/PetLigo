@@ -826,9 +826,15 @@ class Home extends BaseController
         $builder = $this->db->table('tblblog a');
         $builder->select('a.*,b.Fullname');
         $builder->join('tblaccount b','b.accountID=a.accountID','LEFT');
-        $builder->orderBy('a.blogID','DESC')->limit(3);
+        $builder->orderBy('a.blogID','DESC');
         $blog = $builder->get()->getResult();
-        $data = ['stories'=>$blog];
+        //stories
+        $builder = $this->db->table('tblblog a');
+        $builder->select('a.*,b.Fullname');
+        $builder->join('tblaccount b','b.accountID=a.accountID','LEFT');
+        $builder->orderBy('a.blogID','DESC')->limit(3);
+        $stories = $builder->get()->getResult();
+        $data = ['blog'=>$blog,'stories'=>$stories];
         return view('blogs',$data);
     }
 
