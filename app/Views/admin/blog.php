@@ -417,8 +417,8 @@
                 <div class="row g-3">
                     <div class="col-lg-9 form-group">
                         <div class="card-box">
-                            <div class="card-header">Create a Blog</div>
                             <div class="card-body">
+                                <h4 class="mb-20 h4">Create a blog</h4>
                                 <form method="post" class="row g-3" id="frmBlog" enctype="multipart/form-data">
                                     <div class="col-12 form-group">
                                         <input type="text" class="form-control" name="title" placeholder="Your Title" required/>
@@ -434,14 +434,20 @@
                                         <div class="quote-imgs-thumbs quote-imgs-thumbs--hidden" id="img_preview" aria-live="polite"></div>
                                     </div>
                                     <div class="col-12 form-group">
-                                        <button type="submit" class="btn btn-primary" id="btnSave">Save</button>
+                                        <button type="submit" class="btn btn-primary" id="btnSave">Publish</button>
                                     </div>
                                 </form>
                             </div>
                         </div>
                     </div>
                     <div class="col-lg-3 form-group">
-
+                        <div class="card-box">
+                            <div class="card-body">
+                                <h4 class="mb-20 h4">Recent Blogs</h4>
+                                <div class="list-group" id="list">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 			</div>

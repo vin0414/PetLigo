@@ -305,7 +305,7 @@ class Home extends BaseController
                 $file->move('Images/',$originalName);
                 //save the data
                 $values= [
-                    'productName'=>$productName, 'Description'=>$desc,'ItemUnit'=>$itemUnit,'Qty'=>$qty,'UnitPrice'=>$unitPrice,
+                    'productName'=>$productName, 'Description'=>$desc,'Image'=>$originalName,'ItemUnit'=>$itemUnit,'Qty'=>$qty,'UnitPrice'=>$unitPrice,
                 ];
                 $productModel->update($productID,$values);
 
