@@ -821,9 +821,25 @@ class Home extends BaseController
         return view('register');
     }
 
-    public function blogs()
+    public function viewBlogs()
     {
-        return view('blogs');
+        $builder = $this->db->table('tblblog a');
+        $builder->select('a.*,b.Fullname');
+        $builder->join('tblaccount b','b.accountID=a.accountID','LEFT');
+        $builder->orderBy('a.blogID','DESC')->limit(3);
+        $blog = $builder->get()->getResult();
+        $data = ['stories'=>$blog];
+        return view('blogs',$data);
+    }
+
+    public function post($id=null)
+    {
+        $builder = $this->db->table('tblblog');
+        $builder->select('*');
+        $builder->WHERE('blogTitle',$id);
+        $story = $builder->get()->getResult();
+        $data = ['story'=>$story];
+        return view('post/',$data);
     }
 
     public function createAccount()

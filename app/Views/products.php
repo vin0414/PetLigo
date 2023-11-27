@@ -67,7 +67,7 @@
 	        	<li class="nav-item"><a href="<?=site_url('book')?>" class="nav-link">Book Now</a></li>
 	        	<li class="nav-item"><a href="<?=site_url('services')?>" class="nav-link">Services</a></li>
 	          <li class="nav-item active"><a href="<?=site_url('products')?>" class="nav-link">Products</a></li>
-	          <li class="nav-item"><a href="<?=site_url('blogs')?>" class="nav-link">Blogs</a></li>
+	          <li class="nav-item"><a href="<?=site_url('stories')?>" class="nav-link">Stories</a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -164,7 +164,7 @@
               <li><a href="/membership" class="py-2 d-block">Membership</a></li>
               <li><a href="/services" class="py-2 d-block">Services</a></li>
               <li><a href="/products" class="py-2 d-block">Products</a></li>
-              <li><a href="/blogs" class="py-2 d-block">Blogs</a></li>
+              <li><a href="/stories" class="py-2 d-block">Stories</a></li>
             </ul>
 					</div>
 					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
