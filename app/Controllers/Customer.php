@@ -124,6 +124,52 @@ class Customer extends BaseController
         echo "success";
     }
 
+    public function viewOrder()
+    {
+        $val = $this->request->getGet('value');
+        $builder = $this->db->table('tblorders');
+        $builder->select('*');
+        $builder->WHERE('TransactionNo',$val);
+        $data = $builder->get();
+        ?>
+        <table class="table hover nowrap">
+            <thead>
+                <th>Product Name</th>
+                <th>Qty</th>
+                <th>Price</th>
+            </thead>
+        <?php
+        foreach($data->getResult() as $row)
+        {
+            ?>
+            <tr>
+                <td><?php echo $row->productName ?></td>
+                <td><?php echo $row->Qty ?></td>
+                <td style="text-align:right;"><?php echo number_format($row->price,2) ?></td>
+            </tr>
+            <?php
+        }
+        $builder = $this->db->table('tblorders');
+        $builder->select('SUM(Qty)Qty,SUM(price)total');
+        $builder->WHERE('TransactionNo',$val);
+        $builder->groupBy('TransactionNo');
+        $datas = $builder->get();
+        if($row = $datas->getRow())
+        {
+            ?>
+            <tr><td colspan='3'>&nbsp;</td></tr>
+            <tr>
+                <td>TOTAL</td>
+                <td><?php echo number_format($row->Qty,0) ?></td>
+                <td style="text-align:right;"><?php echo number_format($row->total,2) ?></td>
+            </tr>
+            <?php
+        }
+        ?>
+        </table>
+        <?php
+    }
+
     public function Pets()
     {
         $user = session()->get('sess_id');

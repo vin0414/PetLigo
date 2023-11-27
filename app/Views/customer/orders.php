@@ -501,6 +501,22 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myLargeModalLabel">
+							Order(s)
+						</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+						<div id="result"></div>
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- js -->
 		<script src="/resources/vendors/scripts/core.js"></script>
 		<script src="/resources/vendors/scripts/script.min.js"></script>
@@ -513,6 +529,20 @@
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<script>
+			$(document).on('click','.view',function()
+			{
+				var val = $(this).val();
+				$.ajax({
+					url:"<?=site_url('view-order')?>",method:"GET",
+					data:{value:val},
+					success:function(response)
+					{
+						$('#viewModal').modal('show');
+						$('#result').html(response);
+					}
+				});
+			});
+
 			$(document).on('click','.cancel',function()
 			{
 				Swal.fire({

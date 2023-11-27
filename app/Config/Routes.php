@@ -79,6 +79,7 @@ $routes->get('fetch-information','Customer::fetchInfo');
 $routes->post('remove-item','Customer::removeItem');
 $routes->post('confirm','Customer::Confirm');
 $routes->post('cancel-order','Customer::cancelOrder');
+$routes->get('view-order','Customer::viewOrder');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
