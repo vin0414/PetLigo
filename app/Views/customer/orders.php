@@ -462,6 +462,12 @@
 										<td>
 											<?php if($row->Status==0){ ?>
 												<span class="badge bg-warning text-white">AWAITING</span>
+											<?php } else if($row->Status==1){  ?>
+												<span class="badge bg-primary text-white">FOR DELIVERY</span>
+											<?php } else if($row->Status==2){  ?>
+												<span class="badge bg-danger text-white">CANCELLED</span>
+											<?php } else if($row->Status==3){  ?>
+												<span class="badge bg-success text-white">DELIVERED</span>
 											<?php } ?>
 										</td>
 										<td><?php echo $row->DateReceived ?></td>
@@ -469,7 +475,7 @@
 											<button type="button" class="btn btn-default btn-sm view" value="<?php echo $row->OrderNo ?>">
 												<i class="icon-copy dw dw-view"></i>
 											</button>
-											<button type="button" class="btn btn-danger btn-sm cancel" value="<?php echo $row->OrderNo ?>">
+											<button type="button" class="btn btn-default btn-sm cancel" value="<?php echo $row->OrderNo ?>">
 												<i class="icon-copy dw dw-trash"></i>
 											</button>
 										</td>
