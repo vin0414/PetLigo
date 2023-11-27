@@ -639,7 +639,7 @@ class Home extends BaseController
     public function Orders()
     {
         $builder = $this->db->table('tblcustomer_order a');
-        $builder->select('a.DateCreated,a.TransactionNo,a.Firstname,a.Surname,a.Address,a.Email,a.contactNumber,
+        $builder->select('a.Status as Remarks,a.DateCreated,a.TransactionNo,a.Firstname,a.Surname,a.Address,a.Email,a.contactNumber,
         b.Status,b.PaymentMethod,b.Total,b.paymentID');
         $builder->join('tblpayment b','b.TransactionNo=a.TransactionNo','LEFT');
         $builder->groupBy('a.OrderNo');

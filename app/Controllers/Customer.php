@@ -132,7 +132,7 @@ class Customer extends BaseController
         $builder->WHERE('TransactionNo',$val);
         $data = $builder->get();
         ?>
-        <table class="table hover nowrap">
+        <table class="table table-bordered table-stripe hover nowrap">
             <thead>
                 <th>Product Name</th>
                 <th>Qty</th>

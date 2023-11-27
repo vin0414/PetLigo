@@ -404,8 +404,9 @@
 								<th>Contact No</th>
 								<th>Payment Method</th>
 								<th>Total</th>
+								<th>Remarks</th>
 								<th>Status</th>
-								<th>Action</th>
+								<th></th>
 							</thead>
 							<tbody>
 								<?php foreach($order as $row): ?>
@@ -417,8 +418,19 @@
 										<td><?php echo $row->PaymentMethod ?></td>
 										<td style="text-align:right;"><?php echo number_format($row->Total,2) ?></td>
 										<td>
-											<?php if($row->Status==0){ ?>
+											<?php if($row->Remarks==0){ ?>
 												<span class="badge bg-warning text-white">Awaiting</span>
+											<?php } else if($row->Remarks==1){  ?>
+												<span class="badge bg-primary text-white">For Delivery</span>
+											<?php } else if($row->Remarks==2){  ?>
+												-
+											<?php } else if($row->Remarks==3){  ?>
+												<span class="badge bg-success text-white">Delivered</span>
+											<?php } ?>
+										</td>
+										<td>
+											<?php if($row->Status==0){ ?>
+												<span class="badge bg-warning text-white">UnPaid</span>
 											<?php }else if($row->Status==1){ ?>
 												<span class="badge bg-success text-white">Paid</span>
 											<?php }else if($row->Status==2){ ?>
@@ -426,8 +438,27 @@
 											<?php } ?>
 										</td>
 										<td>
-											<button type="button" class="btn btn-outline-primary btn-sm" value="<?php echo $row->paymentID ?>" id="btnUpdate"><span class="dw dw-edit-1"></span></button>
-											<button type="button" class="btn btn-outline-primary btn-sm view" value="<?php echo $row->TransactionNo ?>"><span class="dw dw-book-1"></span></button>
+											<div class="dropdown">
+												<a
+													class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+													href="#"
+													role="button"
+													data-toggle="dropdown"
+												>
+													<i class="dw dw-more"></i>
+												</a>
+												<div
+													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
+												>
+												<?php if($row->Status==2){ ?>
+													<button class="dropdown-item view" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-eye"></i> View Orders</button>
+												<?php }else { ?>
+													<button class="dropdown-item view" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-eye"></i> View Orders</button>
+													<button class="dropdown-item" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-edit2"></i> Tag as Paid</button>
+													<button class="dropdown-item" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-edit2"></i> Update Status</button>
+												<?php } ?>
+												</div>
+											</div>
 										</td>
 									</tr>
 								<?php endforeach; ?>
