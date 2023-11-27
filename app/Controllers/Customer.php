@@ -99,6 +99,29 @@ class Customer extends BaseController
     {
         $customerOrderModel = new \App\Models\customerOrderModel();
         $paymentModel = new \App\Models\paymentModel();
+        //data
+        $val = $this->request->getPost('value');
+        $builder = $this->db->table('tblcustomer_order');
+        $builder->select('OrderNo');
+        $builder->WHERE('TransactionNo',$val);
+        $data = $builder->get();
+        if($row = $data->getRow())
+        {
+            $values = ['Status'=>2];
+            $customerOrderModel->update($row->OrderNo,$values);
+        }
+        //cancel payment
+        $val = $this->request->getPost('value');
+        $builder = $this->db->table('tblpayment');
+        $builder->select('paymentID');
+        $builder->WHERE('TransactionNo',$val);
+        $data = $builder->get();
+        if($row = $data->getRow())
+        {
+            $values = ['Status'=>2];
+            $paymentModel->update($row->paymentID,$values);
+        }
+        echo "success";
     }
 
     public function Pets()

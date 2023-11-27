@@ -481,14 +481,14 @@
 										<td><?php echo $row->DateReceived ?></td>
 										<td>
 											<?php if($row->Status==2||$row->Status==1||$row->Status==3){ ?>
-												<button type="button" class="btn btn-default btn-sm view" value="<?php echo $row->OrderNo ?>">
+												<button type="button" class="btn btn-default btn-sm view" value="<?php echo $row->TransactionNo ?>">
 													<i class="icon-copy dw dw-view"></i>
 												</button>
 											<?php }else { ?>
-												<button type="button" class="btn btn-default btn-sm view" value="<?php echo $row->OrderNo ?>">
+												<button type="button" class="btn btn-default btn-sm view" value="<?php echo $row->TransactionNo ?>">
 													<i class="icon-copy dw dw-view"></i>
 												</button>
-												<button type="button" class="btn btn-default btn-sm cancel" value="<?php echo $row->OrderNo ?>">
+												<button type="button" class="btn btn-default btn-sm cancel" value="<?php echo $row->TransactionNo ?>">
 													<i class="icon-copy dw dw-trash"></i>
 												</button>
 											<?php } ?>
@@ -528,7 +528,19 @@
 					{
 						var val = $(this).val();
 						$.ajax({
-							
+							url:"<?=site_url('cancel-order')?>",method:"POST",
+							data:{value:val},
+							success:function(response)
+							{
+								if(response==="success")
+								{
+									location.reload();
+								}
+								else
+								{
+									alert(response);
+								}
+							}
 						});
 					}
 				});
