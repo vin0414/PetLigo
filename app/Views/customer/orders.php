@@ -480,12 +480,18 @@
 										</td>
 										<td><?php echo $row->DateReceived ?></td>
 										<td>
-											<button type="button" class="btn btn-default btn-sm view" value="<?php echo $row->OrderNo ?>">
-												<i class="icon-copy dw dw-view"></i>
-											</button>
-											<button type="button" class="btn btn-default btn-sm cancel" value="<?php echo $row->OrderNo ?>">
-												<i class="icon-copy dw dw-trash"></i>
-											</button>
+											<?php if($row->Status==2){ ?>
+												<button type="button" class="btn btn-default btn-sm view" value="<?php echo $row->OrderNo ?>">
+													<i class="icon-copy dw dw-view"></i>
+												</button>
+											<?php }else { ?>
+												<button type="button" class="btn btn-default btn-sm view" value="<?php echo $row->OrderNo ?>">
+													<i class="icon-copy dw dw-view"></i>
+												</button>
+												<button type="button" class="btn btn-default btn-sm cancel" value="<?php echo $row->OrderNo ?>">
+													<i class="icon-copy dw dw-trash"></i>
+												</button>
+											<?php } ?>
 										</td>
 									</tr>
 								<?php endforeach; ?>

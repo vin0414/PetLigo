@@ -638,9 +638,10 @@ class Home extends BaseController
 
     public function Orders()
     {
-        $builder = $this->db->table('tblcustomer_order');
-        $builder->select('*');
-        $builder->groupBy('OrderNo');
+        $builder = $this->db->table('tblcustomer_order a');
+        $builder->select('a.Firstname,a.Surname,a.Address,a.Email,a.contactNumber,b.Status,b.PaymentMethod');
+        $builder->join('tblpayment b','b.TransactionNo=a.TransactionNo','LEFT');
+        $builder->groupBy('a.OrderNo');
         $order = $builder->get()->getResult();
         $data = ['order'=>$order,];
         return view('admin/orders',$data);

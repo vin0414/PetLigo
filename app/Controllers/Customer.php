@@ -42,7 +42,7 @@ class Customer extends BaseController
         $paymentMethod = $this->request->getPost('paymentMethod');
         $total = $this->request->getPost('total');
         $user = session()->get('sess_id');
-        if($paymentMethod=="GCash")
+        if($paymentMethod=="Gcash")
         {
             //send email
         }
