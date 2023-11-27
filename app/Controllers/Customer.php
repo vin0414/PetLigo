@@ -25,12 +25,9 @@ class Customer extends BaseController
     public function Orders()
     {
         $user = session()->get('sess_id');
-        $builder = $this->db->table('tblorders a');
-        $builder->select('a.productName,a.Qty,a.price,b.Status,c.Image');
-        $builder->join('tblcustomer_order b','b.customerID=a.customerID','LEFT');
-        $builder->join('tblproduct c','c.productName=a.productName','LEFT');
-        $builder->WHERE('a.customerID',$user);
-        $builder->groupBy('a.orderID');
+        $builder = $this->db->table('tblcustomer_order');
+        $builder->select('*');
+        $builder->WHERE('customerID',$user);
         $order = $builder->get()->getResult();
         $data = ['order'=>$order];
         return view('customer/orders',$data);

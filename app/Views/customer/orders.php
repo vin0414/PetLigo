@@ -441,7 +441,37 @@
 					<div class="card-body">
 						<br/>
 						<table class="data-table table stripe hover nowrap">
-							
+							<thead>
+								<th>Date Ordered</th>
+								<th>Order No</th>
+								<th>Delivery Charge</th>
+								<th>Sub-Total</th>
+								<th>Total</th>
+								<th>Status</th>
+								<th>Date Received</th>
+								<th><i class="icon-copy dw dw-more2"></i></th>
+							</thead>
+							<tbody>
+								<?php foreach($order as $row): ?>
+									<tr>
+										<td><?php echo $row->DateCreated ?></td>
+										<td><?php echo $row->TransactionNo ?></td>
+										<td style="text-align: right;"><?php echo number_format($row->charge,2) ?></td>
+										<td style="text-align: right;"><?php echo number_format($row->Total,2) ?></td>
+										<td style="text-align: right;"><?php echo number_format($row->charge+$row->Total,2) ?></td>
+										<td></td>
+										<td><?php echo $row->DateReceived ?></td>
+										<td>
+											<button type="button" class="btn btn-default btn-sm view" value="<?php echo $row->OrderNo ?>">
+												<i class="icon-copy dw dw-view"></i>
+											</button>
+											<button type="button" class="btn btn-danger btn-sm cancel" value="<?php echo $row->OrderNo ?>">
+												<i class="icon-copy dw dw-trash"></i>
+											</button>
+										</td>
+									</tr>
+								<?php endforeach; ?>
+							</tbody>
 						</table>
 					</div>
 				</div>
