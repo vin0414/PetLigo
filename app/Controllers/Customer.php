@@ -61,7 +61,6 @@ class Customer extends BaseController
                 ];
                 $customerOrderModel->update($rows->OrderNo,$values);
             }
-            //save the payment
         }
         else //no records
         {
@@ -78,6 +77,13 @@ class Customer extends BaseController
                 $customerOrderModel->update($rows->OrderNo,$values);
             }
         }
+        //save the payment
+        $values = [
+            'TransactionNo'=>$code, 'PaymentMethod'=>$paymentMethod,'Status'=>0,'Total'=>$total,'Date'=>date('Y-m-d')
+        ];
+        $paymentModel->save($values);
+        session()->setFlashdata('success','Great! Your order(s) successfully confirmed');
+        return redirect()->to('customer/orders')->withInput();
     }
 
     public function Pets()
