@@ -480,7 +480,7 @@
 										</td>
 										<td><?php echo $row->DateReceived ?></td>
 										<td>
-											<?php if($row->Status==2){ ?>
+											<?php if($row->Status==2||$row->Status==1||$row->Status==3){ ?>
 												<button type="button" class="btn btn-default btn-sm view" value="<?php echo $row->OrderNo ?>">
 													<i class="icon-copy dw dw-view"></i>
 												</button>
@@ -511,5 +511,25 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script>
+			$(document).on('click','.cancel',function()
+			{
+				Swal.fire({
+					title: "Are you sure?",
+					text: "Do you want to cancel this order?",
+					icon: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "Yes"
+					}).then((result) => {
+					if (result.isConfirmed) 
+					{
+						
+					}
+				});
+			});
+		</script>
 	</body>
 </html>
