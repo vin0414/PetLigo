@@ -731,7 +731,7 @@ class Home extends BaseController
                     <small class="weight-600"><?php echo $row->Date ?></small>
                 </div>
                 <p class="mb-1 font-14">
-                    <?php echo substr($row->Content,0,10) ?>...
+                    <?php echo substr($row->Content,0,30) ?>...
                 </p>
             </a>
             <?php
@@ -759,10 +759,14 @@ class Home extends BaseController
         }
         else
         {
-            $values = [
-                'blogTitle'=>$title, 'Content'=>$content,'Image'=>$originalName,'Date'=>$date,'accountID'=>$user
-            ];
-            $blogModel->save($values);
+            if($file->isValid() && ! $file->hasMoved())
+            {
+                $file->move('Blogs/',$originalName);
+                $values = [
+                    'blogTitle'=>$title, 'Content'=>$content,'Image'=>$originalName,'Date'=>$date,'accountID'=>$user
+                ];
+                $blogModel->save($values);
+            }
             echo "success";
         }
     }
@@ -770,7 +774,13 @@ class Home extends BaseController
     //webpage 
     public function index()
     {
-        return view('welcome_message');
+        $builder = $this->db->table('tblblog a');
+        $builder->select('a.*,b.Fullname');
+        $builder->join('tblaccount b','b.accountID=a.accountID','LEFT');
+        $builder->orderBy('a.blogID','DESC')->limit(3);
+        $blog = $builder->get()->getResult();
+        $data = ['blog'=>$blog];
+        return view('welcome_message',$data);
     }
 
     public function membership()
