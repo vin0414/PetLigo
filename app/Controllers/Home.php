@@ -716,6 +716,28 @@ class Home extends BaseController
         return view('admin/blog');
     }
 
+    public function read()
+    {
+        $builder = $this->db->table('tblblog');
+        $builder->select('*');
+        $builder->orderby('blogID','DESC')->limit(5);
+        $data = $builder->get();
+        foreach($data->getResult() as $row)
+        {
+            ?>
+            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                <h5 class="mb-1 h5 color-white"><?php echo $row->blogTitle ?></h5>
+                <div class="pb-1">
+                    <small class="weight-600"><?php echo $row->Date ?></small>
+                </div>
+                <p class="mb-1 font-14">
+                    <?php echo substr($row->Content,0,10) ?>...
+                </p>
+            </a>
+            <?php
+        }
+    }
+
     //webpage 
     public function index()
     {

@@ -497,5 +497,27 @@
 				}
 				}
 		</script>
+        <script>
+            $(document).ready(function()
+            {
+                load();
+            });
+            function load()
+            {
+                $.ajax({
+                    url:"<?=site_url('read')?>",method:"GET",
+                    success:function(response)
+                    {
+                        if(response==="")
+                        {
+                            $('#list').html("<a href='#' class='list-group-item list-group-item-action flex-column align-items-start'>No Data</a>");
+                        }
+                        else{
+                            $('#list').append(response);
+                        }
+                    }
+                });
+            }
+        </script>
 	</body>
 </html>
