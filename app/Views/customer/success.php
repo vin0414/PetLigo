@@ -101,10 +101,10 @@
 									</tbody>
 								</table>
 								<br/>
-								<h5>Payment Method</h5>
-								<hr/>
+								<p><b>Payment Method</b></p>
 								<form method="post" class="row g-3" id="frmPayment" action="<?=base_url('confirm')?>">
 									<input type="hidden" name="code" value="<?php echo $code; ?>"/>
+									<input type="hidden" name="total" value="<?php foreach($total as $row): echo $row->total; endforeach; ?>"/>
 									<div class="col-12">
 										<input type="radio" name="paymentMethod" style="width:20px;height:15px;" id="GCash" value="Gcash" required/>&nbsp;<label>Gcash</label>
 										<small>The system will send you the generated Gcash QR Code to your email</small>

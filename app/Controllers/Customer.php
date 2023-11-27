@@ -40,15 +40,43 @@ class Customer extends BaseController
         //data
         $code = $this->request->getPost('code');
         $paymentMethod = $this->request->getPost('paymentMethod');
+        $total = $this->request->getPost('total');
         $user = session()->get('sess_id');
-        //get the data from the customer order table
-        $builder = $this->db->table('tblcustomer_order');
-        $builder->select('OrderNo');
-        $builder->WHERE('TransactionNo',$code);
+        //verify if the customer already purchase membership
+        $builder = $this->db->table('tblmembership');
+        $builder->select('customerID');
+        $builder->WHERE('customerID',$user)->WHERE('DateCreated <=',date('Y-m-d'));
         $data = $builder->get();
         if($row = $data->getRow())
         {
-            
+            //get the records from the tblcustomer_order
+            $builder = $this->db->table('tblcustomer_order');
+            $builder->select('OrderNo');
+            $builder->WHERE('TransactionNo',$code);
+            $list = $builder->get();
+            if($rows = $list->getRow())
+            {
+                $values = [
+                    'charge'=>0.00,'Total'=>$total,
+                ];
+                $customerOrderModel->update($rows->OrderNo,$values);
+            }
+            //save the payment
+        }
+        else //no records
+        {
+            //get the records from the tblcustomer_order
+            $builder = $this->db->table('tblcustomer_order');
+            $builder->select('OrderNo');
+            $builder->WHERE('TransactionNo',$code);
+            $list = $builder->get();
+            if($rows = $list->getRow())
+            {
+                $values = [
+                    'charge'=>38.00,'Total'=>$total,
+                ];
+                $customerOrderModel->update($rows->OrderNo,$values);
+            }
         }
     }
 
