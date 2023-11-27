@@ -459,7 +459,11 @@
 										<td style="text-align: right;"><?php echo number_format($row->charge,2) ?></td>
 										<td style="text-align: right;"><?php echo number_format($row->Total,2) ?></td>
 										<td style="text-align: right;"><?php echo number_format($row->charge+$row->Total,2) ?></td>
-										<td></td>
+										<td>
+											<?php if($row->Status==0){ ?>
+												<span class="badge bg-warning text-white">AWAITING</span>
+											<?php } ?>
+										</td>
 										<td><?php echo $row->DateReceived ?></td>
 										<td>
 											<button type="button" class="btn btn-default btn-sm view" value="<?php echo $row->OrderNo ?>">
