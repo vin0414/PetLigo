@@ -39,6 +39,17 @@ class Customer extends BaseController
         $paymentModel = new \App\Models\paymentModel();
         //data
         $code = $this->request->getPost('code');
+        $paymentMethod = $this->request->getPost('paymentMethod');
+        $user = session()->get('sess_id');
+        //get the data from the customer order table
+        $builder = $this->db->table('tblcustomer_order');
+        $builder->select('OrderNo');
+        $builder->WHERE('TransactionNo',$code);
+        $data = $builder->get();
+        if($row = $data->getRow())
+        {
+            
+        }
     }
 
     public function Pets()

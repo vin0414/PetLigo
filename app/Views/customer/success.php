@@ -64,6 +64,14 @@
 				<div class="row align-items-center">
 					<div class="col-3"></div>
 					<div class="col-md-6 col-lg-6">
+					<?php if(!empty(session()->getFlashdata('fail'))) : ?>
+						<div class="alert alert-danger alert-dismissible fade show" role="alert">
+							<?= session()->getFlashdata('fail'); ?>
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					<?php endif; ?>
 						<div class="card-box">
 							<div class="card-body">
 								<h3>Complete Purchase</h3>
