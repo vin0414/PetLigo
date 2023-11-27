@@ -35,7 +35,10 @@ class Customer extends BaseController
 
     public function Confirm()
     {
-        
+        $customerOrderModel = new \App\Models\customerOrderModel();
+        $paymentModel = new \App\Models\paymentModel();
+        //data
+        $code = $this->request->getPost('code');
     }
 
     public function Pets()
