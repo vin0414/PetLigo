@@ -427,12 +427,28 @@
 										</td>
 										<td>
 											<button type="button" class="btn btn-outline-primary btn-sm" value="<?php echo $row->paymentID ?>" id="btnUpdate"><span class="dw dw-edit-1"></span></button>
-											<button type="button" class="btn btn-outline-primary btn-sm" value="<?php echo $row->TransactionNo ?>" id="btnView"><span class="dw dw-book-1"></span></button>
+											<button type="button" class="btn btn-outline-primary btn-sm view" value="<?php echo $row->TransactionNo ?>"><span class="dw dw-book-1"></span></button>
 										</td>
 									</tr>
 								<?php endforeach; ?>
 							</tbody>
 						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myLargeModalLabel">
+							Order(s)
+						</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+						<div id="result"></div>
 					</div>
 				</div>
 			</div>
@@ -447,5 +463,20 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
+		<script>
+			$(document).on('click','.view',function()
+			{
+				var val = $(this).val();
+				$.ajax({
+					url:"<?=site_url('view-order')?>",method:"GET",
+					data:{value:val},
+					success:function(response)
+					{
+						$('#viewModal').modal('show');
+						$('#result').html(response);
+					}
+				});
+			});
+		</script>
 	</body>
 </html>
