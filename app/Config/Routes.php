@@ -101,6 +101,7 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes)
     $routes->get('admin/new-services','Home::newServices');
     $routes->get('admin/edit-services/(:any)','Home::editServices/$1');
     $routes->get('admin/profile','Home::Profile');
+    $routes->get('admin/blogs','Home::postBlogs');
 });
 
 $routes->group('',['filter'=>'customerAuthCheck'],function($routes)

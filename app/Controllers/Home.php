@@ -711,6 +711,11 @@ class Home extends BaseController
         }
     }
 
+    public function postBlogs()
+    {
+        return view('admin/blog');
+    }
+
     //webpage 
     public function index()
     {
