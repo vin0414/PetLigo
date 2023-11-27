@@ -393,14 +393,17 @@
 					</div>
 				<?php endif; ?>
 				<div class="card-box">
-					<div class="card-header">Customer Order(s)</div>
+					<div class="card-header"><span class="micon dw dw-shopping-cart"></span
+								>&nbsp;Customer Order(s)</div>
                     <div class="card-body">
                         <table class="data-table table stripe hover nowrap">
 							<thead>
 								<th>Date</th>
+								<th>Reference No</th>
 								<th>Customer's Name</th>
 								<th>Contact No</th>
-								<th>Email</th>
+								<th>Payment Method</th>
+								<th>Total</th>
 								<th>Status</th>
 								<th>Action</th>
 							</thead>
@@ -408,23 +411,23 @@
 								<?php foreach($order as $row): ?>
 									<tr>
 										<td><?php echo $row->DateCreated ?></td>
+										<td><?php echo $row->TransactionNo ?></td>
 										<td><?php echo $row->Surname ?>, <?php echo $row->Firstname ?></td>
 										<td><?php echo $row->contactNumber ?></td>
-										<td><?php echo $row->Email ?></td>
+										<td><?php echo $row->PaymentMethod ?></td>
+										<td style="text-align:right;"><?php echo number_format($row->Total,2) ?></td>
 										<td>
 											<?php if($row->Status==0){ ?>
-												<span class="badge bg-warning text-white">Pending</span>
+												<span class="badge bg-warning text-white">Awaiting</span>
 											<?php }else if($row->Status==1){ ?>
-												<span class="badge bg-info text-white">For Delivery</span>
+												<span class="badge bg-success text-white">Paid</span>
 											<?php }else if($row->Status==2){ ?>
 												<span class="badge bg-danger text-white">Cancelled</span>
-											<?php }else if($row->Status==3){ ?>
-												<span class="badge bg-success text-white">Delivered</span>
 											<?php } ?>
 										</td>
 										<td>
-											<button type="button" class="btn btn-outline-primary btn-sm" value="<?php echo $row->OrderNo ?>" id="btnUpdate"><span class="dw dw-edit-1"></span></button>
-											<button type="button" class="btn btn-outline-primary btn-sm" value="<?php echo $row->OrderNo ?>" id="btnView"><span class="dw dw-book-1"></span></button>
+											<button type="button" class="btn btn-outline-primary btn-sm" value="<?php echo $row->paymentID ?>" id="btnUpdate"><span class="dw dw-edit-1"></span></button>
+											<button type="button" class="btn btn-outline-primary btn-sm" value="<?php echo $row->TransactionNo ?>" id="btnView"><span class="dw dw-book-1"></span></button>
 										</td>
 									</tr>
 								<?php endforeach; ?>
