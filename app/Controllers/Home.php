@@ -844,8 +844,16 @@ class Home extends BaseController
         $builder->select('*');
         $builder->WHERE('blogTitle',$id);
         $story = $builder->get()->getResult();
-        $data = ['story'=>$story];
-        return view('post/',$data);
+        //blogs
+        $builder = $this->db->table('tblblog a');
+        $builder->select('a.*,b.Fullname');
+        $builder->join('tblaccount b','b.accountID=a.accountID','LEFT');
+        $builder->orderBy('a.blogID','DESC')->limit(3);
+        $blog = $builder->get()->getResult();
+        $data = ['blog'=>$blog];
+
+        $data = ['story'=>$story,'stories'=>$blog];
+        return view('post',$data);
     }
 
     public function createAccount()
