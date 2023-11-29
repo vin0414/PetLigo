@@ -684,6 +684,21 @@ class Home extends BaseController
             {
                 $values = ['Status'=>1];
                 $customerOrderModel->update($row->OrderNo,$values);
+                //deduct the actual stocks
+                $builder = $this->db->table('tblorders');
+                $builder->select('*');
+                $builder->WHERE('TransactionNo',$code);
+                $datas = $builder->get();
+                foreach($datas->getResult() as $rows)
+                {
+                    $product = $rows->productName;$qty = $rows->Qty;
+                    $item = $productModel->WHERE('productName',$product)->first();
+                    $old_stocks = $item['Qty'];
+                    //new stocks
+                    $new_Qty = $old_stocks-$qty;
+                    $values = ['Qty'=>$new_Qty];
+                    $productModel->update($item['productID'],$values);
+                }
                 //email
                 $email = \Config\Services::email();
                 $email->setTo($row->Email,$fullname);
@@ -705,7 +720,7 @@ class Home extends BaseController
                 <tr><td>452 Padre Pio, Santa Cruz, Cavite City, 4100 Cavite</td></tr>
                 <tr><td>Facebook Page: Petligo - Grooming Services</td></tr>
                 </tbody></table></center>";
-                $subject = "Email Verification";
+                $subject = "Out For Delivery - Petligo";
                 $email->setSubject($subject);
                 $email->setMessage($template);
                 $email->send();
