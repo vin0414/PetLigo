@@ -217,6 +217,7 @@
       });
       $('#search').keyup(function(){
         var val = $(this).val();
+        $('#loadResults').html("<center><label>Loading...</label></center>");
         $.ajax({
           url:"<?=site_url('/search-products')?>",method:"GET",
           data:{value:val},
@@ -234,6 +235,7 @@
       });
       function loadProducts()
       {
+        $('#loadResults').html("<center><label>Loading...</label></center>");
         $.ajax({
           url:"<?=site_url('/load-products')?>",method:"GET",
           success:function(response)
@@ -251,6 +253,7 @@
       $('#product_category').change(function(e)
       {
         e.preventDefault();
+        $('#loadResults').html("<center><label>Loading...</label></center>");
         var val = $(this).val();
         $.ajax({
           url:"<?=site_url('/filter-products')?>",method:"GET",
@@ -269,6 +272,7 @@
       });
       $(function() {
         $('input:radio[name="category"]').change(function() {
+            $('#loadResults').html("<center><label>Loading...</label></center>");
             var val = $(this).val();
             $.ajax({
               url:"<?=site_url('/filter-category-products')?>",method:"GET",
