@@ -51,8 +51,6 @@ class Customer extends BaseController
             $datas = $builder->get();
             if($rows = $datas->getRow())
             {
-                $orderModel = new \App\Models\orderModel();
-                $order = $orderModel->WHERE('TransactionNo',$rows->TransactionNo)->findAll();
                 $fullname = $rows->Firstname." ".$rows->Surname;
                 $email = \Config\Services::email();
                 $email->setTo($rows->Email,$fullname);
@@ -63,10 +61,9 @@ class Customer extends BaseController
                 $cid = $email->setAttachmentCID($imgURL);
                 $template = "<center>
                 <img src='cid:". $cid ."' width='100'/>
-                <table style='padding:20px;background-color:#ffffff;' border='0'><tbody>
+                <table style='padding:10px;background-color:#ffffff;' border='0'><tbody>
                 <tr><td>Dear ".$fullname.",</td></tr>
                 <tr><td><p>Thank you for shopping with Petligo - Grooming Services! We're delighted to confirm that we have received your order.</p></td><tr>
-                <tr><td>&nbsp;</td></tr>
                 <tr><td>&nbsp;</td></tr>
                 <tr><td><p>Below are the details of your purchase</p></td></tr>
                 <tr><td><p>Order Date : ".$rows->DateCreated."</p></td></tr>
@@ -75,7 +72,6 @@ class Customer extends BaseController
                 <tr><td><p>Email : ".$rows->Email."</p></td></tr>
                 <tr><td>&nbsp;</td></tr>
                 <tr><td><p>List of Items Ordered</p></td></tr>
-                <tr><td><p>".$order['productName']."-".$order['Qty']."x".number_format($order['price'],2)." each</p></td></tr>
                 <tr><td>&nbsp;</td></tr>
                 <tr><td><p>Best Regards,</p></td></tr>
                 <tr><td>Petligo - Grooming Services</td></tr>
