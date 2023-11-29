@@ -459,8 +459,8 @@
 													<button class="dropdown-item view" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-eye"></i> View Orders</button>
 												<?php }else { ?>
 													<button class="dropdown-item view" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-eye"></i> View Orders</button>
-													<button class="dropdown-item" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-check"></i> Tag as Paid</button>
-													<button class="dropdown-item" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-edit2"></i> Update Status</button>
+													<button class="dropdown-item tag" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-check"></i> Tag as Paid</button>
+													<button class="dropdown-item update" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-edit2"></i> Update Status</button>
 												<?php } ?>
 												</div>
 											</div>
@@ -489,6 +489,22 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myLargeModalLabel">
+							Update Order(s)
+						</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+						
+					</div>
+				</div>
+			</div>
+		</div>
 		<!-- js -->
 		<script src="/resources/vendors/scripts/core.js"></script>
 		<script src="/resources/vendors/scripts/script.min.js"></script>
@@ -499,7 +515,13 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<script>
+			$(document).on('click','.update',function()
+			{
+				var val = $(this).val();
+				$('#updateModal').modal('show');
+			});
 			$(document).on('click','.view',function()
 			{
 				var val = $(this).val();
@@ -510,6 +532,38 @@
 					{
 						$('#viewModal').modal('show');
 						$('#result').html(response);
+					}
+				});
+			});
+			$(document).on('click','.tag',function()
+			{
+				Swal.fire({
+					title: "Are you sure?",
+					text: "Do you want to tag as paid this order?",
+					icon: "question",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "Yes"
+					}).then((result) => {
+					if (result.isConfirmed) 
+					{
+						var val = $(this).val();
+						$.ajax({
+							url:"<?=site_url('tag')?>",method:"POST",
+							data:{value:val},
+							success:function(response)
+							{
+								if(response==="success")
+								{
+									location.reload();
+								}
+								else
+								{
+									alert(response);
+								}
+							}
+						});
 					}
 				});
 			});

@@ -648,6 +648,22 @@ class Home extends BaseController
         return view('admin/orders',$data);
     }
 
+    public function Tag()
+    {
+        $paymentModel = new \App\Models\paymentModel();
+        $val = $this->request->getPost('value');
+        $builder = $this->db->table('tblpayment');
+        $builder->select('paymentID');
+        $builder->WHERE('TransactionNo',$val);
+        $data = $builder->get();
+        if($row = $data->getRow())
+        {
+            $values = ['Status'=>1];
+            $paymentModel->update($row->paymentID,$values);
+        }
+        echo "success";
+    }
+
     public function Members()
     {
         return view('admin/membership');
