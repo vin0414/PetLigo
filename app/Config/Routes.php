@@ -72,6 +72,7 @@ $routes->post('/update-password','Home::updatePassword');
 $routes->get('/read','Home::read');
 $routes->post('/create-blog','Home::createBlog');
 $routes->post('/tag','Home::Tag');
+$routes->post('/update-status','Home::updateStatus');
 //customer
 $routes->post('/save-pet','Customer::savePet');
 $routes->post('update-pet-info','Customer::updatePet');

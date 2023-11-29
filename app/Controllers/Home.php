@@ -2,6 +2,8 @@
 
 namespace App\Controllers;
 use App\Libraries\Hash;
+use Config\App;
+
 class Home extends BaseController
 {
     private $db;
@@ -660,6 +662,64 @@ class Home extends BaseController
         {
             $values = ['Status'=>1];
             $paymentModel->update($row->paymentID,$values);
+        }
+        echo "success";
+    }
+
+    public function updateStatus()
+    {
+        $customerOrderModel = new \App\Models\customerOrderModel();
+        $productModel = new \App\Models\productModel();
+        //data
+        $code = $this->request->getPost('code');
+        $status = $this->request->getPost('status');
+        $builder = $this->db->table('tblcustomer_order');
+        $builder->select('OrderNo,Email,Firstname,Surname');
+        $builder->WHERE('TransactionNo',$code);
+        $data = $builder->get();
+        if($row = $data->getRow())
+        {
+            $fullname = $row->Firstname. " ".$row->Surname;
+            if($status=="For Delivery")
+            {
+                $values = ['Status'=>1];
+                $customerOrderModel->update($row->OrderNo,$values);
+                //email
+                $email = \Config\Services::email();
+                $email->setTo($row->Email,$fullname);
+                $email->setFrom("petligo2023@gmail.com","PetLigo");
+                $imgURL = "assets/images/petligo.png";
+                $email->attach($imgURL);
+                $cid = $email->setAttachmentCID($imgURL);
+                $template = "<center>
+                <img src='cid:". $cid ."' width='100'/>
+                <table style='padding:20px;background-color:#ffffff;' border='0'><tbody>
+                <tr><td>Dear ".$fullname.",</td></tr>
+                <tr><td><p>We're excited to inform you that you're much anticipated order is now out for delivery.</p></td><tr>
+                <tr><td><p>Our team is working diligently to ensure your package reaches you promptly</p></td></tr>
+                <tr><td><p>Keep an eye out for our delivery team.</p></td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td><p>Best Regards,</p></td></tr>
+                <tr><td>Petligo - Grooming Services</td></tr>
+                <tr><td>452 Padre Pio, Santa Cruz, Cavite City, 4100 Cavite</td></tr>
+                <tr><td>Facebook Page: Petligo - Grooming Services</td></tr>
+                </tbody></table></center>";
+                $subject = "Email Verification";
+                $email->setSubject($subject);
+                $email->setMessage($template);
+                $email->send();
+            }
+            else if($status=="Cancelled")
+            {
+                $values = ['Status'=>2];
+                $customerOrderModel->update($row->OrderNo,$values);
+            }
+            else if($status=="Delivered")
+            {
+                $values = ['Status'=>3];
+                $customerOrderModel->update($row->OrderNo,$values);
+            }
         }
         echo "success";
     }

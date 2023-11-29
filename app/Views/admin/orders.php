@@ -534,6 +534,25 @@
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<script>
+			$('#btnSave').on('click',function(e)
+			{
+				e.preventDefault();
+				var data = $('#frmUpdate').serialize();
+				$.ajax({
+					url:"<?=site_url('update-status')?>",method:"POST",
+					data:data,success:function(response)
+					{
+						if(response==="success")
+						{
+							location.reload();
+						}
+						else
+						{
+							alert(response);
+						}
+					}
+				});
+			});
 			$(document).on('click','.update',function()
 			{
 				var val = $(this).val();
