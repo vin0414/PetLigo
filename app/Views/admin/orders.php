@@ -491,7 +491,7 @@
 		</div>
 
 		<div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-dialog modal-dialog-centered modal-sm">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h4 class="modal-title" id="myLargeModalLabel">
@@ -500,7 +500,24 @@
 						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 					</div>
 					<div class="modal-body">
-						
+						<form method="post" class="row g-3" id="frmUpdate">
+							<div class="col-12 form-group">
+								<label>Transaction No</label>
+								<input type="text" class="form-control" name="code" id="code"/>
+							</div>
+							<div class="col-12 form-group">
+								<label>Status</label>
+								<select class="form-control" name="status">
+									<option value="">Choose</option>
+									<option>For Delivery</option>
+									<option>Cancelled</option>
+									<option>Delivered</option>
+								</select>
+							</div>
+							<div class="col-12 form-group">
+								<button type="submit" class="btn btn-primary form-control text-white" id="btnSave">Save Changes</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -520,6 +537,7 @@
 			$(document).on('click','.update',function()
 			{
 				var val = $(this).val();
+				$('#code').attr("value",val);
 				$('#updateModal').modal('show');
 			});
 			$(document).on('click','.view',function()
