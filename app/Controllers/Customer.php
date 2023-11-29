@@ -59,21 +59,34 @@ class Customer extends BaseController
                 $qrcode = "assets/images/petligo-gcash.jpg";
                 $email->attach($imgURL);
                 $cid = $email->setAttachmentCID($imgURL);
+                $cids = $email->setAttachmentCID($qrcode);
                 $template = "<center>
                 <img src='cid:". $cid ."' width='100'/>
                 <table style='padding:10px;background-color:#ffffff;' border='0'><tbody>
                 <tr><td>Dear ".$fullname.",</td></tr>
-                <tr><td><p>Thank you for shopping with Petligo - Grooming Services! We're delighted to confirm that we have received your order.</p></td><tr>
+                <tr><td>Thank you for shopping with Petligo - Grooming Services! We're delighted to confirm that we have received your order.</td><tr>
                 <tr><td>&nbsp;</td></tr>
-                <tr><td><p>Below are the details of your purchase</p></td></tr>
-                <tr><td><p>Order Date : ".$rows->DateCreated."</p></td></tr>
-                <tr><td><p>Address : ".$rows->Address."</p></td></tr>
-                <tr><td><p>Phone : ".$rows->contactNumber."</p></td></tr>
-                <tr><td><p>Email : ".$rows->Email."</p></td></tr>
+                <tr><td>Below are the details of your purchase</td></tr>
+                <tr><td>Order Date : ".$rows->DateCreated."</td></tr>
+                <tr><td>Address : ".$rows->Address."</td></tr>
+                <tr><td>Phone : ".$rows->contactNumber."</td></tr>
+                <tr><td>Email : ".$rows->Email."</td></tr>
                 <tr><td>&nbsp;</td></tr>
-                <tr><td><p>List of Items Ordered</p></td></tr>
+                <tr><td>How to pay using Gcash Payment</td></tr>
+                <img src='cid:". $cids ."' width='100'/>
+                <tr><td>To use Gcash QR using your smartphone simply:</p></td></tr>
+                <tr><td>Step 1 : Click on Pay QR on the main page.</p></td></tr>
+                <tr><td>Step 2 : Tap on the 'Scan QR Code' Icon.</p></td></tr>
+                <tr><td>Step 3 : Align the camera at the Cashier's QR Code</p></td></tr>
+                <tr><td>Step 4 : Once the app detects and identifies the merchant, input the total amount of your purchase (amount to pay).</p></td></tr>
+                <tr><td>Step 5 : Confirm transaction details.</p></td></tr>
                 <tr><td>&nbsp;</td></tr>
-                <tr><td><p>Best Regards,</p></td></tr>
+                <tr><td>Please review the details above to ensure everything is accurate. If you have any questions or concerns,</td></tr>
+                <tr><td>please don't hesitate to contact our customer support at our Facebook Page 'Petligo - Grooming Services'.</td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td>Thank you for choosing Petligo - Grooming Services. We appreciate your business and hope you enjoy your purchase!</td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td>Best Regards,</td></tr>
                 <tr><td>Petligo - Grooming Services</td></tr>
                 <tr><td>452 Padre Pio, Santa Cruz, Cavite City, 4100 Cavite</td></tr>
                 <tr><td>Facebook Page: Petligo - Grooming Services</td></tr>
