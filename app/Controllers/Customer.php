@@ -45,6 +45,48 @@ class Customer extends BaseController
         if($paymentMethod=="Gcash")
         {
             //send email
+            $builder = $this->db->table('tblcustomer_order');
+            $builder->select('*');
+            $builder->WHERE('TransactionNo',$code);
+            $datas = $builder->get();
+            if($rows = $datas->getRow())
+            {
+                $orderModel = new \App\Models\orderModel();
+                $order = $orderModel->WHERE('TransactionNo',$rows->TransactionNo)->findAll();
+                $fullname = $rows->Firstname." ".$rows->Surname;
+                $email = \Config\Services::email();
+                $email->setTo($rows->Email,$fullname);
+                $email->setFrom("petligo2023@gmail.com","PetLigo");
+                $imgURL = "assets/images/petligo.png";
+                $qrcode = "assets/images/petligo-gcash.jpg";
+                $email->attach($imgURL);
+                $cid = $email->setAttachmentCID($imgURL);
+                $template = "<center>
+                <img src='cid:". $cid ."' width='100'/>
+                <table style='padding:20px;background-color:#ffffff;' border='0'><tbody>
+                <tr><td>Dear ".$fullname.",</td></tr>
+                <tr><td><p>Thank you for shopping with Petligo - Grooming Services! We're delighted to confirm that we have received your order.</p></td><tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td><p>Below are the details of your purchase</p></td></tr>
+                <tr><td><p>Order Date : ".$rows->DateCreated."</p></td></tr>
+                <tr><td><p>Address : ".$rows->Address."</p></td></tr>
+                <tr><td><p>Phone : ".$rows->contactNumber."</p></td></tr>
+                <tr><td><p>Email : ".$rows->Email."</p></td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td><p>List of Items Ordered</p></td></tr>
+                <tr><td><p>".$order['productName']."-".$order['Qty']."x".number_format($order['price'],2)." each</p></td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td><p>Best Regards,</p></td></tr>
+                <tr><td>Petligo - Grooming Services</td></tr>
+                <tr><td>452 Padre Pio, Santa Cruz, Cavite City, 4100 Cavite</td></tr>
+                <tr><td>Facebook Page: Petligo - Grooming Services</td></tr>
+                </tbody></table></center>";
+                $subject = "Order Confirmation and Gcash Payment - Petligo";
+                $email->setSubject($subject);
+                $email->setMessage($template);
+                $email->send();
+            }
         }
         //verify if the customer already purchase membership
         $builder = $this->db->table('tblmembership');
