@@ -58,8 +58,8 @@ class Customer extends BaseController
                 $imgURL = "assets/images/petligo.png";
                 $qrcode = "assets/images/petligo-gcash.jpg";
                 $email->attach($imgURL);
+                $email->attach($qrcode);
                 $cid = $email->setAttachmentCID($imgURL);
-                $cids = $email->setAttachmentCID($qrcode);
                 $template = "<center>
                 <img src='cid:". $cid ."' width='100'/>
                 <table style='padding:10px;background-color:#ffffff;' border='0'><tbody>
@@ -73,7 +73,6 @@ class Customer extends BaseController
                 <tr><td>Email : ".$rows->Email."</td></tr>
                 <tr><td>&nbsp;</td></tr>
                 <tr><td>How to pay using Gcash Payment</td></tr>
-                <img src='cid:". $cids ."' width='100'/>
                 <tr><td>To use Gcash QR using your smartphone simply:</p></td></tr>
                 <tr><td>Step 1 : Click on Pay QR on the main page.</p></td></tr>
                 <tr><td>Step 2 : Tap on the 'Scan QR Code' Icon.</p></td></tr>
