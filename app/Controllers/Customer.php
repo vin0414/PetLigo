@@ -96,6 +96,51 @@ class Customer extends BaseController
                 $email->send();
             }
         }
+        else
+        {
+            //send email
+            $builder = $this->db->table('tblcustomer_order');
+            $builder->select('*');
+            $builder->WHERE('TransactionNo',$code);
+            $datas = $builder->get();
+            if($rows = $datas->getRow())
+            {
+                $fullname = $rows->Firstname." ".$rows->Surname;
+                $email = \Config\Services::email();
+                $email->setTo($rows->Email,$fullname);
+                $email->setFrom("petligo2023@gmail.com","PetLigo");
+                $imgURL = "assets/images/petligo.png";
+                $email->attach($imgURL);
+                $cid = $email->setAttachmentCID($imgURL);
+                $template = "<center>
+                <img src='cid:". $cid ."' width='100'/>
+                <table style='padding:10px;background-color:#ffffff;' border='0'><tbody>
+                <tr><td>Dear ".$fullname.",</td></tr>
+                <tr><td>Thank you for shopping with Petligo - Grooming Services! We're delighted to confirm that we have received your order.</td><tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td>Below are the details of your purchase</td></tr>
+                <tr><td>Order Date : ".$rows->DateCreated."</td></tr>
+                <tr><td>Address : ".$rows->Address."</td></tr>
+                <tr><td>Phone : ".$rows->contactNumber."</td></tr>
+                <tr><td>Email : ".$rows->Email."</td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td>We kindly request you to prepare the exact amount for your delivery. This will help ensure a smooth and contactless transactions process. </td></tr>
+                <tr><td>Please review the details above to ensure everything is accurate. If you have any questions or concerns,</td></tr>
+                <tr><td>please don't hesitate to contact our customer support at our Facebook Page 'Petligo - Grooming Services'.</td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td>Thank you for choosing Petligo - Grooming Services. We appreciate your business and hope you enjoy your purchase!</td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td>Best Regards,</td></tr>
+                <tr><td>Petligo - Grooming Services</td></tr>
+                <tr><td>452 Padre Pio, Santa Cruz, Cavite City, 4100 Cavite</td></tr>
+                <tr><td>Facebook Page: Petligo - Grooming Services</td></tr>
+                </tbody></table></center>";
+                $subject = "Order Confirmation - Petligo";
+                $email->setSubject($subject);
+                $email->setMessage($template);
+                $email->send();
+            }
+        }
         //verify if the customer already purchase membership
         $builder = $this->db->table('tblmembership');
         $builder->select('customerID');
@@ -380,8 +425,14 @@ class Customer extends BaseController
         $builder->select('SUM(Qty*price)total');
         $builder->WHERE('customerID',$user)->WHERE('Status',0);
         $total = $builder->get()->getResult();
+        //blog
+        $builder = $this->db->table('tblblog a');
+        $builder->select('a.*,b.Fullname');
+        $builder->join('tblaccount b','b.accountID=a.accountID','LEFT');
+        $builder->orderBy('a.blogID','DESC')->limit(3);
+        $blog = $builder->get()->getResult();
 
-        $data = ['items'=>$items,'total'=>$total];
+        $data = ['items'=>$items,'total'=>$total,'blog'=>$blog];
         return view('cart/checkout',$data);
     }
 
