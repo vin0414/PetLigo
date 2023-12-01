@@ -74,7 +74,7 @@
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-11 ftco-animate text-center">
           	<h1 class="mb-4">Highest Quality Care For Pets You'll Love </h1>
-            <p><a href="#" class="btn btn-primary mr-md-4 py-3 px-4">Learn more <span class="ion-ios-arrow-forward"></span></a></p>
+            <p><a href="<?=site_url('services')?>" class="btn btn-primary mr-md-4 py-3 px-4">Learn more <span class="ion-ios-arrow-forward"></span></a></p>
           </div>
         </div>
       </div>
