@@ -436,5 +436,56 @@
 		<script src="/resources/vendors/scripts/layout-settings.js"></script>
 		<script src="/resources/src/plugins/fullcalendar/fullcalendar.min.js"></script>
 		<script src="/resources/vendors/scripts/calendar-setting.js"></script>
+		<script>
+			<?php $eventData = array();?>
+			<?php
+			$db;
+			$this->db = db_connect(); 
+			$builder = $this->db->table('tblreservation a');
+			$builder->select('a.*,b.Fullname,c.Address');
+			$builder->join('tblcustomer b','b.customerID=a.customerID','LEFT');
+			$builder->join('tblcustomer_info c','c.customerID=a.customerID','LEFT');
+			$builder->WHERE('a.Status',1);
+			$data = $builder->get();
+			foreach($data->getResult() as $row)
+			{
+				$data = "Time: ".$row->Time."<br/>Customer: ".$row->Fullname."<br/>Location: ".$row->Address;
+				$tempArray = array( "title" =>'Reservation',"description" => $data,"start" => $row->Date,"end" => $row->Date);
+				array_push($eventData, $tempArray);
+			}
+			?>
+			const jsonData = <?php echo json_encode($eventData); ?>;
+			(function () {
+				"use strict";
+				jQuery(function () {
+					// page is ready
+					jQuery("#calendar").fullCalendar({
+						themeSystem: "bootstrap4",
+						// emphasizes business hours
+						businessHours: false,
+						defaultView: "month",
+						// event dragging & resizing
+						editable: true,
+						// header
+						header: {
+							left: "title",
+							center: "month,agendaWeek,agendaDay",
+							right: "today prev,next",
+						},
+						events: jsonData,
+						dayClick: function () {
+							jQuery("#modal-view-event-add").modal();
+						},
+						eventClick: function (event, jsEvent, view) {
+							jQuery(".event-icon").html("<i class='fa fa-information'></i>");
+							jQuery(".event-title").html(event.title);
+							jQuery(".event-body").html(event.description);
+							jQuery(".eventUrl").attr("href", event.url);
+							jQuery("#modal-view-event").modal();
+						},
+					});
+				});
+			})(jQuery);
+		</script>
 	</body>
 </html>
