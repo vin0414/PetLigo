@@ -53,6 +53,11 @@
 			type="text/css"
 			href="/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css"
 		/>
+		<link
+			rel="stylesheet"
+			type="text/css"
+			href="/resources/src/plugins/fullcalendar/fullcalendar.css"
+		/>
 		<link rel="stylesheet" type="text/css" href="/resources/vendors/styles/style.css" />
 	</head>
 	<body>
@@ -397,7 +402,9 @@
 						</button>
 					</div>
 				<?php endif; ?>
-				
+				<div class="calendar-wrap">
+					<div id="calendar"></div>
+				</div>
 			</div>
 		</div>
 		<!-- js -->
@@ -405,10 +412,7 @@
 		<script src="/resources/vendors/scripts/script.min.js"></script>
 		<script src="/resources/vendors/scripts/process.js"></script>
 		<script src="/resources/vendors/scripts/layout-settings.js"></script>
-		<script src="/resources/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
-		<script src="/resources/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
-		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
-		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-        <script src="/resources/vendors/scripts/datatable-setting.js"></script>
+		<script src="/resources/src/plugins/fullcalendar/fullcalendar.min.js"></script>
+		<script src="/resources/vendors/scripts/calendar-setting.js"></script>
 	</body>
 </html>
