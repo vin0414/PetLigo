@@ -444,7 +444,7 @@
 			$builder = $this->db->table('tblreservation a');
 			$builder->select('a.*,b.Fullname,c.Address');
 			$builder->join('tblcustomer b','b.customerID=a.customerID','LEFT');
-			$builder->join('tblcustomer_info c','c.customerID=a.customerID','LEFT');
+			$builder->join('tblcustomer_info c','c.customerID=b.customerID','LEFT');
 			$builder->WHERE('a.Status',1);
 			$data = $builder->get();
 			foreach($data->getResult() as $row)
