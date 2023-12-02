@@ -135,7 +135,13 @@ class Home extends BaseController
 
     public function Dashboard()
     {
-        return view('admin/index');
+        $builder = $this->db->table('tblorders a');
+        $builder->select('a.productName,a.Qty,a.price,b.TransactionNo');
+        $builder->join('tblcustomer_order b','b.TransactionNo=a.TransactionNo','LEFT');
+        $builder->WHERE('b.Status',1);
+        $list = $builder->get()->getResult();
+        $data = ['list'=>$list];
+        return view('admin/index',$data);
     }
 
     public function Maintenance()
