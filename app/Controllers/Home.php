@@ -515,9 +515,17 @@ class Home extends BaseController
         $categoryModel = new \App\Models\categoryModel();
         //data
         $cat_name = $this->request->getPost('category_name');
-        $values = ['CategoryName'=>$cat_name,];
-        $categoryModel->save($values);
-        echo "success";
+        $validation = $this->validate(['category_name'=>'required']);
+        if(!$validation)
+        {
+            echo "Invalid! Please enter new category";
+        }
+        else
+        {
+            $values = ['CategoryName'=>$cat_name,];
+            $categoryModel->save($values);
+            echo "success";
+        }
     }
 
     public function addStocks()
