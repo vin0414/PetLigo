@@ -133,11 +133,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="github-link">
-					<a href="https://github.com/dropways/deskapp" target="_blank"
-						><img src="vendors/images/github.svg" alt=""
-					/></a>
-				</div>
 			</div>
 		</div>
 
@@ -441,16 +436,14 @@
 			<?php
 			$db;
 			$this->db = db_connect(); 
-			$builder = $this->db->table('tblreservation a');
-			$builder->select('a.*,b.Fullname,c.Address');
-			$builder->join('tblcustomer b','b.customerID=a.customerID','LEFT');
-			$builder->join('tblcustomer_info c','c.customerID=b.customerID','LEFT');
-			$builder->WHERE('a.Status',1);
-			$data = $builder->get();
-			foreach($data->getResult() as $row)
+			$sql = "Select a.*,b.Fullname,c.Address from tblreservation a 
+			LEFT JOIN tblcustomer b ON b.customerID=a.customerID 
+			LEFT JOIN tblcustomer_info c ON c.customerID=a.customerID WHERE a.Status=1 GROUP BY a.reservationID";
+			$query = $this->db->query($sql);
+			foreach($query->getResult() as $row)
 			{
-				$data = "Time: ".$row->Time."<br/>Customer: ".$row->Fullname."<br/>Location: ".$row->Address;
-				$tempArray = array( "title" =>'Reservation',"description" => $data,"start" => $row->Date,"end" => $row->Date);
+				$datas = "Time: ".$row->Time."<br/>Customer: ".$row->Fullname."<br/>Location: ".$row->Address;
+				$tempArray = array( "title" =>'Reservation',"description" => $datas,"start" => $row->Date,"end" => $row->Date);
 				array_push($eventData, $tempArray);
 			}
 			?>
