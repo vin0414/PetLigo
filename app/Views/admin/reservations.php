@@ -430,13 +430,11 @@
 		<script src="/resources/vendors/scripts/process.js"></script>
 		<script src="/resources/vendors/scripts/layout-settings.js"></script>
 		<script src="/resources/src/plugins/fullcalendar/fullcalendar.min.js"></script>
-		<script src="/resources/vendors/scripts/calendar-setting.js"></script>
 		<script>
-			<?php $eventData = array();?>
 			<?php
-			$db;
+			$db;$eventData = array();
 			$this->db = db_connect();  
-			$sql = "Select a.*,b.Fullname,c.Address from tblreservation a 
+			$sql = "Select a.Date,a.Time,b.Fullname,c.Address from tblreservation a 
 			LEFT JOIN tblcustomer b ON b.customerID=a.customerID 
 			LEFT JOIN tblcustomer_info c ON c.customerID=a.customerID WHERE a.Status=1 GROUP BY a.reservationID";
 			$query = $this->db->query($sql);
