@@ -133,11 +133,6 @@
 						</div>
 					</div>
 				</div>
-				<div class="github-link">
-					<a href="https://github.com/dropways/deskapp" target="_blank"
-						><img src="vendors/images/github.svg" alt=""
-					/></a>
-				</div>
 			</div>
 		</div>
 
@@ -449,8 +444,8 @@
 			$data = $builder->get();
 			foreach($data->getResult() as $row)
 			{
-				$data = "Time: ".$row->Time."<br/>Customer: ".$row->Fullname."<br/>Location: ".$row->Address;
-				$tempArray = array( "title" =>'Reservation',"description" => $data,"start" => $row->Date,"end" => $row->Date);
+				$datas = "Time: ".$row->Time."<br/>Customer: ".$row->Fullname."<br/>Location: ".$row->Address;
+				$tempArray = array( "title" =>'Reservation',"description" => $datas,"start" => $row->Date,"end" => $row->Date);
 				array_push($eventData, $tempArray);
 			}
 			?>
