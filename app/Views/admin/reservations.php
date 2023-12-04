@@ -434,14 +434,16 @@
 			<?php
 			$db;$eventData = array();
 			$this->db = db_connect();  
-			$sql = "Select a.Date,a.Time,b.Fullname,c.Address from tblreservation a 
+			$sql = "Select a.Date,a.Time,b.Fullname,c.Address,d.Description from tblreservation a 
 			LEFT JOIN tblcustomer b ON b.customerID=a.customerID 
-			LEFT JOIN tblcustomer_info c ON c.customerID=a.customerID WHERE a.Status=1 GROUP BY a.reservationID";
+			LEFT JOIN tblcustomer_info c ON c.customerID=a.customerID
+			LEFT JOIN tblservices d ON d.servicesID=a.servicesID
+			 WHERE a.Status=1 GROUP BY a.reservationID";
 			$query = $this->db->query($sql);
 			foreach($query->getResult() as $row)
 			{
 				$datas = "Time: ".$row->Time."<br/>Customer: ".$row->Fullname."<br/>Location: ".$row->Address;
-				$tempArray = array( "title" =>'Reservation',"description" => $datas,"start" => $row->Date,"end" => $row->Date);
+				$tempArray = array( "title" =>$row->Description,"description" => $datas,"start" => $row->Date,"end" => $row->Date);
 				array_push($eventData, $tempArray);
 			}
 			?>
