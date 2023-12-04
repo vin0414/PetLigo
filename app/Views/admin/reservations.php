@@ -435,7 +435,7 @@
 			<?php $eventData = array();?>
 			<?php
 			$db;
-			$this->db = db_connect(); 
+			$this->db = db_connect();  
 			$sql = "Select a.*,b.Fullname,c.Address from tblreservation a 
 			LEFT JOIN tblcustomer b ON b.customerID=a.customerID 
 			LEFT JOIN tblcustomer_info c ON c.customerID=a.customerID WHERE a.Status=1 GROUP BY a.reservationID";
