@@ -91,6 +91,7 @@ $routes->post('confirm','Customer::Confirm');
 $routes->post('cancel-order','Customer::cancelOrder');
 $routes->get('view-order','Customer::viewOrder');
 $routes->post('save-reservation','Customer::saveReservation');
+$routes->post('save','Customer::Save');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {

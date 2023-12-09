@@ -554,7 +554,40 @@ class Customer extends BaseController
 
     public function saveReservation()
     {
+        $reservationModel = new \App\Models\reservationModel();
+        //data
+    }
 
+    public function Save()
+    {
+        $reservationModel = new \App\Models\reservationModel();
+        //data
+        $user = session()->get('sess_id');
+        $servicesID = $this->request->getPost('servicesID');
+        $date = $this->request->getPost('date');
+        $time = $this->request->getPost('time');
+        $fullname = $this->request->getPost('fullname');
+        $phone = $this->request->getPost('phone');
+        $email = $this->request->getPost('email');
+        $address = $this->request->getPost('address');
+        $pet = $this->request->getPost('pet');
+        $charge = $this->request->getPost('charge');
+        $payment = $this->request->getPost('payment');
+        $status = 0;
+        $remarks = "Pending";
+        $validation = $this->validate([
+            'date'=>'required','time'=>'required',
+            'fullname'=>'required','phone'=>'required',
+            'email'=>'required','pet'=>'required','payment'=>'required'
+        ]);
+        if(!$validation)
+        {
+            echo "Please fill in the form";
+        }
+        else
+        {
+
+        }
     }
 
     public function getTime()

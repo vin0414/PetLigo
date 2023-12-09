@@ -4,7 +4,7 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class accountModel extends Model
+class reservationModel extends Model
 {
     protected $table      = 'tblreservation';
     protected $primaryKey = 'reservationID';

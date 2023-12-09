@@ -439,7 +439,8 @@
 
 		<div class="main-container">
 			<div class="pd-ltr-20">
-                <form method="POST" class="row g-3">
+                <form method="POST" class="row g-3" id="frmReserve">
+					<input type="hidden" name="servicesID" value="<?=$services['servicesID']?>"/>
                     <div class="col-lg-8">
                         <div class="card-box">
                             <div class="card-header">Customer Details</div>
@@ -536,8 +537,46 @@
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<script>
+			$('#btnSave').on('click',function(e)
+			{
+				e.preventDefault();
+				Swal.fire({
+					title: "Are you sure?",
+					text: "Do you want to continue?",
+					icon: "question",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "Yes"
+					}).then((result) => {
+					if (result.isConfirmed) 
+					{
+						var data = $('#frmReserve').serialize();
+						$.ajax({
+							url:"<?=site_url('save')?>",method:"POST",
+							data:data,
+							success:function(response)
+							{
+								if(response==="success")
+								{
+									window.location.href="<?=site_url('customer/reservations')?>";	
+								}
+								else
+								{
+									Swal.fire({
+										title: "Invalid",
+										text: response,
+										icon: "warning"
+										});
+								}
+							}
+						});
+					}
+				});
+			});
 			$('#date').change(function()
 			{
+				$('#time').find('option').not(':first').remove();
 				var date = $(this).val();
 				$.ajax({
 					url:"<?=site_url('get-available-time')?>",method:"GET",
@@ -546,7 +585,11 @@
 					{
 						if(response==="")
 						{
-							alert("Sorry! Already fully-booked. Please select other dates");
+							Swal.fire({
+								title: "Sorry",
+								text: "Full booked, Please select other dates",
+								icon: "info"
+								});
 						}
 						else
 						{
