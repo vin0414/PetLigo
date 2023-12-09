@@ -449,11 +449,13 @@
                                         <div class="row g-3">
                                             <div class="col-lg-6">
                                                 <label>Date</label>
-                                                <input type="date" class="form-control" name="date" required/>
+                                                <input type="date" class="form-control" name="date" id="date" required/>
                                             </div>
                                             <div class="col-lg-6">
                                                 <label>Time</label>
-                                                <input type="time" class="form-control" name="time" required/>
+                                                <select class="form-control" name="time" id="time" required>
+													<option value="">Choose</option>
+												</select>
                                             </div>
                                         </div>
                                     </div>
@@ -533,6 +535,26 @@
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-		
+		<script>
+			$('#date').change(function()
+			{
+				var date = $(this).val();
+				$.ajax({
+					url:"<?=site_url('get-available-time')?>",method:"GET",
+					data:{date:date},
+					success:function(response)
+					{
+						if(response==="")
+						{
+							alert("Sorry! Already fully-booked. Please select other dates");
+						}
+						else
+						{
+							$('#time').append(response);
+						}
+					}
+				});
+			});
+		</script>
 	</body>
 </html>

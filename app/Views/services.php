@@ -125,7 +125,7 @@
               </div>
               <div class="media-body p-4">
                 <h3 class="heading">Ala Carte Services</h3>
-                <p>Individualized grooming or care services that can be chosen separately based on the specific needs of your pet[1]. Rather than opting for a standard package, ala carte services allow pet owners to select specific treatments or add-ons tailored to their pet's requirements.</p>
+                <p>Individualized grooming or care services that can be chosen separately based on the specific needs of your pet. Rather than opting for a standard package, ala carte services allow pet owners to select specific treatments or add-ons tailored to their pet's requirements.</p>
               </div>
             </div>      
           </div>

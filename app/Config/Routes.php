@@ -49,6 +49,7 @@ $routes->get('/forgot-password','Home::forgotPassword');
 $routes->get('services-for-dogs','Home::servicesDog');
 $routes->get('services-for-cats','Home::servicesCat');
 $routes->get('ala-carte','Home::alaCarte');
+$routes->get('get-available-time','Customer::getTime');
 //authentication
 $routes->post('/check','Home::Authentication');
 $routes->post('/check-account','Home::checkAccount');

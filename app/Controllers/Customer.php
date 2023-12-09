@@ -556,4 +556,25 @@ class Customer extends BaseController
     {
 
     }
+
+    public function getTime()
+    {
+        $date = $this->request->getGet('date');
+        $list = array("08:00 AM","10:00 AM","12:00 PM","02:00 PM","04:00 PM");$lists = array();
+        $numbers = array();
+        $builder = $this->db->table('tblreservation');
+        $builder->select('Time');
+        $builder->WHERE('Date',$date);
+        $datas = $builder->get();
+        foreach($datas->getResult() as $row)
+        {
+            array_push($numbers,$row->Time);
+        }
+        $lists = array_diff($list,$numbers);
+        $Obj = json_decode(json_encode($lists));
+        foreach($Obj as $object)
+        {
+            echo "<option>".$object."</option>";
+        }
+    }
 }
