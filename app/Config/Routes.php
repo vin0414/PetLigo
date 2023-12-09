@@ -45,9 +45,11 @@ $routes->get('/cart/remove/(:any)','Cart::remove/$1');
 $routes->get('/cart/view','Cart::viewCart');
 $routes->get('/cart/details/(:any)','Cart::details/$1');
 $routes->get('/register','Home::register');
+$routes->get('/reserve/(:any)','Home::reserve/$1');
 $routes->get('/forgot-password','Home::forgotPassword');
 $routes->get('services-for-dogs','Home::servicesDog');
 $routes->get('services-for-cats','Home::servicesCat');
+$routes->get('ala-carte','Home::alaCarte');
 //authentication
 $routes->post('/check','Home::Authentication');
 $routes->post('/check-account','Home::checkAccount');

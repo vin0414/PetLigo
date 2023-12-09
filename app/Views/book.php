@@ -87,7 +87,7 @@
 
     <section class="ftco-section bg-light">
 		<div class="container">
-        <h3>Book Now</h3>
+          <h3>Regular Services</h3>
           <div class="row">
               <div class="col-12 form-group">
                 <div class="row g-3">
@@ -103,7 +103,20 @@
                 </div>
               </div>
           </div>
-			</div>
+          <h3>Ala Carte</h3>
+          <form class="row" method="post">
+              <div class="col-12 form-group">
+                <table class="table table-bordered">
+                    <tbody id="loadResult">
+
+                    </tbody>
+                </table>
+              </div>
+              <div class="col-12 form-group">
+                <button type="submit" class="btn btn-primary" id="btnBook">Book Now</button>
+              </div>
+          </form>
+		</div>
 		</section>
         <footer class="footer">
 			<div class="container">
@@ -183,8 +196,24 @@
   <script>
       $(document).ready(function()
       {
-        loadDogServices();
+        loadDogServices();alaCarte();
       });
+      function alaCarte()
+      {
+        $.ajax({
+            url:"<?=site_url('ala-carte')?>",method:"GET",
+            success:function(response)
+            {
+                if(response==="")
+                {
+                $('#loadResult').html("<div class='col-12'><center>No Product(s) Available</center></div>");
+                }
+                else{
+                $('#loadResult').html(response);
+                }
+            }
+        });
+      }
       function loadDogServices()
       {
         $.ajax({
@@ -204,8 +233,35 @@
 
       function loadCatServices()
       {
-
+        $.ajax({
+            url:"<?=site_url('services-for-cats')?>",method:"GET",
+            success:function(response)
+            {
+                if(response==="")
+                {
+                $('#loadResults').html("<div class='col-12'><center>No Product(s) Available</center></div>");
+                }
+                else{
+                $('#loadResults').html(response);
+                }
+            }
+        });
       }
+
+      $(function() {
+        $('input:radio[name="category"]').change(function() {
+            $('#loadResults').html("<center><label>Loading...</label></center>");
+            var val = $(this).val();
+            if(val==="Dogs")
+            {
+                loadDogServices();
+            }
+            else
+            {
+                loadCatServices();
+            }
+        });
+    });
   </script>
   </body>
 </html>
