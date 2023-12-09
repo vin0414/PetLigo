@@ -1357,11 +1357,6 @@ class Home extends BaseController
         }
     }
 
-    public function reserve($id)
-    {
-
-    }
-
     public function alaCarte()
     {
         $servicesModel = new \App\Models\servicesModel();
@@ -1370,8 +1365,8 @@ class Home extends BaseController
         {
             ?>
             <tr>
-                <td></td>
-                <td><b><?php echo $row['Description'] ?></b></td>
+                <td><input type="checkbox" class="checkbox" value="<?php echo $row['servicesID'] ?>" name="itemID[]" id="itemID" style="width:20px;height:20px;"/>
+                <b><?php echo $row['Description'] ?></b></td>
                 <td>PhP <?php echo number_format($row['Charge'],2)?></td>
             </tr>
             <?php

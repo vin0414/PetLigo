@@ -442,7 +442,7 @@
 			$query = $this->db->query($sql);
 			foreach($query->getResult() as $row)
 			{
-				$datas = "Time: ".$row->Time."<br/>Customer: ".$row->Fullname."<br/>Location: ".$row->Address;
+				$datas = "Time: ".$row->Time."<br/>Customer's Name: ".$row->Fullname."<br/>Customer's Address: ".$row->Address;
 				$tempArray = array( "title" =>$row->Description,"description" => $datas,"start" => $row->Date,"end" => $row->Date);
 				array_push($eventData, $tempArray);
 			}

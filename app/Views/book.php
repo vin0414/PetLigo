@@ -104,7 +104,7 @@
               </div>
           </div>
           <h3>Ala Carte</h3>
-          <form class="row" method="post">
+          <form class="row" method="post" action="<?=base_url('save-reservation')?>">
               <div class="col-12 form-group">
                 <table class="table table-bordered">
                     <tbody id="loadResult">

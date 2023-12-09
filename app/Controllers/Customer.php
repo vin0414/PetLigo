@@ -540,4 +540,14 @@ class Customer extends BaseController
         $builder->delete();
         echo "success";
     }
+
+    public function reserve($id)
+    {
+
+    }
+
+    public function saveReservation()
+    {
+        
+    }
 }

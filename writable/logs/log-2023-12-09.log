@@ -38,3 +38,11 @@ INFO - 2023-12-09 04:02:18 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2023-12-09 04:09:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-12-09 04:12:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-12-09 04:45:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-12-09 06:43:01 --> Attempt to read property "servicesID" on array
+in APPPATH\Controllers\Home.php on line 1373.
+ 1 APPPATH\Controllers\Home.php(1373): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "servicesID" on array', 'APPPATH\\Controllers\\Home.php', 1373)
+ 2 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->alaCarte()
+ 3 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 4 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')

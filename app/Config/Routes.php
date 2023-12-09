@@ -45,7 +45,6 @@ $routes->get('/cart/remove/(:any)','Cart::remove/$1');
 $routes->get('/cart/view','Cart::viewCart');
 $routes->get('/cart/details/(:any)','Cart::details/$1');
 $routes->get('/register','Home::register');
-$routes->get('/reserve/(:any)','Home::reserve/$1');
 $routes->get('/forgot-password','Home::forgotPassword');
 $routes->get('services-for-dogs','Home::servicesDog');
 $routes->get('services-for-cats','Home::servicesCat');
@@ -90,6 +89,7 @@ $routes->post('remove-item','Customer::removeItem');
 $routes->post('confirm','Customer::Confirm');
 $routes->post('cancel-order','Customer::cancelOrder');
 $routes->get('view-order','Customer::viewOrder');
+$routes->post('save-reservation','Customer::saveReservation');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
@@ -123,6 +123,7 @@ $routes->group('',['filter'=>'customerAuthCheck'],function($routes)
     $routes->get('customer/profile','Customer::Profile');
     $routes->get('cart/shipping','Customer::shipping');
     $routes->get('customer/success','Customer::Success');
+    $routes->get('customer/reserve/(:any)','Customer::reserve/$1');
 });
 
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)
