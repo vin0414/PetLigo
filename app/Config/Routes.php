@@ -46,6 +46,8 @@ $routes->get('/cart/view','Cart::viewCart');
 $routes->get('/cart/details/(:any)','Cart::details/$1');
 $routes->get('/register','Home::register');
 $routes->get('/forgot-password','Home::forgotPassword');
+$routes->get('services-for-dogs','Home::servicesDog');
+$routes->get('services-for-cats','Home::servicesCat');
 //authentication
 $routes->post('/check','Home::Authentication');
 $routes->post('/check-account','Home::checkAccount');

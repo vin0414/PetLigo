@@ -1312,4 +1312,14 @@ class Home extends BaseController
             }
         }
     }
+
+    public function servicesDog()
+    {
+
+    }
+
+    public function servicesCat()
+    {
+        
+    }
 }

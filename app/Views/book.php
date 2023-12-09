@@ -105,73 +105,66 @@
           </div>
 			</div>
 		</section>
-    <footer class="footer">
+        <footer class="footer">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 						<h2 class="footer-heading">PetLigo</h2>
 						<p>Pet Grooming Services</p>
 						<ul class="ftco-footer-social p-0">
-              <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
-              <li class="ftco-animate"><a href="https://www.facebook.com/PetLigoCaviteCity/" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
-              <li class="ftco-animate"><a href="https://www.instagram.com/explore/locations/111949591369146/petligo---grooming-services/" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
-            </ul>
+                            <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="fa fa-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="https://www.facebook.com/PetLigoCaviteCity/" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="fa fa-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="https://www.instagram.com/explore/locations/111949591369146/petligo---grooming-services/" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="fa fa-instagram"></span></a></li>
+                        </ul>
 					</div>
 					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 						<h2 class="footer-heading">Latest News</h2>
-            <?php foreach($blog as $row): ?>
-            <?php $imgURL = "/Blogs/".$row->Image; ?>
-						<div class="block-21 mb-4 d-flex">
-              <a class="img mr-4 rounded" style="background-image: url(<?php echo $imgURL ?>);"></a>
-              <div class="text">
-                <h3 class="heading"><a href="#"><?php echo $row->blogTitle ?></a></h3>
-                <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span><?php echo $row->Date ?></a></div>
-                  <div><a href="#"><span class="icon-person"></span><?php echo $row->Fullname ?></a></div>
-                </div>
-              </div>
-            </div>
-            <?php endforeach; ?>
+                        <?php foreach($blog as $row): ?>
+                        <?php $imgURL = "/Blogs/".$row->Image; ?>
+                                    <div class="block-21 mb-4 d-flex">
+                        <a class="img mr-4 rounded" style="background-image: url(<?php echo $imgURL ?>);"></a>
+                        <div class="text">
+                            <h3 class="heading"><a href="#"><?php echo $row->blogTitle ?></a></h3>
+                            <div class="meta">
+                            <div><a href="#"><span class="icon-calendar"></span><?php echo $row->Date ?></a></div>
+                            <div><a href="#"><span class="icon-person"></span><?php echo $row->Fullname ?></a></div>
+                            </div>
+                        </div>
+                        </div>
+                        <?php endforeach; ?>
 					</div>
 					<div class="col-md-6 col-lg-3 pl-lg-5 mb-4 mb-md-0">
 						<h2 class="footer-heading">Quick Links</h2>
 						<ul class="list-unstyled">
-              <li><a href="/" class="py-2 d-block">Home</a></li>
-              <li><a href="/membership" class="py-2 d-block">Membership</a></li>
-              <li><a href="/services" class="py-2 d-block">Services</a></li>
-              <li><a href="/products" class="py-2 d-block">Products</a></li>
-              <li><a href="/stories" class="py-2 d-block">Stories</a></li>
-            </ul>
+                            <li><a href="/" class="py-2 d-block">Home</a></li>
+                            <li><a href="/membership" class="py-2 d-block">Membership</a></li>
+                            <li><a href="/services" class="py-2 d-block">Services</a></li>
+                            <li><a href="/products" class="py-2 d-block">Products</a></li>
+                            <li><a href="/stories" class="py-2 d-block">Stories</a></li>
+                        </ul>
 					</div>
 					<div class="col-md-6 col-lg-3 mb-4 mb-md-0">
 						<h2 class="footer-heading">Have a Questions?</h2>
 						<div class="block-23 mb-3">
-              <ul>
-                <li><span class="icon fa fa-map"></span><span class="text">452 Padre Pio, Santa Cruz, Cavite City, 4100 Cavite</span></li>
-                <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">0905-768-1413</span></a></li>
-                <li><a href="mailto:petligo2023@gmail.com"><span class="icon fa fa-paper-plane"></span><span class="text">petligo2023@gmail.com</span></a></li>
-              </ul>
-            </div>
+                        <ul>
+                            <li><span class="icon fa fa-map"></span><span class="text">452 Padre Pio, Santa Cruz, Cavite City, 4100 Cavite</span></li>
+                            <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">0905-768-1413</span></a></li>
+                            <li><a href="mailto:petligo2023@gmail.com"><span class="icon fa fa-paper-plane"></span><span class="text">petligo2023@gmail.com</span></a></li>
+                        </ul>
+                        </div>
 					</div>
 				</div>
 				<div class="row mt-5">
-          <div class="col-md-12 text-center">
-
-            <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-          </div>
-        </div>
+                    <div class="col-md-12 text-center">
+                        <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                    </div>
+                </div>
 			</div>
 		</footer>
-
-    
-  
-
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
   <script src="assets/js/jquery.min.js"></script>
   <script src="assets/js/jquery-migrate-3.0.1.min.js"></script>
   <script src="assets/js/popper.min.js"></script>
@@ -188,7 +181,25 @@
   <script src="assets/js/main.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script>
-      
+      $(document).ready(function()
+      {
+        loadDogServices();
+      });
+      function loadDogServices()
+      {
+        $.ajax({
+            url:"<?=site_url('services-for-dogs')?>",method:"GET",
+            success:function(response)
+            {
+                
+            }
+        });
+      }
+
+      function loadCatServices()
+      {
+
+      }
   </script>
   </body>
 </html>
