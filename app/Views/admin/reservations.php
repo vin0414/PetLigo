@@ -415,7 +415,7 @@
 						<div class="modal-footer">
 							<button
 								type="button"
-								class="btn btn-primary"
+								class="btn btn-primary btn-sm"
 								data-dismiss="modal"
 							>
 								Close
@@ -434,15 +434,17 @@
 			<?php
 			$db;$eventData = array();
 			$this->db = db_connect();  
-			$sql = "Select a.Date,a.Time,b.Fullname,c.Address,d.Description from tblreservation a 
-			LEFT JOIN tblcustomer b ON b.customerID=a.customerID 
-			LEFT JOIN tblcustomer_info c ON c.customerID=a.customerID
-			LEFT JOIN tblservices d ON d.servicesID=a.servicesID
+			$sql = "Select a.Date,a.Time,a.Fullname,a.Address,a.EmailAddress,a.ContactNo,b.Description from tblreservation a 
+			LEFT JOIN tblservices b ON b.servicesID=a.servicesID
 			 WHERE a.Status=1 GROUP BY a.reservationID";
 			$query = $this->db->query($sql);
 			foreach($query->getResult() as $row)
 			{
-				$datas = "Time: ".$row->Time."<br/>Customer's Name: ".$row->Fullname."<br/>Customer's Address: ".$row->Address;
+				$datas = "Time: ".$row->Time.
+				"<br/>Customer's Name: ".$row->Fullname.
+				"<br/>Customer's Address: ".$row->Address.
+				"<br/>Email Address: ".$row->EmailAddress.
+				"<br/>Contact No: ".$row->ContactNo;
 				$tempArray = array( "title" =>$row->Description,"description" => $datas,"start" => $row->Date,"end" => $row->Date);
 				array_push($eventData, $tempArray);
 			}

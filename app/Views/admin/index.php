@@ -461,64 +461,41 @@
 								<div class="weight-600 font-30 text-blue"><?php echo session()->get('sess_fullname') ?>!</div>
 							</h4>
 							<p class="font-18 max-width-600">
-								Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde
-								hic non repellendus debitis iure, doloremque assumenda. Autem
-								modi, corrupti, nobis ea iure fugiat, veniam non quaerat
-								mollitia animi error corporis.
+								Petligo - Pet Grooming Services
 							</p>
 						</div>
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-xl-3 mb-30">
-						<div class="card-box height-100-p widget-style1">
-							<div class="d-flex flex-wrap align-items-center">
-								<div class="progress-data">
-									<div id="chart"></div>
-								</div>
-								<div class="widget-data">
-									<div class="h4 mb-0">2020</div>
-									<div class="weight-600 font-14">Contact</div>
-								</div>
+						<div class="card-box">
+							<div class="card-body">
+								<h6>Revenue</h6>
+								<h1>0.00</h1>
 							</div>
 						</div>
 					</div>
 					<div class="col-xl-3 mb-30">
-						<div class="card-box height-100-p widget-style1">
-							<div class="d-flex flex-wrap align-items-center">
-								<div class="progress-data">
-									<div id="chart2"></div>
-								</div>
-								<div class="widget-data">
-									<div class="h4 mb-0">400</div>
-									<div class="weight-600 font-14">Deals</div>
-								</div>
+						<div class="card-box">
+							<div class="card-body">
+								<h6>New Orders</h6>
+								<h1>0</h1>
 							</div>
 						</div>
 					</div>
 					<div class="col-xl-3 mb-30">
-						<div class="card-box height-100-p widget-style1">
-							<div class="d-flex flex-wrap align-items-center">
-								<div class="progress-data">
-									<div id="chart3"></div>
-								</div>
-								<div class="widget-data">
-									<div class="h4 mb-0">350</div>
-									<div class="weight-600 font-14">Campaign</div>
-								</div>
+						<div class="card-box">
+							<div class="card-body">
+								<h6>Reserved</h6>
+								<h1>0</h1>
 							</div>
 						</div>
 					</div>
 					<div class="col-xl-3 mb-30">
-						<div class="card-box height-100-p widget-style1">
-							<div class="d-flex flex-wrap align-items-center">
-								<div class="progress-data">
-									<div id="chart4"></div>
-								</div>
-								<div class="widget-data">
-									<div class="h4 mb-0">$6060</div>
-									<div class="weight-600 font-14">Worth</div>
-								</div>
+						<div class="card-box">
+							<div class="card-body">
+								<h6>Membership</h6>
+								<h1>0</h1>
 							</div>
 						</div>
 					</div>
