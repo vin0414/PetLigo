@@ -89,7 +89,7 @@
               </div>
               <div class="media-body p-4">
                 <h3 class="heading">Full-Groom</h3>
-                <p>Full grooming of pets is a comprehensive service that takes care of all the grooming needs of your furry companions. This grooming service is essential for maintaining your pet's health and appearance as it includes not just a haircut but also various hygiene-related services.</p>
+                <p>Comprehensive service that takes care of all the grooming needs of your furry companions. This grooming service is essential for maintaining your pet's health and appearance as it includes not just a haircut but also various hygiene-related services.</p>
               </div>
             </div>      
           </div>
@@ -100,7 +100,7 @@
               </div>
               <div class="media-body p-4">
                 <h3 class="heading">Standard Clips</h3>
-                <p>A standard clip is a popular grooming style for pets that involves trimming their entire coat to a uniform length. This style is commonly used for pets where the goal is to maintain a neat and tidy appearance without any specific breed-specific trims or custom styles. </p>
+                <p>Popular grooming style for pets that involves trimming their entire coat to a uniform length. This style is commonly used for pets where the goal is to maintain a neat and tidy appearance without any specific breed-specific trims or custom styles. </p>
               </div>
             </div>    
           </div>
@@ -111,7 +111,7 @@
               </div>
               <div class="media-body p-4">
                 <h3 class="heading">Style Clips</h3>
-                <p>Style clips for pets are a grooming service that focuses on providing a fashionable and trendy appearance for your furry companions. Whether you have a dog, cat, or any other pet, style clips allow you to enhance their natural charm and express their personality through a customized haircut or grooming style.</p>
+                <p>Grooming service that focuses on providing a fashionable and trendy appearance for your furry companions. Whether you have a dog, cat, or any other pet, style clips allow you to enhance their natural charm and express their personality through a customized haircut or grooming style.</p>
               </div>
             </div>      
           </div>
@@ -125,7 +125,7 @@
               </div>
               <div class="media-body p-4">
                 <h3 class="heading">Ala Carte Services</h3>
-                <p>Ala carte services for pets refer to individualized grooming or care services that can be chosen separately based on the specific needs of your pet[1]. Rather than opting for a standard package, ala carte services allow pet owners to select specific treatments or add-ons tailored to their pet's requirements.</p>
+                <p>Individualized grooming or care services that can be chosen separately based on the specific needs of your pet[1]. Rather than opting for a standard package, ala carte services allow pet owners to select specific treatments or add-ons tailored to their pet's requirements.</p>
               </div>
             </div>      
           </div>
@@ -136,7 +136,7 @@
               </div>
               <div class="media-body p-4">
                 <h3 class="heading">Pet Food Services</h3>
-                <p>offer a variety of food options and products designed to meet the nutritional needs of pets. These services can range from retail pet food stores to online delivery services, providing a range of food types including dry food, wet food, raw food, and frozen food options for dogs, cats, and other pets.</p>
+                <p>Offer a variety of food options and products designed to meet the nutritional needs of pets. These services can range from retail pet food stores to online delivery services, providing a range of food types including dry food, wet food, raw food, and frozen food options for dogs, cats, and other pets.</p>
               </div>
             </div>    
           </div>
