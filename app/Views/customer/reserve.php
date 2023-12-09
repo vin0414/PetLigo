@@ -404,7 +404,7 @@
 						</li>
                         <li class="dropdown">
 							<a href="javascript:void(0);" class="active dropdown-toggle no-arrow">
-								<span class="micon dw dw-shopping-cart"></span
+								<span class="micon dw dw-calendar-8"></span
 								><span class="mtext">Book Now</span>
 							</a>
 						</li>
@@ -439,23 +439,87 @@
 
 		<div class="main-container">
 			<div class="pd-ltr-20">
-				<?php if(!empty(session()->getFlashdata('success'))) : ?>
-					<div class="alert alert-success alert-dismissible fade show" role="alert">
-						<?= session()->getFlashdata('success'); ?>
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-				<?php endif; ?>
-				<div class="card-box">
-					<div class="card-header">
-					<span class="micon dw dw-shopping-cart"></span>&nbsp;Reservation
-					</div>
-					<div class="card-body">
-						<br/>
-						
-					</div>
-				</div>
+                <form method="POST" class="row g-3">
+                    <div class="col-lg-8">
+                        <div class="card-box">
+                            <div class="card-header">Customer Details</div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-12 form-group">
+                                        <div class="row g-3">
+                                            <div class="col-lg-6">
+                                                <label>Date</label>
+                                                <input type="date" class="form-control" name="date" required/>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label>Time</label>
+                                                <input type="time" class="form-control" name="time" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label>Customer's Fullname</label>
+                                        <input type="text" class="form-control" name="fullname" required/>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <div class="row g-3">
+                                            <div class="col-lg-6">
+                                                <label>Contact No</label>
+                                                <input type="phone" class="form-control" maxlength="11" minlength="11" id="phone" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required/>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <label>Email Address</label>
+                                                <input type="email" class="form-control" name="email" required/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label>Customer's Address</label>
+                                        <textarea class="form-control" name="address" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="card-box">
+                            <div class="card-header">Services/Payment</div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-12 form-group">
+                                        <label>Pet's Name</label>
+                                        <select class="form-control custom-select2" style="width:100%;" name="pet" required>
+                                            <option value="">Choose</option>
+                                            <?php foreach($pets as $row): ?>
+                                                <option value="<?php echo $row['petsID'] ?>"><?php echo $row['Name'] ?> (<?php echo $row['Breed'] ?>)</option>
+                                            <?php endforeach; ?>
+                                        </select>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label>Services</label>
+                                        <input type="text" class="form-control" name="services" value="<?=$services['Description']?>"/>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label>Charge</label>
+                                        <input type="text" class="form-control" name="charge" value="<?=number_format($services['Charge'],2)?>"/>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <label>Payment Options</label>
+                                        <div class="col-12">
+                                            <input type="radio" name="payment" value="Gcash" style="width:20px;height:15px;" checked/>&nbsp;<label>Gcash</label>
+                                        </div>
+                                        <div class="col-12">
+                                            <input type="radio" name="payment" value="Cash" style="width:20px;height:15px;"/>&nbsp;<label>Cash</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12 form-group">
+                                        <button type="submit" class="btn btn-primary" id="btnSave">Book Now</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
 			</div>
 		</div>
 		<!-- js -->

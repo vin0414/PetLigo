@@ -543,9 +543,12 @@ class Customer extends BaseController
 
     public function reserve($id)
     {
+        $user = session()->get('sess_id');
+        $petModel = new \App\Models\petModel();
+        $pets = $petModel->WHERE('customerID',$user)->findAll();
         $servicesModel = new \App\Models\servicesModel();
         $services = $servicesModel->WHERE('servicesID',$id)->first();
-        $data = ['services'=>$services];
+        $data = ['services'=>$services,'pets'=>$pets];
         return view('customer/reserve',$data);
     }
 
