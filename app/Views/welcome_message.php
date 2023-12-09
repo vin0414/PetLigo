@@ -112,7 +112,7 @@
               </div>
               <div class="media-body">
                 <h3 class="heading">Style Clips</h3>
-                <p></p>
+                <p>Style clips for pets are a grooming service that focuses on providing a fashionable and trendy appearance for your furry companions. Whether you have a dog, cat, or any other pet, style clips allow you to enhance their natural charm and express their personality through a customized haircut or grooming style.</p>
               </div>
             </div>      
           </div>
