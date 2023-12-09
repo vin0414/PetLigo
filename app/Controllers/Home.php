@@ -1315,11 +1315,45 @@ class Home extends BaseController
 
     public function servicesDog()
     {
-
+        $servicesModel = new \App\Models\servicesModel();
+        $services = $servicesModel->WHERE('Category','Regular')->WHERE('serviceType','Dogs')->findAll();
+        foreach($services as $row)
+        {
+            ?>
+                <div class="col-md-3">
+                    <div class="block-7">
+                    <img src="assets/images/petligo.png" width="100%"/>
+                        <div class="text-center p-4">
+                            <h6><?php echo $row['Description'] ?></h6>
+                            <span class="price">PhP <?php echo number_format($row['Charge'],2)?></span>
+                            <br/>
+                            <a href="<?=site_url('reserve/')?><?php echo $row['servicesID'] ?>" class="btn btn-primary d-block px-2 py-3">Book</a>
+                        </div>
+                    </div>
+                </div>
+            <?php
+        }
     }
 
     public function servicesCat()
     {
-        
+        $servicesModel = new \App\Models\servicesModel();
+        $services = $servicesModel->WHERE('Category','Regular')->WHERE('serviceType','Cats')->findAll();
+        foreach($services as $row)
+        {
+            ?>
+                <div class="col-md-3">
+                    <div class="block-7">
+                    <img src="assets/images/petligo.png" width="100%"/>
+                        <div class="text-center p-4">
+                            <h6><?php echo $row['Description'] ?></h6>
+                            <span class="price">PhP <?php echo number_format($row['Charge'],2)?></span>
+                            <br/>
+                            <a href="<?=site_url('reserve/')?><?php echo $row['servicesID'] ?>" class="btn btn-primary d-block px-2 py-3">Book</a>
+                        </div>
+                    </div>
+                </div>
+            <?php
+        }
     }
 }

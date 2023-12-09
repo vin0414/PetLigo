@@ -191,7 +191,13 @@
             url:"<?=site_url('services-for-dogs')?>",method:"GET",
             success:function(response)
             {
-                
+                if(response==="")
+                {
+                $('#loadResults').html("<div class='col-12'><center>No Product(s) Available</center></div>");
+                }
+                else{
+                $('#loadResults').html(response);
+                }
             }
         });
       }
