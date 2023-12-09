@@ -543,11 +543,14 @@ class Customer extends BaseController
 
     public function reserve($id)
     {
-
+        $servicesModel = new \App\Models\servicesModel();
+        $services = $servicesModel->WHERE('servicesID',$id)->first();
+        $data = ['services'=>$services];
+        return view('customer/reserve',$data);
     }
 
     public function saveReservation()
     {
-        
+
     }
 }
