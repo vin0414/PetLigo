@@ -4,7 +4,7 @@
 	<head>
 		<!-- Basic Page Info -->
 		<meta charset="utf-8" />
-		<title>PetLigo - Reservations</title>
+		<title>PetLigo - Reservation</title>
 
 		<!-- Site favicon -->
 		<link
@@ -52,11 +52,6 @@
 			rel="stylesheet"
 			type="text/css"
 			href="/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css"
-		/>
-		<link
-			rel="stylesheet"
-			type="text/css"
-			href="/resources/src/plugins/fullcalendar/fullcalendar.css"
 		/>
 		<link rel="stylesheet" type="text/css" href="/resources/vendors/styles/style.css" />
 	</head>
@@ -132,6 +127,11 @@
 							>
 						</div>
 					</div>
+				</div>
+				<div class="github-link">
+					<a href="https://github.com/dropways/deskapp" target="_blank"
+						><img src="vendors/images/github.svg" alt=""
+					/></a>
 				</div>
 			</div>
 		</div>
@@ -330,9 +330,9 @@
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="<?=site_url('admin/reservations')?>" class="dropdown-toggle active no-arrow">
+							<a href="<?=site_url('admin/view-reservation')?>" class="active dropdown-toggle no-arrow">
 								<span class="micon dw dw-calendar-1"></span
-								><span class="mtext"> Reservations </span>
+								><span class="mtext"> Manage Reservation</span>
 							</a>
 						</li>
 						<li class="dropdown">
@@ -389,98 +389,39 @@
 
 		<div class="main-container">
 			<div class="pd-ltr-20">
-				<?php if(!empty(session()->getFlashdata('success'))) : ?>
-					<div class="alert alert-success alert-dismissible fade show" role="alert">
-						<?= session()->getFlashdata('success'); ?>
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+				<div class="card-box">
+					<div class="card-header"><span class="micon dw dw-calendar-1"></span>&nbsp;Reservation</div>
+                    <div class="card-body">
+                        <table class="data-table table stripe hover nowrap">
+							<thead>
+								<th>Date</th>
+								<th>Reference No</th>
+								<th>Customer's Name</th>
+								<th>Contact No</th>
+								<th>Payment Method</th>
+								<th>Total</th>
+								<th>Remarks</th>
+								<th>Status</th>
+								<th></th>
+							</thead>
+							<tbody>
+								
+							</tbody>
+						</table>
 					</div>
-				<?php endif; ?>
-				<a href="<?=site_url('admin/view-reservation')?>" class="btn btn-primary btn-sm view">Manage Reservations</a>
-				<div class="calendar-wrap">
-					<div id="calendar"></div>
 				</div>
 			</div>
 		</div>
-		<div id="modal-view-event" class="modal modal-top fade calendar-modal">
-				<div class="modal-dialog modal-dialog-centered">
-					<div class="modal-content">
-						<div class="modal-body">
-							<h4 class="h4">
-								<span class="event-icon weight-400 mr-3"></span
-								><span class="event-title">View Details</span>
-							</h4>
-							<div class="event-body"></div>
-						</div>
-						<div class="modal-footer">
-							<button
-								type="button"
-								class="btn btn-primary btn-sm"
-								data-dismiss="modal"
-							>
-								Close
-							</button>
-						</div>
-					</div>
-				</div>
-			</div>
 		<!-- js -->
 		<script src="/resources/vendors/scripts/core.js"></script>
 		<script src="/resources/vendors/scripts/script.min.js"></script>
 		<script src="/resources/vendors/scripts/process.js"></script>
 		<script src="/resources/vendors/scripts/layout-settings.js"></script>
-		<script src="/resources/src/plugins/fullcalendar/fullcalendar.min.js"></script>
-		<script>
-			<?php
-			$db;$eventData = array();
-			$this->db = db_connect();  
-			$sql = "Select Date,Time,Fullname,Address,EmailAddress,ContactNo,servicesName from tblreservation 
-			WHERE Status=1 GROUP BY reservationID";
-			$query = $this->db->query($sql);
-			foreach($query->getResult() as $row)
-			{
-				$datas = "Time: ".$row->Time.
-				"<br/>Customer's Name: ".$row->Fullname.
-				"<br/>Customer's Address: ".$row->Address.
-				"<br/>Email Address: ".$row->EmailAddress.
-				"<br/>Contact No: ".$row->ContactNo;
-				$tempArray = array( "title" =>$row->servicesName,"description" => $datas,"start" => $row->Date,"end" => $row->Date);
-				array_push($eventData, $tempArray);
-			}
-			?>
-			const jsonData = <?php echo json_encode($eventData); ?>;
-			(function () {
-				"use strict";
-				jQuery(function () {
-					// page is ready
-					jQuery("#calendar").fullCalendar({
-						themeSystem: "bootstrap4",
-						// emphasizes business hours
-						businessHours: false,
-						defaultView: "month",
-						// event dragging & resizing
-						editable: true,
-						// header
-						header: {
-							left: "title",
-							center: "month,agendaWeek,agendaDay",
-							right: "today prev,next",
-						},
-						events: jsonData,
-						dayClick: function () {
-							jQuery("#modal-view-event-add").modal();
-						},
-						eventClick: function (event, jsEvent, view) {
-							jQuery(".event-icon").html("<i class='fa fa-information'></i>");
-							jQuery(".event-title").html(event.title);
-							jQuery(".event-body").html(event.description);
-							jQuery(".eventUrl").attr("href", event.url);
-							jQuery("#modal-view-event").modal();
-						},
-					});
-				});
-			})(jQuery);
-		</script>
+		<script src="/resources/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+		<script src="/resources/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+        <script src="/resources/vendors/scripts/datatable-setting.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	</body>
 </html>

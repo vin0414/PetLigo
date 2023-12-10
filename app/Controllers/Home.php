@@ -683,6 +683,11 @@ class Home extends BaseController
         return view('admin/reservations');
     }
 
+    public function viewReservation()
+    {
+        return view('admin/view');
+    }
+
     public function Orders()
     {
         $builder = $this->db->table('tblcustomer_order a');

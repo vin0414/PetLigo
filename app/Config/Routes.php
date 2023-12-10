@@ -97,6 +97,7 @@ $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
     $routes->get('admin/dashboard','Home::Dashboard');
     $routes->get('admin/reservations','Home::Reservations');
+    $routes->get('admin/view-reservation','Home::viewReservation');
     $routes->get('admin/orders','Home::Orders');
     $routes->get('admin/membership','Home::Members');
     $routes->get('admin/reports','Home::Reports');
