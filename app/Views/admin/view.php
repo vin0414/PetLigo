@@ -390,19 +390,22 @@
 		<div class="main-container">
 			<div class="pd-ltr-20">
 				<div class="card-box">
-					<div class="card-header"><span class="micon dw dw-calendar-1"></span>&nbsp;Reservation</div>
+					<div class="card-header">
+                        <span class="micon dw dw-calendar-1"></span>&nbsp;Reservation
+                        <a href="<?=site_url('admin/reservations')?>" style="float:right;"><span class="dw dw-left-arrow1"></span>&nbsp;Back</a>
+                    </div>
                     <div class="card-body">
                         <table class="data-table table stripe hover nowrap">
 							<thead>
+                                <th>Trxn No</th>
 								<th>Date</th>
-								<th>Reference No</th>
-								<th>Customer's Name</th>
-								<th>Contact No</th>
+								<th>Time</th>
+								<th>Services</th>
+								<th>Charge</th>
 								<th>Payment Method</th>
-								<th>Total</th>
-								<th>Remarks</th>
 								<th>Status</th>
-								<th></th>
+								<th>Remarks</th>
+								<th>Action</th>
 							</thead>
 							<tbody>
 								
