@@ -471,7 +471,7 @@
 						<div class="card-box">
 							<div class="card-body">
 								<h6>Revenue</h6>
-								<h1>0.00</h1>
+								<h1><?=number_format($income,2) ?></h1>
 							</div>
 						</div>
 					</div>
@@ -479,7 +479,7 @@
 						<div class="card-box">
 							<div class="card-body">
 								<h6>New Orders</h6>
-								<h1>0</h1>
+								<h1><?php foreach($order as $row):?><?php echo $row->total ?><?php endforeach; ?></h1>
 							</div>
 						</div>
 					</div>
@@ -487,7 +487,7 @@
 						<div class="card-box">
 							<div class="card-body">
 								<h6>Reserved</h6>
-								<h1>0</h1>
+								<h1><?php foreach($reserved as $row):?><?php echo $row->total ?><?php endforeach; ?></h1>
 							</div>
 						</div>
 					</div>

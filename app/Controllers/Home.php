@@ -140,7 +140,38 @@ class Home extends BaseController
         $builder->join('tblcustomer_order b','b.TransactionNo=a.TransactionNo','LEFT');
         $builder->WHERE('b.Status',1);
         $list = $builder->get()->getResult();
-        $data = ['list'=>$list];
+        //orders
+        $builder = $this->db->table('tblcustomer_order');
+        $builder->select('COUNT(*)total');
+        $builder->WHERE('Status',0);
+        $order = $builder->get()->getResult();
+        //total reserved
+        $builder = $this->db->table('tblreservation');
+        $builder->select('COUNT(*)total');
+        $builder->WHERE('Remarks','PAID');
+        $reserved = $builder->get()->getResult();
+        //revenue
+        $rTotal=0;$oTotal=0;$income=0;
+        $builder = $this->db->table('tblreservation');
+        $builder->select('SUM(TotalAmount)total');
+        $builder->WHERE('Remarks','PAID');
+        $total = $builder->get();
+        if($row = $total->getRow())
+        {
+            $rTotal = $row->total;
+        }
+
+        $builder = $this->db->table('tblpayment');
+        $builder->select('SUM(Total)total');
+        $builder->WHERE('Status',1);
+        $totals = $builder->get();
+        if($row = $totals->getRow())
+        {
+            $oTotal = $row->total;
+        }
+        $income = $rTotal + $oTotal;
+
+        $data = ['list'=>$list,'order'=>$order,'reserved'=>$reserved,'income'=>$income];
         return view('admin/index',$data);
     }
 

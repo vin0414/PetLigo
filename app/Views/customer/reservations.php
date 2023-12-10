@@ -471,7 +471,9 @@
 										<td><?php echo $row->Remarks ?></td>
 										<td>
 											<?php if($row->Status==0){ ?>
-												<button type="button" class="btn btn-outline-primary btn-sm cancel"></button>
+												<button type="button" class="btn btn-outline-danger btn-sm cancel" value="<?php echo $row->reservationID ?>">
+												<span class="dw dw-trash"></span>
+												</button>
 											<?php }else {?>
 											<?php } ?>
 										</td>

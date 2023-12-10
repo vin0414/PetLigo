@@ -397,6 +397,7 @@
 						</button>
 					</div>
 				<?php endif; ?>
+				<button type="button" class="btn btn-link btn-sm view">View Reservations</button>
 				<div class="calendar-wrap">
 					<div id="calendar"></div>
 				</div>
@@ -434,9 +435,8 @@
 			<?php
 			$db;$eventData = array();
 			$this->db = db_connect();  
-			$sql = "Select a.Date,a.Time,a.Fullname,a.Address,a.EmailAddress,a.ContactNo,b.Description from tblreservation a 
-			LEFT JOIN tblservices b ON b.servicesID=a.servicesID
-			 WHERE a.Status=1 GROUP BY a.reservationID";
+			$sql = "Select Date,Time,Fullname,Address,EmailAddress,ContactNo,servicesName from tblreservation 
+			WHERE Status=1 GROUP BY reservationID";
 			$query = $this->db->query($sql);
 			foreach($query->getResult() as $row)
 			{
@@ -445,7 +445,7 @@
 				"<br/>Customer's Address: ".$row->Address.
 				"<br/>Email Address: ".$row->EmailAddress.
 				"<br/>Contact No: ".$row->ContactNo;
-				$tempArray = array( "title" =>$row->Description,"description" => $datas,"start" => $row->Date,"end" => $row->Date);
+				$tempArray = array( "title" =>$row->servicesName,"description" => $datas,"start" => $row->Date,"end" => $row->Date);
 				array_push($eventData, $tempArray);
 			}
 			?>
