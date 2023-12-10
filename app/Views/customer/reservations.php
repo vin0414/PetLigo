@@ -458,10 +458,23 @@
 										<td><?php echo number_format($row->TotalAmount,2) ?></td>
 										<td><?php echo $row->payment ?></td>
 										<td>
-
+											<?php if($row->Status==0){ ?>
+												<span class="badge bg-warning text-white">Book</span>
+											<?php }else if($row->Status==1) {?>
+												<span class="badge bg-primary text-white">Reserved</span>
+											<?php }else if($row->Status==2){ ?>
+												<span class="badge bg-danger text-white">Cancelled</span>
+											<?php }else{ ?>
+												<span class="badge bg-success text-white">Served</span>
+											<?php } ?>
 										</td>
 										<td><?php echo $row->Remarks ?></td>
-										<td></td>
+										<td>
+											<?php if($row->Status==0){ ?>
+												<button type="button" class="btn btn-outline-primary btn-sm cancel"></button>
+											<?php }else {?>
+											<?php } ?>
+										</td>
 									</tr>
 								<?php endforeach; ?>
 							</tbody>
