@@ -537,6 +537,24 @@
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 		<script>
+			$(document).ready(function()
+			{
+				today();
+			});
+			function today()
+			{
+				var date = new Date(); // Now
+				date.setDate(date.getDate());
+				$('#date').val(convert(date));
+				$('#date').attr('min',convert(date));
+			}
+			function convert(str) 
+			{
+				var date = new Date(str),
+				mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+				day = ("0" + date.getDate()).slice(-2);
+				return [date.getFullYear(), mnth, day].join("-");
+			}
 			$('#btnSave').on('click',function(e)
 			{
 				e.preventDefault();
