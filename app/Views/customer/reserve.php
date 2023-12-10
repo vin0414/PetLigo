@@ -545,7 +545,6 @@
 			{
 				var date = new Date(); // Now
 				date.setDate(date.getDate());
-				$('#date').val(convert(date));
 				$('#date').attr('min',convert(date));
 			}
 			function convert(str) 

@@ -19,7 +19,13 @@ class Customer extends BaseController
 
     public function Reservations()
     {
-        return view('customer/reservations');
+        $user = session()->get('sess_id');
+        $builder = $this->db->table('tblreservation');
+        $builder->select('*');
+        $builder->WHERE('customerID',$user);
+        $book = $builder->get()->getResult();
+        $data = ['book'=>$book];
+        return view('customer/reservations',$data);
     }
 
     public function Orders()
@@ -563,7 +569,7 @@ class Customer extends BaseController
         $reservationModel = new \App\Models\reservationModel();
         //data
         $user = session()->get('sess_id');
-        $servicesID = $this->request->getPost('servicesID');
+        $servicesID = $this->request->getPost('services');
         $date = $this->request->getPost('date');
         $time = $this->request->getPost('time');
         $fullname = $this->request->getPost('fullname');
@@ -572,9 +578,10 @@ class Customer extends BaseController
         $address = $this->request->getPost('address');
         $pet = $this->request->getPost('pet');
         $charge = $this->request->getPost('charge');
+        $amount = str_replace(',', '', $charge);
         $payment = $this->request->getPost('payment');
-        $status = 0;
-        $remarks = "Pending";
+        $status = 0;$code="";
+        $remarks = "PENDING";
         $validation = $this->validate([
             'date'=>'required','time'=>'required',
             'fullname'=>'required','phone'=>'required',
@@ -586,7 +593,20 @@ class Customer extends BaseController
         }
         else
         {
-
+            $builder = $this->db->table('tblreservation');
+            $builder->select('COUNT(reservationID)+1 as total');
+            $data = $builder->get();
+            if($row = $data->getRow())
+            {
+                $code = str_pad($row->total, 7, '0', STR_PAD_LEFT);
+            }
+            $values = [
+                'customerID'=>$user,'Date'=>$date,'Time'=>$time,'Fullname'=>$fullname,'Address'=>$address,'ContactNo'=>$phone,
+                'EmailAddress'=>$email,'petsID'=>$pet,'Status'=>$status,'servicesName'=>$servicesID,'TotalAmount'=>$amount,
+                'Remarks'=>$remarks,'Code'=>$code,'payment'=>$payment
+            ];
+            $reservationModel->save($values);
+            echo "success";
         }
     }
 

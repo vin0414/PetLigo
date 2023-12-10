@@ -15,7 +15,7 @@ class reservationModel extends Model
     protected $userSoftDelete = false;
     protected $protectFields = true;
     protected $allowedFields = ['customerID','Date','Time','Fullname','Address','ContactNo',
-    'EmailAddress','petsID','Status','servicesID','TotalAmount','Remarks','Code','payment'];
+    'EmailAddress','petsID','Status','servicesName','TotalAmount','Remarks','Code','payment'];
 
     protected $validationRules = [];
     protected $validationMessages = [];

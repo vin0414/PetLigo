@@ -433,7 +433,41 @@
 
 		<div class="main-container">
 			<div class="pd-ltr-20">
+				<div class="card-box">
+					<div class="card-header"><span class="dw dw-calendar-1"></span>&nbsp;My Reservations</div>
+					<div class="card-body">
+						<table class="data-table table stripe hover nowrap">
+							<thead>
+								<th>Trxn No</th>
+								<th>Date</th>
+								<th>Time</th>
+								<th>Services</th>
+								<th>Charge</th>
+								<th>Payment Method</th>
+								<th>Status</th>
+								<th>Remarks</th>
+								<th>Action</th>
+							</thead>
+							<tbody>
+								<?php foreach($book as $row): ?>
+									<tr>
+										<td><?php echo $row->Code ?></td>
+										<td><?php echo $row->Date ?></td>
+										<td><?php echo $row->Time ?></td>
+										<td><?php echo $row->servicesName ?></td>
+										<td><?php echo number_format($row->TotalAmount,2) ?></td>
+										<td><?php echo $row->payment ?></td>
+										<td>
 
+										</td>
+										<td><?php echo $row->Remarks ?></td>
+										<td></td>
+									</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- js -->
@@ -446,6 +480,6 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
-		<script src="/resources/vendors/scripts/dashboard.js"></script>
+		<script src="/resources/vendors/scripts/datatable-setting.js"></script>
 	</body>
 </html>
