@@ -8165,10 +8165,10 @@ h1, h2, h3, h4, h5,
         background: #00bd56;
         border-radius: 4px; } }
   .ftco-navbar-light .navbar-nav > .nav-item.active > a {
-    color: #00bd56; }
+    color: #dc3545; }
     .ftco-navbar-light .navbar-nav > .nav-item.active > a:before {
       visibility: visible;
-      background-color: #00bd56;
+      background-color: #dc3545;
       -webkit-transform: scaleX(1);
       -ms-transform: scaleX(1);
       transform: scaleX(1); }
@@ -8538,7 +8538,7 @@ h1, h2, h3, h4, h5,
       .services .media-body .btn-custom span {
         color: #fff; }
   .services:hover, .services.active {
-    background: #00bd56; }
+    background: #dc3545; }
     .services:hover .icon, .services.active .icon {
       background: #fff; }
     .services:hover .media-body, .services.active .media-body {

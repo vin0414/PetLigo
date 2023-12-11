@@ -74,7 +74,7 @@
         <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-center" data-scrollax-parent="true">
           <div class="col-md-11 ftco-animate text-center">
           	<h1 class="mb-4">Highest Quality Care For Pets You'll Love </h1>
-            <p><a href="<?=site_url('services')?>" class="btn btn-primary mr-md-4 py-3 px-4">Learn more <span class="ion-ios-arrow-forward"></span></a></p>
+            <p><a href="<?=site_url('services')?>" class="btn btn-danger mr-md-4 py-3 px-4">Learn more <span class="ion-ios-arrow-forward"></span></a></p>
           </div>
         </div>
       </div>
@@ -162,7 +162,7 @@
     	</div>
     </section>
 
-    <section class="ftco-counter" id="section-counter">
+    <section class="ftco-counter" id="section-counter" style="background-color: #dc3545;>
     	<div class="container">
 				<div class="row">
           <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">
@@ -370,8 +370,6 @@
   <script src="assets/js/owl.carousel.min.js"></script>
   <script src="assets/js/jquery.magnific-popup.min.js"></script>
   <script src="assets/js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="assets/js/google-map.js"></script>
   <script src="assets/js/main.js"></script>
 
 
