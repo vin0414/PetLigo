@@ -61,7 +61,7 @@
                                     <input type="email" class="form-control" name="email" required/>
                                 </div>
                                 <div class="col-12 form-group">
-                                    <button type="submit" class="btn btn-primary" id="btnLogin">Submit</button>
+                                    <button type="submit" class="btn btn-danger" id="btnLogin">Submit</button>
                                 </div>
                                 <div class="col-12">
                                     <label>Don't have an account? Register <a href="/register">here</a></label>

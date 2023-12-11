@@ -48,7 +48,7 @@
                     <div class="card">
                         <div class="card-body">
                             <center>
-                                <img src="assets/images/petligo.png" width="100"/>
+                                <h4>Create Account</h4>
                             </center>
                             <?php if(!empty(session()->getFlashdata('fail'))) : ?>
                               <div class="alert alert-danger" role="alert">
@@ -77,7 +77,7 @@
 									<input type="checkbox" onclick="myFunction()"> Show Password
 								</div>
                                 <div class="col-12 form-group">
-                                    <button type="submit" class="btn btn-primary" id="btnLogin">Register</button>
+                                    <button type="submit" class="btn btn-danger" id="btnLogin">Register</button>
                                 </div>
                                 <div class="col-12">
                                     <label>Already have an account? Click <a href="/sign-in">here</a></label>

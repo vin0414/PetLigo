@@ -50,7 +50,7 @@
                     <div class="card">
                         <div class="card-body">
                             <center>
-                                <img src="assets/images/petligo.png" width="100"/>
+                                <h4>Welcome Back</h4>
                             </center>
                             <?php if(!empty(session()->getFlashdata('fail'))) : ?>
                               <div class="alert alert-danger" role="alert">
@@ -67,7 +67,7 @@
                                     <input type="password" class="form-control" name="password" required/>
                                 </div>
                                 <div class="col-12 form-group">
-                                    <button type="submit" class="btn btn-primary" id="btnLogin">Sign-In</button>
+                                    <button type="submit" class="btn btn-danger" id="btnLogin">Sign-In</button>
                                 </div>
                                 <div class="col-12">
                                     <label>Don't have an account? Register <a href="/register">here</a></label>
