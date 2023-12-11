@@ -113,7 +113,7 @@
                 </table>
               </div>
               <div class="col-12 form-group">
-                <button type="submit" class="btn btn-primary" id="btnBook">Book Now</button>
+                <button type="submit" class="btn btn-danger" id="btnBook">Book Now</button>
               </div>
           </form>
 		</div>

@@ -1135,7 +1135,7 @@ class Home extends BaseController
                             <span class="d-block">
                                 <?php echo $row->CategoryName ?>
                             </span>
-                            <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                            <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-danger d-block px-2 py-3">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -1165,7 +1165,7 @@ class Home extends BaseController
                             <span class="d-block">
                                 <?php echo $row->CategoryName ?>
                             </span>
-                            <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                            <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-danger d-block px-2 py-3">View Details</a>
                         </div>
                     </div>
                 </div>
@@ -1196,7 +1196,7 @@ class Home extends BaseController
                                 <span class="d-block">
                                     <?php echo $row->CategoryName ?>
                                 </span>
-                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-danger d-block px-2 py-3">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -1224,7 +1224,7 @@ class Home extends BaseController
                                 <span class="d-block">
                                     <?php echo $row->CategoryName ?>
                                 </span>
-                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-danger d-block px-2 py-3">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -1256,7 +1256,7 @@ class Home extends BaseController
                                 <span class="d-block">
                                     <?php echo $row->CategoryName ?>
                                 </span>
-                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-danger d-block px-2 py-3">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -1284,7 +1284,7 @@ class Home extends BaseController
                                 <span class="d-block">
                                     <?php echo $row->CategoryName ?>
                                 </span>
-                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-danger d-block px-2 py-3">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -1312,7 +1312,7 @@ class Home extends BaseController
                                 <span class="d-block">
                                     <?php echo $row->CategoryName ?>
                                 </span>
-                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-danger d-block px-2 py-3">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -1340,7 +1340,7 @@ class Home extends BaseController
                                 <span class="d-block">
                                     <?php echo $row->CategoryName ?>
                                 </span>
-                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-primary d-block px-2 py-3">View Details</a>
+                                <a href="<?=site_url('cart/details/')?><?php echo $row->productID ?>" class="btn btn-danger d-block px-2 py-3">View Details</a>
                             </div>
                         </div>
                     </div>
@@ -1363,7 +1363,7 @@ class Home extends BaseController
                             <h6><?php echo $row['Description'] ?></h6>
                             <span class="price">PhP <?php echo number_format($row['Charge'],2)?></span>
                             <br/>
-                            <a href="<?=site_url('customer/reserve/')?><?php echo $row['servicesID'] ?>" class="btn btn-primary d-block px-2 py-3">Book Now</a>
+                            <a href="<?=site_url('customer/reserve/')?><?php echo $row['servicesID'] ?>" class="btn btn-danger d-block px-2 py-3">Book Now</a>
                         </div>
                     </div>
                 </div>
@@ -1385,7 +1385,7 @@ class Home extends BaseController
                             <h6><?php echo $row['Description'] ?></h6>
                             <span class="price">PhP <?php echo number_format($row['Charge'],2)?></span>
                             <br/>
-                            <a href="<?=site_url('customer/reserve/')?><?php echo $row['servicesID'] ?>" class="btn btn-primary d-block px-2 py-3">Book Now</a>
+                            <a href="<?=site_url('customer/reserve/')?><?php echo $row['servicesID'] ?>" class="btn btn-danger d-block px-2 py-3">Book Now</a>
                         </div>
                     </div>
                 </div>

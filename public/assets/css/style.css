@@ -8114,10 +8114,10 @@ h1, h2, h3, h4, h5,
       transition: all 0.1s ease-in-out 0s;
       z-index: -1; }
     .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
-      color: #00bd56; }
+      color: #dc3545; }
       .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover:before {
         visibility: visible;
-        background-color: #00bd56;
+        background-color: #dc3545;
         -webkit-transform: scaleX(1);
         -ms-transform: scaleX(1);
         transform: scaleX(1); }

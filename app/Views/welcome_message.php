@@ -162,7 +162,7 @@
     	</div>
     </section>
 
-    <section class="ftco-counter" id="section-counter" style="background-color: #dc3545;>
+    <section class="ftco-counter" id="section-counter" style="background-color: #dc3545;">
     	<div class="container">
 				<div class="row">
           <div class="col-md-6 col-lg-3 d-flex justify-content-center counter-wrap ftco-animate">

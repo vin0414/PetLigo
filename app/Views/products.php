@@ -96,7 +96,7 @@
           <div class="row">
               <div class="col-12 form-group">
                   <div class="row g-3">
-                    <div class="col-lg-3">
+                    <div class="col-lg-3 form-group">
                       <select class="form-control" id="product_category">
                         <option value="0">All Category</option>
                         <?php foreach($category as $row): ?>
@@ -104,7 +104,7 @@
                         <?php endforeach; ?>
                       </select>
                     </div>
-                    <div class="col-lg-9">
+                    <div class="col-lg-9 form-group">
                     <input type="search" class="form-control" id="search" placeholder="Search"/>
                     </div>
                   </div>
