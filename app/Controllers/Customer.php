@@ -561,6 +561,7 @@ class Customer extends BaseController
     public function saveReservation()
     {
         $reservationModel = new \App\Models\reservationModel();
+        $orderServicesModel = new \App\Models\orderServicesModel();
         //data
     }
 
