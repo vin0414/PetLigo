@@ -67,12 +67,15 @@
                                 </div>
                                 <div class="col-12 form-group">
                                     <label>Password</label>
-                                    <input type="password" class="form-control" name="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+                                    <input type="password" class="form-control" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
                                 </div>
                                 <div class="col-12 form-group">
                                     <label>ReType Password</label>
-                                    <input type="password" class="form-control" name="retype_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
+                                    <input type="password" class="form-control" name="retype_password" id="retype_password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required/>
                                 </div>
+                                <div class="col-12 form-group">
+									<input type="checkbox" onclick="myFunction()"> Show Password
+								</div>
                                 <div class="col-12 form-group">
                                     <button type="submit" class="btn btn-primary" id="btnLogin">Register</button>
                                 </div>
@@ -107,5 +110,21 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="assets/js/google-map.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+      function myFunction() {
+            var x = document.getElementById("password");
+            if (x.type === "password") {
+                x.type = "text";
+            } else {
+                x.type = "password";
+            }
+            var xx = document.getElementById("retype_password");
+            if (xx.type === "password") {
+                xx.type = "text";
+            } else {
+                xx.type = "password";
+            }
+        }
+  </script>
   </body>
 </html>
