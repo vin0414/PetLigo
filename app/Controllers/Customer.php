@@ -619,6 +619,16 @@ class Customer extends BaseController
         }
         else
         {
+            //get the total amount
+            $builder = $this->db->table('tblorder_services a');
+            $builder->select('SUM(b.Charge)total');
+            $builder->join('tblservices b','b.servicesID=a.servicesID','LEFT');
+            $builder->WHERE('a.customerID',$user)->WHERE('Code','');
+            $total = $builder->get();
+            if($rows = $total->getRow())
+            {
+                $amount = $rows->total;
+            }
             //generate the code
             $builder = $this->db->table('tblreservation');
             $builder->select('COUNT(reservationID)+1 as total');
