@@ -561,8 +561,11 @@ class Customer extends BaseController
     public function book()
     {
         $user = session()->get('sess_id');
-        $orderServicesModel = new \App\Models\orderServicesModel();
-        $services = $orderServicesModel->WHERE('customerID',$user)->findAll();
+        $builder = $this->db->table('tblorder_services a');
+        $builder->select('b.Description');
+        $builder->join('tblservices b','b.servicesID=a.servicesID','LEFT');
+        $builder->WHERE('a.customerID',$user)->WHERE('Code','');
+        $services = $builder->get()->getResult();
         //pets
         $petModel = new \App\Models\petModel();
         $pets = $petModel->WHERE('customerID',$user)->findAll();
@@ -585,6 +588,63 @@ class Customer extends BaseController
             $orderServicesModel->save($values);
         }
         return $this->response->redirect(site_url('customer/book'));
+    }
+
+    public function saveBook()
+    {
+        $reservationModel = new \App\Models\reservationModel();
+        $orderServicesModel = new \App\Models\orderServicesModel();
+        //data
+        $user = session()->get('sess_id');
+        $servicesID = $this->request->getPost('services');
+        $date = $this->request->getPost('date');
+        $time = $this->request->getPost('time');
+        $fullname = $this->request->getPost('fullname');
+        $phone = $this->request->getPost('phone');
+        $email = $this->request->getPost('email');
+        $address = $this->request->getPost('address');
+        $pet = $this->request->getPost('pet');
+        $amount = 0.00;
+        $payment = $this->request->getPost('payment');
+        $status = 0;$code="";
+        $remarks = "PENDING";
+        $validation = $this->validate([
+            'date'=>'required','time'=>'required',
+            'fullname'=>'required','phone'=>'required',
+            'email'=>'required','pet'=>'required','payment'=>'required'
+        ]);
+        if(!$validation)
+        {
+            echo "Please fill in the form";
+        }
+        else
+        {
+            //generate the code
+            $builder = $this->db->table('tblreservation');
+            $builder->select('COUNT(reservationID)+1 as total');
+            $data = $builder->get();
+            if($row = $data->getRow())
+            {
+                $code = str_pad($row->total, 7, '0', STR_PAD_LEFT);
+            }
+            $values = [
+                'customerID'=>$user,'Date'=>$date,'Time'=>$time,'Fullname'=>$fullname,'Address'=>$address,'ContactNo'=>$phone,
+                'EmailAddress'=>$email,'petsID'=>$pet,'Status'=>$status,'servicesName'=>$servicesID,'TotalAmount'=>$amount,
+                'Remarks'=>$remarks,'Code'=>$code,'payment'=>$payment
+            ];
+            $reservationModel->save($values);
+            //update the order services
+            $builder = $this->db->table('tblorder_services');
+            $builder->select('osID');
+            $builder->WHERE('customerID',$user)->WHERE('Code','');
+            $datas = $builder->get();
+            foreach($datas->getResult() as $row)
+            {
+                $value = ['Code'=>$code];
+                $orderServicesModel->update($row->osID,$value);
+            }
+            echo "success";
+        }
     }
 
     public function Save()

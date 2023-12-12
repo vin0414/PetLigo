@@ -485,24 +485,39 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="card-box">
-                            <div class="card-header">Services/Payment</div>
+                            <div class="card-header">Services</div>
                             <div class="card-body">
                                 <div class="row g-3">
                                     <div class="col-12 form-group">
                                         <label>Pet's Name</label>
                                         <select class="form-control custom-select2" style="width:100%;" name="pet" required>
                                             <option value="">Choose</option>
-                                            
+                                            <?php foreach($pets as $row): ?>
+                                                <option value="<?php echo $row['petsID'] ?>"><?php echo $row['Name'] ?> (<?php echo $row['Breed'] ?>)</option>
+                                            <?php endforeach; ?>
                                         </select>
                                     </div>
                                     <div class="col-12 form-group">
-                                        <label>Services</label>
-                                        <input type="text" class="form-control" name="services" value=""/>
+                                        <table class="table table-bordered hover nowrap">
+                                            <tbody>
+                                                <?php foreach($services as $row): ?>
+                                                    <tr>
+                                                        <td><?php echo $row->Description ?></td>
+                                                    </tr>
+                                                <?php endforeach; ?>
+                                            </tbody>
+                                        </table>
                                     </div>
-                                    <div class="col-12 form-group">
-                                        <label>Charge</label>
-                                        <input type="text" class="form-control" name="charge" value=""/>
-                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="card-box">
+                            <div class="card-header">Payment</div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <input type="hidden" name="services" value="Ala Carte"/>
                                     <div class="col-12 form-group">
                                         <label>Payment Options</label>
                                         <div class="col-12">
@@ -567,7 +582,7 @@
 					{
 						var data = $('#frmReserve').serialize();
 						$.ajax({
-							url:"<?=site_url('save')?>",method:"POST",
+							url:"<?=site_url('save-book')?>",method:"POST",
 							data:data,
 							success:function(response)
 							{
