@@ -474,8 +474,7 @@
 												<button type="button" class="btn btn-outline-danger btn-sm cancel" value="<?php echo $row->reservationID ?>">
 												<span class="dw dw-trash"></span>
 												</button>
-											<?php }else {?>
-											<?php } ?>
+											<?php }?>
 										</td>
 									</tr>
 								<?php endforeach; ?>

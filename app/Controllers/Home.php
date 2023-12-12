@@ -685,7 +685,11 @@ class Home extends BaseController
 
     public function viewReservation()
     {
-        return view('admin/view');
+        $builder = $this->db->table('tblreservation');
+        $builder->select('*');
+        $reserve = $builder->get()->getResult();
+        $data = ['reserve'=>$reserve];
+        return view('admin/view',$data);
     }
 
     public function Orders()

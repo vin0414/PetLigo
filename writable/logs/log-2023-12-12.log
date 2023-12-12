@@ -411,3 +411,34 @@ in APPPATH\Controllers\Customer.php on line 581.
  6 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
 INFO - 2023-12-12 07:14:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-12-12 07:18:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-12 07:23:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-12-12 07:23:32 --> Undefined property: mysqli::$Date
+in APPPATH\Views\admin\view.php on line 413.
+ 1 APPPATH\Views\admin\view.php(413): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: mysqli::$Date', 'APPPATH\\Views\\admin\\view.php', 413)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\view.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('admin/view', [], true)
+ 5 APPPATH\Controllers\Home.php(692): view('admin/view', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->viewReservation()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-12-12 07:24:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-12 07:25:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-12 07:28:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-12-12 07:28:13 --> Undefined property: stdClass::$Charge
+in APPPATH\Views\admin\view.php on line 417.
+ 1 APPPATH\Views\admin\view.php(417): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$Charge', 'APPPATH\\Views\\admin\\view.php', 417)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\view.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('admin/view', [], true)
+ 5 APPPATH\Controllers\Home.php(692): view('admin/view', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->viewReservation()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-12-12 07:28:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-12 07:29:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-12 07:32:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
