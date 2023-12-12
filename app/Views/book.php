@@ -87,6 +87,11 @@
 
     <section class="ftco-section bg-light">
 		<div class="container">
+          <?php if(!empty(session()->getFlashdata('fail'))) : ?>
+								<div class="alert alert-danger" role="alert">
+									<?= session()->getFlashdata('fail'); ?>
+								</div>
+					<?php endif; ?>
           <h3>Regular Services</h3>
           <div class="row">
               <div class="col-12 form-group">
