@@ -428,11 +428,47 @@
 											<?php } ?>
 										</td>
 										<td><?php echo $row->Remarks ?></td>
-										<td></td>
+										<td>
+											<div class="dropdown">
+												<a
+													class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+													href="#"
+													role="button"
+													data-toggle="dropdown"
+												>
+													<i class="dw dw-more"></i>
+												</a>
+												<div
+													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
+												>
+												<?php if($row->servicesName=="Ala Carte"){ ?>
+													<button class="dropdown-item view" value="<?php echo $row->Code ?>"><i class="dw dw-eye"></i> View Orders</button>
+													<button class="dropdown-item tag" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Update</button>
+												<?php }else { ?>
+													<button class="dropdown-item tag" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Update</button>
+												<?php } ?>
+												</div>
+											</div>
+										</td>
 									</tr>
 								<?php endforeach; ?>
 							</tbody>
 						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="viewModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myLargeModalLabel">
+							Order(s)
+						</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+						<div id="result"></div>
 					</div>
 				</div>
 			</div>
@@ -448,5 +484,20 @@
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
 		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script>
+			$(document).on('click','.view',function()
+			{
+				var val = $(this).val();
+				$.ajax({
+					url:"<?=site_url('view-services')?>",method:"GET",
+					data:{value:val},
+					success:function(response)
+					{
+						$('#viewModal').modal('show');
+						$('#result').html(response);
+					}
+				});
+			});
+		</script>
 	</body>
 </html>

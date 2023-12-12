@@ -90,6 +90,7 @@ $routes->post('remove-item','Customer::removeItem');
 $routes->post('confirm','Customer::Confirm');
 $routes->post('cancel-order','Customer::cancelOrder');
 $routes->get('view-order','Customer::viewOrder');
+$routes->get('view-services','Customer::viewServices');
 $routes->post('save-reservation','Customer::saveReservation');
 $routes->post('save','Customer::Save');
 $routes->post('save-book','Customer::saveBook');

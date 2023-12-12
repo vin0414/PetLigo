@@ -225,6 +225,37 @@ class Customer extends BaseController
         echo "success";
     }
 
+    public function viewServices()
+    {
+        $val = $this->request->getGet('value');
+        $builder = $this->db->table('tblorder_services a');
+        $builder->select('b.Description,b.Charge');
+        $builder->join('tblservices b','b.servicesID=a.servicesID','LEFT');
+        $builder->WHERE('a.Code',$val);
+        $data = $builder->get();
+        ?>
+        <table class="table table-bordered table-stripe hover nowrap">
+            <thead>
+                <th>Services</th>
+                <th>Charge</th>
+            </thead>
+            <tbody>
+        <?php
+        foreach($data->getResult() as $row)
+        {
+            ?>
+            <tr>
+                <td><?php echo $row->Description ?></td>
+                <td><?php echo number_format($row->Charge,2) ?></td>
+            </tr>
+            <?php
+        }
+        ?>
+            </tbody>
+        </table>
+        <?php
+    }
+
     public function viewOrder()
     {
         $val = $this->request->getGet('value');
