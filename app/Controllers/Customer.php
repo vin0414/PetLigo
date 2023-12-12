@@ -558,11 +558,33 @@ class Customer extends BaseController
         return view('customer/reserve',$data);
     }
 
+    public function book()
+    {
+        $user = session()->get('sess_id');
+        $orderServicesModel = new \App\Models\orderServicesModel();
+        $services = $orderServicesModel->WHERE('customerID',$user)->findAll();
+        //pets
+        $petModel = new \App\Models\petModel();
+        $pets = $petModel->WHERE('customerID',$user)->findAll();
+        $data = ['services'=>$services,'pets'=>$pets];
+        return view('customer/book',$data);
+    }
+
     public function saveReservation()
     {
-        $reservationModel = new \App\Models\reservationModel();
         $orderServicesModel = new \App\Models\orderServicesModel();
         //data
+        $user = session()->get('sess_id');
+        $rowCounts = count($this->request->getPost('itemID'));
+        for($i=0;$i<$rowCounts;$i++)
+        {
+            $id = $this->request->getPost('itemID')[$i];
+            $values = [
+                'customerID'=>$user, 'servicesID'=>$id,'Code'=>'','DateAdded'=>date('Y-m-d')
+            ];
+            $orderServicesModel->save($values);
+        }
+        return $this->response->redirect(site_url('customer/book'));
     }
 
     public function Save()

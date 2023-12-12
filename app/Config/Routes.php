@@ -127,6 +127,7 @@ $routes->group('',['filter'=>'customerAuthCheck'],function($routes)
     $routes->get('cart/shipping','Customer::shipping');
     $routes->get('customer/success','Customer::Success');
     $routes->get('customer/reserve/(:any)','Customer::reserve/$1');
+    $routes->get('customer/book','Customer::book');
 });
 
 $routes->group('',['filter'=>'AlreadyLoggedIn'],function($routes)
