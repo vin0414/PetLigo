@@ -609,14 +609,13 @@ class Customer extends BaseController
         $orderServicesModel = new \App\Models\orderServicesModel();
         //data
         $user = session()->get('sess_id');
-        $rowCounts = count($this->request->getPost('itemID'));
-        if(is_array($rowCounts) ? count($rowCounts) : 0)
+        if(empty($user))
         {
-            session()->setFlashdata('fail','Invalid! Select one or more services');
-            return redirect()->to('/book')->withInput();
+            return $this->response->redirect(site_url('customer/book'));
         }
         else
         {
+            $rowCounts = count($this->request->getPost('itemID'));
             for($i=0;$i<$rowCounts;$i++)
             {
                 $id = $this->request->getPost('itemID')[$i];
