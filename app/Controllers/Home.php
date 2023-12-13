@@ -1405,7 +1405,7 @@ class Home extends BaseController
         {
             ?>
             <tr>
-                <td><input type="checkbox" class="checkbox" value="<?php echo $row['servicesID'] ?>" name="itemID[]" id="itemID" style="width:20px;height:20px;"/>
+                <td><input type="checkbox" class="checkbox" value="<?php echo $row['servicesID'] ?>" name="itemID[]" id="itemID" onclick="check()" style="width:20px;height:20px;"/>
                 <b><?php echo $row['Description'] ?></b></td>
                 <td>PhP <?php echo number_format($row['Charge'],2)?></td>
             </tr>

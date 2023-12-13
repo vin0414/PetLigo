@@ -118,7 +118,7 @@
                 </table>
               </div>
               <div class="col-12 form-group">
-                <button type="submit" class="btn btn-danger" id="btnBook">Book Now</button>
+                <button type="submit" class="btn btn-danger" id="btnBook" disabled>Book Now</button>
               </div>
           </form>
 		</div>
@@ -203,6 +203,17 @@
       {
         loadDogServices();alaCarte();
       });
+      function check()
+      {
+        var checkbox = $('input:checkbox').is(':checked')
+        if(checkbox){
+           $('#btnBook').attr("disabled",false);
+        }
+        else
+        {
+           $('#btnBook').attr("disabled",true);
+        }
+      }
       function alaCarte()
       {
         $.ajax({
