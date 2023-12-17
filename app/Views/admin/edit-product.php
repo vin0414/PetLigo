@@ -430,19 +430,11 @@
                         <form method="POSt" class="row g-3" id="frmProduct" action="<?=base_url('update-product')?>" enctype="multipart/form-data">
                             <input type="hidden" name="productID" value="<?=$product['productID']?>"/>
                             <div class="col-12 form-group">
-                                <label>Product Name</label>
-                                <input type="text" class="form-control" name="productName" value="<?=$product['productName']?>" required/>
-                            </div>
-							<div class="col-12 form-group">
-								<label>Description</label>
-								<textarea class="form-control" name="description" required><?=$product['Description']?></textarea>
-							</div>
-                            <div class="col-12 form-group">
-                                <div class="row g-3">
-                                    <div class="col-lg-4">
-                                        <label>Quantity</label>
-                                        <input type="number" class="form-control" name="qty" value="<?=$product['Qty']?>" required/>
-                                    </div>
+								<div class="row g-3">
+									<div class="col-lg-4">
+										<label>Product Name</label>
+                                		<input type="text" class="form-control" name="productName" value="<?=$product['productName']?>" required/>
+									</div>
                                     <div class="col-lg-4">
                                         <label>Unit Price</label>
                                         <input type="text" class="form-control" name="unitPrice" value="<?=$product['UnitPrice']?>" required/>
@@ -486,6 +478,10 @@
                                     </div>
                                 </div>
                             </div>
+							<div class="col-12 form-group">
+								<label>Description</label>
+								<textarea class="form-control" name="description" required><?=$product['Description']?></textarea>
+							</div>
                             <div class="col-12 form-group">
 								<p>
 									<label for="upload_imgs" class="btn btn-outline-primary">Select Your Images +</label>

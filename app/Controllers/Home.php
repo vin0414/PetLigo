@@ -324,14 +324,13 @@ class Home extends BaseController
         $productID = $this->request->getPost('productID');
         $productName = $this->request->getPost('productName');
         $desc = $this->request->getPost('description');
-        $qty = $this->request->getPost('qty');
         $unitPrice = $this->request->getPost('unitPrice');
         $itemUnit = $this->request->getPost('itemUnit');
         $file = $this->request->getFile('files');
         $originalName = $file->getClientName();
         //validate
         $validation = $this->validate([
-            'productName'=>'required','qty'=>'required','unitPrice'=>'required','itemUnit'=>'required'
+            'productName'=>'required','unitPrice'=>'required','itemUnit'=>'required'
         ]);
         if(!$validation)
         {
@@ -345,7 +344,7 @@ class Home extends BaseController
                 $file->move('Images/',$originalName);
                 //save the data
                 $values= [
-                    'productName'=>$productName, 'Description'=>$desc,'Image'=>$originalName,'ItemUnit'=>$itemUnit,'Qty'=>$qty,'UnitPrice'=>$unitPrice,
+                    'productName'=>$productName, 'Description'=>$desc,'Image'=>$originalName,'ItemUnit'=>$itemUnit,'UnitPrice'=>$unitPrice,
                 ];
                 $productModel->update($productID,$values);
 
