@@ -861,6 +861,14 @@ class Home extends BaseController
         return view('admin/blog');
     }
 
+    public function editBlog($id=null)
+    {
+        $blogModel = new \App\Models\blogModel();
+        $blog = $blogModel->WHERE('blogID',$id)->first();
+        $data = ['blog'=>$blog];
+        return view('admin/edit-blog',$data);
+    }
+
     public function read()
     {
         $builder = $this->db->table('tblblog');
@@ -870,7 +878,7 @@ class Home extends BaseController
         foreach($data->getResult() as $row)
         {
             ?>
-            <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+            <a href="edit-blog/<?php echo $row->blogID ?>" class="list-group-item list-group-item-action flex-column align-items-start">
                 <h5 class="mb-1 h5"><?php echo $row->blogTitle ?></h5>
                 <div class="pb-1">
                     <small class="weight-600"><?php echo $row->Date ?></small>
