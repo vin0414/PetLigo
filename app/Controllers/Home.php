@@ -291,9 +291,10 @@ class Home extends BaseController
 
     public function allProducts()
     {
-        $builder = $this->db->table('tblproduct');
-        $builder->select('*');
-        $builder->groupBy('productID');
+        $builder = $this->db->table('tblproduct a');
+        $builder->select('a.*,b.CategoryName');
+        $builder->join('tblcategory b','b.categoryID=a.categoryID','LEFT');
+        $builder->groupBy('a.productID');
         $product = $builder->get()->getResult();
         $data = ['products'=>$product];
         return view('admin/products',$data);
