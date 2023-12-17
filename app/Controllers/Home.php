@@ -9,6 +9,7 @@ class Home extends BaseController
     private $db;
     public function __construct()
     {
+        helper('text');
         $this->db = db_connect();
     }
 
@@ -879,7 +880,7 @@ class Home extends BaseController
         {
             ?>
             <a href="edit-blog/<?php echo $row->blogID ?>" class="list-group-item list-group-item-action flex-column align-items-start">
-                <h5 class="mb-1 h5"><?php echo $row->blogTitle ?></h5>
+                <h5 class="mb-1 h5"><span class="dw dw-edit-1"></span> <?php echo $row->blogTitle ?></h5>
                 <div class="pb-1">
                     <small class="weight-600"><?php echo $row->Date ?></small>
                 </div>
@@ -1065,7 +1066,7 @@ class Home extends BaseController
             }
             else
             {
-                $token_code = random_int(100000, 999999);
+                $token_code = random_string('alnum',20);
                 $hash_password = Hash::make($password);
                 $values = [
                     'Email'=>$emailadd, 'Password'=>$hash_password ,'Fullname'=>$fullname,'Status'=>0,'Token'=>$token_code,'DateCreated'=>date('Y-m-d')
@@ -1080,13 +1081,13 @@ class Home extends BaseController
                 $template = "<center>
                 <img src='cid:". $cid ."' width='100'/>
                 <table style='padding:20px;background-color:#ffffff;' border='0'><tbody>
-                <tr><td><center><h1>Account Verification</h1></center></td></tr>
+                <tr><td><center><h1>Account Activation</h1></center></td></tr>
                 <tr><td><center>Hi, ".$fullname."</center></td></tr>
-                <tr><td><p><center>Please enter the code below to verify your account.</center></p></td><tr>
-                <tr><td><center><b><h2>".$token_code."</h2></b></center></td></tr>
+                <tr><td><p><center>Please click the link below to activate your account.</center></p></td><tr>
+                <tr><td><center><b>".anchor('activate/'.$token_code,'Activate Account')."</b></center></td></tr>
                 <tr><td><p><center>If you did not sign-up in PetLigo Website,<br/> please ignore this message or contact us @ petligo2023@gmail.com</center></p></td></tr>
                 <tr><td>PetLigo IT Support</td></tr></tbody></table></center>";
-                $subject = "Email Verification";
+                $subject = "Account Activation | Petligo - Pet Grooming Services";
                 $email->setSubject($subject);
                 $email->setMessage($template);
                 $email->send();
@@ -1094,6 +1095,18 @@ class Home extends BaseController
                 return redirect()->to('/verify/email');
             }
         }
+    }
+
+    public function activate($id)
+    {
+        $customerModel = new \App\Models\customerModel();
+        $customer = $customerModel->WHERE('Token',$id)->first();
+        $values = ['Status'=>1];
+        $customerModel->update($customer['customerID'],$values);
+        session()->set('sess_id', $customer['customerID']);
+        session()->set('sess_fullname', $customer['Fullname']);
+        session()->set('customer_email',$customer['Email']);
+        return $this->response->redirect(site_url('customer/dashboard'));
     }
 
     public function verify()

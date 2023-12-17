@@ -58,6 +58,7 @@ $routes->post('/create-account','Home::createAccount');
 $routes->get('/verify/email', 'Home::verify');
 $routes->post('/verify-email','Home::verifyEmail');
 $routes->get('/sign-out','Home::signOut');
+$routes->get('activate/(:any)','Home::activate/$1');
 //saving admin data
 $routes->post('/add-account','Home::addAccount');
 $routes->post('/update','Home::updateAccount');
