@@ -95,7 +95,7 @@
             </div>      
           </div>
           <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
-            <div class="d-block services text-center">
+            <div class="d-block services active text-center">
               <div class="icon d-flex align-items-center justify-content-center">
             		<span class="flaticon-grooming"></span>
               </div>
@@ -106,7 +106,7 @@
             </div>    
           </div>
           <div class="col-md-4 d-flex align-self-stretch px-4 ftco-animate">
-            <div class="d-block services text-center">
+            <div class="d-block services active text-center">
               <div class="icon d-flex align-items-center justify-content-center">
             		<span class="flaticon-grooming"></span>
               </div>
