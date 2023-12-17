@@ -891,6 +891,32 @@ class Home extends BaseController
         }
     }
 
+    public function updateBlog()
+    {
+        $blogModel = new \App\Models\blogModel();
+        $id = $this->request->getPost('blogID');
+        $title = $this->request->getPost('title');
+        $content = $this->request->getPost('content');
+
+        $validation = $this->validate([
+            'title'=>'required',
+            'content'=>'required',
+        ]);
+
+        if(!$validation)
+        {
+            echo "Invalid! Please fill in the form";
+        }
+        else
+        {
+            $values = [
+                'blogTitle'=>$title, 'Content'=>$content
+            ];
+            $blogModel->update($id,$values);
+            echo "success";
+        }
+    }
+
     public function createBlog()
     {
         $blogModel = new \App\Models\blogModel();

@@ -422,6 +422,7 @@
                                 <a href="<?=site_url('admin/blogs')?>" style="float:right;"><span class="icon-copy dw dw-left-arrow1"></span>&nbsp;Back</a>
                                 </h4>
                                 <form method="post" class="row g-3" id="frmBlog">
+                                    <input type="hidden" name="blogID" value="<?=$blog['blogID']?>"/>
                                     <div class="col-12 form-group">
                                         <input type="text" class="form-control" name="title" value="<?=$blog['blogTitle']?>" placeholder="Your Title" required/>
                                     </div>
@@ -450,6 +451,7 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script>
             $('#frmBlog').on('submit',function(evt)
             {

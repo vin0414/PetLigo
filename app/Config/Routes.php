@@ -75,6 +75,7 @@ $routes->post('/save-category','Home::saveCategory');
 $routes->post('/update-password','Home::updatePassword');
 $routes->get('/read','Home::read');
 $routes->post('/create-blog','Home::createBlog');
+$routes->post('/update-blog','Home::updateBlog');
 $routes->post('/tag','Home::Tag');
 $routes->post('/update-status','Home::updateStatus');
 //customer
