@@ -367,7 +367,7 @@
 						<li class="dropdown">
 							<a href="<?=site_url('admin/maintenance')?>" class="dropdown-toggle active no-arrow">
 								<span class="micon dw dw-settings"></span
-								><span class="mtext">Maintenance</span>
+								><span class="mtext">Maintenance</span> 
 							</a>
 						</li>
 							<div class="dropdown-divider"></div>

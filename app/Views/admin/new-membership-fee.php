@@ -365,10 +365,13 @@
 							</a>
 						</li>						
 						<li class="dropdown">
-							<a href="<?=site_url('admin/fee')?>" class="dropdown-toggle active no-arrow">
-								<span class="micon dw dw-add"></span
-								><span class="mtext">Membership Fee</span>
+							<a href="<?=site_url('admin/maintenance')?>" class="dropdown-toggle">
+								<span class="micon dw dw-settings"></span
+								><span class="mtext">Maintenance</span>
 							</a>
+							<ul class="submenu">
+								<li><a href="javascript:void(0);" class="active">New Membership Fee</a></li>
+							</ul>
 						</li>
 							<div class="dropdown-divider"></div>
 						</li>
