@@ -450,10 +450,28 @@
 													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
 												>
 												<?php if($row->servicesName=="Ala Carte"){ ?>
-													<button class="dropdown-item view" value="<?php echo $row->Code ?>"><i class="dw dw-eye"></i> View Orders</button>
-													<button class="dropdown-item tag" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Update</button>
+													<?php if($row->Status==0){ ?>
+														<button class="dropdown-item view" value="<?php echo $row->Code ?>"><i class="dw dw-eye"></i> View Orders</button>
+														<button class="dropdown-item accept" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Accept</button>
+														<button class="dropdown-item tag" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Tag as Paid</button>
+													<?php }else if($row->Status==1) {?>
+														<button class="dropdown-item done" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Done</button>
+														<button class="dropdown-item tag" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Tag as Paid</button>
+													<?php }else if($row->Status==2){ ?>
+														<button class="dropdown-item view" value="<?php echo $row->Code ?>"><i class="dw dw-eye"></i> View Orders</button>
+													<?php }else{ ?>
+														<button class="dropdown-item view" value="<?php echo $row->Code ?>"><i class="dw dw-eye"></i> View Orders</button>
+													<?php } ?>
 												<?php }else { ?>
-													<button class="dropdown-item tag" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Update</button>
+													<?php if($row->Status==0){ ?>
+														<button class="dropdown-item accept" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Accept</button>
+														<button class="dropdown-item tag" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Tag as Paid</button>
+													<?php }else if($row->Status==1) {?>
+														<button class="dropdown-item done" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Done</button>
+														<button class="dropdown-item tag" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Tag as Paid</button>
+													<?php }else if($row->Status==2){ ?>
+													<?php }else{ ?>
+													<?php } ?>
 												<?php } ?>
 												</div>
 											</div>
