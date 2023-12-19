@@ -95,6 +95,7 @@ $routes->get('fetch-information','Customer::fetchInfo');
 $routes->post('remove-item','Customer::removeItem');
 $routes->post('confirm','Customer::Confirm');
 $routes->post('cancel-order','Customer::cancelOrder');
+$routes->post('cancel-reservation','Customer::cancelReservation');
 $routes->get('view-order','Customer::viewOrder');
 $routes->get('view-services','Customer::viewServices');
 $routes->post('save-reservation','Customer::saveReservation');

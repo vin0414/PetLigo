@@ -210,6 +210,15 @@ class Customer extends BaseController
         return redirect()->to('customer/orders')->withInput();
     }
 
+    public function cancelReservation()
+    {
+        $reservationModel = new \App\Models\reservationModel();
+        $val = $this->request->getPost('value');
+        $values = ['Status'=>2,'Remarks'=>'-'];
+        $reservationModel->update($val,$values);
+        echo "success";
+    }
+
     public function cancelOrder()
     {
         $customerOrderModel = new \App\Models\customerOrderModel();
