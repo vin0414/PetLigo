@@ -54,31 +54,6 @@
 			href="/resources/src/plugins/datatables/css/responsive.bootstrap4.min.css"
 		/>
 		<link rel="stylesheet" type="text/css" href="/resources/vendors/styles/style.css" />
-        <style>
-            .quote-imgs-thumbs {
-				background: #eee;
-				border: 1px solid #ccc;
-				border-radius: 0.25rem;
-				margin: 1.5rem 0;
-				padding: 0.75rem;
-				}
-				.quote-imgs-thumbs--hidden {
-				display: none;
-				}
-				.img-preview-thumb {
-				background: #fff;
-				border: 1px solid #777;
-				border-radius: 0.25rem;
-				box-shadow: 0.125rem 0.125rem 0.0625rem rgba(0, 0, 0, 0.12);
-				margin-right: 1rem;
-				max-width: 140px;
-				padding: 0.25rem;
-				}
-			.show-for-sr
-			{
-				display:none;
-			}
-        </style>
 	</head>
 	<body>
 		<div class="pre-loader">
@@ -419,6 +394,33 @@
 
 		<div class="main-container">
 			<div class="pd-ltr-20">
+                <div class="card-box">
+                    <div class="card-header">Customer's Feedback
+                    <a href="javascript:void(0);" class="btn btn-default btn-sm add" style="float:right;"><span class="icon-copy dw dw-add"></span> Add</a>
+                    </div>
+                    <div class="card-body">
+                        <table class="data-table table stripe hover nowrap">
+                            <thead>
+                                <th>Date</th>
+                                <th>Customer's Name</th>
+                                <th>Message</th>
+                                <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <?php foreach($feed as $row): ?>
+                                    <tr>
+                                        <td><?php echo $row->Date ?></td>
+                                        <td><?php echo $row->customerName ?></td>
+                                        <td><?php echo $row->Message ?></td>
+                                        <td>
+                                            <button type="button" class="btn btn-danger btn-sm delete"><span class="dw dw-trash"></span></button>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 			</div>
 		</div>
 		<!-- js -->

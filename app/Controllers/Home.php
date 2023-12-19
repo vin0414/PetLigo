@@ -1462,6 +1462,11 @@ class Home extends BaseController
 
     public function Feedback()
     {
-        return view('admin/feedback');
+        $builder = $this->db->table('tblfeedback');
+        $builder->select('*');
+        $builder->orderby('Date','DESC');
+        $feed = $builder->get()->getResult();
+        $data = ['feed'=>$feed];
+        return view('admin/feedback',$data);
     }
 }
