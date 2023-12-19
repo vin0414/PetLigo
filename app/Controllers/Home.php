@@ -155,7 +155,7 @@ class Home extends BaseController
         $rTotal=0;$oTotal=0;$income=0;
         $builder = $this->db->table('tblreservation');
         $builder->select('SUM(TotalAmount)total');
-        $builder->WHERE('Remarks','PAID');
+        $builder->WHERE('Remarks','PAID')->WHERE('DATE_FORMAT(Date,"%m")',date('m'))->WHERE('DATE_FORMAT(Date,"%Y")',date('Y'));
         $total = $builder->get();
         if($row = $total->getRow())
         {
@@ -164,7 +164,7 @@ class Home extends BaseController
 
         $builder = $this->db->table('tblpayment');
         $builder->select('SUM(Total)total');
-        $builder->WHERE('Status',1);
+        $builder->WHERE('Status',1)->WHERE('DATE_FORMAT(Date,"%m")',date('m'))->WHERE('DATE_FORMAT(Date,"%Y")',date('Y'));
         $totals = $builder->get();
         if($row = $totals->getRow())
         {

@@ -389,15 +389,26 @@
 
 		<div class="main-container">
 			<div class="pd-ltr-20">
-				<?php if(!empty(session()->getFlashdata('success'))) : ?>
-					<div class="alert alert-success alert-dismissible fade show" role="alert">
-						<?= session()->getFlashdata('success'); ?>
-						<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
+				<div class="row g-3">
+					<div class="col-12 form-group">
+						<div class="card-box">
+							<div class="card-header">Revenue Report</div>
+							<div class="card-body">
+								<form method="GET" class="row g-3" id="frmReport">
+									<div class="col-lg-3">
+										<input type="date" class="form-control" name="from"/>
+									</div>
+									<div class="col-lg-3">
+										<input type="date" class="form-control" name="to"/>
+									</div>
+									<div class="col-lg-3">
+										<input type="submit" class="btn btn-primary form-control text-white" value="Generate" id="btnGenerate"/>
+									</div>
+								</form>
+							</div>
+						</div>
 					</div>
-				<?php endif; ?>
-				
+				</div>	
 			</div>
 		</div>
 		<!-- js -->
