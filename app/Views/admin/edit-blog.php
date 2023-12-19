@@ -379,9 +379,12 @@
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:void(0);" class="dropdown-toggle active no-arrow">
-							<span class="micon dw dw-chat-12"></span><span class="mtext">Edit Blog</span>
+							<a href="<?=site_url('admin/blogs')?>" class="dropdown-toggle">
+							<span class="micon dw dw-chat-12"></span><span class="mtext">Blog</span>
 							</a>
+							<ul class="submenu">
+								<li><a href="javascript:void(0);" class="active">Edit Blog</a></li>
+							</ul>
 						</li>
 						<li class="dropdown">
 							<a href="<?=site_url('admin/reports')?>" class="dropdown-toggle no-arrow">

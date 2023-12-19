@@ -367,10 +367,13 @@
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="<?=site_url('admin/new-product')?>" class="dropdown-toggle active no-arrow">
+							<a href="<?=site_url('admin/products')?>" class="dropdown-toggle">
 								<span class="micon dw dw-edit-1"></span
-								><span class="mtext">Edit Product</span>
+								><span class="mtext">Products</span>
 							</a>
+							<ul class="submenu">
+								<li><a href="javascript:void(0);" class="active">Edit Product</a></li>
+							</ul>
 						</li>
 						<li class="dropdown">
 							<a href="<?=site_url('admin/membership')?>" class="dropdown-toggle no-arrow">
