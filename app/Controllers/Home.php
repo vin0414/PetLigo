@@ -959,7 +959,12 @@ class Home extends BaseController
         $builder->join('tblaccount b','b.accountID=a.accountID','LEFT');
         $builder->orderBy('a.blogID','DESC')->limit(3);
         $blog = $builder->get()->getResult();
-        $data = ['blog'=>$blog];
+        //feedback
+        $builder = $this->db->table('tblfeedback');
+        $builder->select('*');
+        $builder->orderBy('feedbackID','DESC')->limit(5);
+        $feed = $builder->get()->getResult();
+        $data = ['blog'=>$blog,'feed'=>$feed];
         return view('welcome_message',$data);
     }
 
