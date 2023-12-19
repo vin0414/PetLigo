@@ -413,7 +413,7 @@
                                         <td><?php echo $row->customerName ?></td>
                                         <td><?php echo $row->Message ?></td>
                                         <td>
-                                            <button type="button" class="btn btn-danger btn-sm delete"><span class="dw dw-trash"></span></button>
+                                            <button type="button" class="btn btn-danger btn-sm delete" value="<?php echo $row->feedbackID ?>"><span class="dw dw-trash"></span></button>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -421,6 +421,34 @@
                         </table>
                     </div>
                 </div>
+			</div>
+		</div>
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h4 class="modal-title" id="myLargeModalLabel">
+							New Feedback
+						</h4>
+						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+					</div>
+					<div class="modal-body">
+						<form method="post" class="row g-3" id="frmMessage">
+							<div class="col-12 form-group">
+								<label>Customer's Name</label>
+								<input type="text" class="form-control" name="customer_name" required/>
+							</div>
+                            <div class="col-12 form-group">
+								<label>Message</label>
+								<textarea class="form-control" name="message" required></textarea>
+							</div>
+							<div class="col-12 form-group">
+								<button type="submit" class="btn btn-primary" id="btnAdd">Save Entry</button>
+                                <button type="reset" class="btn btn-danger text-white" id="btnReset">Reset</button>
+							</div>
+						</form>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- js -->
@@ -433,5 +461,64 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <script>
+            $(document).on('click','.add',function()
+            {
+                $('#addModal').modal('show');
+            });
+			$(document).on('click','.delete',function()
+			{
+				Swal.fire({
+					title: "Are you sure?",
+					text: "Do you want to delete this selected data?",
+					icon: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "Yes"
+					}).then((result) => {
+					if (result.isConfirmed) 
+					{
+						var val = $(this).val();
+						$.ajax({
+							url:"<?=site_url('remove-feedback')?>",method:"POST",
+							data:{value:val},
+							success:function(response)
+							{
+								if(response==="success")
+								{
+									location.reload();
+								}
+								else
+								{
+									alert(response);
+								}
+							}
+						});
+					}
+				});
+			});
+
+            $('#btnAdd').on('click',function(e)
+            {
+                e.preventDefault();
+                var data = $('#frmMessage').serialize();
+                $.ajax({
+                    url:"<?=site_url('add-feedback')?>",method:"POST",
+                    data:data,success:function(response)
+                    {
+                        if(response==="success")
+                        {
+                            location.reload();
+                        }
+                        else
+                        {
+                            alert(response);
+                        }
+                    }
+                });
+            });
+        </script>
 	</body>
 </html>

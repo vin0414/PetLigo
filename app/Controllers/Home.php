@@ -1474,4 +1474,37 @@ class Home extends BaseController
         $data = ['feed'=>$feed];
         return view('admin/feedback',$data);
     }
+
+    public function removeFeedback()
+    {
+        $val = $this->request->getPost('value');
+        $builder = $this->db->table('tblfeedback');
+        $builder->WHERE('feedbackID',$val);
+        $builder->delete();
+        echo "success";
+    }
+
+    public function addFeedback()
+    {
+        $feedbackModel = new \App\Models\feedbackModel();
+        //data
+        $customer = $this->request->getPost('customer_name');
+        $msg = $this->request->getPost('message');
+        $date = date('Y-m-d');
+
+        $validation = $this->validate([
+            'customer_name'=>'required',
+            'message'=>'required'
+        ]);
+        if(!$validation)
+        {
+            echo "Invalid! Please fill in the form";
+        }
+        else
+        {
+            $values = ['customerName'=>$customer, 'Message'=>$msg,'Date'=>$date];
+            $feedbackModel->save($values);
+            echo "success";
+        }
+    }
 }

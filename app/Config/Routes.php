@@ -83,6 +83,8 @@ $routes->post('/create-blog','Home::createBlog');
 $routes->post('/update-blog','Home::updateBlog');
 $routes->post('/tag','Home::Tag');
 $routes->post('/update-status','Home::updateStatus');
+$routes->post('/add-feedback','Home::addFeedback');
+$routes->post('/remove-feedback','Home::removeFeedback');
 //customer
 $routes->post('/save-pet','Customer::savePet');
 $routes->post('update-pet-info','Customer::updatePet');
