@@ -50,6 +50,10 @@ $routes->get('services-for-dogs','Home::servicesDog');
 $routes->get('services-for-cats','Home::servicesCat');
 $routes->get('ala-carte','Home::alaCarte');
 $routes->get('get-available-time','Customer::getTime');
+//report
+$routes->get('total-income','Report::totalIncome');
+$routes->get('product-income','Report::productIncome');
+$routes->get('services-income','Report::servicesIncome');
 //authentication
 $routes->post('/check','Home::Authentication');
 $routes->post('/check-account','Home::checkAccount');

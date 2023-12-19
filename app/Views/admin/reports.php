@@ -424,13 +424,6 @@
 										<h1 id="productIncome">0.00</h1>
 									</div>
 								</div>
-								<br/>
-								<div class="card-box">
-									<div class="card-body">
-										<div class="card-title">Orders</div>
-										<h1 id="totalOrders">0</h1>
-									</div>
-								</div>
 							</div>
 							<div class="col-lg-8">
 								<div class="card-box">
@@ -463,7 +456,44 @@
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
 		<script>
-
+			$('#btnGenerate').on('click',function(e)
+			{
+				e.preventDefault();
+				var data = $('#frmReport').serialize();
+				$(this).attr("value","Please wait");
+				$.ajax({
+					url:"<?=site_url('total-income')?>",method:"GET",
+					data:data,success:function(response)
+					{
+						$('#totalIncome').html(response);
+					}
+				});
+				//product income
+				$.ajax({
+					url:"<?=site_url('product-income')?>",method:"GET",
+					data:data,success:function(response)
+					{
+						$('#productIncome').html(response);
+					}
+				});
+				//services
+				$('#tblservices').html("<tr><td colspan='2'>Loading...</td></tr>");
+				$.ajax({
+					url:"<?=site_url('services-income')?>",method:"GET",
+					data:data,success:function(response)
+					{
+						if(response==="")
+						{
+							$('#tblservices').html("<tr><td colspan='2'>No Data</td></tr>");
+						}
+						else
+						{
+							$('#tblservices').html(response);
+						}
+					}
+				});
+				$('#btnGenerate').attr("value","Generate");
+			});
 		</script>
 	</body>
 </html>
