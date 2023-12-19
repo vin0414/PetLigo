@@ -330,10 +330,13 @@
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="<?=site_url('admin/view-reservation')?>" class="active dropdown-toggle no-arrow">
+							<a href="<?=site_url('admin/reservations')?>" class="dropdown-toggle">
 								<span class="micon dw dw-calendar-1"></span
-								><span class="mtext"> Manage Reservation</span>
+								><span class="mtext"> Reservation</span>
 							</a>
+							<ul class="submenu">
+								<li><a href="<?=site_url('admin/view-reservation')?>" class="active">Manage Reservation</a></li>
+							</ul>
 						</li>
 						<li class="dropdown">
 							<a href="<?=site_url('admin/orders')?>" class="dropdown-toggle no-arrow">
