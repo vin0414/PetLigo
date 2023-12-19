@@ -459,7 +459,20 @@
 								<span class="dw dw-calendar-1"></span>&nbsp;Recent Reservation(s)
 							</div>
 							<div class="card-body">
-
+								<table class="table table-bordered hover nowrap">
+									<thead>
+										<th>Services</th>
+										<th>Date and Time</th>
+									</thead>
+									<tbody>
+										<?php foreach($book as $row): ?>
+											<tr>
+												<td><?php echo $row->servicesName ?></td>
+												<td><?php echo $row->Date ?> - <?php echo $row->Time ?></td>
+											</tr>
+										<?php endforeach; ?>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>
@@ -469,7 +482,22 @@
 							<i class="icon-copy dw dw-shopping-cart"></i>&nbsp;Recent Order(s)
 							</div>
 							<div class="card-body">
-								
+								<table class="table table-bordered hover nowrap">
+									<thead>
+										<th>Product</th>
+										<th>Qty</th>
+										<th>Price</th>
+									</thead>
+									<tbody>
+										<?php foreach($order as $row): ?>
+											<tr>
+												<td><?php echo $row->productName ?></td>
+												<td><?php echo $row->Qty ?></td>
+												<td><?php echo number_format($row->price,2) ?></td>
+											</tr>
+										<?php endforeach; ?>
+									</tbody>
+								</table>
 							</div>
 						</div>
 					</div>

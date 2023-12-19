@@ -14,7 +14,21 @@ class Customer extends BaseController
 
     public function Dashboard()
     {
-        return view('customer/index');
+        $user = session()->get('sess_id');
+        //services
+        $builder = $this->db->table('tblreservation');
+        $builder->select('*');
+        $builder->WHERE('customerID',$user)->WHERE('Status',0);
+        $book = $builder->get()->getResult();
+        //orders
+        $builder = $this->db->table('tblorders a');
+        $builder->select('a.productName,a.Qty,a.price');
+        $builder->join('tblcustomer_order b','b.TransactionNo=a.TransactionNo','LEFT');
+        $builder->WHERE('a.customerID',$user)->WHERE('b.Status',1);
+        $order = $builder->get()->getResult();
+
+        $data = ['book'=>$book,'order'=>$order];
+        return view('customer/index',$data);
     }
 
     public function Reservations()
