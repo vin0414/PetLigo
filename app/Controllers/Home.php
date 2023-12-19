@@ -1459,4 +1459,9 @@ class Home extends BaseController
             <?php
         }
     }
+
+    public function Feedback()
+    {
+        return view('admin/feedback');
+    }
 }

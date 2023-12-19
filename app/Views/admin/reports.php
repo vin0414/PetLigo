@@ -359,6 +359,11 @@
 							</a>
 						</li>
 						<li class="dropdown">
+							<a href="<?=site_url('admin/feedback')?>" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-chat"></span><span class="mtext">Feedback</span>
+							</a>
+						</li>
+						<li class="dropdown">
 							<a href="<?=site_url('admin/reports')?>" class="dropdown-toggle active no-arrow">
 								<span class="micon bi bi-pie-chart"></span
 								><span class="mtext">Reports</span>
