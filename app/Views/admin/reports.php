@@ -408,6 +408,47 @@
 							</div>
 						</div>
 					</div>
+					<div class="col-12 form-group">
+						<div class="row g-3">
+							<div class="col-lg-4">
+								<div class="card-box">
+									<div class="card-body">
+										<div class="card-title">Total Income</div>
+										<h1 id="totalIncome">0.00</h1>
+									</div>
+								</div>
+								<br/>
+								<div class="card-box">
+									<div class="card-body">
+										<div class="card-title">Product Income</div>
+										<h1 id="productIncome">0.00</h1>
+									</div>
+								</div>
+								<br/>
+								<div class="card-box">
+									<div class="card-body">
+										<div class="card-title">Orders</div>
+										<h1 id="totalOrders">0</h1>
+									</div>
+								</div>
+							</div>
+							<div class="col-lg-8">
+								<div class="card-box">
+									<div class="card-body">
+										<table class="table hover table-bordered nowrap">
+											<thead>
+												<th>Services</th>
+												<th>Total Amount</th>
+											</thead>
+											<tbody id="tblservices">
+
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>	
 			</div>
 		</div>
@@ -421,5 +462,8 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
+		<script>
+
+		</script>
 	</body>
 </html>
