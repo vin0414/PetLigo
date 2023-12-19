@@ -321,3 +321,142 @@ INFO - 2023-12-19 09:04:12 --> Session: Class initialized using 'CodeIgniter\Ses
 INFO - 2023-12-19 09:04:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-12-19 09:10:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2023-12-19 09:10:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:13:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:13:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2023-12-19 09:13:52 --> [DEPRECATED] Creation of dynamic property CodeIgniter\View\View::$db is deprecated in APPPATH\Views\admin\reservations.php on line 442.
+ 1 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\reservations.php')
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('admin/reservations', [], true)
+ 4 APPPATH\Controllers\Home.php(684): view('admin/reservations')
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Reservations()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-12-19 09:14:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:14:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:15:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2023-12-19 09:15:04 --> [DEPRECATED] Creation of dynamic property CodeIgniter\View\View::$db is deprecated in APPPATH\Views\admin\reservations.php on line 442.
+ 1 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\reservations.php')
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('admin/reservations', [], true)
+ 4 APPPATH\Controllers\Home.php(684): view('admin/reservations')
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Reservations()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-12-19 09:15:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:15:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:15:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:15:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:15:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:15:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:15:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:15:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:15:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:15:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:15:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-12-19 09:15:57 --> Trying to access array offset on value of type null
+in APPPATH\Views\customer\reserve.php on line 443.
+ 1 APPPATH\Views\customer\reserve.php(443): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Views\\customer\\reserve.php', 443)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\customer\\reserve.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('customer/reserve', [], true)
+ 5 APPPATH\Controllers\Customer.php(612): view('customer/reserve', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Customer->reserve('vendors', 'FCPATH\\Images', 'img.jpg')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-12-19 09:15:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-12-19 09:15:57 --> Trying to access array offset on value of type null
+in APPPATH\Views\customer\reserve.php on line 443.
+ 1 APPPATH\Views\customer\reserve.php(443): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Views\\customer\\reserve.php', 443)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\customer\\reserve.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('customer/reserve', [], true)
+ 5 APPPATH\Controllers\Customer.php(612): view('customer/reserve', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Customer->reserve('vendors', 'FCPATH\\Images', 'photo1.jpg')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-12-19 09:15:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-12-19 09:15:57 --> Trying to access array offset on value of type null
+in APPPATH\Views\customer\reserve.php on line 443.
+ 1 APPPATH\Views\customer\reserve.php(443): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Views\\customer\\reserve.php', 443)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\customer\\reserve.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('customer/reserve', [], true)
+ 5 APPPATH\Controllers\Customer.php(612): view('customer/reserve', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Customer->reserve('vendors', 'FCPATH\\Images', 'photo2.jpg')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-12-19 09:15:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-12-19 09:15:58 --> Trying to access array offset on value of type null
+in APPPATH\Views\customer\reserve.php on line 443.
+ 1 APPPATH\Views\customer\reserve.php(443): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Views\\customer\\reserve.php', 443)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\customer\\reserve.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('customer/reserve', [], true)
+ 5 APPPATH\Controllers\Customer.php(612): view('customer/reserve', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Customer->reserve('vendors', 'FCPATH\\Images', 'photo3.jpg')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-12-19 09:15:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-12-19 09:15:58 --> Trying to access array offset on value of type null
+in APPPATH\Views\customer\reserve.php on line 443.
+ 1 APPPATH\Views\customer\reserve.php(443): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Views\\customer\\reserve.php', 443)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\customer\\reserve.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('customer/reserve', [], true)
+ 5 APPPATH\Controllers\Customer.php(612): view('customer/reserve', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Customer->reserve('vendors', 'FCPATH\\Images', 'github.svg')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-12-19 09:15:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-12-19 09:15:58 --> Trying to access array offset on value of type null
+in APPPATH\Views\customer\reserve.php on line 443.
+ 1 APPPATH\Views\customer\reserve.php(443): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'APPPATH\\Views\\customer\\reserve.php', 443)
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\customer\\reserve.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('customer/reserve', [], true)
+ 5 APPPATH\Controllers\Customer.php(612): view('customer/reserve', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Customer->reserve('vendors', 'FCPATH\\Images', 'photo4.jpg')
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Customer))
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-12-19 09:16:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:16:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:17:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:17:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:17:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:17:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:17:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:17:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:17:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:17:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:17:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:18:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2023-12-19 09:18:35 --> [DEPRECATED] Creation of dynamic property CodeIgniter\View\View::$db is deprecated in APPPATH\Views\admin\reservations.php on line 442.
+ 1 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\admin\\reservations.php')
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render('admin/reservations', [], true)
+ 4 APPPATH\Controllers\Home.php(684): view('admin/reservations')
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\Home->Reservations()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-12-19 09:18:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:20:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:23:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-19 09:25:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
