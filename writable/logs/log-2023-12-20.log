@@ -762,3 +762,5 @@ in APPPATH\Views\customer\reserve.php on line 353.
  8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Commands\Server\rewrite.php(47): require_once('FCPATH\\index.php')
+INFO - 2023-12-20 02:33:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-12-20 02:33:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
