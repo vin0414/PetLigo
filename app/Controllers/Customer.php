@@ -784,4 +784,19 @@ class Customer extends BaseController
             echo "<option>".$object."</option>";
         }
     }
+
+    public function collectInfo()
+    {
+        $user = $this->request->getGet('user');
+        $builder = $this->db->table('tblcustomer_info');
+        $builder->select('*');
+        $builder->WHERE('customerID',$user);
+        $data = $builder->get();
+        $info="";
+        foreach($data->getResult() as $row)
+        {
+            $info = array("Address"=>$row->Address,"Contact"=>$row->ContactNo,"Email"=>$row->EmailAddress);
+        }
+        echo json_encode($info);
+    }
 }

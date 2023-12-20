@@ -74,96 +74,6 @@
 				<div class="menu-icon bi bi-list"></div>
 			</div>
 			<div class="header-right">
-				<div class="dashboard-setting user-notification">
-					<div class="dropdown">
-						<a
-							class="dropdown-toggle no-arrow"
-							href="javascript:;"
-							data-toggle="right-sidebar"
-						>
-							<i class="dw dw-settings2"></i>
-						</a>
-					</div>
-				</div>
-				<div class="user-notification">
-					<div class="dropdown">
-						<a
-							class="dropdown-toggle no-arrow"
-							href="#"
-							role="button"
-							data-toggle="dropdown"
-						>
-							<i class="icon-copy dw dw-notification"></i>
-							<span class="badge notification-active"></span>
-						</a>
-						<div class="dropdown-menu dropdown-menu-right">
-							<div class="notification-list mx-h-350 customscroll">
-								<ul>
-									<li>
-										<a href="#">
-											<img src="vendors/images/img.jpg" alt="" />
-											<h3>John Doe</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo1.jpg" alt="" />
-											<h3>Lea R. Frith</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo2.jpg" alt="" />
-											<h3>Erik L. Richards</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo3.jpg" alt="" />
-											<h3>John Doe</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/photo4.jpg" alt="" />
-											<h3>Renee I. Hansen</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-									<li>
-										<a href="#">
-											<img src="vendors/images/img.jpg" alt="" />
-											<h3>Vicki M. Coleman</h3>
-											<p>
-												Lorem ipsum dolor sit amet, consectetur adipisicing
-												elit, sed...
-											</p>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-				</div>
 				<div class="user-info-dropdown">
 					<div class="dropdown">
 						<a
@@ -446,6 +356,17 @@
                             <div class="card-header">Customer Details</div>
                             <div class="card-body">
                                 <div class="row g-3">
+									<div class="col-12 form-group">
+										<div class="row g-3">
+											<div class="col-lg-4"><label>Are you the customer?</label></div>
+											<div class="col-lg-2">
+												<input type="radio" name="customer" id="yes" value="Yes" style="width:20px;height:15px;"/>&nbsp;<label>Yes</label>
+											</div>
+											<div class="col-lg-2">
+												<input type="radio" name="customer" id="no" value="No" style="width:20px;height:15px;" checked/>&nbsp;<label>No</label>
+											</div>
+										</div>
+									</div>
                                     <div class="col-12 form-group">
                                         <div class="row g-3">
                                             <div class="col-lg-6">
@@ -462,7 +383,7 @@
                                     </div>
                                     <div class="col-12 form-group">
                                         <label>Customer's Fullname</label>
-                                        <input type="text" class="form-control" name="fullname" required/>
+                                        <input type="text" class="form-control" name="fullname" id="fullname" required/>
                                     </div>
                                     <div class="col-12 form-group">
                                         <div class="row g-3">
@@ -472,13 +393,13 @@
                                             </div>
                                             <div class="col-lg-6">
                                                 <label>Email Address</label>
-                                                <input type="email" class="form-control" name="email" required/>
+                                                <input type="email" class="form-control" name="email" id="email" required/>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-12 form-group">
                                         <label>Customer's Address</label>
-                                        <textarea class="form-control" name="address" required></textarea>
+                                        <textarea class="form-control" name="address" id="address" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -540,6 +461,28 @@
 			$(document).ready(function()
 			{
 				today();
+			});
+			$('input:radio[name="customer"]').change(function() {
+				var user = "<?php echo session()->get('sess_id') ?>";
+				var fullname = "<?php echo session()->get('sess_fullname') ?>";
+				if($(this).val()==="Yes")
+				{
+					$.ajax({url:"<?=site_url('collect-information')?>",method:"GET",
+						data:{user:user},dataType:"json",
+						success:function(data)
+						{
+							$('#fullname').val(fullname);
+							$('#address').val(data["Address"]);
+							$('#phone').val(data["Contact"]);
+							$('#email').val(data["Email"]);
+						}
+					});
+				}else{
+					$('#fullname').val("");
+					$('#address').val("");
+					$('#phone').val("");
+					$('#email').val("");
+				}
 			});
 			function today()
 			{

@@ -103,6 +103,7 @@ $routes->get('view-services','Customer::viewServices');
 $routes->post('save-reservation','Customer::saveReservation');
 $routes->post('save','Customer::Save');
 $routes->post('save-book','Customer::saveBook');
+$routes->get('collect-information','Customer::collectInfo');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
