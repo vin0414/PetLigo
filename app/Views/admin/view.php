@@ -418,11 +418,12 @@
 												<?php if($row->servicesName=="Ala Carte"){ ?>
 													<?php if($row->Status==0){ ?>
 														<button class="dropdown-item view" value="<?php echo $row->Code ?>"><i class="dw dw-eye"></i> View Orders</button>
-														<button class="dropdown-item accept" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Accept</button>
-														<button class="dropdown-item tag" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Tag as Paid</button>
+														<button class="dropdown-item accept" value="<?php echo $row->reservationID ?>"><i class="dw dw-check"></i> Accept</button>
 													<?php }else if($row->Status==1) {?>
-														<button class="dropdown-item done" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Done</button>
-														<button class="dropdown-item tag" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Tag as Paid</button>
+														<button class="dropdown-item done" value="<?php echo $row->reservationID ?>"><i class="dw dw-check"></i> Done</button>
+														<?php if($row->Remarks=="PENDING") { ?>
+														<button class="dropdown-item tag" value="<?php echo $row->reservationID ?>"><i class="dw dw-check"></i> Tag as Paid</button>
+														<?php } ?>
 													<?php }else if($row->Status==2){ ?>
 														<button class="dropdown-item view" value="<?php echo $row->Code ?>"><i class="dw dw-eye"></i> View Orders</button>
 													<?php }else{ ?>
@@ -430,11 +431,12 @@
 													<?php } ?>
 												<?php }else { ?>
 													<?php if($row->Status==0){ ?>
-														<button class="dropdown-item accept" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Accept</button>
-														<button class="dropdown-item tag" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Tag as Paid</button>
+														<button class="dropdown-item accept" value="<?php echo $row->reservationID ?>"><i class="dw dw-check"></i> Accept</button>
 													<?php }else if($row->Status==1) {?>
-														<button class="dropdown-item done" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Done</button>
-														<button class="dropdown-item tag" value="<?php echo $row->Code ?>"><i class="dw dw-check"></i> Tag as Paid</button>
+														<button class="dropdown-item done" value="<?php echo $row->reservationID ?>"><i class="dw dw-check"></i> Done</button>
+														<?php if($row->Remarks=="PENDING") { ?>
+														<button class="dropdown-item tag" value="<?php echo $row->reservationID ?>"><i class="dw dw-check"></i> Tag as Paid</button>
+														<?php } ?>
 													<?php }else if($row->Status==2){ ?>
 													<?php }else{ ?>
 													<?php } ?>
@@ -488,6 +490,104 @@
 					{
 						$('#viewModal').modal('show');
 						$('#result').html(response);
+					}
+				});
+			});
+			$(document).on('click','.tag',function()
+			{
+				Swal.fire({
+					title: "Are you sure?",
+					text: "Do you want to tag as paid this reservation?",
+					icon: "question",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "Yes"
+					}).then((result) => {
+					if (result.isConfirmed) 
+					{
+						var val = $(this).val();
+						$.ajax({
+							url:"<?=site_url('paid-reservation')?>",method:"POST",
+							data:{value:val},
+							success:function(response)
+							{
+								if(response==="success")
+								{
+									location.reload();
+								}
+								else
+								{
+									alert(response);
+								}
+							}
+						});
+					}
+				});
+			});
+
+			$(document).on('click','.accept',function()
+			{
+				Swal.fire({
+					title: "Are you sure?",
+					text: "Do you want to accept this reservation?",
+					icon: "question",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "Yes"
+					}).then((result) => {
+					if (result.isConfirmed) 
+					{
+						var val = $(this).val();
+						$.ajax({
+							url:"<?=site_url('accept-reservation')?>",method:"POST",
+							data:{value:val},
+							success:function(response)
+							{
+								if(response==="success")
+								{
+									location.reload();
+								}
+								else
+								{
+									alert(response);
+								}
+							}
+						});
+					}
+				});
+			});
+
+			$(document).on('click','.done',function()
+			{
+				Swal.fire({
+					title: "Are you sure?",
+					text: "Do you want to tag as 'Done' this reservation?",
+					icon: "question",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "Yes"
+					}).then((result) => {
+					if (result.isConfirmed) 
+					{
+						var val = $(this).val();
+						$.ajax({
+							url:"<?=site_url('done-reservation')?>",method:"POST",
+							data:{value:val},
+							success:function(response)
+							{
+								if(response==="success")
+								{
+									location.reload();
+								}
+								else
+								{
+									alert(response);
+								}
+							}
+						});
 					}
 				});
 			});

@@ -75,4 +75,34 @@ class Report extends BaseController
             <?php
         }
     }
+
+    public function acceptReservation()
+    {
+        $reservationModel = new \App\Models\reservationModel();
+        //data
+        $val = $this->request->getPost('value');
+        $values = ['Status'=>1];
+        $reservationModel->update($val,$values);
+        echo "success";
+    }
+
+    public function paidReservation()
+    {
+        $reservationModel = new \App\Models\reservationModel();
+        //data
+        $val = $this->request->getPost('value');
+        $values = ['Remarks'=>'PAID'];
+        $reservationModel->update($val,$values);
+        echo "success";
+    }
+
+    public function doneReservation()
+    {
+        $reservationModel = new \App\Models\reservationModel();
+        //data
+        $val = $this->request->getPost('value');
+        $values = ['Status'=>3];
+        $reservationModel->update($val,$values);
+        echo "success";
+    }
 }

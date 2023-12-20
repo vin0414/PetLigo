@@ -85,6 +85,9 @@ $routes->post('/tag','Home::Tag');
 $routes->post('/update-status','Home::updateStatus');
 $routes->post('/add-feedback','Home::addFeedback');
 $routes->post('/remove-feedback','Home::removeFeedback');
+$routes->post('/accept-reservation','Report::acceptReservation');
+$routes->post('/paid-reservation','Report::paidReservation');
+$routes->post('/done-reservation','Report::doneReservation');
 //customer
 $routes->post('/save-pet','Customer::savePet');
 $routes->post('update-pet-info','Customer::updatePet');
