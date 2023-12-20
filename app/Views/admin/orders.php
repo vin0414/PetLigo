@@ -430,8 +430,12 @@
 													<button class="dropdown-item view" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-eye"></i> View Orders</button>
 												<?php }else { ?>
 													<button class="dropdown-item view" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-eye"></i> View Orders</button>
+													<?php if($row->Status==0){ ?>
 													<button class="dropdown-item tag" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-check"></i> Tag as Paid</button>
+													<?php } ?>
+													<?php if($row->Remarks!=3){  ?>
 													<button class="dropdown-item update" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-edit2"></i> Update Status</button>
+													<?php } ?>
 												<?php } ?>
 												</div>
 											</div>
