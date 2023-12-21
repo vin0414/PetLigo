@@ -434,10 +434,13 @@
 							</a>
 						</li>
 						<li class="dropdown">
-							<a href="javascript:void(0);" class="active dropdown-toggle no-arrow">
+							<a href="javascript:void(0);" class="dropdown-toggle">
 								<span class="micon dw dw-dog"></span
-								><span class="mtext">Edit Pets Info</span>
+								><span class="mtext">My Pets</span>
 							</a>
+							<ul class="submenu">
+								<li><a href="javascript:void(0);" class="active">Edit Pets Info</a></li>
+							</ul>
 						</li>
 							<div class="dropdown-divider"></div>
 						</li>
