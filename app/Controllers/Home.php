@@ -730,7 +730,7 @@ class Home extends BaseController
         $code = $this->request->getPost('code');
         $status = $this->request->getPost('status');
         $builder = $this->db->table('tblcustomer_order');
-        $builder->select('OrderNo,Email,Firstname,Surname');
+        $builder->select('OrderNo,Email,Firstname,Surname,TransactionNo');
         $builder->WHERE('TransactionNo',$code);
         $data = $builder->get();
         if($row = $data->getRow())
@@ -788,7 +788,7 @@ class Home extends BaseController
                 //cancel the payment
                 $builder = $this->db->table('tblpayment');
                 $builder->select('paymentID');
-                $builder->WHERE('TransactionNo',$row->OrderNo);
+                $builder->WHERE('TransactionNo',$row->TransactionNo);
                 $list = $builder->get();
                 if($rows = $list->getRow())
                 {
