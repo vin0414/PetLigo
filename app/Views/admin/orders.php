@@ -426,7 +426,7 @@
 												<div
 													class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list"
 												>
-												<?php if($row->Status==2){ ?>
+												<?php if($row->Remarks==2){ ?>
 													<button class="dropdown-item view" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-eye"></i> View Orders</button>
 												<?php }else { ?>
 													<button class="dropdown-item view" value="<?php echo $row->TransactionNo ?>"><i class="dw dw-eye"></i> View Orders</button>

@@ -725,6 +725,7 @@ class Home extends BaseController
     {
         $customerOrderModel = new \App\Models\customerOrderModel();
         $productModel = new \App\Models\productModel();
+        $paymentModel = new \App\Models\paymentModel();
         //data
         $code = $this->request->getPost('code');
         $status = $this->request->getPost('status');
@@ -784,6 +785,16 @@ class Home extends BaseController
             {
                 $values = ['Status'=>2];
                 $customerOrderModel->update($row->OrderNo,$values);
+                //cancel the payment
+                $builder = $this->db->table('tblpayment');
+                $builder->select('paymentID');
+                $builder->WHERE('TransactionNo',$row->OrderNo);
+                $list = $builder->get();
+                if($rows = $list->getRow())
+                {
+                    $values = ['Status'=>2];
+                    $paymentModel->update($rows->paymentID,$values);
+                }
             }
             else if($status=="Delivered")
             {
