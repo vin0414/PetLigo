@@ -188,14 +188,9 @@ class Home extends BaseController
             $builder->select('*');
             $account = $builder->get()->getResult();
             //fee
-            $builder = $this->db->table('tblfee a');
-            $builder->select('a.Title,a.Description,a.Charge,a.feeID');
+            $builder = $this->db->table('tblfee');
+            $builder->select('*');
             $fee = $builder->get()->getResult();
-            //discount
-            $builder = $this->db->table('tbldiscount a');
-            $builder->select('a.*,b.Title');
-            $builder->join('tblfee b','b.feeID=a.feeID','LEFT');
-            $discount = $builder->get()->getResult();
             //services
             $builder = $this->db->table('tblservices');
             $builder->select('*');
@@ -205,7 +200,7 @@ class Home extends BaseController
             $builder->select('*');
             $category = $builder->get()->getResult();
 
-            $data = ['account'=>$account,'fee'=>$fee,'discount'=>$discount,'services'=>$services,'category'=>$category,];
+            $data = ['account'=>$account,'fee'=>$fee,'services'=>$services,'category'=>$category,];
             return view('admin/maintenance',$data);
         }
     }

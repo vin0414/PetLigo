@@ -396,9 +396,6 @@
                                     <a class="nav-link text-blue" data-toggle="tab" href="#membership" role="tab" aria-selected="false">Membership</a>
                                 </li>
 								<li class="nav-item">
-                                    <a class="nav-link text-blue" data-toggle="tab" href="#discount" role="tab" aria-selected="false">Discounts</a>
-                                </li>
-								<li class="nav-item">
                                     <a class="nav-link text-blue" data-toggle="tab" href="#category" role="tab" aria-selected="false">Categories</a>
                                 </li>
                             </ul>
@@ -472,6 +469,7 @@
 											<th>Title</th>
 											<th>Description</th>
 											<th>Charge</th>
+											<th>Status</th>
 											<th>Action</th>
 										</thead>
 										<tbody>
@@ -481,37 +479,16 @@
 													<td><?php echo substr($row->Description,0,50) ?>...</td>
 													<td><?php echo number_format($row->Charge,2) ?></td>
 													<td>
-														<button type="button" class="btn btn-default btn-sm add-discount" value="<?php echo $row->feeID ?>"><span class="icon-copy dw dw-add"></span> Add</button>
+														<?php if($row->Status==1){ ?>
+															<span class="badge bg-primary text-white">Active</span>
+														<?php }else { ?>
+															<span class="badge bg-danger text-white">Inactive</span>
+														<?php } ?>
+													</td>
+													<td>
 														<a href="<?=site_url('admin/edit-fee/')?><?php echo $row->feeID ?>"><span class="icon-copy dw dw-edit-1"></span> Edit</a>
 													</td>
 												</tr>
-											<?php endforeach; ?>
-										</tbody>
-									</table>
-                                </div>
-								<div class="tab-pane fade show" id="discount" role="tabpanel">
-									<br/>
-									<table class="data-table table stripe hover nowrap">
-										<thead>
-											<th>Title</th>
-											<th>Description</th>
-											<th>Discount</th>
-											<th>From Date</th>
-											<th>To Date</th>
-											<th>Action</th>
-										</thead>
-										<tbody>
-											<?php foreach($discount as $row): ?>
-												<tr>
-													<td><?php echo $row->Title ?></td>
-													<td><?php echo $row->Description ?></td>
-													<td><?php echo ($row->Discount)*100 ?>%</td>
-													<td><?php echo $row->FromDate ?></td>
-													<td><?php echo $row->ToDate ?></td>
-													<td>
-													<a href="<?=site_url('admin/edit-discount/')?><?php echo $row->discountID ?>"><span class="icon-copy dw dw-edit-1"></span> Edit</a>
-													</td>
-												</tr>	
 											<?php endforeach; ?>
 										</tbody>
 									</table>
@@ -537,54 +514,6 @@
                         </div>
                     </div>
                 </div>
-			</div>
-		</div>
-		<div class="modal fade" id="discountModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title" id="myLargeModalLabel">
-							Add Discount
-						</h4>
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-					</div>
-					<div class="modal-body">
-						<div id="errorMessage" style="display:none;">
-							<div class="alert alert-danger alert-dismissable fade show" role="alert">
-								<label id="error"></label>
-								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-						</div>
-						<form method="post" class="row g-3" id="frmDiscount">
-							<input type="hidden" name="feeID" id="feeID"/>
-							<div class="col-12 form-group">
-								<label>Description</label>
-								<textarea class="form-control" name="description"></textarea>
-							</div>
-							<div class="col-12 form-group">
-								<div class="row g-3">
-									<div class="col-lg-4">
-										<label>Discount</label>
-										<input type="text" class="form-control" name="discount"/>
-									</div>
-									<div class="col-lg-4">
-										<label>From</label>
-										<input type="date" class="form-control" name="fromdate"/>
-									</div>
-									<div class="col-lg-4">
-										<label>To</label>
-										<input type="date" class="form-control" name="todate"/>
-									</div>
-								</div>
-							</div>
-							<div class="col-12 form-group">
-								<button type="submit" class="btn btn-primary" id="btnSave">Save Entry</button>
-							</div>
-						</form>
-					</div>
-				</div>
 			</div>
 		</div>
 
@@ -634,13 +563,6 @@
 			{
 				e.preventDefault();
 				$('#categoryModal').modal('show');
-			});
-
-			$(document).on('click','.add-discount',function(e){
-				e.preventDefault();
-				var val = $(this).val();
-				$('#discountModal').modal('show');
-				$('#feeID').attr("value",val);
 			});
 
 			$('#btnAdd').on('click',function(e)
