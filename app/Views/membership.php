@@ -81,6 +81,7 @@
     </section>
     <section class="ftco-section bg-light">
     	<div class="container">
+        <h3>Membership</h3>
     	</div>
     </section>
 
