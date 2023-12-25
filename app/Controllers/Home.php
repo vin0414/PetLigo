@@ -982,7 +982,13 @@ class Home extends BaseController
         $builder->join('tblaccount b','b.accountID=a.accountID','LEFT');
         $builder->orderBy('a.blogID','DESC')->limit(3);
         $blog = $builder->get()->getResult();
-        $data = ['blog'=>$blog];
+        //membership
+        $builder = $this->db->table('tblfee');
+        $builder->select('*');
+        $builder->WHERE('Status',1);
+        $membership = $builder->get()->getResult();
+
+        $data = ['blog'=>$blog,'membership'=>$membership];
         return view('membership',$data);
     }
 

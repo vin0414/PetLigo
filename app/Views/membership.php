@@ -81,7 +81,28 @@
     </section>
     <section class="ftco-section bg-light">
     	<div class="container">
-        <h3>Membership</h3>
+        <center>
+        <h3>Become A Member</h3>
+        <h6>Membership Plan</h6>
+        </center>
+        <div class="container">
+          <div class="row g-3">
+            <?php foreach($membership as $row): ?>
+              <div class="col-md-6">
+                  <div class="block-7">
+                  <img src="assets/images/petligo.png" width="100%" style="padding:20px;"/>
+                      <div class="text-center p-4">
+                          <h4><?php echo $row->Title ?></h4>
+                          <span class="price">PhP <?php echo number_format($row->Charge,2)?></span>
+                          <p><?php echo $row->Description ?></p>
+                          <br/>
+                          <a href="" class="btn btn-danger d-block px-2 py-3">Subscribe</a>
+                      </div>
+                  </div>
+              </div>
+              <?php endforeach; ?>
+          </div>
+        </div>
     	</div>
     </section>
 
