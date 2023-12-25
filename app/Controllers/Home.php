@@ -432,7 +432,7 @@ class Home extends BaseController
         else
         {
             $values = [
-                'Title'=>$title, 'Description'=>$desc,'Charge'=>$charge,
+                'Title'=>$title, 'Description'=>$desc,'Charge'=>$charge,'Status'=>1
             ];
             $membershipFeeModel->save($values);
             session()->setFlashdata('success','Great! Successfully added');
