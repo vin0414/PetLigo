@@ -799,4 +799,9 @@ class Customer extends BaseController
         }
         echo json_encode($info);
     }
+
+    public function subscription($id=null)
+    {
+        return view('subscription');
+    }
 }

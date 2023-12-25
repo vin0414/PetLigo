@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>PetLigo - Services</title>
+    <title>PetLigo - Become A Member</title>
     <meta charset="utf-8">
     <link href="assets/images/petligo.png" rel="icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -96,7 +96,7 @@
                           <span class="price">PhP <?php echo number_format($row->Charge,2)?></span>
                           <p><?php echo $row->Description ?></p>
                           <br/>
-                          <a href="" class="btn btn-danger d-block px-2 py-3">Subscribe</a>
+                          <a href="<?=site_url('/subscription/')?><?php echo $row->feeID ?>" class="btn btn-danger d-block px-2 py-3">Subscribe</a>
                       </div>
                   </div>
               </div>
