@@ -388,8 +388,20 @@
                                 <textarea class="form-control" name="description" required><?=$fee['Description']?></textarea>
                             </div>
                             <div class="col-12 form-group">
-                                <label>Charge</label>
-                                <input type="text" class="form-control" name="charge" value="<?=$fee['Charge']?>" required/>
+                                <div class="row g-3">
+									<div class="col-lg-6">
+										<label>Charge</label>
+                                		<input type="text" class="form-control" name="charge" value="<?=$fee['Charge']?>" required/>
+									</div>
+									<div class="col-lg-6">
+										<label>Status</label>
+										<select class="form-control" name="status">
+											<option value="">Choose</option>
+											<option value="1">Active</option>
+											<option value="0">Inactive</option>
+										</select>
+									</div>
+								</div>
                             </div>
                             <div class="col-12 form-group">
                                 <button type="submit" class="btn btn-primary" id="btnAdd">Save Changes</button>

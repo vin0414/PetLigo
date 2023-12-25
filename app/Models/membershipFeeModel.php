@@ -14,7 +14,7 @@ class membershipFeeModel extends Model
     protected $returnType = 'array';
     protected $userSoftDelete = false;
     protected $protectFields = true;
-    protected $allowedFields = ['Title', 'Description','Charge'];
+    protected $allowedFields = ['Title', 'Description','Charge','Status'];
 
     protected $validationRules = [];
     protected $validationMessages = [];

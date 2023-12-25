@@ -456,8 +456,9 @@ class Home extends BaseController
         $title = $this->request->getPost('title');
         $desc = $this->request->getPost('description');
         $charge = $this->request->getPost('charge');
+        $status = $this->request->getPost('status');
         $validation = $this->validate([
-            'title'=>'required','description'=>'required','charge'=>'required'
+            'title'=>'required','description'=>'required','charge'=>'required','status'=>'required'
         ]);
         if(!$validation)
         {
@@ -467,7 +468,7 @@ class Home extends BaseController
         else
         {
             $values = [
-                'Title'=>$title, 'Description'=>$desc,'Charge'=>$charge,
+                'Title'=>$title, 'Description'=>$desc,'Charge'=>$charge,'Status'=>$status
             ];
             $membershipFeeModel->update($feeID,$values);
             session()->setFlashdata('success','Great! Successfully updated');
