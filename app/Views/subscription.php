@@ -81,58 +81,51 @@
     <section class="ftco-section bg-light">
     	<div class="container">
             <div class="card">
+                <div class="card-header">Become A Member</div>
                 <div class="card-body">
                     <form method="post" class="row g-3" id="frmShip" action="<?=base_url('cart/save-order')?>">
                         <div class="col-12 form-group">
                             <div class="row g-3">
+                                <div class="col-lg-4"><label>Are you the customer?</label></div>
+                                <div class="col-lg-2">
+                                    <input type="radio" name="customer" id="yes" value="Yes" style="width:20px;height:15px;"/>&nbsp;<label>Yes</label>
+                                </div>
+                                <div class="col-lg-2">
+                                    <input type="radio" name="customer" id="no" value="No" style="width:20px;height:15px;" checked/>&nbsp;<label>No</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 form-group">
+                            <div class="row g-3">
                                 <div class="col-lg-8">
                                     <label>Email Address</label>
-                                    <input type="email" class="form-control" name="email" required/>
+                                    <input type="email" class="form-control" name="email" id="email" required/>
                                 </div>
                                 <div class="col-lg-4">
                                     <label>Tel/Cell No</label>
-                                    <input type="phone" class="form-control" maxlength="11" minlength="11" name="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required/>
+                                    <input type="phone" class="form-control" maxlength="11" minlength="11" name="phone" id="phone" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" required/>
                                 </div>
                             </div>
                         </div>
                         <div class="col-12 form-group">
-                            <div class="row g-3">
-                                <div class="col-lg-6">
-                                    <label>Firstname</label>
-                                    <input type="text" class="form-control" name="firstname" required/>
-                                </div>
-                                <div class="col-lg-6">
-                                    <label>Surname</label>
-                                    <input type="text" class="form-control" name="surname" required/>
-                                </div>
+                            <label>Complete Name</label>
+                            <input type="text" class="form-control" name="fullname" id="fullname" required/>
+                        </div>
+                        <div class="col-12 form-group">
+                            <label>Address</label>
+                            <textarea class="form-control" name="address" id="address" required></textarea>
+                        </div>
+                        <div class="col-12 form-group">
+                            <label>Payment Options</label>
+                            <div class="col-12">
+                                <input type="radio" name="payment" value="Gcash" style="width:20px;height:15px;" checked/>&nbsp;<label>Gcash</label>
+                            </div>
+                            <div class="col-12">
+                                <input type="radio" name="payment" value="Cash" style="width:20px;height:15px;"/>&nbsp;<label>Cash/Over-the-Counter</label>
                             </div>
                         </div>
                         <div class="col-12 form-group">
-                            <label>Building/Apartment/Suite</label>
-                            <input type="text" class="form-control" name="apartment"/>
-                        </div>
-                        <div class="col-12 form-group">
-                            <label>Subdivision/Village/Brgy</label>
-                            <input type="text" class="form-control" name="street" required/>
-                        </div>
-                        <div class="col-12 form-group">
-                            <div class="row g-3">
-                                <div class="col-lg-6">
-                                    <label>City</label>
-                                    <input type="text" class="form-control" name="city" required/>
-                                </div>
-                                <div class="col-lg-4">
-                                    <label>Province</label>
-                                    <input type="text" class="form-control" name="province" value="Cavite" required/>
-                                </div>
-                                <div class="col-lg-2">
-                                    <label>Zip Code</label>
-                                    <input type="text" class="form-control" maxlength="4" minlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');" name="zipcode" required/>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12 form-group">
-                            <button type="submit" class="btn btn-primary">Place Order</button>
+                            <button type="submit" class="btn btn-primary">Register</button>
                         </div>
                     </form>
                 </div>
@@ -158,5 +151,29 @@
   <script src="/assets/js/jquery.magnific-popup.min.js"></script>
   <script src="/assets/js/scrollax.min.js"></script>
   <script src="/assets/js/main.js"></script>
+  <script>
+    $('input:radio[name="customer"]').change(function() {
+        var user = "<?php echo session()->get('sess_id') ?>";
+        var fullname = "<?php echo session()->get('sess_fullname') ?>";
+        if($(this).val()==="Yes")
+        {
+            $.ajax({url:"<?=site_url('collect-information')?>",method:"GET",
+                data:{user:user},dataType:"json",
+                success:function(data)
+                {
+                    $('#fullname').val(fullname);
+                    $('#address').val(data["Address"]);
+                    $('#phone').val(data["Contact"]);
+                    $('#email').val(data["Email"]);
+                }
+            });
+        }else{
+            $('#fullname').val("");
+            $('#address').val("");
+            $('#phone').val("");
+            $('#email').val("");
+        }
+    });
+  </script>
   </body>
 </html>
