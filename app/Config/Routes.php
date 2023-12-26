@@ -88,6 +88,9 @@ $routes->post('/remove-feedback','Home::removeFeedback');
 $routes->post('/accept-reservation','Report::acceptReservation');
 $routes->post('/paid-reservation','Report::paidReservation');
 $routes->post('/done-reservation','Report::doneReservation');
+$routes->post('/accept-membership','Report::acceptMembership');
+$routes->post('/cancel-membership','Report::cancelMembership');
+$routes->post('/renewal','Report::renew');
 //customer
 $routes->post('/save-pet','Customer::savePet');
 $routes->post('update-pet-info','Customer::updatePet');

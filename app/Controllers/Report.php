@@ -105,4 +105,27 @@ class Report extends BaseController
         $reservationModel->update($val,$values);
         echo "success";
     }
+
+    public function acceptMembership()
+    {
+        $subscribeModel = new \App\Models\subscribeModel();
+        $val = $this->request->getPost('value');
+        $values = ['Status'=>1];
+        $subscribeModel->update($val,$values);
+        echo "success";
+    }
+
+    public function cancelMembership()
+    {
+        $subscribeModel = new \App\Models\subscribeModel();
+        $val = $this->request->getPost('value');
+        $values = ['Status'=>3];
+        $subscribeModel->update($val,$values);
+        echo "success";
+    }
+
+    public function renew()
+    {
+        $subscribeModel = new \App\Models\subscribeModel();
+    }
 }

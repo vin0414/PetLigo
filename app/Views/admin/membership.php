@@ -391,9 +391,9 @@
 											<?php }else if($row->Status==1){ ?>
 												<span class="badge text-white bg-success">APPROVED</span>
 											<?php }else if($row->Status==2){ ?>
-												<span class="badge text-white bg-danger">EXPIRED</span>
+												<span class="badge text-white bg-info">EXPIRED</span>
 											<?php }else if($row->Status==3){ ?>
-												<span class="badge text-white bg-info">CANCELLED</span>
+												<span class="badge text-white bg-danger">CANCELLED</span>
 											<?php } ?>
 										</td>
 										<td>
@@ -416,6 +416,8 @@
 												-
 											<?php }else if($row->Status==2){ ?>
 												<button type="button" class="btn btn-outline-primary renew" value="<?php echo $row->membershipID ?>">Renew</button>
+											<?php }else if($row->Status==3){ ?>
+												-
 											<?php } ?>
 										</td>
 									</tr>
@@ -436,5 +438,73 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script>
+			$(document).on('click','.accept',function()
+			{
+				Swal.fire({
+					title: "Are you sure?",
+					text: "Do you want to accept this selected membership?",
+					icon: "question",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "Yes"
+					}).then((result) => {
+					if (result.isConfirmed) 
+					{
+						var val = $(this).val();
+						$.ajax({
+							url:"<?=site_url('accept-membership')?>",method:"POST",
+							data:{value:val},
+							success:function(response)
+							{
+								if(response==="success")
+								{
+									location.reload();
+								}
+								else
+								{
+									alert(response);
+								}
+							}
+						});
+					}
+				});
+			});
+
+			$(document).on('click','.cancel',function()
+			{
+				Swal.fire({
+					title: "Are you sure?",
+					text: "Do you want to cancel this selected membership?",
+					icon: "question",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "Yes"
+					}).then((result) => {
+					if (result.isConfirmed) 
+					{
+						var val = $(this).val();
+						$.ajax({
+							url:"<?=site_url('cancel-membership')?>",method:"POST",
+							data:{value:val},
+							success:function(response)
+							{
+								if(response==="success")
+								{
+									location.reload();
+								}
+								else
+								{
+									alert(response);
+								}
+							}
+						});
+					}
+				});
+			});
+		</script>
 	</body>
 </html>
