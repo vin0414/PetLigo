@@ -350,6 +350,15 @@
 							</h4>
 							<p class="font-18 max-width-600">
 								<label>Become a member now! Click here the <a href="<?=site_url('/membership')?>">link</a> to see other details</label>
+								<?php foreach($member as $row): ?>
+									<?php if($row->Status==0){?>
+										<button type="button" class="btn btn-warning text-white">PENDING - <?php echo $row->Title ?></button>
+									<?php }else if($row->Status==1) { ?>
+										<button type="button" class="btn btn-primary text-white"><?php echo $row->Title ?> Member</button>
+									<?php } else if($row->Status==2){ ?>
+										<button type="button" class="btn btn-danger text-white">Expired</button>
+									<?php } ?>
+								<?php endforeach; ?>
 							</p>
 						</div>
 					</div>

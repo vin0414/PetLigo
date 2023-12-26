@@ -26,8 +26,14 @@ class Customer extends BaseController
         $builder->join('tblcustomer_order b','b.TransactionNo=a.TransactionNo','LEFT');
         $builder->WHERE('a.customerID',$user)->WHERE('b.Status',1);
         $order = $builder->get()->getResult();
+        //membership
+        $builder = $this->db->table('tblmembership a');
+        $builder->select('a.Status,b.Title,a.customerID');
+        $builder->join('tblfee b','b.feeID=a.Package','LEFT');
+        $builder->WHERE('a.customerID',$user);
+        $member = $builder->get()->getResult();
 
-        $data = ['book'=>$book,'order'=>$order];
+        $data = ['book'=>$book,'order'=>$order,'member'=>$member];
         return view('customer/index',$data);
     }
 
