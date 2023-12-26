@@ -110,9 +110,6 @@
 										</div>
 									</div>
 									<div class="col-6">
-										<div class="forgot-password">
-											<a href="<?=site_url('forgot-password')?>">Forgot Password</a>
-										</div>
 									</div>
 								</div>
 								<div class="row">
