@@ -405,7 +405,7 @@
 						<div class="card-box">
 							<div class="card-body">
 								<h6>Membership</h6>
-								<h1>0</h1>
+								<h1><?php foreach($member as $row):?><?php echo $row->total ?><?php endforeach; ?></h1>
 							</div>
 						</div>
 					</div>

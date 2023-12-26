@@ -171,8 +171,13 @@ class Home extends BaseController
             $oTotal = $row->total;
         }
         $income = $rTotal + $oTotal;
+        //membership
+        $builder = $this->db->table('tblmembership');
+        $builder->select('COUNT(*)total');
+        $builder->WHERE('Status',0);
+        $member = $builder->get()->getResult();
 
-        $data = ['list'=>$list,'order'=>$order,'reserved'=>$reserved,'income'=>$income];
+        $data = ['list'=>$list,'order'=>$order,'reserved'=>$reserved,'income'=>$income,'member'=>$member];
         return view('admin/index',$data);
     }
 
