@@ -108,6 +108,7 @@ $routes->post('save','Customer::Save');
 $routes->post('save-book','Customer::saveBook');
 $routes->get('collect-information','Customer::collectInfo');
 $routes->post('submit-subscription','Customer::submitSubscribe');
+$routes->get('welcome','Customer::welcome');
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {

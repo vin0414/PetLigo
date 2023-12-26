@@ -810,8 +810,127 @@ class Customer extends BaseController
         return view('subscription',$data);
     }
 
+    public function welcome()
+    {
+        return view('welcome');
+    }
+
     public function submitSubscribe()
     {
-        
+        $subscribeModel = new \App\Models\subscribeModel();
+        //data
+        $user = session()->get('sess_id');
+        $id = $this->request->getPost('subscribeID');
+        $emailaddress = $this->request->getPost('email');
+        $phone = $this->request->getPost('phone');
+        $fullname = $this->request->getPost('fullname');
+        $address = $this->request->getPost('address');
+        $payment = $this->request->getPost('payment');
+        $subscribeName = $this->request->getPost('subscribeName');
+        $status = 0;
+        $dateCreated = date('Y-m-d');
+        $newEndingDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime($dateCreated)) . " + 1 year"));
+
+        $validation = $this->validate([
+            'email'=>'required|valid_email',
+            'phone'=>'required',
+            'fullname'=>'required',
+            'address'=>'required',
+            'payment'=>'required'
+        ]);
+
+        if(!$validation)
+        {
+            session()->setFlashdata('fail','Invalid! Please fill in the form to continue');
+            return redirect()->to('subscription/'.$id)->withInput();
+        }
+        else
+        {
+            $values = [
+                'customerID'=>$user,'Package'=>$id, 'Status'=>$status,'DateCreated'=>$dateCreated,
+                'Fullname'=>$fullname,'Phone'=>$phone,'EmailAddress'=>$emailaddress,'Address'=>$address,
+                'paymentMethod'=>$payment,'EndDate'=>$newEndingDate,
+            ];
+            $subscribeModel->save($values);
+            //send email
+            if($subscribeName=="Gold Package")
+            {
+                $email = \Config\Services::email();
+                $email->setTo($emailaddress,$fullname);
+                $email->setFrom("petligo2023@gmail.com","PetLigo");
+                $imgURL = "assets/images/petligo.png";
+                $email->attach($imgURL);
+                $cid = $email->setAttachmentCID($imgURL);
+                $template = "<center>
+                <img src='cid:". $cid ."' width='100'/>
+                <table style='padding:10px;background-color:#ffffff;' border='0'><tbody>
+                <tr><td>Dear ".$fullname.",</td></tr>
+                <tr><td>We are thrilled to welcome you to Petligo - Grooming Services, your decision to become a Gold member of our grooming community is truly appreciated,</td><tr>
+                <tr><td>and we look forward to providing exceptional grooming services tailored to your needs.</td></tr>
+                <tr><td><br/></td></tr>
+                <tr><td>As a Gold member, you'll enjoy the exclusive benefits including</td></tr>
+                <tr><td><b>TOP DOG PACKAGE (GOLD) For Only 6,499.00 anually:</b></td></tr>
+                <tr><td>1. Priority on style clips</td></tr>
+                <tr><td>2. Birthday package</td></tr>
+                <tr><td>&nbsp;&nbsp;&nbsp;a. Bow tie (for boys)</td></tr>
+                <tr><td>&nbsp;&nbsp;&nbsp;b. Ponytail clips (for girls)</td></tr>
+                <tr><td>3. Premium shampoo</td></tr>
+                <tr><td><br/></td></tr>
+                <tr><td>Our team is dedicated to ensuring that your experience with us is not only satisfying but also exceeds your expectations.</td></tr>
+                <tr><td>If you have any questions or special requests, feel free to reach out to our customer support team at Facebook Page </td></tr>
+                <tr><td>Petligo - Grooming Services</td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td>Thank you for choosing Petligo - Grooming Services. We appreciate your business and hope you enjoy your purchase!</td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td>Best Regards,</td></tr>
+                <tr><td>Petligo - Grooming Services</td></tr>
+                <tr><td>452 Padre Pio, Santa Cruz, Cavite City, 4100 Cavite</td></tr>
+                <tr><td>Facebook Page: Petligo - Grooming Services</td></tr>
+                </tbody></table></center>";
+                $subject = "Package Subscription - Petligo";
+                $email->setSubject($subject);
+                $email->setMessage($template);
+                $email->send();
+            }
+            else
+            {
+                $email = \Config\Services::email();
+                $email->setTo($emailaddress,$fullname);
+                $email->setFrom("petligo2023@gmail.com","PetLigo");
+                $imgURL = "assets/images/petligo.png";
+                $email->attach($imgURL);
+                $cid = $email->setAttachmentCID($imgURL);
+                $template = "<center>
+                <img src='cid:". $cid ."' width='100'/>
+                <table style='padding:10px;background-color:#ffffff;' border='0'><tbody>
+                <tr><td>Dear ".$fullname.",</td></tr>
+                <tr><td>We are thrilled to welcome you to Petligo - Grooming Services, your decision to become a Premium member of our grooming community is truly appreciated,</td><tr>
+                <tr><td>and we look forward to providing exceptional grooming services tailored to your needs.</td></tr>
+                <tr><td><br/></td></tr>
+                <tr><td>As a Premium member, you'll enjoy the exclusive benefits including</td></tr>
+                <tr><td><b>PREMIUM (SILVER) For Only 4,499.00 anually:</b></td></tr>
+                <tr><td>1. Birthday package</td></tr>
+                <tr><td>&nbsp;&nbsp;&nbsp;a. Bow tie (for boys)</td></tr>
+                <tr><td>&nbsp;&nbsp;&nbsp;b. Ponytail clips (for girls)</td></tr>
+                <tr><td>2. Premium shampoo</td></tr>
+                <tr><td><br/></td></tr>
+                <tr><td>Our team is dedicated to ensuring that your experience with us is not only satisfying but also exceeds your expectations.</td></tr>
+                <tr><td>If you have any questions or special requests, feel free to reach out to our customer support team at Facebook Page </td></tr>
+                <tr><td>Petligo - Grooming Services</td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td>Thank you for choosing Petligo - Grooming Services. We appreciate your business and hope you enjoy your purchase!</td></tr>
+                <tr><td>&nbsp;</td></tr>
+                <tr><td>Best Regards,</td></tr>
+                <tr><td>Petligo - Grooming Services</td></tr>
+                <tr><td>452 Padre Pio, Santa Cruz, Cavite City, 4100 Cavite</td></tr>
+                <tr><td>Facebook Page: Petligo - Grooming Services</td></tr>
+                </tbody></table></center>";
+                $subject = "Package Subscription - Petligo";
+                $email->setSubject($subject);
+                $email->setMessage($template);
+                $email->send();
+            }
+            return $this->response->redirect(site_url('welcome'));
+        }
     }
 }

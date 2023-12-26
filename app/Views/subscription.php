@@ -83,6 +83,11 @@
             <div class="card">
                 <div class="card-header">Become A Member</div>
                 <div class="card-body">
+                    <?php if(!empty(session()->getFlashdata('fail'))) : ?>
+                      <div class="alert alert-danger" role="alert">
+                        <?= session()->getFlashdata('fail'); ?>
+                      </div>
+                    <?php endif; ?>
                     <form method="post" class="row g-3" id="frmShip" action="<?=base_url('submit-subscription')?>">
                         <div class="col-12 form-group">
                             <div class="row g-3">
@@ -98,7 +103,7 @@
                         <?php foreach($list as $row): ?>
                             <input type="hidden" name="subscribeID" value="<?php echo $row->feeID ?>"/>
                             <div class="col-12 form-group">
-                              <label>Subscription</label>
+                              <label>Subscription For</label>
                               <input type="text" name="subscribeName" class="form-control" value="<?php echo $row->Title ?>"/>
                             </div>
                         <?php endforeach; ?>
