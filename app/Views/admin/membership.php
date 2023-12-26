@@ -360,7 +360,70 @@
 
 		<div class="main-container">
 			<div class="pd-ltr-20">
-				
+				<div class="card-box">
+					<div class="card-header">Membership</div>
+					<div class="card-body">
+						<table class="data-table table stripe hover nowrap">
+							<thead>
+								<th>Date Created</th>
+								<th>Package</th>
+								<th>Customer's Name</th>
+								<th>Contact No</th>
+								<th>Email Address</th>
+								<th>Payment Method</th>
+								<th>Due Date</th>
+								<th>Status</th>
+								<th>Action</th>
+							</thead>
+							<tbody>
+								<?php foreach($member as $row): ?>
+									<tr>
+										<td><?php echo $row->DateCreated ?></td>
+										<td><?php echo $row->Title ?></td>
+										<td><?php echo $row->Fullname ?></td>
+										<td><?php echo $row->Phone ?></td>
+										<td><?php echo $row->EmailAddress ?></td>
+										<td><?php echo $row->paymentMethod ?></td>
+										<td><?php echo $row->EndDate ?></td>
+										<td>
+											<?php if($row->Status==0){ ?>
+												<span class="badge text-white bg-warning">PENDING</span>
+											<?php }else if($row->Status==1){ ?>
+												<span class="badge text-white bg-success">APPROVED</span>
+											<?php }else if($row->Status==2){ ?>
+												<span class="badge text-white bg-danger">EXPIRED</span>
+											<?php }else if($row->Status==3){ ?>
+												<span class="badge text-white bg-info">CANCELLED</span>
+											<?php } ?>
+										</td>
+										<td>
+											<?php if($row->Status==0){ ?>
+											<div class="dropdown">
+												<a
+													class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+													href="#"
+													role="button"
+													data-toggle="dropdown"
+												>
+													<i class="dw dw-more"></i>
+												</a>
+												<div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">	
+												<button class="dropdown-item accept" value="<?php echo $row->membershipID ?>"><i class="dw dw-check"></i> Accept</button>
+												<button class="dropdown-item cancel" value="<?php echo $row->membershipID ?>"><i class="dw dw-trash"></i> Cancel</button>
+												</div>
+											</div>
+											<?php }else if($row->Status==1){ ?>
+												-
+											<?php }else if($row->Status==2){ ?>
+												<button type="button" class="btn btn-outline-primary renew" value="<?php echo $row->membershipID ?>">Renew</button>
+											<?php } ?>
+										</td>
+									</tr>
+								<?php endforeach; ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
 		</div>
 		<!-- js -->

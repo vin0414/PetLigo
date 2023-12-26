@@ -808,7 +808,12 @@ class Home extends BaseController
 
     public function Members()
     {
-        return view('admin/membership');
+        $builder = $this->db->table('tblmembership a');
+        $builder->select('a.*,b.Title');
+        $builder->join('tblfee b','b.feeID=a.Package','LEFT');
+        $member = $builder->get()->getResult();
+        $data = ['member'=>$member];
+        return view('admin/membership',$data);
     }
 
     public function Reports()
