@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Success</title>
+    <title>Welcome</title>
     <meta charset="utf-8">
     <link href="/assets/images/petligo.png" rel="icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -28,28 +28,36 @@
     <section class="ftco-section bg-light">
 		<div class="container">
             <div class="row g-3">
-                <div class="col-lg-3"></div>
-                <div class="col-lg-6">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10">
                     <div class="card">
                         <div class="card-body">
                             <center>
-                                <img src="/assets/images/petligo.png" width="100"/>
+                                <img src="/assets/images/petligo.png" width="250"/>
                             </center>
                             <form method="post" class="row g-3">
                                 <div class="col-12 form-group text-center">
-                                    <h3>Account Creation Successful</h3>
+                                    <h3>Welcome to the Family</h3>
                                 </div>
                                 <div class="col-12 form-group text-center">
-                                    <p>Thank you for registering with Petligo - Pet Grooming Services Portal. Your account has been created.</p>
+                                    <p>At Petligo, we hold the belief that every furry companion, regardless of their size or temperament,</p>
+                                    <p>should have the opportunity to enjoy a delightful spa experience from time to time. Whether they required</p>
+                                    <p>a comprehensive grooming session or simply a soothing bath, we guarantee top-notch care for our beloved</p>
+                                    <p>pets. Our enchanted salon, staffed with passionate animal lovers and skilled grooming professionals,</p>
+                                    <p>strives to create a harmonious and rejuvenating environment for every animal it serves. What sets us</p>
+                                    <p>apart is our commitment to bringing this exclusive experience directly to our clients' homes, ensuring</p>
+                                    <p>utmost convenience and comfort.</p>
                                 </div>
-                                <div class="col-12 form-group text-center">
-                                    <p>Please click the link sent to your email account to activate your account. Thank you!</p>
+                                <div class="col-12 form-group">
+                                    <center>
+                                    <a href="<?=site_url('customer/dashboard')?>">Dashboard</a> | <a href="<?=site_url('/products')?>">Book Now</a> | <a href="<?=site_url('/products')?>">Go Shopping</a>
+                                    </center>
                                 </div>
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3"></div>
+                <div class="col-lg-1"></div>
             </div> 
 		</div>
 	</section>
