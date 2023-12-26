@@ -413,11 +413,11 @@
 												</div>
 											</div>
 											<?php }else if($row->Status==1){ ?>
-												-
+												<button class="dropdown-item cancel" value="<?php echo $row->membershipID ?>"><i class="dw dw-trash"></i> Cancel</button>
 											<?php }else if($row->Status==2){ ?>
-												<button type="button" class="btn btn-outline-primary renew" value="<?php echo $row->membershipID ?>">Renew</button>
+												<button type="button" class="btn btn-outline-primary btn-sm renew" value="<?php echo $row->membershipID ?>">Renew</button>
 											<?php }else if($row->Status==3){ ?>
-												-
+												<button type="button" class="btn btn-outline-primary btn-sm renew" value="<?php echo $row->membershipID ?>">Renew</button>
 											<?php } ?>
 										</td>
 									</tr>
@@ -489,6 +489,39 @@
 						var val = $(this).val();
 						$.ajax({
 							url:"<?=site_url('cancel-membership')?>",method:"POST",
+							data:{value:val},
+							success:function(response)
+							{
+								if(response==="success")
+								{
+									location.reload();
+								}
+								else
+								{
+									alert(response);
+								}
+							}
+						});
+					}
+				});
+			});
+
+			$(document).on('click','.renew',function()
+			{
+				Swal.fire({
+					title: "Are you sure?",
+					text: "Do you want to renew this selected membership?",
+					icon: "question",
+					showCancelButton: true,
+					confirmButtonColor: "#3085d6",
+					cancelButtonColor: "#d33",
+					confirmButtonText: "Yes"
+					}).then((result) => {
+					if (result.isConfirmed) 
+					{
+						var val = $(this).val();
+						$.ajax({
+							url:"<?=site_url('renewal')?>",method:"POST",
 							data:{value:val},
 							success:function(response)
 							{

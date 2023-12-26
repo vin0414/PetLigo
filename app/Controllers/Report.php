@@ -127,5 +127,11 @@ class Report extends BaseController
     public function renew()
     {
         $subscribeModel = new \App\Models\subscribeModel();
+        $val = $this->request->getPost('value');
+        $dateCreated = date('Y-m-d');
+        $newEndingDate = date("Y-m-d", strtotime(date("Y-m-d", strtotime($dateCreated)) . " + 1 year"));
+        $values = ['Status'=>1,'DateCreated'=>$dateCreated,'EndDate'=>$newEndingDate];
+        $subscribeModel->update($val,$values);
+        echo "success";
     }
 }

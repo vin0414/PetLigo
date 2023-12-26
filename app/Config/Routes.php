@@ -46,6 +46,7 @@ $routes->get('/cart/view','Cart::viewCart');
 $routes->get('/cart/details/(:any)','Cart::details/$1');
 $routes->get('/register','Home::register');
 $routes->get('/forgot-password','Home::forgotPassword');
+$routes->get('/reset-password','Customer::passwordPage');
 $routes->get('services-for-dogs','Home::servicesDog');
 $routes->get('services-for-cats','Home::servicesCat');
 $routes->get('ala-carte','Home::alaCarte');
@@ -112,6 +113,8 @@ $routes->post('save-book','Customer::saveBook');
 $routes->get('collect-information','Customer::collectInfo');
 $routes->post('submit-subscription','Customer::submitSubscribe');
 $routes->get('welcome','Customer::welcome');
+$routes->post('update-password','Customer::resetPassword');
+
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
 {
