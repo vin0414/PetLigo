@@ -812,6 +812,6 @@ class Customer extends BaseController
 
     public function submitSubscribe()
     {
-
+        
     }
 }
