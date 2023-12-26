@@ -95,6 +95,13 @@
                                 </div>
                             </div>
                         </div>
+                        <?php foreach($list as $row): ?>
+                            <input type="hidden" name="subscribeID" value="<?php echo $row->feeID ?>"/>
+                            <div class="col-12 form-group">
+                              <label>Subscription</label>
+                              <input type="text" name="subscribeName" class="form-control" value="<?php echo $row->Title ?>"/>
+                            </div>
+                        <?php endforeach; ?>
                         <div class="col-12 form-group">
                             <div class="row g-3">
                                 <div class="col-lg-8">

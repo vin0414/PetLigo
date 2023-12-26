@@ -802,11 +802,16 @@ class Customer extends BaseController
 
     public function subscription($id=null)
     {
-        return view('subscription');
+        $builder = $this->db->table('tblfee');
+        $builder->select('*');
+        $builder->WHERE('feeID',$id);
+        $list = $builder->get()->getResult();
+        $data = ['list'=>$list];
+        return view('subscription',$data);
     }
 
     public function submitSubscribe()
     {
-        
+
     }
 }
