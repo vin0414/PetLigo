@@ -57,7 +57,7 @@
                             <?php endif; ?>
                             <h4 class="text-center">Forgot Password</h4>
                             <h6 class="text-center">Enter the email address associated with your account to reset your password.</h6>
-                            <form method="post" class="row g-3" id="frmLogin" action="<?=base_url('update-password')?>">
+                            <form method="post" class="row g-3" id="frmLogin" action="<?=base_url('change-password')?>">
                                 <div class="col-12 form-group">
                                     <input type="email" class="form-control" name="email" placeholder="Email Address" required/>
                                 </div>

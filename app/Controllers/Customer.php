@@ -997,9 +997,6 @@ class Customer extends BaseController
                     $email->setSubject($subject);
                     $email->setMessage($template);
                     $email->send();
-                    
-                    // Will only print the email headers, excluding the message subject and body
-                    $email->printDebugger(['headers']);
                 }
                 
                 return $this->response->redirect(site_url('reset-password'));

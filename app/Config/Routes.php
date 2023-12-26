@@ -113,7 +113,7 @@ $routes->post('save-book','Customer::saveBook');
 $routes->get('collect-information','Customer::collectInfo');
 $routes->post('submit-subscription','Customer::submitSubscribe');
 $routes->get('welcome','Customer::welcome');
-$routes->post('update-password','Customer::resetPassword');
+$routes->post('change-password','Customer::resetPassword');
 
 
 $routes->group('',['filter'=>'AuthCheck'],function($routes)
