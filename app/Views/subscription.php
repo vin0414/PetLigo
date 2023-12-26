@@ -83,10 +83,10 @@
             <div class="card">
                 <div class="card-header">Become A Member</div>
                 <div class="card-body">
-                    <form method="post" class="row g-3" id="frmShip" action="<?=base_url('cart/save-order')?>">
+                    <form method="post" class="row g-3" id="frmShip" action="<?=base_url('submit-subscription')?>">
                         <div class="col-12 form-group">
                             <div class="row g-3">
-                                <div class="col-lg-4"><label>Are you the customer?</label></div>
+                                <div class="col-lg-2"><label>Auto-fill?</label></div>
                                 <div class="col-lg-2">
                                     <input type="radio" name="customer" id="yes" value="Yes" style="width:20px;height:15px;"/>&nbsp;<label>Yes</label>
                                 </div>

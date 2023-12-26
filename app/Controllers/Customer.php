@@ -804,4 +804,9 @@ class Customer extends BaseController
     {
         return view('subscription');
     }
+
+    public function submitSubscribe()
+    {
+        
+    }
 }
