@@ -148,6 +148,7 @@ class Report extends BaseController
             {
                 $values = ['Status'=>2];
                 $subscribeModel->update($row->membershipID,$values);
+                echo "Updated";
             }
         }
     }

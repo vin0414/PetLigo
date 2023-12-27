@@ -447,5 +447,18 @@
 		<script src="/resources/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
 		<script src="/resources/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
         <script src="/resources/vendors/scripts/datatable-setting.js"></script>
+		<script>
+			var auto_refresh = setInterval(function (){autoDetect();}, 10000);
+			function autoDetect()
+			{
+				$.ajax({
+					url:"<?=site_url('auto-detect')?>",method:"POST",
+					success:function(response)
+					{
+						console.log(response);
+					}
+				});
+			}
+		</script>
 	</body>
 </html>
