@@ -92,6 +92,7 @@ $routes->post('/done-reservation','Report::doneReservation');
 $routes->post('/accept-membership','Report::acceptMembership');
 $routes->post('/cancel-membership','Report::cancelMembership');
 $routes->post('/renewal','Report::renew');
+$routes->post('/auto-detect','Report::autoDetect');
 //customer
 $routes->post('/save-pet','Customer::savePet');
 $routes->post('update-pet-info','Customer::updatePet');

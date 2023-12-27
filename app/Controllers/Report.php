@@ -134,4 +134,21 @@ class Report extends BaseController
         $subscribeModel->update($val,$values);
         echo "success";
     }
+
+    public function autoDetect()
+    {
+        $subscribeModel = new \App\Models\subscribeModel();
+        $date = date('Y-m-d');
+        $builder = $this->db->table('tblmembership');
+        $builder->select('*');
+        $data = $builder->get();
+        foreach($data->getResult() as $row)
+        {
+            if($row->EndDate==$date)
+            {
+                $values = ['Status'=>2];
+                $subscribeModel->update($row->membershipID,$values);
+            }
+        }
+    }
 }
