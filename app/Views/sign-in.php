@@ -64,7 +64,10 @@
                                 </div>
                                 <div class="col-12 form-group">
                                     <label>Password</label>
-                                    <input type="password" class="form-control" name="password" required/>
+                                    <input type="password" class="form-control" name="password" id="password" required/>
+                                </div>
+                                <div class="col-12 form-group">
+                                    <input type="checkbox" onclick="myFunction()"> Show Password
                                 </div>
                                 <div class="col-12 form-group">
                                     <button type="submit" class="btn btn-danger" id="btnLogin">Sign-In</button>
@@ -103,5 +106,15 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="assets/js/google-map.js"></script>
   <script src="assets/js/main.js"></script>
+  <script>
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
+    }
+  </script>
   </body>
 </html>

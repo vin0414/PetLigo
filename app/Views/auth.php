@@ -89,29 +89,16 @@
 								<div class="input-group custom">
 									<input type="password" name="password"
 										class="form-control form-control-lg"
-										placeholder="**********" required/>
+										placeholder="**********" id="password" required/>
 									<div class="input-group-append custom">
 										<span class="input-group-text"
 											><i class="dw dw-padlock1"></i
 										></span>
 									</div>
 								</div>
-								<div class="row pb-30">
-									<div class="col-6">
-										<div class="custom-control custom-checkbox">
-											<input
-												type="checkbox"
-												class="custom-control-input"
-												id="customCheck1"
-											/>
-											<label class="custom-control-label" for="customCheck1"
-												>Remember</label
-											>
-										</div>
-									</div>
-									<div class="col-6">
-									</div>
-								</div>
+								<div class="col-12 form-group">
+                                    <input type="checkbox" onclick="myFunction()"> Show Password
+                                </div>
 								<div class="row">
 									<div class="col-sm-12">
 										<div class="input-group mb-0">
@@ -130,5 +117,15 @@
 		<script src="resources/vendors/scripts/script.min.js"></script>
 		<script src="resources/vendors/scripts/process.js"></script>
 		<script src="resources/vendors/scripts/layout-settings.js"></script>
+		<script>
+			function myFunction() {
+				var x = document.getElementById("password");
+				if (x.type === "password") {
+				x.type = "text";
+				} else {
+				x.type = "password";
+				}
+			}
+		</script>
 	</body>
 </html>
