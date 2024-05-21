@@ -95,7 +95,7 @@
                             <th>Price</th>
                             <th>Quantity</th>
                             <th>Sub-Total</th>
-                        </thead>
+                        </thead> 
                         <tbody>
                             <?php if(empty($items)){ ?>
                               <tr>
