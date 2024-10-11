@@ -1,5 +1,5 @@
 # PetLigo - Online Scheduling and Ordering Management System
-# Features
+## Features
 * Order Management
 * Blog Management
 * Cart System
@@ -12,7 +12,7 @@
 * Stocks Monitoring
 * Back-up and Restore
 
-# Languages
+## Languages
 * PHP/CodeIgniter 4
 * MySQL/MariaDB
 * Ajax-jQuery
@@ -20,7 +20,7 @@
 * HTML/CSS
 * SweetAlert
   
-# Security
+## Security
 * Password Hash - Password B_CRYPT
 * Tokenization
 * Session Management
