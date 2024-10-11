@@ -17,7 +17,7 @@
 * MySQL/MariaDB
 * Ajax-jQuery
 * JavaScript
-* HTML/CSS
+* HTML/CSS/Bootstrap
 * SweetAlert
   
 ## Security
